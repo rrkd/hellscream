@@ -1,0 +1,10 @@
+package au.com.iglooit.hellscream.exception;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: nicholas.zhu
+ * Date: 11/08/2014
+ * Time: 8:55 PM
+ */
+public class AppX extends RuntimeException {
+}
