@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.model.entity;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.search.Document;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,4 +46,6 @@ public abstract class BaseEntity implements Serializable {
     public String toString() {
         return "key: " + key + "createdOn: " + createdOn;
     }
+
+    public abstract Document toDocument();
 }

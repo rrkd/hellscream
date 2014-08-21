@@ -7,4 +7,11 @@ package au.com.iglooit.hellscream.exception;
  * Time: 8:55 PM
  */
 public class AppX extends RuntimeException {
+    public AppX (String error) {
+        super(error);
+    }
+
+    public AppX(String error, Throwable e) {
+        super(error, e);
+    }
 }

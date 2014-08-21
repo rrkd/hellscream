@@ -1,8 +1,8 @@
 <decorators defaultdir="/WEB-INF/decorators">
+    <decorator name="merchant" page="section_tp.jsp">
+        <pattern>/merchant*</pattern>
+    </decorator>
     <decorator name="index" page="index.jsp">
         <pattern>/home</pattern>
-    </decorator>
-    <decorator name="default" page="default.jsp">
-        <pattern>/*</pattern>
     </decorator>
 </decorators>

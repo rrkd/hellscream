@@ -1,5 +1,7 @@
 package au.com.iglooit.hellscream.model.entity;
 
+import com.google.appengine.api.search.Document;
+
 import javax.persistence.Entity;
 
 /**
@@ -37,5 +39,10 @@ public class User extends BaseEntity
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public Document toDocument() {
+        throw new UnsupportedOperationException("User can't support full text search");
     }
 }

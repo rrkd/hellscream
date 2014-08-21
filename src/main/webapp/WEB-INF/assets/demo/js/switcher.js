@@ -204,7 +204,7 @@ $('select#layout').change(function () {
 
   $('#style-switcher a.bg-box').click(function (e) {
       e.preventDefault();
-      var patternUrl = 'url(img/bg/' + $(this).attr('data-rel') + '.png)';
+      var patternUrl = 'url(/assets/img/bg/' + $(this).attr('data-rel') + '.png)';
       $('body').css({
           backgroundImage: patternUrl,
           backgroundRepeat: "repeat"
@@ -245,7 +245,7 @@ $('select#layout').change(function () {
   }  
 
   $('#style-switcher a.bg-box').each(function (i) {
-    var backgroundUrl = 'url(img/bg/' + $(this).attr('data-rel') + '.png)';
+    var backgroundUrl = 'url(/assets/img/bg/' + $(this).attr('data-rel') + '.png)';
     var a = $(this);
       a.css({
           backgroundImage: backgroundUrl,
@@ -257,7 +257,7 @@ $('select#layout').change(function () {
     
   $('#style-switcher a.bg-box').click(function (e) {
       e.preventDefault();
-      var backgroundUrl = 'url(img/bg/' + $(this).attr('data-rel') + '.png)';
+      var backgroundUrl = 'url(/assets/img/bg/' + $(this).attr('data-rel') + '.png)';
       $('body').css({
           backgroundImage: backgroundUrl,
           backgroundRepeat: "repeat",
@@ -299,7 +299,7 @@ $('select#layout').change(function () {
   }  
   
     $('#style-switcher a.bgimg-box').each(function (i) {
-    var backgroundUrl = 'url(img/bg/' + $(this).attr('data-rel') + '.jpg)';
+    var backgroundUrl = 'url(/assets/img/bg/' + $(this).attr('data-rel') + '.jpg)';
     var a = $(this);
       a.css({
           backgroundImage: backgroundUrl,
@@ -312,7 +312,7 @@ $('select#layout').change(function () {
     
   $('#style-switcher a.bgimg-box').click(function (e) {
       e.preventDefault();
-      var backgroundUrl = 'url(img/bg/' + $(this).attr('data-rel') + '.jpg)';
+      var backgroundUrl = 'url(/assets/img/bg/' + $(this).attr('data-rel') + '.jpg)';
       $('body').css({
           backgroundImage: backgroundUrl,
           backgroundRepeat: "no-repeat",

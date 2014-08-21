@@ -11,7 +11,7 @@
 
     <context:annotation-config />
 
-    <context:component-scan base-package="au.com.iglooit.hellscream.service" />
+    <context:component-scan base-package="au.com.iglooit.hellscream.service, au.com.iglooit.hellscream.controller" />
 
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" lazy-init="true">

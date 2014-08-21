@@ -126,7 +126,7 @@
                         <jvmFlag>-Ddatastore.backing_store=${project.basedir}/local_db.bin</jvmFlag>
                         <jvmFlag>-Ddatastore.default_high_rep_job_policy_unapplied_job_pct=20</jvmFlag>
                         <jvmFlag>-Xdebug</jvmFlag>
-                        <!--<jvmFlag>-Xrunjdwp:transport=dt_socket,address=${gae.port},server=y,suspend=y</jvmFlag>-->
+                        <!--<jvmFlag>-Xrunjdwp:transport=dt_socket,address=7917,server=y,suspend=y</jvmFlag>-->
                     </jvmFlags>
                     <disableUpdateCheck>true</disableUpdateCheck>
                 </configuration>
