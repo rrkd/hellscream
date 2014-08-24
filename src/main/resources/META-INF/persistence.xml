@@ -7,6 +7,7 @@
         <class>au.com.iglooit.hellscream.model.entity.BaseEntity</class>
         <class>au.com.iglooit.hellscream.model.entity.Merchant</class>
         <class>au.com.iglooit.hellscream.model.entity.User</class>
+        <class>au.com.iglooit.hellscream.model.entity.Category</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>

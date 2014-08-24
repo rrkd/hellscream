@@ -10,6 +10,7 @@ import com.google.appengine.api.search.GeoPoint;
 import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -35,6 +36,7 @@ public class Merchant extends BaseEntity {
     private Date postDate;
     private BigDecimal latitude;
     private BigDecimal longitude;
+    private List<String> categoryList;
 
     public Merchant() {
     }
@@ -165,6 +167,14 @@ public class Merchant extends BaseEntity {
 
     public String convertToAddress() {
         return address1 + " " + address2 + " " + address3;
+    }
+
+    public List<String> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<String> categoryList) {
+        this.categoryList = categoryList;
     }
 
     @Override
