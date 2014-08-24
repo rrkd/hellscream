@@ -203,13 +203,13 @@
 
                         </ul>
 
-                        <form id="search" action="search.php" method="GET">
+                        <form id="search" action="search" method="GET">
 
-                            <input type="text" onfocus="if(this.value =='Enter search keywords here...' ) this.value=''"
+                            <input id="keyWord_text" type="text" onfocus="if(this.value =='Enter search keywords here...' ) this.value=''"
                                    onblur="if(this.value=='') this.value='Enter search keywords here...'"
-                                   value="Enter search keywords here..." name="s">
+                                   value="Enter search keywords here..." name="q">
 
-                            <a href="#"></a>
+                            <a id="searchBtn" href="#"></a>
 
                         </form>
 
@@ -477,6 +477,8 @@
 <script src="/assets/js/plugins.js"></script>
 
 <script src="/assets/js/custom.js"></script>
+
+<script src="/assets/js/search.js"></script>
 
 <script>
 

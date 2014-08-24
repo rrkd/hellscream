@@ -14,6 +14,7 @@ import com.google.appengine.api.search.SearchServiceFactory;
  */
 public final class IndexServiceHelp {
     public static final String MERCHANT_INDEX_NAME = "merchantIndex";
+    public static final String GEO_INDEX_NAME = "geoIndex";
 
     private IndexServiceHelp() {
 
@@ -30,6 +31,20 @@ public final class IndexServiceHelp {
         }
         // create a new index;
         IndexSpec indexSpec = IndexSpec.newBuilder().setName(MERCHANT_INDEX_NAME).build();
+        return SearchServiceFactory.getSearchService().getIndex(indexSpec);
+    }
+
+    public static Index getGeoIndex() {
+        GetResponse<Index> response = SearchServiceFactory.getSearchService().getIndexes(
+                GetIndexesRequest.newBuilder().setSchemaFetched(true).build());
+        // List out elements of Schema
+        for (Index index : response) {
+            if (index.getName().equals(GEO_INDEX_NAME)) {
+                return index;
+            }
+        }
+        // create a new index;
+        IndexSpec indexSpec = IndexSpec.newBuilder().setName(GEO_INDEX_NAME).build();
         return SearchServiceFactory.getSearchService().getIndex(indexSpec);
     }
 }

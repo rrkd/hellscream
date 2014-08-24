@@ -1,11 +1,15 @@
 package au.com.iglooit.hellscream.model.entity;
 
+import au.com.iglooit.hellscream.model.GeoIndexTypeConstant;
 import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.Field;
+import com.google.appengine.api.search.GeoPoint;
 
 import javax.persistence.Entity;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,6 +31,10 @@ public class Merchant extends BaseEntity {
     private String mobile;
     private String contact1;
     private String contact2;
+    private Date lastUpdateTime;
+    private Date postDate;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
 
     public Merchant() {
     }
@@ -123,8 +131,44 @@ public class Merchant extends BaseEntity {
         return MerchantIdentifierConvert.convertToURL(tradeName);
     }
 
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
+    public Date getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(Date postDate) {
+        this.postDate = postDate;
+    }
+
+    public BigDecimal getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(BigDecimal latitude) {
+        this.latitude = latitude;
+    }
+
+    public BigDecimal getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
+    }
+
+    public String convertToAddress() {
+        return address1 + " " + address2 + " " + address3;
+    }
+
     @Override
-    public Document toDocument() {
+    public Document toFullTextDocument() {
         return Document.newBuilder()
                 .setId(KeyFactory.keyToString(getKey()))
                 .addField(Field.newBuilder().setName("tradeName").setText(getTradeName()))
@@ -135,5 +179,14 @@ public class Merchant extends BaseEntity {
                 .addField(Field.newBuilder().setName("mobile").setText(getMobile()))
                 .build();
 
+    }
+
+    @Override
+    public Document toGeoDocument() {
+        return Document.newBuilder()
+                .setId(KeyFactory.keyToString(getKey()))
+                .addField(Field.newBuilder().setGeoPoint(new GeoPoint(latitude.doubleValue(), longitude.doubleValue())))
+                .addField(Field.newBuilder().setName("type").setText(GeoIndexTypeConstant.MERCHANT_TYPE))
+                .build();
     }
 }

@@ -12,7 +12,7 @@
 
     <div class="span6">
 
-        <form action="#" name="MYFORM" id="MYFORM">
+        <form action="#">
 
             <input name="name" size="30" type="text" id="tradeName" class="span12" placeholder="TradeName">
             <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="MerchantName">

@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
+import com.google.appengine.api.datastore.Key;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface MerchantManageService extends IEntityService {
     Merchant findByTradeName(String tradeName);
 
     void createMerchant(Merchant merchant);
+
+    void modifyMerchant(Merchant merchant);
 }

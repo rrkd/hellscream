@@ -1,5 +1,6 @@
 package au.com.iglooit.hellscream.repository;
 
+import com.google.appengine.api.datastore.Key;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -45,6 +46,10 @@ public abstract class BaseRepository<T extends Serializable> {
     public void remove(final Long id) {
         T entity = findOne(id);
         entityManager.remove(entity);
+    }
+
+    public T findByKey(final Key key) {
+        return findOne(key.getId());
     }
 
 }

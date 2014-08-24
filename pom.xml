@@ -431,6 +431,13 @@
             <version>${jstl.version}</version>
         </dependency>
 
+        <!-- geocoder api -->
+        <dependency>
+            <groupId>com.google.code.geocoder-java</groupId>
+            <artifactId>geocoder-java</artifactId>
+            <version>0.16</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>

@@ -28,7 +28,7 @@ public class MerchantManageController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/merchant/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/ad/merchant/create", method = RequestMethod.GET)
     public String merchantNewPage() {
         return "merchant/createMerchant";
     }
@@ -39,5 +39,10 @@ public class MerchantManageController {
         ModelAndView modelAndView = new ModelAndView("merchant/details");
         modelAndView.addObject("merchant", merchantManageService.findByTradeName(tradeName));
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/ad/merchant/{key}", method = RequestMethod.GET)
+    public String merchantModifyPage() {
+        return "merchant/createMerchant";
     }
 }

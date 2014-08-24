@@ -47,5 +47,13 @@ public abstract class BaseEntity implements Serializable {
         return "key: " + key + "createdOn: " + createdOn;
     }
 
-    public abstract Document toDocument();
+    public abstract Document toFullTextDocument();
+
+    /**
+     * Geo document
+     * geopint: geopoint
+     * type: Merchant or others
+     * @return
+     */
+    public abstract Document toGeoDocument();
 }

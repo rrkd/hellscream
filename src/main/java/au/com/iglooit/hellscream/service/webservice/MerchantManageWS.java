@@ -32,12 +32,12 @@ public class MerchantManageWS {
     }
 
     @RequestMapping(value = "/ws/merchant",
-            method = RequestMethod.POST,
+            method = RequestMethod.PUT,
             headers = {"Content-type=application/json"})
     public
     @ResponseBody
     JsonResponse addMerchant(@RequestBody Merchant merchant) {
-        merchant.setCreatedOn(new Date());
+        merchant.setPostDate(new Date());
         merchantManageService.createMerchant(merchant);
         return new JsonResponse("OK", "");
     }
