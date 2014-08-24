@@ -41,8 +41,14 @@ public class User extends BaseEntity
         this.email = email;
     }
 
+
     @Override
-    public Document toDocument() {
+    public Document toFullTextDocument() {
         throw new UnsupportedOperationException("User can't support full text search");
+    }
+
+    @Override
+    public Document toGeoDocument() {
+        throw new UnsupportedOperationException("User can't support Geo search");
     }
 }

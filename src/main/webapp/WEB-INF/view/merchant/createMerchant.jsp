@@ -26,7 +26,7 @@
             <input name="name" size="30" type="text" id="contact2" class="span12" placeholder="Contact Tow">
             <br/>
 
-            <input value="Send" type="submit" id="create_merchant" class="btn btn-primary top10">
+            <input value="Send" id="create_merchant" class="btn btn-primary top10">
 
         </form>
 

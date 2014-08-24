@@ -3,6 +3,11 @@
         <pattern>/merchant*</pattern>
         <pattern>/search</pattern>
     </decorator>
+    <!-- admin console -->
+    <decorator name="merchant" page="section_tp.jsp">
+        <pattern>/ad/*</pattern>
+    </decorator>
+    <!-- default -->
     <decorator name="index" page="index.jsp">
         <pattern>/home</pattern>
     </decorator>

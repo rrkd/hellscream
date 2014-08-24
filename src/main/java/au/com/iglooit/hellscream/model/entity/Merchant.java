@@ -185,7 +185,8 @@ public class Merchant extends BaseEntity {
     public Document toGeoDocument() {
         return Document.newBuilder()
                 .setId(KeyFactory.keyToString(getKey()))
-                .addField(Field.newBuilder().setGeoPoint(new GeoPoint(latitude.doubleValue(), longitude.doubleValue())))
+                .addField(Field.newBuilder().setName("point").setGeoPoint(
+                        new GeoPoint(latitude.doubleValue(), longitude.doubleValue())))
                 .addField(Field.newBuilder().setName("type").setText(GeoIndexTypeConstant.MERCHANT_TYPE))
                 .build();
     }

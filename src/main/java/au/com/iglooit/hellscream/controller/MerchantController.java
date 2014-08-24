@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * Time: 11:49 AM
  */
 @Controller
-public class MerchantManageController {
+public class MerchantController {
     @Resource
     private MerchantManageService merchantManageService;
 
@@ -28,11 +28,6 @@ public class MerchantManageController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/ad/merchant/create", method = RequestMethod.GET)
-    public String merchantNewPage() {
-        return "merchant/createMerchant";
-    }
-
     @RequestMapping(value = "/merchant/details/{tradeNameUrl}", method = RequestMethod.GET)
     public ModelAndView merchantDetails(@PathVariable String tradeNameUrl) {
         String tradeName = MerchantIdentifierConvert.convertToTradeName(tradeNameUrl);
@@ -41,8 +36,4 @@ public class MerchantManageController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/ad/merchant/{key}", method = RequestMethod.GET)
-    public String merchantModifyPage() {
-        return "merchant/createMerchant";
-    }
 }

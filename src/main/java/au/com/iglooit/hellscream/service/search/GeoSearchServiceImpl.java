@@ -27,6 +27,7 @@ public class GeoSearchServiceImpl implements GeoSearchService {
 
     @Override
     public GeoPoint convertGeoPoint(String address) {
+        LOG.info("Convert Geo Point from [" + address + "]");
         final Geocoder geocoder = new Geocoder();
         GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setAddress(address)
                 .setLanguage("en").getGeocoderRequest();
@@ -43,6 +44,7 @@ public class GeoSearchServiceImpl implements GeoSearchService {
             GeocoderGeometry data_2 = data.getGeometry();
             BigDecimal latitude = data_2.getLocation().getLat();
             BigDecimal longitude = data_2.getLocation().getLng();
+            LOG.info("Get Geo Point[" + latitude + ","+ longitude + "]" + " from [" + address + "]");
             return new GeoPoint(latitude.doubleValue(), longitude.doubleValue());
         }
         LOG.info("Can NOT find Geo inforamtion for " + address);
