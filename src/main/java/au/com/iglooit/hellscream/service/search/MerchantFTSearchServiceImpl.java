@@ -8,11 +8,11 @@ import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Index;
 import com.google.appengine.api.search.Results;
 import com.google.appengine.api.search.ScoredDocument;
-import com.google.appengine.repackaged.com.google.common.collect.ImmutableList;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,15 +35,15 @@ public class MerchantFTSearchServiceImpl implements MerchantFTSearchService {
             Results<ScoredDocument> results = merchantIndex.search(keyword.replaceAll("-", " "));
 
             // Iterate over the documents in the results
-            ImmutableList.Builder<Merchant> builder = ImmutableList.builder();
+            List<Merchant> merchantList = new ArrayList<Merchant>();
             for (ScoredDocument document : results) {
                 Key key = KeyFactory.stringToKey(document.getId());
                 Merchant merchant = (Merchant) merchantManageService.findByKey(key);
                 if (merchant != null) {
-                    builder.add(merchant);
+                    merchantList.add(merchant);
                 }
             }
-            return builder.build();
+            return merchantList;
         }
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * Date: 18/08/2014
  * Time: 11:50 AM
  */
-public interface MerchantManageService extends IEntityService {
+public interface MerchantManageService extends IEntityService<Merchant> {
     List<Merchant> findAllMerchants();
 
     Merchant findByTradeName(String tradeName);

@@ -1,6 +1,8 @@
 package au.com.iglooit.hellscream.controller;
 
+import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.service.dao.MerchantManageService;
+import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
 import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,8 @@ import javax.annotation.Resource;
 public class MerchantController {
     @Resource
     private MerchantManageService merchantManageService;
+    @Resource
+    private SuggestMerchantService suggestMerchantService;
 
     @RequestMapping(value = "/merchant", method = RequestMethod.GET)
     public ModelAndView merchantPage() {
@@ -32,7 +36,9 @@ public class MerchantController {
     public ModelAndView merchantDetails(@PathVariable String tradeNameUrl) {
         String tradeName = MerchantIdentifierConvert.convertToTradeName(tradeNameUrl);
         ModelAndView modelAndView = new ModelAndView("merchant/details");
-        modelAndView.addObject("merchant", merchantManageService.findByTradeName(tradeName));
+        Merchant merchant = merchantManageService.findByTradeName(tradeName);
+        modelAndView.addObject("merchant", merchant);
+        modelAndView.addObject("similarMerchants", suggestMerchantService.similarMerchant(merchant.getKey(), 4));
         return modelAndView;
     }
 

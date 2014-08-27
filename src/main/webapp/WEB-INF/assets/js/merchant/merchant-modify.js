@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
     $('#modify_merchant').click(function () {
         $.ajax({
             type:"PUT",
-            url:"/ws/merchant",
+            url:"/ws/merchant/" + $('#keyString').val(),
             data:generateMerchant(),
             contentType:'application/json',
             success:function (data) {
@@ -11,10 +11,18 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+    var selectedItem = $('#selectedCategory').find("li");
+    if (selectedItem !== undefined && selectedItem.length > 0) {
+        var selectedValue = [];
+        for (var i = 0; i < selectedItem.length; i++) {
+            selectedValue.push($(selectedItem[i]).text());
+        }
+        $('#category_select').select2().val(selectedValue).trigger("change");
+    }
 });
 
 function generateMerchant() {
-    return JSON.stringify({
+    var merchant = {
         tradeName:$('#tradeName').val(),
         merchantName:$('#merchantName').val(),
         description:$('#description').val(),
@@ -25,6 +33,18 @@ function generateMerchant() {
         phone:$('#phone').val(),
         mobile:$('#mobile').val(),
         contact1:$('#contact1').val(),
-        contact2:$('#contact2').val()
-    });
+        contact2:$('#contact2').val(),
+        categoryList:[]
+    };
+    generateCategoryList(merchant.categoryList);
+    return JSON.stringify(merchant);
+}
+
+function generateCategoryList(categoryList) {
+    var dataList = $('#category_select').select2('data');
+    var len = dataList.length;
+    for (var i = 0; i < len; i++) {
+        categoryList.push(dataList[i].text);
+    }
+    return false;
 }

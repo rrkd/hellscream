@@ -1,17 +1,21 @@
 package au.com.iglooit.hellscream.repository;
 
+import au.com.iglooit.hellscream.model.entity.BaseEntity;
 import com.google.appengine.api.datastore.Key;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.io.Serializable;
 import java.util.List;
 
 @Repository
-public abstract class BaseRepository<T extends Serializable> {
-
+@Transactional
+public abstract class BaseRepository<T extends BaseEntity> {
+    private static final Logger LOG = LoggerFactory.getLogger(BaseRepository.class);
     private Class<T> clazz;
 
     @PersistenceContext
@@ -43,13 +47,28 @@ public abstract class BaseRepository<T extends Serializable> {
         entityManager.merge(entity);
     }
 
-    public void remove(final Long id) {
+
+    public void removeEntity(T entity) {
+        LOG.info("remove the entity " + entity.toString());
+        entityManager.remove(entity);
+    }
+
+    public void removeById(final Long id) {
         T entity = findOne(id);
         entityManager.remove(entity);
     }
 
     public T findByKey(final Key key) {
         return findOne(key.getId());
+    }
+
+    public void removeAll() {
+        Query q = entityManager.createQuery("DELETE FROM " + clazz.getName() + " m");
+        q.executeUpdate();
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
 }

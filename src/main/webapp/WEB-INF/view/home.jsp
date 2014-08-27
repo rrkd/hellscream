@@ -2,7 +2,7 @@
 
     <div class="camera_wrap pattern_4 camera_emboss" id="camera_wrap_4">
 
-        <div data-src="img/demo/slide1.jpg">
+        <div data-src="/assets/img/demo/slide1.jpg">
 
             <div class="camera_caption fadeFromTop">
 
@@ -16,7 +16,7 @@
 
         </div>
 
-        <div data-src="img/demo/slide2.jpg">
+        <div data-src="/assets/img/demo/slide2.jpg">
 
             <div class="camera_caption fadeFromRight">
 
@@ -34,7 +34,7 @@
 
     <div class="text-center">
 
-        <img src="img/sha.png" class="slidershadowcam" alt="">
+        <img src="/assets/img/sha.png" class="slidershadowcam" alt="">
 
     </div>
 
@@ -236,13 +236,9 @@
 
                         <p>
 
-                            <img src="img/demo/300x200.png" class="imgproject" alt="">
+                            <img src="/assets/img/demo/300x200.png" class="imgproject" alt="">
 
-                            <b>Biz Leaders</b> is a unique multi-purpose HTML template, with a very professional design,
-                            perfect for a corporate, business or portfolio website. Features: Easy to setup 16 HTML
-                            files Responsive Layouts 6 Color Skins 2 Layouts – Wide and Boxed Working AJAX contact form
-                            Slider Recent Work Carousel Clients Area Twitter Feeds Animated Team Boxes Text/Testimonials
-                            Rotator <a href="#">[...]</a>
+                            <b>Biz Leaders</b> is a unique multi-purpose HTML template, with a very professional design, perfect for a corporate, business or portfolio website. Features: Easy to setup 16 HTML files Responsive Layouts 6 Color Skins 2 Layouts – Wide and Boxed Working AJAX contact form Slider Recent Work Carousel Clients Area Twitter Feeds Animated Team Boxes Text/Testimonials Rotator <a href="#">[...]</a>
 
                         </p>
 
@@ -260,13 +256,9 @@
 
                         <p>
 
-                            <img src="img/demo/300x200.png" class="imgproject" alt="">
+                            <img src="/assets/img/demo/300x200.png" class="imgproject" alt="">
 
-                            <b>Studio Francesca</b> is a responsive wordpress theme highly suitable to showcase your
-                            portfolio , but multi-purpose adaptable due to its home & blog variations, page templates
-                            and powerful features & options. Features Responsive 3 Home Page Variations full
-                            slider/boxed/none 3 Blog Variations – 3 box column, 2 box column, single column 3 Archive
-                            Variations <a href="http://www.wowthemes.net/themes/francescawp/">[...]</a>
+                            <b>Studio Francesca</b> is a responsive wordpress theme highly suitable to showcase your portfolio , but multi-purpose adaptable due to its home & blog variations, page templates and powerful features & options. Features Responsive 3 Home Page Variations full slider/boxed/none 3 Blog Variations – 3 box column, 2 box column, single column 3 Archive Variations <a href="http://www.wowthemes.net/themes/francescawp/">[...]</a>
 
                         </p>
 
@@ -284,13 +276,9 @@
 
                         <p>
 
-                            <img src="img/demo/300x200.png" class="imgproject" alt="">
+                            <img src="/assets/img/demo/300x200.png" class="imgproject" alt="">
 
-                            <b>Serenity </b> is a responsive worpdress theme mainly created for freelancers and business
-                            companies who need to showcase their work. It is adaptable though to any other related
-                            project. This light-weight theme is generous, built with custom types and shortcodes to
-                            customize each page according to your project. This lightweight theme can do much more. <a
-                                href="http://www.wowthemes.net/themes/serenitywp/">[...]</a>
+                            <b>Serenity </b> is a responsive worpdress theme mainly created for freelancers and business companies who need to showcase their work. It is adaptable though to any other related project. This light-weight theme is generous, built with custom types and shortcodes to customize each page according to your project. This lightweight theme can do much more. <a href="http://www.wowthemes.net/themes/serenitywp/">[...]</a>
 
                         </p>
 
@@ -334,11 +322,7 @@
 
                 <p>
 
-                    Nunc sit amet velit metus. At leo tincidunt felis facilisis tincidunt. Proin posuere, ligula nec
-                    porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris
-                    vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo,
-                    sagittis sit amet elementum eget, ultricies ac tortor. Ut est mi, consequat ut bibendum quis,
-                    vehicula vel nibh. In urna tortor, pulvinar ut.
+                    Nunc sit amet velit metus. At leo tincidunt felis facilisis tincidunt. Proin posuere, ligula nec porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo, sagittis sit amet elementum eget, ultricies ac tortor. Ut est mi, consequat ut bibendum quis, vehicula vel nibh. In urna tortor, pulvinar ut.
 
                 </p>
 
@@ -350,11 +334,7 @@
 
                 <p>
 
-                    At leo tincidunt felis facilisis tincidunt. Nunc sit amet velit metus. Proin posuere, ligula nec
-                    porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris
-                    vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo,
-                    sagittis sit amet elementum eget, ultricies ac tortor. Ut est mi, consequat ut bibendum quis,
-                    vehicula vel nibh. In urna tortor, pulvinar ut.
+                    At leo tincidunt felis facilisis tincidunt. Nunc sit amet velit metus. Proin posuere, ligula nec porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo, sagittis sit amet elementum eget, ultricies ac tortor. Ut est mi, consequat ut bibendum quis, vehicula vel nibh. In urna tortor, pulvinar ut.
 
                 </p>
 
@@ -366,11 +346,7 @@
 
                 <p>
 
-                    At leo tincidunt felis facilisis tincidunt. Nunc sit amet velit metus. Proin posuere, ligula nec
-                    porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris
-                    vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo,
-                    sagittis sit amet elementum eget, ultricies ac tortor. Ut est mi, consequat ut bibendum quis,
-                    vehicula vel nibh. In urna tortor.
+                    At leo tincidunt felis facilisis tincidunt. Nunc sit amet velit metus. Proin posuere, ligula nec porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo, sagittis sit amet elementum eget, ultricies ac tortor. Ut est mi, consequat ut bibendum quis, vehicula vel nibh. In urna tortor.
 
                 </p>
 
@@ -382,11 +358,7 @@
 
                 <p>
 
-                    Ut est mi, consequat ut bibendum quis, vehicula vel nibh. At leo tincidunt felis facilisis
-                    tincidunt. Nunc sit amet velit metus. Proin posuere, ligula nec porttitor eget luctus, risus lectus
-                    tristique ligula, quis pretium elit diam a nisi eget mauris vestibulum. Proin vehicula malesuada
-                    dolor, vel rutrum. quam sollicitu hasellus turpis justo, sagittis sit amet elementum eget, ultricies
-                    ac tortor.
+                    Ut est mi, consequat ut bibendum quis, vehicula vel nibh. At leo tincidunt felis facilisis tincidunt. Nunc sit amet velit metus. Proin posuere, ligula nec porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo, sagittis sit amet elementum eget, ultricies ac tortor.
 
                 </p>
 
@@ -402,8 +374,7 @@
 
     <p class="lead bottom0">
 
-        <i class="icon-envelope"></i> Need help with this template? Support guaranteed: <a
-            href="mailto:wowthemesnet@gmail.com">wowthemesnet@gmail.com</a>
+        <i class="icon-envelope"></i> Need help with this template? Support guaranteed: <a href="mailto:wowthemesnet@gmail.com">wowthemesnet@gmail.com</a>
 
     </p>
 
@@ -433,7 +404,7 @@
 
         <article>
 
-            <img src="img/temp/masonry/helsinki-94309_640.jpg" alt="" class="imgOpa">
+            <img src="/assets/img/temp/masonry/helsinki-94309_640.jpg" alt="" class="imgOpa">
 
             <div class="date">
 
@@ -447,8 +418,7 @@
 
             <p>
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat
-                libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
 
             </p>
 
@@ -458,7 +428,7 @@
 
     <div class="span3">
 
-        <img src="img/temp/masonry/berlin-91850_640.jpg" alt="" class="imgOpa">
+        <img src="/assets/img/temp/masonry/berlin-91850_640.jpg" alt="" class="imgOpa">
 
         <article>
 
@@ -474,8 +444,7 @@
 
             <p>
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat
-                libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
 
             </p>
 
@@ -485,7 +454,7 @@
 
     <div class="span3">
 
-        <img src="img/temp/masonry/spain-93903_640.jpg" alt="" class="imgOpa">
+        <img src="/assets/img/temp/masonry/spain-93903_640.jpg" alt="" class="imgOpa">
 
         <article>
 
@@ -501,8 +470,7 @@
 
             <p>
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat
-                libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
 
             </p>
 
@@ -514,7 +482,7 @@
 
         <article>
 
-            <img src="img/temp/masonry/beasain-91730_640.jpg" alt="" class="imgOpa">
+            <img src="/assets/img/temp/masonry/beasain-91730_640.jpg" alt="" class="imgOpa">
 
             <div class="date">
 
@@ -528,8 +496,7 @@
 
             <p>
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat
-                libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
 
             </p>
 
@@ -547,9 +514,7 @@
 
             <h4 class="top0">BISCAYA MultiPurpose Responsive</h4>
 
-            Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed
-            elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non
-            fermentum.
+            Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non fermentum.
 
         </div>
 

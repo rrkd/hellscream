@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.model.entity;
 
 import au.com.iglooit.hellscream.model.GeoIndexTypeConstant;
+import au.com.iglooit.hellscream.model.HSConstant;
 import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Document;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 @Entity
 public class Merchant extends BaseEntity {
+
     // must be unique
     private String tradeName;
     private String merchantName;
@@ -177,17 +179,25 @@ public class Merchant extends BaseEntity {
         this.categoryList = categoryList;
     }
 
+    public String getShortDesc() {
+        return description.length() <= HSConstant.SHORT_DESC_LEN ? description : description.substring(0,
+                HSConstant.SHORT_DESC_LEN - 1) + "...";
+    }
+
     @Override
     public Document toFullTextDocument() {
-        return Document.newBuilder()
+        Document.Builder builder = Document.newBuilder()
                 .setId(KeyFactory.keyToString(getKey()))
                 .addField(Field.newBuilder().setName("tradeName").setText(getTradeName()))
                 .addField(Field.newBuilder().setName("email").setText(getEmail()))
                 .addField(Field.newBuilder().setName("merchantName").setText(getMerchantName()))
                 .addField(Field.newBuilder().setName("description").setText(getDescription()))
                 .addField(Field.newBuilder().setName("phone").setText(getPhone()))
-                .addField(Field.newBuilder().setName("mobile").setText(getMobile()))
-                .build();
+                .addField(Field.newBuilder().setName("mobile").setText(getMobile()));
+        for (String category : categoryList) {
+            builder.addField(Field.newBuilder().setName("category").setText(category));
+        }
+        return builder.build();
 
     }
 

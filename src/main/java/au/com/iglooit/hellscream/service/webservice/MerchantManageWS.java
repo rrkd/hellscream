@@ -36,7 +36,7 @@ public class MerchantManageWS {
     }
 
     @RequestMapping(value = "/ws/merchant",
-            method = RequestMethod.PUT,
+            method = RequestMethod.POST,
             headers = {"Content-type=application/json"})
     public
     @ResponseBody

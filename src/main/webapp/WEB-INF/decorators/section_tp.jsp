@@ -26,6 +26,8 @@
 
     <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
+    <link href="/assets/css/select2.css" rel="stylesheet">
+
     <link rel="stylesheet" id="main-color" href="/assets/css/skin-orange.css" media="screen"/>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -67,7 +69,7 @@
 
             <div class="span12">
 
-                <h1 class="brandlogo"><a href="index.html"><img src="/assets/img/logo.png" alt=""></a></h1>
+                <h1 class="brandlogo"><a href="/home"><img src="/assets/img/logo.png" alt=""></a></h1>
 
                 <div class="topinfo">
 
@@ -113,91 +115,36 @@
 
                             <li class="divider-vertical"></li>
 
-                            <li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Templates
+                            <li><a href="contact.html">Get Quotes</a></li>
+
+                            <li class="divider-vertical"></li>
+
+                            <li><a href="/ad/merchant/create">List Your Business</a></li>
+
+                            <li class="divider-vertical"></li>
+
+                            <li><a href="/ad/merchant/create">How it works</a></li>
+
+                            <li class="divider-vertical"></li>
+
+                            <li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Develop
                                 <b class="caret"></b></a>
 
                                 <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="/merchant">List Merchant</a></li>
 
-                                    <li><a href="services.html">Services</a></li>
+                                    <li><a href="/search">Search</a></li>
 
-                                    <li><a href="faq.html">Knowledge Base</a></li>
+                                    <li><a href="/ad/merchant/create">Create Merchant</a></li>
 
-                                    <li><a href="icons.html">Icons</a></li>
-
-                                    <li class="selected"><a href="testimonials.html">Testimonials</a></li>
-
-                                    <li><a href="404.html">404 Error</a></li>
+                                    <li><a href="/category">List Category</a></li>
 
                                     <!--.dropdown-->
 
                                 </ul>
 
                             </li>
-
-                            <li class="divider-vertical"></li>
-
-                            <li><a href="elements.html">Elements</a></li>
-
-                            <li class="divider-vertical"></li>
-
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Layouts <b
-                                    class="caret"></b></a>
-
-                                <ul class="dropdown-menu js-activated" style="display: none;">
-
-                                    <li><a href="columns.html">Columns</a></li>
-
-                                    <li><a href="masonry4.html">Masonry 4</a></li>
-
-                                    <li><a href="masonry3.html">Masonry 3</a></li>
-
-                                    <li><a href="masonry2.html">Masonry 2</a></li>
-
-                                    <!--.dropdown-->
-
-                                </ul>
-
-                            </li>
-
-                            <li class="divider-vertical"></li>
-
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b
-                                    class="caret"></b></a>
-
-                                <ul class="dropdown-menu js-activated" style="display: none;">
-
-                                    <li><a href="portfolio.html">Portfolio List</a></li>
-
-                                    <li><a href="projectdetail.html">Project Detail</a></li>
-
-                                    <!--.dropdown-->
-
-                                </ul>
-
-                            </li>
-
-                            <li class="divider-vertical"></li>
-
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b
-                                    class="caret"></b></a>
-
-                                <ul class="dropdown-menu js-activated" style="display: none;">
-
-                                    <li><a href="bloghome.html">Blog Home</a></li>
-
-                                    <li><a href="blogsingle.html">Single Post</a></li>
-
-                                    <!--.dropdown-->
-
-                                </ul>
-
-                            </li>
-
-                            <li class="divider-vertical"></li>
-
-                            <li><a href="contact.html">Contact</a></li>
 
                             <li class="divider-vertical"></li>
 
@@ -480,43 +427,7 @@
 
 <script src="/assets/js/search.js"></script>
 
-<script>
 
-    $(window).load(function () {
-
-        var $container = $('#content')
-
-// initialize Isotope
-
-        $container.isotope({
-
-            // options...
-
-            resizable:false, // disable normal resizing
-
-            // set columnWidth to a percentage of container width
-
-            masonry:{ columnWidth:$container.width() / 3 }
-
-        });
-
-// update columnWidth on window resize
-
-        $(window).smartresize(function () {
-
-            $container.isotope({
-
-                // update columnWidth to a percentage of container width
-
-                masonry:{ columnWidth:$container.width() / 3 }
-
-            });
-
-        });
-
-    });
-
-</script>
 
 <!--BEGIN DEMO PANEL
 
@@ -535,6 +446,8 @@
 <script type="text/javascript" src="/assets/demo/js/colorpicker.js"></script>
 
 <script type="text/javascript" src="/assets/demo/js/switcher.js"></script>
+
+<script type="text/javascript" src="/assets/js/select2.min.js"></script>
 
 <!-- DEMO PANEL -->
 

@@ -8,10 +8,12 @@
         <class>au.com.iglooit.hellscream.model.entity.Merchant</class>
         <class>au.com.iglooit.hellscream.model.entity.User</class>
         <class>au.com.iglooit.hellscream.model.entity.Category</class>
+        <class>au.com.iglooit.hellscream.model.entity.CategoryGroup</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>
             <property name="datanucleus.NontransactionalWrite" value="true"/>
+            <property name="datanucleus.appengine.datastoreEnableXGTransactions" value="true" />
             <property name="datanucleus.ConnectionURL" value="appengine"/>
         </properties>
     </persistence-unit>

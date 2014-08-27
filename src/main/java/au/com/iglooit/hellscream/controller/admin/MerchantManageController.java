@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.controller.admin;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
+import au.com.iglooit.hellscream.service.dao.CategoryGroupManageService;
 import au.com.iglooit.hellscream.service.dao.MerchantManageService;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
@@ -24,10 +25,14 @@ public class MerchantManageController {
     private static final Logger LOG = LoggerFactory.getLogger(MerchantManageController.class);
     @Resource
     private MerchantManageService merchantManageService;
+    @Resource
+    private CategoryGroupManageService categoryGroupManageService;
 
     @RequestMapping(value = "/ad/merchant/create", method = RequestMethod.GET)
-    public String merchantNewPage() {
-        return "merchant/createMerchant";
+    public ModelAndView merchantNewPage() {
+        ModelAndView modelAndView = new ModelAndView("merchant/createMerchant");
+        modelAndView.addObject("categoryGroupList", categoryGroupManageService.loadAll());
+        return modelAndView;
     }
 
     @RequestMapping(value = "/ad/merchant/{key}", method = RequestMethod.GET)
@@ -39,6 +44,7 @@ public class MerchantManageController {
             LOG.error("Can not find Merchant by " + key);
         }
         modelAndView.addObject("merchant", merchant);
+        modelAndView.addObject("categoryGroupList", categoryGroupManageService.loadAll());
         return modelAndView;
     }
 }

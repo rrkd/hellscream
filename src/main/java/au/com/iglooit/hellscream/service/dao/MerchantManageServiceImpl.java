@@ -10,13 +10,14 @@ import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.GeoPoint;
 import com.google.appengine.api.search.Index;
 import com.google.appengine.api.search.PutException;
-import com.google.appengine.repackaged.com.google.common.collect.ImmutableList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +26,8 @@ import java.util.List;
  * Date: 18/08/2014
  * Time: 11:55 AM
  */
-@Component
+@Repository
+@Transactional
 public class MerchantManageServiceImpl extends BaseRepository<Merchant> implements MerchantManageService {
     private static final Logger LOG = LoggerFactory.getLogger(MerchantManageServiceImpl.class);
     @Resource
@@ -56,6 +58,7 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
             merchant.setLongitude(new BigDecimal(result.getLongitude()));
         }
         add(merchant);
+        getEntityManager().flush();
         // get full index
         Index merchantIndex = IndexServiceHelp.getMerchantIndex();
         // get geo index
@@ -83,17 +86,17 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
         Index geoIndex = IndexServiceHelp.getGeoIndex();
         try {
             String docId = KeyFactory.keyToString(merchant.getKey());
-
+            List<String> ftKeys = new ArrayList<>();
+            ftKeys.add(docId);
             Document ftDocument = merchantIndex.get(docId);
-            if(ftDocument != null) {
-                merchantIndex.delete(new ImmutableList.Builder<String>()
-                        .add(docId).build());
+            if (ftDocument != null) {
+
+                merchantIndex.delete(ftKeys);
             }
 
             Document geoDocument = geoIndex.get(docId);
-            if(geoDocument != null) {
-                geoIndex.delete(new ImmutableList.Builder<String>()
-                        .add(docId).build());
+            if (geoDocument != null) {
+                geoIndex.delete(ftKeys);
             }
 
             merchantIndex.put(merchant.toFullTextDocument());

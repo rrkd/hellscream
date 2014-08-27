@@ -11,10 +11,19 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+
+    $('.accordion-inner .checkbox input[type=checkbox]').change(function () {
+        if ($(this).is(':checked')) {
+            updateTagsArea();
+        }
+    });
+    $('#category_select').select2({
+        placeholder:"Category Select"
+    });
 });
 
 function generateMerchant() {
-    return JSON.stringify({
+    var merchant = {
         tradeName:$('#tradeName').val(),
         merchantName:$('#merchantName').val(),
         description:$('#description').val(),
@@ -25,6 +34,22 @@ function generateMerchant() {
         phone:$('#phone').val(),
         mobile:$('#mobile').val(),
         contact1:$('#contact1').val(),
-        contact2:$('#contact2').val()
-    });
+        contact2:$('#contact2').val(),
+        categoryList:[]
+    };
+    generateCategoryList(merchant.categoryList);
+    return JSON.stringify(merchant);
+}
+
+function generateCategoryList(categoryList) {
+    var dataList = $('#category_select').select2('data');
+    var len = dataList.length;
+    for (var i=0; i< len; i++) {
+        categoryList.push(dataList[i].text);
+    }
+    return false;
+}
+
+function updateTagsArea() {
+    return false;
 }

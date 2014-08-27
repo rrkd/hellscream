@@ -2,22 +2,25 @@ package au.com.iglooit.hellscream.model.entity;
 
 import com.google.appengine.api.search.Document;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
  * User: nicholas.zhu
- * Date: 24/08/2014
- * Time: 11:55 PM
+ * Date: 26/08/2014
+ * Time: 6:03 PM
  */
 @Entity
-public class Category extends BaseEntity {
+public class CategoryGroup extends BaseEntity {
     private String name;
     private String description;
-    @OneToMany(fetch = FetchType.LAZY)
-    private CategoryGroup group;
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Category> categoryList = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -35,21 +38,21 @@ public class Category extends BaseEntity {
         this.description = description;
     }
 
-    public CategoryGroup getGroup() {
-        return group;
+    public List<Category> getCategoryList() {
+        return categoryList;
     }
 
-    public void setGroup(CategoryGroup group) {
-        this.group = group;
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 
     @Override
     public Document toFullTextDocument() {
-        throw new UnsupportedOperationException("User can't support full text search");
+        throw new UnsupportedOperationException("CategoryGroup can't support full text search");
     }
 
     @Override
     public Document toGeoDocument() {
-        throw new UnsupportedOperationException("User can't support Geo search");
+        throw new UnsupportedOperationException("CategoryGroup can't support Geo search");
     }
 }

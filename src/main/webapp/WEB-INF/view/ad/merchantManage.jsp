@@ -19,6 +19,16 @@
                    value="${merchant.tradeName}">
             <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="MerchantName"
                    value="${merchant.merchantName}">
+            <select multiple="multiple" name="name" size="30" id="category_select"
+                    class="populate placeholder select2-offscreen span12" style="margin-bottom: 10px; margin-left: 0;">
+                <c:forEach items="${categoryGroupList}" var="categoryGroup">
+                    <optgroup label="${categoryGroup.name}">
+                        <c:forEach items="${categoryGroup.categoryList}" var="category">
+                            <option value="${category.name}">${category.name}</option>
+                        </c:forEach>
+                    </optgroup>
+                </c:forEach>
+            </select>
             <textarea id="description" name="message" class="span12" placeholder="Description" rows="8"
                     value="${merchant.description}"></textarea>
             <input name="name" size="30" type="text" id="address1" class="span12" placeholder="Address1"
@@ -36,6 +46,14 @@
             <input name="name" size="30" type="text" id="contact2" class="span12" placeholder="Contact Tow"
                     value="${merchant.contact2}">
             <br/>
+            <input name="name" size="30" type="hidden" id="keyString" class="span12"
+                   value="${merchant.keyString}">
+
+            <ul id="selectedCategory" style="visibility: hidden">
+                <c:forEach items="${merchant.categoryList}" var="name">
+                    <li>${name}</li>
+                </c:forEach>
+            </ul>
 
             <input value="Update" id="modify_merchant" class="btn btn-primary top10">
 

@@ -2,13 +2,15 @@
     <decorator name="merchant" page="section_tp.jsp">
         <pattern>/merchant*</pattern>
         <pattern>/search</pattern>
+        <pattern>/category*</pattern>
     </decorator>
     <!-- admin console -->
     <decorator name="merchant" page="section_tp.jsp">
         <pattern>/ad/*</pattern>
     </decorator>
     <!-- default -->
-    <decorator name="index" page="index.jsp">
+    <decorator name="index" page="index_tp.jsp">
+        <pattern>/index</pattern>
         <pattern>/home</pattern>
     </decorator>
 </decorators>
