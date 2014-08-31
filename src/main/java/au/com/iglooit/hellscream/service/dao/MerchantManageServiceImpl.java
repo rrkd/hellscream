@@ -16,13 +16,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.persistence.Query;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 18/08/2014
  * Time: 11:55 AM
  */
@@ -104,5 +105,13 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
         } catch (PutException e) {
             throw new AppX("Can't create document for " + merchant.getKey(), e);
         }
+    }
+
+    @Override
+    public List<Merchant> findByCategoryName(String categoryName) {
+        LOG.info("query merchant by " + categoryName);
+        Query q = getEntityManager().createQuery("select c from Merchant c where c.categoryList=:categoryName ")
+                .setParameter("categoryName", categoryName);
+        return q.getResultList();
     }
 }

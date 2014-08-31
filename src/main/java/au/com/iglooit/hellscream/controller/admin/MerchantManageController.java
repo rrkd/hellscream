@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 24/08/2014
  * Time: 10:01 AM
  */

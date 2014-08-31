@@ -15,7 +15,7 @@
             <h4><a href="category/${categoryGroup.keyString}">${categoryGroup.name}</a> </h4>
             <div class="inneritem">
                 <c:forEach items="${categoryGroup.categoryList}" var="category">
-                    <a href="search/category/${category.keyString}">${category.name}</a> <br/>
+                    <a href="/search/c?q=${category.url}">${category.name}</a> <br/>
                 </c:forEach>
             </div>
         </div>

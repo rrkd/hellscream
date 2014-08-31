@@ -2,7 +2,7 @@ package au.com.iglooit.hellscream.model;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 24/08/2014
  * Time: 8:51 AM
  */

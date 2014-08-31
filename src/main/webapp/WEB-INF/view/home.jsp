@@ -198,6 +198,34 @@
 
 </div>
 
+<div class="row-fluid top25">
+
+    <div class="panel1">
+
+        <div class="span9">
+
+            <h4 class="top0">BISCAYA MultiPurpose Responsive</h4>
+
+            Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non fermentum.
+
+        </div>
+
+        <div class="span3 text-center top15">
+
+            <a href="/login" class="btn btn-primary btn-large">
+
+                <i class="icon icon-download-alt"></i> Login </a>
+
+        </div>
+
+        <div class="clearfix">
+
+        </div>
+
+    </div>
+
+</div>
+
 <div class="row-fluid">
 
     <div class="span6">
@@ -501,34 +529,6 @@
             </p>
 
         </article>
-
-    </div>
-
-</div>
-
-<div class="row-fluid top25">
-
-    <div class="panel1">
-
-        <div class="span9">
-
-            <h4 class="top0">BISCAYA MultiPurpose Responsive</h4>
-
-            Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non fermentum.
-
-        </div>
-
-        <div class="span3 text-center top15">
-
-            <a href="contact.html" class="btn btn-primary btn-large">
-
-                <i class="icon icon-download-alt"></i> Download Now </a>
-
-        </div>
-
-        <div class="clearfix">
-
-        </div>
 
     </div>
 

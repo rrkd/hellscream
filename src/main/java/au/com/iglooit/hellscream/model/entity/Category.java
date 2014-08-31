@@ -8,7 +8,7 @@ import javax.persistence.OneToMany;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 24/08/2014
  * Time: 11:55 PM
  */
@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 public class Category extends BaseEntity {
     private String name;
     private String description;
+    private String url;
     @OneToMany(fetch = FetchType.LAZY)
     private CategoryGroup group;
 
@@ -43,13 +44,21 @@ public class Category extends BaseEntity {
         this.group = group;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public Document toFullTextDocument() {
-        throw new UnsupportedOperationException("User can't support full text search");
+        throw new UnsupportedOperationException("IGUser can't support full text search");
     }
 
     @Override
     public Document toGeoDocument() {
-        throw new UnsupportedOperationException("User can't support Geo search");
+        throw new UnsupportedOperationException("IGUser can't support Geo search");
     }
 }

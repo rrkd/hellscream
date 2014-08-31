@@ -6,6 +6,7 @@ import au.com.iglooit.hellscream.model.entity.CategoryGroup;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupManageService;
 import au.com.iglooit.hellscream.service.dao.CategoryManageService;
+import au.com.iglooit.hellscream.utils.CategoryIdentifierConvert;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,7 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 25/08/2014
  * Time: 5:04 PM
  */
@@ -70,12 +71,14 @@ public class CategoryConfigureService {
                     category.setName(categoryName);
                     category.setDescription(categoryName);
                     category.setGroup(group);
+                    category.setUrl(CategoryIdentifierConvert.convertToURL(categoryName));
                     LOG.info("crate category: " + categoryName);
                     categoryManageService.createCategory(category);
                 } else {
                     category.setName(categoryName);
                     category.setDescription(categoryName);
                     category.setGroup(group);
+                    category.setUrl(CategoryIdentifierConvert.convertToURL(categoryName));
                     categoryManageService.update(category);
                     LOG.info("update category: " + categoryName);
                 }

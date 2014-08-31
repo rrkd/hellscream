@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 25/08/2014
  * Time: 6:18 PM
  */

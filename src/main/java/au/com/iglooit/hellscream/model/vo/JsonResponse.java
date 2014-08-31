@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 19/08/2014
  * Time: 4:06 PM
  */

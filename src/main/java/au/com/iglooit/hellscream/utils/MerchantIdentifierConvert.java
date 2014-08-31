@@ -4,7 +4,7 @@ import com.google.appengine.api.datastore.Key;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 18/08/2014
  * Time: 4:41 PM
  */

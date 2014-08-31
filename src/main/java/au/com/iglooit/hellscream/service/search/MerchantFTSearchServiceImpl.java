@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 21/08/2014
  * Time: 4:41 PM
  */

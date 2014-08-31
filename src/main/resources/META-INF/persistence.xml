@@ -6,7 +6,7 @@
         <provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
         <class>au.com.iglooit.hellscream.model.entity.BaseEntity</class>
         <class>au.com.iglooit.hellscream.model.entity.Merchant</class>
-        <class>au.com.iglooit.hellscream.model.entity.User</class>
+        <class>au.com.iglooit.hellscream.model.entity.IGUser</class>
         <class>au.com.iglooit.hellscream.model.entity.Category</class>
         <class>au.com.iglooit.hellscream.model.entity.CategoryGroup</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>

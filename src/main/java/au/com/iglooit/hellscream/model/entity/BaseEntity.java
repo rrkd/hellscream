@@ -14,7 +14,7 @@ import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 7/04/2014
  * Time: 10:03 PM
  */

@@ -14,14 +14,14 @@
     <div class="boxportfolio2">
         <div class="inneritem">
             <c:forEach items="${categoryGroup.categoryList}" var="category">
-                <a href="search/category/${category.keyString}">${category.name}</a> <br/>
+                <a href="/search/c?q=${category.name}">${category.name}</a> <br/>
             </c:forEach>
         </div>
     </div>
     <div class="boxportfolio2">
         <div class="inneritem">
             <c:forEach items="${categoryGroup.categoryList}" var="category">
-                <a href="search/category/${category.keyString}">${category.name}</a> <br/>
+                <a href="/search/c?q={category.url}">${category.name}</a> <br/>
             </c:forEach>
         </div>
     </div>

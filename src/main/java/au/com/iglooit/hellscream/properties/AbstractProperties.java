@@ -15,7 +15,7 @@ import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 25/08/2014
  * Time: 4:44 PM
  */

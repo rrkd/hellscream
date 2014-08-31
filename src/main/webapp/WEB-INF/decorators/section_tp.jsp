@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ include file="../view/globe.jsp" %>
 <!DOCTYPE html>
 
@@ -98,6 +99,15 @@
                         3953 Berkley Street, Fort Washington, 19034
 
                     </div>
+                    <div>
+                        <sec:authorize access="isAuthenticated()">
+                            Welcome back <sec:authentication property="principal.nickname"/>.
+                        </sec:authorize>
+                        <sec:authorize access="isAnonymous()">
+                            Welcome back Guest.
+                        </sec:authorize>
+
+                    </div>
 
                 </div>
 
@@ -157,7 +167,12 @@
                                    value="Enter search keywords here..." name="q">
 
                             <a id="searchBtn" href="#"></a>
-
+                            <sec:authorize access="isAuthenticated()">
+                                <a class="btn btn-success" href="/logout"><i class="icon-IGUser icon-large"></i>Logout</a>
+                            </sec:authorize>
+                            <sec:authorize access="isAnonymous()">
+                                <a class="btn btn-success" href="/u/p"><i class="icon-IGUser icon-large"></i>Login</a>
+                            </sec:authorize>
                         </form>
 
                     </div>

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 18/08/2014
  * Time: 11:50 AM
  */
@@ -19,4 +19,6 @@ public interface MerchantManageService extends IEntityService<Merchant> {
     void createMerchant(Merchant merchant);
 
     void modifyMerchant(Merchant merchant);
+
+    List<Merchant> findByCategoryName(String categoryName);
 }

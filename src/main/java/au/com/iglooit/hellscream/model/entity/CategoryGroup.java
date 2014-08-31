@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: nicholas.zhu
+ * IGUser: nicholas.zhu
  * Date: 26/08/2014
  * Time: 6:03 PM
  */
@@ -19,6 +19,7 @@ import java.util.List;
 public class CategoryGroup extends BaseEntity {
     private String name;
     private String description;
+    private String url;
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Category> categoryList = new ArrayList<>();
 
@@ -44,6 +45,14 @@ public class CategoryGroup extends BaseEntity {
 
     public void setCategoryList(List<Category> categoryList) {
         this.categoryList = categoryList;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
