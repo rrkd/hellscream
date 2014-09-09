@@ -1,6 +1,6 @@
 <div class="page-header">
 
-    <h1>About Us</h1>
+    <h1>User Profile</h1>
 
     <div class="headerdivider">
 

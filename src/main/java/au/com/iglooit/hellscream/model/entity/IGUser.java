@@ -1,8 +1,10 @@
 package au.com.iglooit.hellscream.model.entity;
 
 import au.com.iglooit.hellscream.security.AppRole;
+import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.search.Document;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -25,6 +27,8 @@ public class IGUser extends BaseEntity {
     private String surname;
     private Set<AppRole> authorities;
     private boolean enabled;
+    @Basic
+    private Key merchantKey;
 
     public IGUser () {
 
@@ -113,6 +117,14 @@ public class IGUser extends BaseEntity {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Key getMerchantKey() {
+        return merchantKey;
+    }
+
+    public void setMerchantKey(Key merchantKey) {
+        this.merchantKey = merchantKey;
     }
 
     @Override

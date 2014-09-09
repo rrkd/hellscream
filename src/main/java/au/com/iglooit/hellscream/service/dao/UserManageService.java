@@ -9,7 +9,8 @@ import au.com.iglooit.hellscream.model.entity.IGUser;
  * Time: 8:41 AM
  */
 public interface UserManageService extends IEntityService<IGUser> {
-    void createUser(IGUser IGUser);
+    void createUser(IGUser user);
+    void createNormalUser(IGUser user);
     IGUser findByEmail(String email);
     void modifyUser(IGUser IGUser);
     IGUser findByUserId(String userId);

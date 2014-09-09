@@ -21,9 +21,13 @@
         <intercept-url pattern="/logout" access="permitAll" />
         <intercept-url pattern="/register/**" access="permitAll" />
         <intercept-url pattern="/merchant" access="permitAll" />
+        <intercept-url pattern="/quote" access="permitAll" />
         <intercept-url pattern="/search" access="permitAll" />
         <intercept-url pattern="/merchant/**" access="permitAll" />
         <intercept-url pattern="/category/**" access="permitAll" />
+        <intercept-url pattern="/quote/c/**" access="permitAll" />
+        <intercept-url pattern="/quote/details/**" access="permitAll" />
+        <intercept-url pattern="/quote/t/**" access="hasRole('MERCHANT')"/>
         <intercept-url pattern="/ad/**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/m/**" access="hasRole('MERCHANT')" />
         <intercept-url pattern="/u/**" access="hasRole('USER')" />

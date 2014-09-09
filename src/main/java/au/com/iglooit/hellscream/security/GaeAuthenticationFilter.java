@@ -46,11 +46,9 @@ public class GaeAuthenticationFilter extends GenericFilterBean {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User googleUser = UserServiceFactory.getUserService().getCurrentUser();
-        logger.debug("google user:" + googleUser.getEmail());
         if (authentication != null && !loggedInUserMatchesGaeUser(authentication, googleUser)) {
             SecurityContextHolder.clearContext();
             authentication = null;
-            logger.debug("authentication != null");
             ((HttpServletRequest)request).getSession().invalidate();
         }
 

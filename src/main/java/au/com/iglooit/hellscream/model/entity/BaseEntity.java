@@ -1,5 +1,6 @@
 package au.com.iglooit.hellscream.model.entity;
 
+import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Document;
@@ -25,7 +26,7 @@ public abstract class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Key key;
 
-    private Date createdOn;
+    private Date createdOn = DateUtils.getNow();
 
     public Key getKey() {
         return key;

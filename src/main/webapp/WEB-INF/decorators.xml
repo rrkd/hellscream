@@ -6,6 +6,7 @@
         <pattern>/register*</pattern>
         <pattern>/u/*</pattern>
         <pattern>/p/*</pattern>
+        <pattern>/quote*</pattern>
     </decorator>
     <!-- user -->
     <decorator name="login" page="section_tp.jsp">

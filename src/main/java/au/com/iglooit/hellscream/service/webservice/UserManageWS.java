@@ -6,6 +6,7 @@ import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.VersionResponse;
 import au.com.iglooit.hellscream.security.AppRole;
 import au.com.iglooit.hellscream.service.dao.UserManageService;
+import au.com.iglooit.hellscream.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,7 @@ public class UserManageWS {
     @ResponseBody
     JsonResponse addUser(@RequestBody IGUser user) {
         LOG.info("register a new user : " + user.getEmail());
-        user.setCreatedOn(new Date());
+        user.setCreatedOn(DateUtils.getNow());
         user.setAuthorities(new HashSet<AppRole>(Arrays.asList(AppRole.USER)));
         userManageService.createUser(user);
         return new JsonResponse("OK", "");

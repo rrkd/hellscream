@@ -1,7 +1,12 @@
 package au.com.iglooit.hellscream.utils;
 
+import au.com.iglooit.hellscream.exception.AppX;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,5 +26,10 @@ public final class DateUtils {
             return "";
         }
         return new SimpleDateFormat(DATE_PATTERN).format(date);
+    }
+
+    public static Date getNow() {
+        Calendar ausNow = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
+        return ausNow.getTime();
     }
 }

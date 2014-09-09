@@ -3,6 +3,8 @@ package au.com.iglooit.hellscream.service.dao;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import au.com.iglooit.hellscream.security.AppRole;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
@@ -22,15 +24,23 @@ import java.util.Set;
 @Repository
 @Transactional
 public class UserManageServiceImpl extends BaseRepository<IGUser> implements UserManageService {
+    private static final Logger LOG = LoggerFactory.getLogger(UserManageServiceImpl.class);
+
     public UserManageServiceImpl() {
         super(IGUser.class);
     }
 
     @Override
-    public void createUser(IGUser user) {
+    public void createNormalUser(IGUser user) {
         Set<AppRole> roles = EnumSet.of(AppRole.USER);
         user.setEnabled(true);
         user.setAuthorities(roles);
+        add(user);
+    }
+
+    @Override
+    public void createUser(IGUser user) {
+        user.setEnabled(true);
         add(user);
     }
 
