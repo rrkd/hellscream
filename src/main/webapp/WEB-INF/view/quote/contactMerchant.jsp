@@ -4,13 +4,13 @@
 
         <div class="text-center" style="margin-top:80px;margin-bottom:100px;">
 
-            <h1><span class="primarycolor"></span> 404 </h1>
+            <h1><span class="primarycolor"></span> Contact with Merchant </h1>
 
             <br>
 
             <p class="lead">
 
-                That page does NOT exist. <a href="/home">Go Back to Home</a>.
+                Your contact detail has been sent to merchant. <a href="/u/q">Go Back to My Quote</a>.
 
             </p>
 

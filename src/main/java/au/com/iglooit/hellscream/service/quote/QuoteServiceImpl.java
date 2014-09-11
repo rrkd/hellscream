@@ -1,9 +1,15 @@
 package au.com.iglooit.hellscream.service.quote;
 
+import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.model.entity.QuoteStatus;
+import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
+import au.com.iglooit.hellscream.model.entity.QuoteTransactionStatus;
+import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.QuoteManageService;
-import com.google.appengine.repackaged.com.google.common.collect.ImmutableMap;
+import au.com.iglooit.hellscream.service.mail.EMailService;
+import au.com.iglooit.hellscream.service.mail.QuoteEmailVO;
+import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -26,6 +32,10 @@ public class QuoteServiceImpl implements QuoteService {
 
     @Resource
     private QuoteManageService quoteManageService;
+    @Resource
+    private SuggestMerchantService suggestMerchantService;
+    @Resource
+    private EMailService eMailService;
 
     @Override
     public Map<String, List<Quote>> loadUserQuoteList(String email) {
@@ -41,5 +51,23 @@ public class QuoteServiceImpl implements QuoteService {
             builder.get(quote.getStatus().name()).add(quote);
         }
         return builder;
+    }
+
+    @Override
+    public void createQuote(Quote quote) {
+        WebProperties webProperties = WebProperties.getInstance();
+        String host = webProperties.get("host");
+        String quoteUrl = webProperties.get("quote.add.transaction.url");
+
+        // get merchant email list
+        List<String> emailList = suggestMerchantService.quoteMerchantEmail(quote);
+        // create quote
+        quote.setSendEmailList(emailList);
+        quoteManageService.createQuote(quote);
+        // send email
+        QuoteEmailVO vo = new QuoteEmailVO();
+        vo.setQuoteURL(host + quoteUrl + quote.getKeyString());
+        vo.setToAddressList(emailList);
+        eMailService.sendQuoteEmail(vo);
     }
 }

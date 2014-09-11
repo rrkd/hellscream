@@ -75,7 +75,7 @@
 
                                     <li><a href="/u/p/<sec:authentication property='principal.keyString'/>">Profile</a></li>
                                     <li><a href="/u/q">My Quote</a></li>
-
+                                    <li><a href="/merchant/msg">My Message</a></li>
                                     <!--.dropdown-->
 
                                 </ul>
@@ -97,7 +97,7 @@
 
                                 <li><a href="/u/q">My Quote</a></li>
 
-                                <li><a href="/quote/t/ahFzcHJpbmctZm9yZXN0LTUzOHISCxIFUXVvdGUYgICAgICA_goM">Test Apply Quote</a></li>
+                                <li><a href="/quote/t/ahFzcHJpbmctZm9yZXN0LTUzOHISCxIFUXVvdGUYgICAgICAkQgM">Test Apply Quote</a></li>
 
                                 <!--.dropdown-->
 

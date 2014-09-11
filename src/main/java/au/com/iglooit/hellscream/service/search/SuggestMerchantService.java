@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.service.search;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
+import au.com.iglooit.hellscream.model.entity.Quote;
 import com.google.appengine.api.datastore.Key;
 
 import java.util.List;
@@ -13,4 +14,5 @@ import java.util.List;
  */
 public interface SuggestMerchantService {
     List<Merchant> similarMerchant(Key key, Integer count);
+    List<String> quoteMerchantEmail(Quote quote);
 }

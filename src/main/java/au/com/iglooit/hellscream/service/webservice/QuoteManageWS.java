@@ -12,6 +12,7 @@ import au.com.iglooit.hellscream.service.dao.QuoteManageService;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionManageService;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.quote.QuoteHelper;
+import au.com.iglooit.hellscream.service.quote.QuoteService;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.apache.commons.lang.StringUtils;
@@ -43,6 +44,8 @@ public class QuoteManageWS {
     private MerchantManageService merchantManageService;
     @Resource
     private EMailService eMailService;
+    @Resource
+    private QuoteService quoteService;
 
     @RequestMapping(value = "/ws/quote",
             method = RequestMethod.POST,
@@ -53,7 +56,7 @@ public class QuoteManageWS {
         // update post date
         quote.setPostDate(DateUtils.getNow());
         quote.setStatus(QuoteStatus.Quoting);
-        quoteManageService.createQuote(quote);
+        quoteService.createQuote(quote);
         LOG.info("create quote " + quote.getTitle());
         return new JsonResponse("OK", "");
     }

@@ -2,6 +2,7 @@ package au.com.iglooit.hellscream.service.mail;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Quote;
+import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 
 import java.io.Serializable;
 
@@ -13,7 +14,12 @@ import java.io.Serializable;
  */
 public class UserContactEmailVO implements Serializable {
     private IGUser user;
-    private Quote quote;
+    private QuoteTransaction quoteTransaction;
+    private String toAddress;
+
+    public UserContactEmailVO() {
+
+    }
 
     public IGUser getUser() {
         return user;
@@ -23,11 +29,19 @@ public class UserContactEmailVO implements Serializable {
         this.user = user;
     }
 
-    public Quote getQuote() {
-        return quote;
+    public QuoteTransaction getQuoteTransaction() {
+        return quoteTransaction;
     }
 
-    public void setQuote(Quote quote) {
-        this.quote = quote;
+    public void setQuoteTransaction(QuoteTransaction quoteTransaction) {
+        this.quoteTransaction = quoteTransaction;
+    }
+
+    public String getToAddress() {
+        return toAddress;
+    }
+
+    public void setToAddress(String toAddress) {
+        this.toAddress = toAddress;
     }
 }

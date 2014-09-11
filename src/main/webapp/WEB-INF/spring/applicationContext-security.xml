@@ -30,7 +30,7 @@
         <intercept-url pattern="/quote/t/**" access="hasRole('MERCHANT')"/>
         <intercept-url pattern="/ad/**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/m/**" access="hasRole('MERCHANT')" />
-        <intercept-url pattern="/u/**" access="hasRole('USER')" />
+        <intercept-url pattern="/u/**" access="hasAnyRole('USER','MERCHANT')" />
         <custom-filter position="PRE_AUTH_FILTER" ref="gaeFilter" />
     </http>
 

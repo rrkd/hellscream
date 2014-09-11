@@ -18,6 +18,10 @@ function generateUser() {
         email:$('#email').val(),
         nickname:$('#nickname').val(),
         forename:$('#forename').val(),
+        address1:$('#address1').val(),
+        address2:$('#address2').val(),
+        address3:$('#address3').val(),
+        mobile:$('#mobile').val(),
         surname:$('#surname').val()
     };
     return JSON.stringify(user);

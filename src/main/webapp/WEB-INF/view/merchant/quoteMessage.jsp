@@ -11,13 +11,13 @@
 
 <div class="row-fluid">
 
-    <div class="span6">
+    <div class="span12">
 
         <div class="titleborder">
 
             <div>
 
-                Tabs
+                List of Message
 
             </div>
 
@@ -29,11 +29,9 @@
 
         <ul id="myTab" class="nav nav-tabs">
 
-            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+            <li class="active"><a href="#home" data-toggle="tab">Latest Message</a></li>
 
-            <li class=""><a href="#profile" data-toggle="tab">Profile</a></li>
-
-            <li class=""><a href="#something" data-toggle="tab">Something</a></li>
+            <li class=""><a href="#profile" data-toggle="tab">History</a></li>
 
         </ul>
 
@@ -41,17 +39,22 @@
 
             <div class="tab-pane fade active in" id="home">
 
-                <p>
+                <c:forEach items="${latestMsgList}" var="msg">
+                <div class="row-fluid">
 
-                    Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+                    <div class="panel">
 
-                </p>
+                        User ${msg.userName} is interest in your response and you can contact him by <br>
+                        Email : ${msg.userEmail}
+                        Mobile: ${msg.mobile}
+                    </div>
 
-                <p>
+                    <div class="clearfix">
 
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum.
+                    </div>
 
-                </p>
+                </div>
+                </c:forEach>
 
             </div>
 
@@ -90,96 +93,6 @@
         </div>
 
         <!-- END Tabs -->
-
-    </div>
-
-    <div class="span6">
-
-        <div class="titleborder">
-
-            <div>
-
-                Accordions
-
-            </div>
-
-        </div>
-
-        <!-- Accordions
-
-              ================================================== -->
-
-        <div class="accordion" id="accordion2">
-
-            <div class="accordion-group">
-
-                <div class="accordion-heading">
-
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-
-                        Collapsible Group Item 1 </a>
-
-                </div>
-
-                <div id="collapseOne" class="accordion-body collapse" style="height: 0px;">
-
-                    <div class="accordion-inner">
-
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente.
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="accordion-group">
-
-                <div class="accordion-heading">
-
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-
-                        Collapsible Group Item 2 </a>
-
-                </div>
-
-                <div id="collapseTwo" class="accordion-body collapse" style="height: 0px;">
-
-                    <div class="accordion-inner">
-
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente.
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="accordion-group">
-
-                <div class="accordion-heading">
-
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-
-                        Collapsible Group Item 3 </a>
-
-                </div>
-
-                <div id="collapseThree" class="accordion-body in collapse" style="height: auto;">
-
-                    <div class="accordion-inner">
-
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente.
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- END accordions -->
 
     </div>
 

@@ -52,11 +52,4 @@ public class MerchantController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/merchant/msg", method = RequestMethod.GET)
-    public ModelAndView messageBoxPage() {
-        ModelAndView modelAndView = new ModelAndView("merchant/quoteMessage");
-//        modelAndView.addObject("categoryGroupList", categoryGroupManageService.loadAll());
-        return modelAndView;
-    }
-
 }

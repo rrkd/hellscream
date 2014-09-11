@@ -9,152 +9,163 @@
 
 </div>
 
-<c:if test="${not empty quoteList['Quoting']}">
-    <c:set var="quotingList" value="${quoteList['Quoting']}"/>
-    <div class="break">
+<div class="row-fluid">
 
-    </div>
+    <div class="span12">
 
-    <div class="titleborder">
+        <div class="titleborder">
 
-        <div>
+            <div>
 
-            Quoting
-
-        </div>
-
-    </div>
-
-    <!-- Panels ================================================== -->
-
-    <c:forEach items="${quotingList}" var="quotingItem">
-        <div class="row-fluid">
-
-            <div class="panel">
-
-                <div class="info-box-inner">
-
-                    <div class="info-content">
-
-                        <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a></h4>
-
-                        <p>
-
-                            ${quotingItem.description}
-
-                        </p>
-
-                    </div>
-                    <div class="clearfix">
-
-                    </div>
-
-                </div>
+                List of Message
 
             </div>
 
         </div>
-    </c:forEach>
 
-</c:if>
+        <!-- Tabs
 
-<c:if test="${not empty quoteList['Contacting']}">
-    <c:set var="quotingList" value="${quoteList['Contacting']}"/>
-    <div class="break">
+              ================================================== -->
 
-    </div>
+        <ul id="myTab" class="nav nav-tabs">
 
-    <div class="titleborder">
+            <li class="active"><a href="#quoting" data-toggle="tab">Quoting</a></li>
 
-        <div>
+            <li class=""><a href="#contacting" data-toggle="tab">Contacting</a></li>
 
-            Contacting
+            <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
 
-        </div>
+        </ul>
 
-    </div>
+        <div id="myTabContent" class="tab-content">
 
-    <!-- Panels ================================================== -->
+            <div class="tab-pane fade active in" id="quoting">
 
-    <c:forEach items="${quotingList}" var="quotingItem">
-        <div class="row-fluid">
+                <c:if test="${not empty quoteList['Quoting']}">
+                    <c:set var="quotingList" value="${quoteList['Quoting']}"/>
 
-            <div class="panel">
+                    <!-- Panels ================================================== -->
 
-                <div class="info-box-inner">
+                    <c:forEach items="${quotingList}" var="quotingItem">
+                        <div class="row-fluid">
 
-                    <div class="info-content">
+                            <div class="panel">
 
-                        <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a></h4>
+                                <div class="info-box-inner">
 
-                        <p>
+                                    <div class="info-content">
 
-                                ${quotingItem.description}
+                                        <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a></h4>
 
-                        </p>
+                                        <p>
 
-                    </div>
-                    <div class="clearfix">
+                                                ${quotingItem.description}
 
-                    </div>
+                                        </p>
 
-                </div>
+                                    </div>
+                                    <div class="clearfix">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </c:forEach>
+
+                </c:if>
+
+            </div>
+
+            <div class="tab-pane fade" id="contacting">
+
+                <c:if test="${not empty quoteList['Contacting']}">
+                    <c:set var="quotingList" value="${quoteList['Contacting']}"/>
+
+                    <!-- Panels ================================================== -->
+
+                    <c:forEach items="${quotingList}" var="quotingItem">
+                        <div class="row-fluid">
+
+                            <div class="panel">
+
+                                <div class="info-box-inner">
+
+                                    <div class="info-content">
+
+                                        <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a></h4>
+
+                                        <p>
+
+                                                ${quotingItem.description}
+
+                                        </p>
+
+                                    </div>
+                                    <div class="clearfix">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </c:forEach>
+
+                </c:if>
+
+            </div>
+
+            <div class="tab-pane fade" id="feedback">
+
+                <c:if test="${not empty quoteList['Feedback']}">
+                    <c:set var="quotingList" value="${quoteList['Feedback']}"/>
+
+                    <!-- Panels ================================================== -->
+
+                    <c:forEach items="${quotingList}" var="quotingItem">
+                        <div class="row-fluid">
+
+                            <div class="panel">
+
+                                <div class="info-box-inner">
+
+                                    <div class="info-content">
+
+                                        <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a></h4>
+
+                                        <p>
+
+                                                ${quotingItem.description}
+
+                                        </p>
+
+                                    </div>
+                                    <div class="clearfix">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </c:forEach>
+
+                </c:if>
 
             </div>
 
         </div>
-    </c:forEach>
 
-</c:if>
-
-<c:if test="${not empty quoteList['Feedback']}">
-    <c:set var="quotingList" value="${quoteList['Feedback']}"/>
-    <div class="break">
+        <!-- END Tabs -->
 
     </div>
 
-    <div class="titleborder">
-
-        <div>
-
-            Feedback
-
-        </div>
-
-    </div>
-
-    <!-- Panels ================================================== -->
-
-    <c:forEach items="${quotingList}" var="quotingItem">
-        <div class="row-fluid">
-
-            <div class="panel">
-
-                <div class="info-box-inner">
-
-                    <div class="info-content">
-
-                        <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a></h4>
-
-                        <p>
-
-                                ${quotingItem.description}
-
-                        </p>
-
-                    </div>
-                    <div class="clearfix">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </c:forEach>
-
-</c:if>
+</div>
 
 
 <!-- /END Panels -->

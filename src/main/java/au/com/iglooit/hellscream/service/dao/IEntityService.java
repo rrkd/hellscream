@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface IEntityService<T extends BaseEntity> {
     T findByKey(Key key);
+    T findOne(Long id);
     void removeAll();
     void removeEntity(T entity);
     List<T> findAll();

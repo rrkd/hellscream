@@ -38,11 +38,6 @@
 
                     </p>
 
-                    <p>
-                    this is the etst.      this is the etst. this is the etst. this is the etst. this is the etst. this is the etst. this is the etst. this is the etst.
-
-                    </p>
-
                 </div>
 
                 <footer class="entry-meta">
@@ -103,9 +98,12 @@
                                     </div>
 
                                     <div class="reply">
-
-                                        <a class="comment-reply-link" href="#">I want to contact with them</a>
-
+                                        <c:if test="${quoteTransaction.quoteTransactionStatus eq 'Appending'}">
+                                        <a class="comment-reply-link" href="/u/c/${quoteTransaction.keyString}">I want to contact with him</a>
+                                        </c:if>
+                                        <c:if test="${quoteTransaction.quoteTransactionStatus ne 'Appending'}">
+                                            You have contact with this merchant.
+                                        </c:if>
                                     </div>
 
                                     <!-- .reply -->
@@ -123,38 +121,6 @@
                     <!-- .commentlist -->
 
                 </div>
-
-            </div>
-
-            <div id="respond">
-
-                <h3 id="reply-title"><i class="icon-edit muted"></i> I AM interest in it </h3>
-
-                <form method="post" action="#" id="#">
-
-                    <div class="form">
-
-                        <div class="controls controls-row">
-
-                            <input id="traceName" class="span4" type="text" name="name" placeholder="Name *">
-
-                            <input id="" class="span4" type="email" name="email" placeholder="E-mail (not published) *">
-
-                            <input class="span4" type="text" name="email" placeholder="Title">
-
-                        </div>
-
-                        <div class="controls">
-
-                            <textarea class="span12" name="comment" rows="8" placeholder="Comment *"></textarea>
-
-                        </div>
-
-                        <input type="submit" class="btn btn-inverse" value="Post Comment">
-
-                    </div>
-
-                </form>
 
             </div>
 

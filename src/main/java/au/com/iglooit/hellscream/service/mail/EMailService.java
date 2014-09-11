@@ -1,5 +1,9 @@
 package au.com.iglooit.hellscream.service.mail;
 
+import au.com.iglooit.hellscream.exception.AppX;
+import au.com.iglooit.hellscream.properties.WebProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.mail.Message;
@@ -20,51 +24,66 @@ import java.util.Properties;
  */
 @Component
 public class EMailService {
+    private static final Logger LOG = LoggerFactory.getLogger(EMailService.class);
+
     public void sendQuoteEmail(QuoteEmailVO quoteEmailVO) {
+        WebProperties webProperties = WebProperties.getInstance();
+        String adminEmail = webProperties.get("admin.email");
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
 
-        String msgBody = "...";
+        String msgBody = EmailTemplateHelper.quoteMsgTemplate(quoteEmailVO);
 
         try {
             Message msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress("admin@example.com"));
-            msg.addRecipient(Message.RecipientType.TO,
-                    new InternetAddress("user@example.com", "Mr. User"));
-            msg.setSubject("Your Example.com account has been activated");
+            msg.setFrom(new InternetAddress(adminEmail));
+            for (String address : quoteEmailVO.getToAddressList()) {
+                LOG.info("send email to " + address);
+                msg.addRecipient(Message.RecipientType.TO,
+                        new InternetAddress(address, "Dear customer"));
+            }
+            msg.setSubject("A new quote for you.");
             msg.setText(msgBody);
             Transport.send(msg);
 
         } catch (AddressException e) {
-            // ...
+            throw new AppX("Wrong address", e);
         } catch (MessagingException e) {
-            // ...
+            throw new AppX("Wrong Message ", e);
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            throw new AppX("Wrong Encode", e);
         }
     }
 
+    /**
+     * when user want to contact to the merchant, sending an email
+     *
+     * @param emailVO
+     */
     public void sendUserContactEmail(UserContactEmailVO emailVO) {
+        WebProperties webProperties = WebProperties.getInstance();
+        String adminEmail = webProperties.get("admin.email");
+
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
 
-        String msgBody = "...";
+        String msgBody = EmailTemplateHelper.userContactMsgTemplate(emailVO);
 
         try {
             Message msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress("admin@example.com"));
+            msg.setFrom(new InternetAddress(adminEmail));
             msg.addRecipient(Message.RecipientType.TO,
-                    new InternetAddress("user@example.com", "Mr. User"));
-            msg.setSubject("Your Example.com account has been activated");
+                    new InternetAddress(emailVO.getToAddress(), "Mr. User"));
+            msg.setSubject("You have a new client who want to talk with you!");
             msg.setText(msgBody);
             Transport.send(msg);
 
         } catch (AddressException e) {
-            // ...
+            throw new AppX("Wrong address", e);
         } catch (MessagingException e) {
-            // ...
+            throw new AppX("Wrong Message ", e);
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            throw new AppX("Wrong Encode", e);
         }
     }
 }

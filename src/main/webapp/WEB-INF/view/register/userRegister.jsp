@@ -29,6 +29,13 @@
             <input name="name" size="30" type="text" id="nickname" class="span12" placeholder="Nickname">
             <input name="name" size="30" type="text" id="forename" class="span12" placeholder="Forename">
             <input name="name" size="30" type="text" id="surname" class="span12" placeholder="SureName">
+            <input name="name" size="30" type="text" id="mobile" class="span12" placeholder="Mobile">
+            <input name="name" size="30" type="text" id="address1" class="span12" placeholder="Address Line">
+
+            <input name="name" size="30" type="text" id="address2" class="span12" placeholder="Address Line">
+
+            <input name="name" size="30" type="text" id="address3" class="span12" placeholder="Address Line">
+
             <br/>
 
 

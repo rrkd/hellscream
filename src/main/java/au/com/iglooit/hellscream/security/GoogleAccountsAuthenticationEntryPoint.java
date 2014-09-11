@@ -17,8 +17,7 @@ public class GoogleAccountsAuthenticationEntryPoint implements AuthenticationEnt
                          AuthenticationException authException)
             throws IOException, ServletException {
         UserService userService = UserServiceFactory.getUserService();
-        WebProperties webProperties = WebProperties.getInstance();
-        String loginUrl = webProperties.get("login.url");
+
         response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
 //        response.sendRedirect("http://spring-forest-538.appspot.com/_ah/login?continue=home");
     }
