@@ -56,7 +56,7 @@
 
                     <ul id="nav" class="nav">
 
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/home">Home</a></li>
 
                         <li class="divider-vertical"></li>
 
@@ -82,10 +82,14 @@
                             <li class="divider-vertical"></li>
                         </sec:authorize>
 
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Develop
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us
                             <b class="caret"></b></a>
 
                             <ul class="dropdown-menu js-activated" style="display: none;">
+
+                                <li><a href="/merchant">About Us</a></li>
+
+                                <li><a href="/merchant">Contact Us</a></li>
 
                                 <li><a href="/merchant">List Merchant</a></li>
 

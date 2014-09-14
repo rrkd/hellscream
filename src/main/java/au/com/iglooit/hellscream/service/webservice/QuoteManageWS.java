@@ -56,6 +56,7 @@ public class QuoteManageWS {
         // update post date
         quote.setPostDate(DateUtils.getNow());
         quote.setStatus(QuoteStatus.Quoting);
+        quote.setCreatedOn(DateUtils.getNow());
         quoteService.createQuote(quote);
         LOG.info("create quote " + quote.getTitle());
         return new JsonResponse("OK", "");

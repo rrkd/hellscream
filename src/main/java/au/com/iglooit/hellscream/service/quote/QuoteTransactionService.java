@@ -3,7 +3,7 @@ package au.com.iglooit.hellscream.service.quote;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
-import au.com.iglooit.hellscream.model.vo.QuoteMessageVO;
+import au.com.iglooit.hellscream.model.vo.QuoteMsgVO;
 
 import java.util.List;
 
@@ -14,6 +14,6 @@ import java.util.List;
  * Time: 6:16 AM
  */
 public interface QuoteTransactionService {
-    List<QuoteMessageVO> findLatestMessage(Merchant merchant);
+    List<QuoteMsgVO> findLatestMessage(Merchant merchant);
     void contactMerchant(QuoteTransaction quoteTransaction);
 }

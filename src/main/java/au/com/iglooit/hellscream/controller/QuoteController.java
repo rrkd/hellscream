@@ -7,6 +7,7 @@ import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupManageService;
 import au.com.iglooit.hellscream.service.dao.MerchantManageService;
 import au.com.iglooit.hellscream.service.dao.QuoteManageService;
+import au.com.iglooit.hellscream.service.quote.QuoteService;
 import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
@@ -35,12 +36,15 @@ public class QuoteController {
     @Resource
     private MerchantManageService merchantManageService;
     @Resource
+    private QuoteService quoteService;
+    @Resource
     private CategoryGroupManageService categoryGroupManageService;
 
     @RequestMapping(value = "/quote/c", method = RequestMethod.GET)
     public ModelAndView postQuotePage() {
         ModelAndView modelAndView = new ModelAndView("quote/postQuote");
         modelAndView.addObject("categoryGroupList", categoryGroupManageService.loadAll());
+        modelAndView.addObject("quoteList", quoteService.latestQuoteList());
         return modelAndView;
     }
 
@@ -49,6 +53,7 @@ public class QuoteController {
         ModelAndView modelAndView = new ModelAndView("quote/quoteDetails");
         Quote quote = quoteManageService.loadQuote(KeyFactory.stringToKey(keyString));
         modelAndView.addObject("quote", quote);
+        modelAndView.addObject("quoteList", quoteService.latestQuoteList());
         return modelAndView;
     }
 
@@ -63,6 +68,7 @@ public class QuoteController {
 
         modelAndView.addObject("quote", quote);
         modelAndView.addObject("merchant", merchant);
+        modelAndView.addObject("quoteList", quoteService.latestQuoteList());
         return modelAndView;
     }
 }

@@ -1,3 +1,9 @@
+<html>
+<head>
+    <meta name="description" content="service job search">
+    <title>Welcome to huafu</title>
+</head>
+<body>
 <div class="row-fluid">
 
     <div class="camera_wrap pattern_4 camera_emboss" id="camera_wrap_4">
@@ -533,3 +539,5 @@
     </div>
 
 </div>
+</body>
+</html>

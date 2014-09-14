@@ -1,15 +1,14 @@
 <decorators defaultdir="/WEB-INF/decorators">
     <decorator name="merchant" page="section_tp.jsp">
-        <pattern>/merchant*</pattern>
+
         <pattern>/search*</pattern>
         <pattern>/category*</pattern>
         <pattern>/register*</pattern>
         <pattern>/u/*</pattern>
         <pattern>/p/*</pattern>
-        <pattern>/quote*</pattern>
     </decorator>
     <!-- user -->
-    <decorator name="login" page="section_tp.jsp">
+    <decorator name="login" page="index_tp.jsp">
         <pattern>/logout</pattern>
         <pattern>/loggedout</pattern>
     </decorator>
@@ -21,6 +20,10 @@
     <decorator name="index" page="index_tp.jsp">
         <pattern>/index</pattern>
         <pattern>/home</pattern>
-
+    </decorator>
+    <!-- quote -->
+    <decorator name="quote" page="section_tp_2.jsp">
+        <pattern>/quote*</pattern>
+        <pattern>/merchant*</pattern>
     </decorator>
 </decorators>

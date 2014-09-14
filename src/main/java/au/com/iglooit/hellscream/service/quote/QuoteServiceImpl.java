@@ -1,15 +1,14 @@
 package au.com.iglooit.hellscream.service.quote;
 
-import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.model.entity.QuoteStatus;
-import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
-import au.com.iglooit.hellscream.model.entity.QuoteTransactionStatus;
+import au.com.iglooit.hellscream.model.vo.QuoteVO;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.QuoteManageService;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.mail.QuoteEmailVO;
 import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
+import au.com.iglooit.hellscream.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -29,6 +28,7 @@ import java.util.Map;
 @Component
 public class QuoteServiceImpl implements QuoteService {
     private static final Logger LOG = LoggerFactory.getLogger(QuoteServiceImpl.class);
+    private static final Integer LATEST_QUOTE = 10;
 
     @Resource
     private QuoteManageService quoteManageService;
@@ -69,5 +69,16 @@ public class QuoteServiceImpl implements QuoteService {
         vo.setQuoteURL(host + quoteUrl + quote.getKeyString());
         vo.setToAddressList(emailList);
         eMailService.sendQuoteEmail(vo);
+    }
+
+    @Override
+    public List<QuoteVO> latestQuoteList() {
+        List<Quote> quoteList = quoteManageService.findQuoteByDate(DateUtils.getOneWeekAgo(), DateUtils.getNow());
+        List<QuoteVO> result = new ArrayList<>();
+        int len = quoteList.size() > LATEST_QUOTE ? LATEST_QUOTE : quoteList.size();
+        for (int i = 0; i < len; i++) {
+            result.add(new QuoteVO(quoteList.get(i)));
+        }
+        return result;
     }
 }

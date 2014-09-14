@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,6 +44,17 @@ public class QuoteManageServiceImpl extends BaseRepository<Quote> implements Quo
                 .createQuery("select q from Quote q join fetch q.quoteTransactions " +
                         "where q.clientUserEmail=:clientUserEmail ")
                 .setParameter("clientUserEmail", clientUserEmail);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Quote> findQuoteByDate(Date startDate, Date endDate) {
+        Query q = getEntityManager()
+                .createQuery("select q from Quote q join fetch q.quoteTransactions " +
+                        "where q.postDate>=:startDate and q.postDate<=:endDate " +
+                        "order by q.postDate desc")
+                .setParameter("startDate", startDate)
+                .setParameter("endDate", endDate);
         return q.getResultList();
     }
 }

@@ -3,6 +3,7 @@ package au.com.iglooit.hellscream.service.dao;
 import au.com.iglooit.hellscream.model.entity.Quote;
 import com.google.appengine.api.datastore.Key;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,4 +16,5 @@ public interface QuoteManageService extends IEntityService<Quote> {
     void createQuote(Quote quote);
     Quote loadQuote(Key key);
     List<Quote> findQuoteByEmail(String email);
+    List<Quote> findQuoteByDate(Date startDate, Date endDate);
 }

@@ -11,7 +11,7 @@
 
 <div class="row-fluid top30">
 
-    <div class="span6">
+    <div class="span10">
         <div class="titleborder">
 
             <div>

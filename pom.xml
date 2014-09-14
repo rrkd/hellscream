@@ -181,12 +181,6 @@
     </build>
 
     <dependencies>
-        <!-- rrkd core -->
-        <dependency>
-            <groupId>au.com.iglooit</groupId>
-            <artifactId>rrkd-core</artifactId>
-            <version>1.0</version>
-        </dependency>
 
         <!-- Google App Engine -->
         <dependency>

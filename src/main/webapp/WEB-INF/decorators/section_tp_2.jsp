@@ -9,11 +9,11 @@
 
     <meta charset="utf-8">
 
-    <title>Merchant List</title>
+    <title><decorator:title default="Welcome to ..."></decorator:title></title>
+
+    <decorator:head />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="">
 
     <meta name="author" content="">
 
@@ -60,27 +60,33 @@
 
 <div class="body">
 
-<!-- Navigation -->
+    <!-- Navigation -->
 
-<header>
+    <header>
 
-    <%@include file="menu.jsp"%>
+        <%@include file="menu.jsp"%>
 
-</header>
+    </header>
 
-<div class="text-center">
+    <div class="text-center">
 
-    <img src="/assets/img/sha.png" class="slidershadow" alt="">
+        <img src="/assets/img/sha.png" class="slidershadow" alt="">
 
-</div>
+    </div>
 
-<!-- /end header -->
+    <!-- /end header -->
 
-<div class="container">
+    <div class="container">
 
-    <decorator:body/>
+        <div class="row-fluid">
+            <div class="span8 span-fixed-sidebar">
+                <decorator:body/>
+            </div>
+            <%@include file="left_section_tp.jsp"%>
+        </div>
 
-</div>
+
+    </div>
 
     <%@include file="footer.jsp"%>
 

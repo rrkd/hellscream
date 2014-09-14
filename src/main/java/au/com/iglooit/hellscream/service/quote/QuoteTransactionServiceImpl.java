@@ -6,7 +6,7 @@ import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.model.entity.QuoteStatus;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.model.entity.QuoteTransactionStatus;
-import au.com.iglooit.hellscream.model.vo.QuoteMessageVO;
+import au.com.iglooit.hellscream.model.vo.QuoteMsgVO;
 import au.com.iglooit.hellscream.service.dao.QuoteManageService;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionManageService;
 import au.com.iglooit.hellscream.service.dao.UserManageService;
@@ -38,11 +38,11 @@ public class QuoteTransactionServiceImpl implements QuoteTransactionService {
     @Resource
     private EMailService eMailService;
     @Override
-    public List<QuoteMessageVO> findLatestMessage(Merchant merchant) {
-        List<QuoteMessageVO> voList = new ArrayList<>();
+    public List<QuoteMsgVO> findLatestMessage(Merchant merchant) {
+        List<QuoteMsgVO> voList = new ArrayList<>();
         List<QuoteTransaction> quoteTransactionList = quoteTransactionManageService.findQuoteTransactionByMerchant(merchant, 10);
         for(QuoteTransaction quoteTransaction : quoteTransactionList) {
-            QuoteMessageVO vo = new QuoteMessageVO();
+            QuoteMsgVO vo = new QuoteMsgVO();
             IGUser user = userManageService.findByEmail(quoteTransaction.getQuote().getClientUserEmail());
             if (user == null) {
                 LOG.error("User of quote does not exist.");

@@ -32,4 +32,10 @@ public final class DateUtils {
         Calendar ausNow = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
         return ausNow.getTime();
     }
+
+    public static Date getOneWeekAgo() {
+        Calendar weekAgo = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
+        weekAgo.add(Calendar.WEEK_OF_YEAR, -1);
+        return weekAgo.getTime();
+    }
 }
