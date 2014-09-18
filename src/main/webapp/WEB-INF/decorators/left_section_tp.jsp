@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="../view/globe.jsp" %>
 <div class="span4">
 
     <ul id="myTab" class="nav nav-tabs">

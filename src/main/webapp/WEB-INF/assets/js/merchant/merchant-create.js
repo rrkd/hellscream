@@ -1,24 +1,47 @@
 jQuery(document).ready(function ($) {
-    $('#create_merchant').click(function () {
-        $.ajax({
-            type:"POST",
-            url:"/ws/merchant",
-            data:generateMerchant(),
-            contentType:'application/json',
-            success:function (data) {
-                if (data.status == 'OK') alert('Merchant has been added');
-                else alert('Failed adding merchant: ' + data.status + ', ' + data.errorMessage);
-            }
-        });
-    });
 
-    $('.accordion-inner .checkbox input[type=checkbox]').change(function () {
-        if ($(this).is(':checked')) {
-            updateTagsArea();
-        }
-    });
     $('#category_select').select2({
         placeholder:"Category Select"
+    });
+
+    prettyPrint();
+
+    $("#tradeName,#merchantName,#address1,#address2,#address3, #email, #terms-and-conditions").jqBootstrapValidation(
+        {
+            preventSubmit: true,
+            submitError: function($form, event, errors) {
+                // Here I do nothing, but you could do something like display
+                // the error messages to the user, log, etc.
+            },
+            submitSuccess: function($form, event) {
+                $.ajax({
+                    type:"POST",
+                    url:"/ws/merchant",
+                    data:generateMerchant(),
+                    contentType:'application/json',
+                    success:function (data) {
+                        if (data.status == 'OK') {
+                            alert('Merchant has been added');
+                            $('#merchantRsgErrorBox').hide();
+                        }
+                        else {
+                            $('#merchantRsgErrorBox').show();
+                            $('#merchantRsgErrorBox').text(data.errorMessage);
+                        }
+                    }
+                });
+
+                event.preventDefault();
+            },
+            filter: function() {
+                return $(this).is(":visible");
+            }
+        }
+    );
+
+    $("a[data-toggle=\"tab\"]").click(function(e) {
+        e.preventDefault();
+        $(this).tab("show");
     });
 });
 
@@ -50,6 +73,3 @@ function generateCategoryList(categoryList) {
     return false;
 }
 
-function updateTagsArea() {
-    return false;
-}

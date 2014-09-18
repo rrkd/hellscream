@@ -86,4 +86,31 @@ public class EMailService {
             throw new AppX("Wrong Encode", e);
         }
     }
+
+    public void sendContactUsEmail(ContactUsEmailVO vo) {
+        WebProperties webProperties = WebProperties.getInstance();
+        String adminEmail = webProperties.get("admin.email");
+
+        Properties props = new Properties();
+        Session session = Session.getDefaultInstance(props, null);
+
+        String msgBody = vo.getContent();
+
+        try {
+            Message msg = new MimeMessage(session);
+            msg.setFrom(new InternetAddress(vo.getUserEmail()));
+            msg.addRecipient(Message.RecipientType.TO,
+                    new InternetAddress(adminEmail, vo.getName()));
+            msg.setSubject("You get email from customer.");
+            msg.setText(msgBody);
+            Transport.send(msg);
+
+        } catch (AddressException e) {
+            throw new AppX("Wrong address", e);
+        } catch (MessagingException e) {
+            throw new AppX("Wrong Message ", e);
+        } catch (UnsupportedEncodingException e) {
+            throw new AppX("Wrong Encode", e);
+        }
+    }
 }

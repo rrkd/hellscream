@@ -25,13 +25,15 @@ import java.util.List;
 public class MerchantFTSearchServiceImpl implements MerchantFTSearchService {
     @Resource
     private MerchantManageService merchantManageService;
+    @Resource
+    private IndexServiceHelp indexServiceHelp;
 
     @Override
     public List<Merchant> searchByKeyWord(String keyword) {
         if (StringUtils.isBlank(keyword)) {
             return merchantManageService.findAllMerchants();
         } else {
-            Index merchantIndex = IndexServiceHelp.getMerchantIndex();
+            Index merchantIndex = indexServiceHelp.getMerchantIndex();
             Results<ScoredDocument> results = merchantIndex.search(keyword.replaceAll("-", " "));
 
             // Iterate over the documents in the results
@@ -45,5 +47,27 @@ public class MerchantFTSearchServiceImpl implements MerchantFTSearchService {
             }
             return merchantList;
         }
+    }
+
+    @Override
+    public List<Merchant> searchByKeyWordAndLocal(String rawKeyword, String local) {
+        if (StringUtils.isBlank(local)) {
+            return searchByKeyWord(rawKeyword);
+        }
+        Index merchantIndex = indexServiceHelp.getMerchantIndex();
+        String keywords = rawKeyword.replaceAll("-", " ");
+        Results<ScoredDocument> results = merchantIndex.search(
+                keywords +
+                        " AND (suburb=\"" + local + "\" OR postcode=\"" + local + "\")");
+        // Iterate over the documents in the results
+        List<Merchant> merchantList = new ArrayList<Merchant>();
+        for (ScoredDocument document : results) {
+            Key key = KeyFactory.stringToKey(document.getId());
+            Merchant merchant = (Merchant) merchantManageService.findByKey(key);
+            if (merchant != null) {
+                merchantList.add(merchant);
+            }
+        }
+        return merchantList;
     }
 }

@@ -38,4 +38,22 @@ public final class DateUtils {
         weekAgo.add(Calendar.WEEK_OF_YEAR, -1);
         return weekAgo.getTime();
     }
+
+    public static Date getOneMonthAgo() {
+        Calendar weekAgo = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
+        weekAgo.add(Calendar.MONTH, -1);
+        return weekAgo.getTime();
+    }
+
+    public static String getMonth(Date date) {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
+        cal.setTime(date);
+        return new SimpleDateFormat("MMM").format(cal.getTime());
+    }
+
+    public static String getDay(Date date) {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
+        cal.setTime(date);
+        return new SimpleDateFormat("dd").format(cal.getTime());
+    }
 }

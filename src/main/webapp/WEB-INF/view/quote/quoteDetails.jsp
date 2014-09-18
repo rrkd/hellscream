@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="../globe.jsp"%><html>
 <div class="row-fluid">
 
 <div class="span8 span-fixed-sidebar">

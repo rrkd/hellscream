@@ -1,12 +1,13 @@
 package au.com.iglooit.hellscream.model.entity;
 
 import au.com.iglooit.hellscream.model.GeoIndexTypeConstant;
-import au.com.iglooit.hellscream.model.HSConstant;
+import au.com.iglooit.hellscream.utils.DescriptionUtils;
 import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.Field;
 import com.google.appengine.api.search.GeoPoint;
+import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.Entity;
 import java.math.BigDecimal;
@@ -39,6 +40,9 @@ public class Merchant extends BaseEntity {
     private BigDecimal latitude;
     private BigDecimal longitude;
     private List<String> categoryList;
+    private String postcode;
+    private String suburb;
+    private String formatAddress;
 
     public Merchant() {
     }
@@ -180,8 +184,31 @@ public class Merchant extends BaseEntity {
     }
 
     public String getShortDesc() {
-        return description.length() <= HSConstant.SHORT_DESC_LEN ? description : description.substring(0,
-                HSConstant.SHORT_DESC_LEN - 1) + "...";
+        return DescriptionUtils.build(description);
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getSuburb() {
+        return suburb;
+    }
+
+    public void setSuburb(String suburb) {
+        this.suburb = suburb;
+    }
+
+    public String getFormatAddress() {
+        return formatAddress;
+    }
+
+    public void setFormatAddress(String formatAddress) {
+        this.formatAddress = formatAddress;
     }
 
     @Override
@@ -193,6 +220,14 @@ public class Merchant extends BaseEntity {
                 .addField(Field.newBuilder().setName("merchantName").setText(getMerchantName()))
                 .addField(Field.newBuilder().setName("description").setText(getDescription()))
                 .addField(Field.newBuilder().setName("phone").setText(getPhone()))
+                .addField(Field.newBuilder().setName("point").setGeoPoint(
+                        new GeoPoint(latitude.doubleValue(), longitude.doubleValue())))
+                .addField(Field.newBuilder().setName("address").setText(
+                        StringUtils.isBlank(getFormatAddress()) ? "" : getFormatAddress()))
+                .addField(Field.newBuilder().setName("suburb").setText(
+                        StringUtils.isBlank(getSuburb()) ? "" : getSuburb()))
+                .addField(Field.newBuilder().setName("postcode").setText(
+                        StringUtils.isBlank(getPostcode()) ? "" : getPostcode()))
                 .addField(Field.newBuilder().setName("mobile").setText(getMobile()));
         for (String category : categoryList) {
             builder.addField(Field.newBuilder().setName("category").setText(category));
@@ -204,7 +239,7 @@ public class Merchant extends BaseEntity {
     @Override
     public Document toGeoDocument() {
         return Document.newBuilder()
-                .setId(KeyFactory.keyToString(getKey()))
+                .setId("geo-" + KeyFactory.keyToString(getKey()))
                 .addField(Field.newBuilder().setName("point").setGeoPoint(
                         new GeoPoint(latitude.doubleValue(), longitude.doubleValue())))
                 .addField(Field.newBuilder().setName("type").setText(GeoIndexTypeConstant.MERCHANT_TYPE))

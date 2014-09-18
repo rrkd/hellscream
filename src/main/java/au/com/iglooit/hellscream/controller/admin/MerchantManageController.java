@@ -28,13 +28,6 @@ public class MerchantManageController {
     @Resource
     private CategoryGroupManageService categoryGroupManageService;
 
-    @RequestMapping(value = "/ad/merchant/create", method = RequestMethod.GET)
-    public ModelAndView merchantNewPage() {
-        ModelAndView modelAndView = new ModelAndView("merchant/createMerchant");
-        modelAndView.addObject("categoryGroupList", categoryGroupManageService.loadAll());
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/ad/merchant/{key}", method = RequestMethod.GET)
     public ModelAndView merchantModifyPage(@PathVariable String key) {
         LOG.info("hit the merchantModifyPage with " + key);

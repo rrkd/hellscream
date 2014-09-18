@@ -1,4 +1,4 @@
-<html>
+<%@include file="globe.jsp"%><html>
 <head>
     <meta name="description" content="service job search">
     <title>Welcome to huafu</title>
@@ -12,12 +12,18 @@
 
             <div class="camera_caption fadeFromTop">
 
-                <h1>MultiPurpose Responsive Template</h1>
+                <h1><spring:message code="home.findcategory" /></h1>
+                <div class="form" style="margin-top:0px;">
+				<span>
 
-						<span>
+                    Who did you need?<br/>
+                    <input id="searchMerchantKeyTxt" class="span10" type="text" name="name" placeholder="e.g. cleaner"><br/>
+                    Where are you?<br/>
+                    <input id="searchLocalTxt" class="span10" type="text" name="name" placeholder="enter your suburb or postcode"><br/>
+                    <input id="searchMerchantBtn" class="btn span10" value="Find Service">
 
-						Professional & modern website template created for you and your business prosperity. Build a top-notch business website in no time! </span>
-
+                </span>
+                </div>
             </div>
 
         </div>
@@ -50,7 +56,7 @@
 
     <div class="span12">
 
-        <h1>Introducing Biscaya, <span class="primarycolor">Multipurpose</span> Template for your Business</h1>
+        <h1>Introducing Huafu, <span class="primarycolor">Multipurpose</span> Service for your Business</h1>
 
         <p class="featured lead bottom10">
 
@@ -63,146 +69,45 @@
     </div>
 
 </div>
-
 <div class="row-fluid graysection">
-
     <div class="span3">
-
         <div class="grey-box-icon">
-
             <div class="icon-box-top grey-box-icon-pos">
-
-                <i class="fontawesome-icon medium circle-white center icon-cogs"></i>
-
+                <i class="fontawesome-icon medium circle-white center icon-briefcase"></i>
             </div>
-
-            <!--icon box top -->
-
-            <h4>Modern Settings</h4>
-
-            <p>
-
-                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
-
-            </p>
-
-            <p>
-
-                <a href="#" style="font-weight: bold;">Read more →</a>
-
-            </p>
-
+            <h4>Merchant</h4>
         </div>
 
-        <!--grey box -->
-
     </div>
-
-    <!--/span3-->
-
     <div class="span3">
-
         <div class="grey-box-icon">
-
             <div class="icon-box-top grey-box-icon-pos">
-
-                <i class="fontawesome-icon medium circle-white center icon-pencil"></i>
-
+                <i class="fontawesome-icon medium circle-white center icon-list"></i>
             </div>
-
-            <!--icon box top -->
-
-            <h4>Various Styles</h4>
-
-            <p>
-
-                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
-
-            </p>
-
-            <p>
-
-                <a href="#" style="font-weight: bold;">Read more →</a>
-
-            </p>
-
+            <h4>Quote</h4>
         </div>
 
-        <!--grey box -->
-
     </div>
-
-    <!--/span3-->
-
     <div class="span3">
-
-        <div class="grey-box-icon active">
-
-            <div class="icon-box-top grey-box-icon-pos">
-
-                <i class="fontawesome-icon medium circle-white center icon-magic"></i>
-
-            </div>
-
-            <!--icon box top -->
-
-            <h4>Responsive Design</h4>
-
-            <p>
-
-                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
-
-            </p>
-
-            <p>
-
-                <a href="#" style="font-weight: bold;">Read more →</a>
-
-            </p>
-
-        </div>
-
-        <!--grey box -->
-
-    </div>
-
-    <!--/span3-->
-
-    <div class="span3">
-
         <div class="grey-box-icon">
-
             <div class="icon-box-top grey-box-icon-pos">
-
-                <i class="fontawesome-icon medium circle-white center icon-trophy"></i>
-
+                <i class="fontawesome-icon medium circle-white center icon-comments"></i>
             </div>
-
-            <!--icon box top -->
-
-            <h4>Winning Theme</h4>
-
-            <p>
-
-                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
-
-            </p>
-
-            <p>
-
-                <a href="#" style="font-weight: bold;">Read more →</a>
-
-            </p>
-
+            <h4>Comment</h4>
         </div>
 
-        <!--grey box -->
+    </div>
+    <div class="span3">
+        <div class="grey-box-icon">
+            <div class="icon-box-top grey-box-icon-pos">
+                <i class="fontawesome-icon medium circle-white center icon-thumbs-up"></i>
+            </div>
+            <h4>Deal</h4>
+        </div>
 
     </div>
-
-    <!--/span3-->
-
 </div>
+
 
 <div class="row-fluid top25">
 
@@ -210,7 +115,7 @@
 
         <div class="span9">
 
-            <h4 class="top0">BISCAYA MultiPurpose Responsive</h4>
+            <h4 class="top0"><spring:message code="home.whyshuoldIneedtosignup"/> </h4>
 
             Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non fermentum.
 
@@ -218,9 +123,9 @@
 
         <div class="span3 text-center top15">
 
-            <a href="/login" class="btn btn-primary btn-large">
+            <a href="/register/u" class="btn btn-primary btn-large">
 
-                <i class="icon icon-download-alt"></i> Login </a>
+                <i class="icon icon-download-alt"></i> <spring:message code="home.register" /> </a>
 
         </div>
 
@@ -404,14 +309,198 @@
 
 </div>
 
+<div class="row-fluid graysection">
+
+    <div class="span3">
+
+        <div class="grey-box-icon">
+
+            <div class="icon-box-top grey-box-icon-pos">
+
+                <i class="fontawesome-icon medium circle-white center icon-cogs"></i>
+
+            </div>
+
+            <!--icon box top -->
+
+            <h4>Modern Settings</h4>
+
+            <p>
+
+                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
+
+            </p>
+
+            <p>
+
+                <a href="#" style="font-weight: bold;">Read more →</a>
+
+            </p>
+
+        </div>
+
+        <!--grey box -->
+
+    </div>
+
+    <!--/span3-->
+
+    <div class="span3">
+
+        <div class="grey-box-icon">
+
+            <div class="icon-box-top grey-box-icon-pos">
+
+                <i class="fontawesome-icon medium circle-white center icon-pencil"></i>
+
+            </div>
+
+            <!--icon box top -->
+
+            <h4>Various Styles</h4>
+
+            <p>
+
+                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
+
+            </p>
+
+            <p>
+
+                <a href="#" style="font-weight: bold;">Read more →</a>
+
+            </p>
+
+        </div>
+
+        <!--grey box -->
+
+    </div>
+
+    <!--/span3-->
+
+    <div class="span3">
+
+        <div class="grey-box-icon active">
+
+            <div class="icon-box-top grey-box-icon-pos">
+
+                <i class="fontawesome-icon medium circle-white center icon-magic"></i>
+
+            </div>
+
+            <!--icon box top -->
+
+            <h4>Responsive Design</h4>
+
+            <p>
+
+                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
+
+            </p>
+
+            <p>
+
+                <a href="#" style="font-weight: bold;">Read more →</a>
+
+            </p>
+
+        </div>
+
+        <!--grey box -->
+
+    </div>
+
+    <!--/span3-->
+
+    <div class="span3">
+
+        <div class="grey-box-icon">
+
+            <div class="icon-box-top grey-box-icon-pos">
+
+                <i class="fontawesome-icon medium circle-white center icon-trophy"></i>
+
+            </div>
+
+            <!--icon box top -->
+
+            <h4>Winning Theme</h4>
+
+            <p>
+
+                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
+
+            </p>
+
+            <p>
+
+                <a href="#" style="font-weight: bold;">Read more →</a>
+
+            </p>
+
+        </div>
+
+        <!--grey box -->
+
+    </div>
+
+    <!--/span3-->
+
+</div>
+
 <div class="row-fluid graysection text-center">
 
     <p class="lead bottom0">
 
-        <i class="icon-envelope"></i> Need help with this template? Support guaranteed: <a href="mailto:wowthemesnet@gmail.com">wowthemesnet@gmail.com</a>
+        <i class="icon-envelope"></i> <spring:message code="home.needcontact"></spring:message> <a href="mailto:wowthemesnet@gmail.com">admin.huafu@gmail.com</a>
 
     </p>
 
+</div>
+
+<div class="row-fluid graysection">
+    <div class="span3">
+        <div class="grey-box-icon">
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+        </div>
+
+    </div>
+    <div class="span3">
+        <div class="grey-box-icon">
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+        </div>
+
+    </div>
+    <div class="span3">
+        <div class="grey-box-icon">
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+        </div>
+
+    </div>
+    <div class="span3">
+        <div class="grey-box-icon">
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+            <h5><a href="#">Merchant</a></h5>
+        </div>
+
+    </div>
+    <div class="span12">
+        <div class="grey-box-icon">
+            <h3><a href="/category"><spring:message code="home.seeallcategory"></spring:message> <i class="fontawesome-icon smaller middle icon-arrow-right"></i></a></h3>
+        </div>
+    </div>
 </div>
 
 <div class="row-fluid">
@@ -422,7 +511,7 @@
 
             <div>
 
-                Latest News
+                Latest Quote
 
             </div>
 
@@ -434,6 +523,7 @@
 
 <div class="row-fluid recent-posts">
 
+    <c:forEach items="${latestQuote}" var="quote" begin="0" end="3">
     <div class="span3">
 
         <article>
@@ -442,102 +532,27 @@
 
             <div class="date">
 
-                <span class="day">15</span>
+                <span class="day">${quote.postDay}</span>
 
-                <span class="month">Jan</span>
+                <span class="month">${quote.postMonth}</span>
 
             </div>
 
-            <h4><a href="bloghome.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
+            <h4><a href="bloghome.html">${quote.title}</a></h4>
 
             <p>
 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
+                ${quote.description}
+                    <br/>
+                    <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
 
             </p>
 
         </article>
 
     </div>
-
-    <div class="span3">
-
-        <img src="/assets/img/temp/masonry/berlin-91850_640.jpg" alt="" class="imgOpa">
-
-        <article>
-
-            <div class="date">
-
-                <span class="day">23</span>
-
-                <span class="month">May</span>
-
-            </div>
-
-            <h4><a href="bloghome.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-
-            <p>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
-
-            </p>
-
-        </article>
-
-    </div>
-
-    <div class="span3">
-
-        <img src="/assets/img/temp/masonry/spain-93903_640.jpg" alt="" class="imgOpa">
-
-        <article>
-
-            <div class="date">
-
-                <span class="day">18</span>
-
-                <span class="month">Aug</span>
-
-            </div>
-
-            <h4><a href="bloghome.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-
-            <p>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
-
-            </p>
-
-        </article>
-
-    </div>
-
-    <div class="span3">
-
-        <article>
-
-            <img src="/assets/img/temp/masonry/beasain-91730_640.jpg" alt="" class="imgOpa">
-
-            <div class="date">
-
-                <span class="day">31</span>
-
-                <span class="month">Dec</span>
-
-            </div>
-
-            <h4><a href="bloghome.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h4>
-
-            <p>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit vehicula est, in consequat libero. <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
-
-            </p>
-
-        </article>
-
-    </div>
-
+    </c:forEach>
 </div>
+<script type="text/javascript" src="/assets/js/home.js"></script>
 </body>
 </html>

@@ -2,12 +2,12 @@ package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.model.entity.Merchant;
+import au.com.iglooit.hellscream.model.vo.AddressVO;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import au.com.iglooit.hellscream.service.IndexServiceHelp;
 import au.com.iglooit.hellscream.service.search.GeoSearchService;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Document;
-import com.google.appengine.api.search.GeoPoint;
 import com.google.appengine.api.search.Index;
 import com.google.appengine.api.search.PutException;
 import org.slf4j.Logger;
@@ -33,6 +33,8 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
     private static final Logger LOG = LoggerFactory.getLogger(MerchantManageServiceImpl.class);
     @Resource
     private GeoSearchService geoSearchService;
+    @Resource
+    private IndexServiceHelp indexServiceHelp;
 
     public MerchantManageServiceImpl() {
         super(Merchant.class);
@@ -53,38 +55,50 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
     @Override
     public void createMerchant(Merchant merchant) {
         // find the geo point
-        GeoPoint result = geoSearchService.convertGeoPoint(merchant.convertToAddress());
+        AddressVO result = geoSearchService.formatAddress(merchant.convertToAddress());
         if (result != null) {
-            merchant.setLatitude(new BigDecimal(result.getLatitude()));
-            merchant.setLongitude(new BigDecimal(result.getLongitude()));
+            merchant.setLatitude(new BigDecimal(result.getGeoPoint().getLatitude()));
+            merchant.setLongitude(new BigDecimal(result.getGeoPoint().getLongitude()));
+            merchant.setPostcode(result.getPostcode());
+            merchant.setSuburb(result.getSuburb());
+            merchant.setFormatAddress(result.getFormatAddress());
         }
         add(merchant);
         getEntityManager().flush();
         // get full index
-        Index merchantIndex = IndexServiceHelp.getMerchantIndex();
+        Index merchantIndex = indexServiceHelp.getMerchantIndex();
         // get geo index
-        Index geoIndex = IndexServiceHelp.getGeoIndex();
+        Index geoIndex = indexServiceHelp.getGeoMerchantIndex();
         try {
             merchantIndex.put(merchant.toFullTextDocument());
+        } catch (PutException e) {
+            throw new AppX("Can't create document for " + merchant.getKey(), e);
+        }
+
+        try {
             geoIndex.put(merchant.toGeoDocument());
         } catch (PutException e) {
             throw new AppX("Can't create document for " + merchant.getKey(), e);
         }
+
+
     }
 
     @Override
     public void modifyMerchant(Merchant merchant) {
         // find the geo point
-        GeoPoint result = geoSearchService.convertGeoPoint(merchant.convertToAddress());
+        AddressVO result = geoSearchService.formatAddress(merchant.convertToAddress());
         if (result != null) {
-            merchant.setLatitude(new BigDecimal(result.getLatitude()));
-            merchant.setLongitude(new BigDecimal(result.getLongitude()));
+            merchant.setLatitude(new BigDecimal(result.getGeoPoint().getLatitude()));
+            merchant.setLongitude(new BigDecimal(result.getGeoPoint().getLongitude()));
+            merchant.setPostcode(result.getPostcode());
+            merchant.setSuburb(result.getSuburb());
         }
         update(merchant);
         // get full index
-        Index merchantIndex = IndexServiceHelp.getMerchantIndex();
+        Index merchantIndex = indexServiceHelp.getMerchantIndex();
         // get geo index
-        Index geoIndex = IndexServiceHelp.getGeoIndex();
+        Index geoIndex = indexServiceHelp.getGeoMerchantIndex();
         try {
             String docId = KeyFactory.keyToString(merchant.getKey());
             List<String> ftKeys = new ArrayList<>();
@@ -113,5 +127,14 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
         Query q = getEntityManager().createQuery("select c from Merchant c where c.categoryList=:categoryName ")
                 .setParameter("categoryName", categoryName);
         return q.getResultList();
+    }
+
+    @Override
+    public Boolean checkExistMerchant(String tradeName, String email) {
+        Query q = getEntityManager().createQuery("select c from Merchant c " +
+                "where c.tradeName=:tradeName or c.email=:email ")
+                .setParameter("tradeName", tradeName)
+                .setParameter("email", email);
+        return q.getResultList().size() > 0 ? Boolean.TRUE : Boolean.FALSE;
     }
 }

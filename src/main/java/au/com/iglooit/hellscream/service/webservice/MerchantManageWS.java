@@ -47,15 +47,19 @@ public class MerchantManageWS {
     public
     @ResponseBody
     JsonResponse addMerchant(@RequestBody Merchant rawMerchant) {
+        // check the email and trade name
+        if (merchantManageService.checkExistMerchant(rawMerchant.getTradeName(), rawMerchant.getEmail())) {
+            return new JsonResponse("Error", "Email or Trade name has been registered.");
+        }
         rawMerchant.setPostDate(new Date());
-        merchantManageService.createMerchant(rawMerchant);
+//        merchantManageService.createMerchant(rawMerchant);
         // create merchant admin user
         IGUser merchantAdmin = new IGUser();
         merchantAdmin.setEmail(rawMerchant.getEmail());
         merchantAdmin.setNickname(rawMerchant.getContact1());
         merchantAdmin.setAuthorities(EnumSet.of(AppRole.MERCHANT));
         merchantAdmin.setMerchantKey(rawMerchant.getKey());
-        userManageService.createUser(merchantAdmin);
+//        userManageService.createUser(merchantAdmin);
         return new JsonResponse("OK", "");
     }
 

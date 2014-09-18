@@ -73,7 +73,7 @@ public class QuoteServiceImpl implements QuoteService {
 
     @Override
     public List<QuoteVO> latestQuoteList() {
-        List<Quote> quoteList = quoteManageService.findQuoteByDate(DateUtils.getOneWeekAgo(), DateUtils.getNow());
+        List<Quote> quoteList = quoteManageService.findQuoteByDate(DateUtils.getOneMonthAgo(), DateUtils.getNow());
         List<QuoteVO> result = new ArrayList<>();
         int len = quoteList.size() > LATEST_QUOTE ? LATEST_QUOTE : quoteList.size();
         for (int i = 0; i < len; i++) {

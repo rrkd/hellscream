@@ -129,25 +129,25 @@
 
                 </div>
 
-                <form method="post" action="contact.php" id="contactform">
+                <form method="post" action="#" id="contactform">
 
                     <div class="form">
 
                         <div class="controls controls-row">
 
-                            <input class="span6" type="text" name="name" placeholder="Name">
+                            <input id="nameTxt" class="span6" type="text" name="name" placeholder="Name">
 
-                            <input class="span6" type="text" name="email" placeholder="E-mail">
+                            <input id="userEmailTxt" class="span6" type="text" name="email" placeholder="E-mail">
 
                         </div>
 
                         <div class="controls">
 
-                            <textarea class="span12" name="comment" rows="4" placeholder="Message"></textarea>
+                            <textarea id="contactUsContent" class="span12" name="comment" rows="4" placeholder="Message"></textarea>
 
                         </div>
 
-                        <input type="submit" id="submit" class="btn" value="Send">
+                        <input id="sendContactEmail" class="btn" value="Send">
 
                     </div>
 

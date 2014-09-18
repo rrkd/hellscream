@@ -1,5 +1,6 @@
 package au.com.iglooit.hellscream.service.search;
 
+import au.com.iglooit.hellscream.model.vo.AddressVO;
 import com.google.appengine.api.search.GeoPoint;
 
 /**
@@ -9,5 +10,5 @@ import com.google.appengine.api.search.GeoPoint;
  * Time: 8:36 AM
  */
 public interface GeoSearchService {
-    GeoPoint convertGeoPoint(String address);
+    AddressVO formatAddress(String address);
 }

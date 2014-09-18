@@ -1,3 +1,4 @@
+<%@include file="../globe.jsp"%><html>
 <div class="row-fluid">
 
     <div class="span12">

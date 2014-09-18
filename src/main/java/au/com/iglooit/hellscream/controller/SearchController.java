@@ -28,10 +28,10 @@ public class SearchController {
     private MerchantManageService merchantManageService;
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public ModelAndView searchPage(@RequestParam("q") String queryString) {
+    public ModelAndView searchPage(@RequestParam("q") String queryString, @RequestParam("local") String localString) {
         ModelAndView modelAndView = new ModelAndView("search");
         modelAndView.addObject("merchantList",
-                merchantFTSearchService.searchByKeyWord(queryString.replaceAll(" ", "-")));
+                merchantFTSearchService.searchByKeyWordAndLocal(queryString.replaceAll(" ", "-"), localString));
         return modelAndView;
     }
 

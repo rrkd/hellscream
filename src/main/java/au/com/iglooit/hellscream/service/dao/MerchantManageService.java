@@ -21,4 +21,6 @@ public interface MerchantManageService extends IEntityService<Merchant> {
     void modifyMerchant(Merchant merchant);
 
     List<Merchant> findByCategoryName(String categoryName);
+
+    Boolean checkExistMerchant(String tradeName, String email);
 }
