@@ -3,6 +3,8 @@ package au.com.iglooit.hellscream.service.dao;
 import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.AddressVO;
+import au.com.iglooit.hellscream.model.vo.MerchantSearchResult;
+import au.com.iglooit.hellscream.model.vo.MerchantVO;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import au.com.iglooit.hellscream.service.IndexServiceHelp;
 import au.com.iglooit.hellscream.service.search.GeoSearchService;
@@ -31,10 +33,13 @@ import java.util.List;
 @Transactional
 public class MerchantManageServiceImpl extends BaseRepository<Merchant> implements MerchantManageService {
     private static final Logger LOG = LoggerFactory.getLogger(MerchantManageServiceImpl.class);
+    private static final Integer PAGE_COUNT = 10;
     @Resource
     private GeoSearchService geoSearchService;
     @Resource
     private IndexServiceHelp indexServiceHelp;
+
+
 
     public MerchantManageServiceImpl() {
         super(Merchant.class);
@@ -136,5 +141,24 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
                 .setParameter("tradeName", tradeName)
                 .setParameter("email", email);
         return q.getResultList().size() > 0 ? Boolean.TRUE : Boolean.FALSE;
+    }
+
+    @Override
+    public MerchantSearchResult findMerchants(Integer pageNumber) {
+        Integer startPage = pageNumber == null ? 1 : pageNumber;
+        Query q = getEntityManager().createQuery("select c from Merchant c order by c.postDate desc")
+                .setMaxResults(PAGE_COUNT)
+                .setFirstResult((startPage-1) * PAGE_COUNT);
+        Query countQuery = getEntityManager().createQuery("select c from Merchant c order by c.postDate desc");
+
+        MerchantSearchResult result = new MerchantSearchResult();
+        for(Merchant merchant : (List<Merchant>)q.getResultList()) {
+            MerchantVO vo = new MerchantVO();
+            vo.setMerchant(merchant);
+            result.getMerchantList().add(vo);
+        }
+        result.setPageNum(startPage);
+        result.setTotal(countQuery.getResultList().size()/PAGE_COUNT + 1);
+        return result;
     }
 }

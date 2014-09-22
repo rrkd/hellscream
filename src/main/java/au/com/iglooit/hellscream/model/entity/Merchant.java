@@ -43,6 +43,8 @@ public class Merchant extends BaseEntity {
     private String postcode;
     private String suburb;
     private String formatAddress;
+    private String imageResourceId;
+    private String imageFileName;
 
     public Merchant() {
     }
@@ -209,6 +211,22 @@ public class Merchant extends BaseEntity {
 
     public void setFormatAddress(String formatAddress) {
         this.formatAddress = formatAddress;
+    }
+
+    public String getImageResourceId() {
+        return imageResourceId;
+    }
+
+    public void setImageResourceId(String imageResourceId) {
+        this.imageResourceId = imageResourceId;
+    }
+
+    public String getImageFileName() {
+        return imageFileName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
     }
 
     @Override

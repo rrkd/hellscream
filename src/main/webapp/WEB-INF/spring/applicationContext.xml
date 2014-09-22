@@ -15,6 +15,12 @@
 
     <context:component-scan base-package="au.com.iglooit.hellscream.service, au.com.iglooit.hellscream.controller"/>
 
+    <bean id="httpClient" class="org.apache.http.impl.client.DefaultHttpClient">
+        <constructor-arg>
+            <bean class="org.apache.http.impl.conn.PoolingClientConnectionManager"/>
+        </constructor-arg>
+    </bean>
+
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" lazy-init="true">
         <property name="persistenceUnitName" value="hellscream"/>

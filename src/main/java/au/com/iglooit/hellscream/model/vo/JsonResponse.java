@@ -9,6 +9,8 @@ import java.io.Serializable;
  * Time: 4:06 PM
  */
 public class JsonResponse implements Serializable {
+    public static final String OK = "OK";
+    public static final String Error = "Error";
     private String status = "";
     private String errorMessage = "";
 

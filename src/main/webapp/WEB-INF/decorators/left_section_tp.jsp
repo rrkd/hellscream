@@ -109,7 +109,33 @@
 
         <h4 class="widget-title">Last Comment</h4>
 
-        <div class="textwidget" id="latestMsgTxt">
+        <div class="boxportfolio">
+
+            <div class="testimonial" >
+
+                <h4 id="feedbackMerchant">
+                    <img class="avatarspic" src="/assets/img/demo/avatar.jpg" alt=""/>
+
+                </h4>
+                <div id="latestComment">
+
+                </div>
+
+            </div>
+
+            <div class="author-wrapper">
+
+                <div class="arrow">
+
+                </div>
+
+                <div class="testimonial-name" id="testimonialName">
+
+                    Merchant Name
+
+                </div>
+
+            </div>
 
         </div>
 

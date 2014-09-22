@@ -1,8 +1,6 @@
 jQuery(document).ready(function ($) {
-
-    prettyPrint();
-
-    $("#nickname,#forename, #surname,#address1,#address2,#address3, #email, #terms-and-conditions").jqBootstrapValidation(
+    $('#rankBox').raty();
+    $("#email,#userName, #comment").jqBootstrapValidation(
         {
             preventSubmit: true,
             submitError: function($form, event, errors) {
@@ -12,17 +10,17 @@ jQuery(document).ready(function ($) {
             submitSuccess: function($form, event) {
                 $.ajax({
                     type:"POST",
-                    url:"/ws/user",
-                    data:generateUser(),
+                    url:"/ws/fd/m/"+$('#keyString').val(),
+                    data:generateFeedbackMsg(),
                     contentType:'application/json',
                     success:function (data) {
                         if (data.status == 'OK') {
-                            alert('User has been added');
-                            $('#userRsgErrorBox').hide();
+                            alert('You feedback has been submit');
+                            $('#merchantRsgErrorBox').hide();
                         }
                         else {
-                            $('#userRsgErrorBox').show();
-                            $('#userRsgErrorBox').text(data.errorMessage);
+                            $('#merchantRsgErrorBox').show();
+                            $('#merchantRsgErrorBox').text(data.errorMessage);
                         }
                     }
                 });
@@ -35,17 +33,12 @@ jQuery(document).ready(function ($) {
         }
     );
 });
-
-function generateUser() {
-    var user = {
-        email:$('#email').val(),
-        nickname:$('#nickname').val(),
-        forename:$('#forename').val(),
-        address1:$('#address1').val(),
-        address2:$('#address2').val(),
-        address3:$('#address3').val(),
-        mobile:$('#mobile').val(),
-        surname:$('#surname').val()
+function generateFeedbackMsg() {
+    var msg = {
+        userEmail:$('#email').val(),
+        userName:$('#userName').val(),
+        comment:$('#comment').val(),
+        rank:$('#rankBox').raty('score')
     };
-    return JSON.stringify(user);
+    return JSON.stringify(msg);
 }

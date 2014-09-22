@@ -7,6 +7,7 @@ import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.security.AppRole;
 import au.com.iglooit.hellscream.service.dao.MerchantManageService;
 import au.com.iglooit.hellscream.service.dao.UserManageService;
+import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -51,15 +52,15 @@ public class MerchantManageWS {
         if (merchantManageService.checkExistMerchant(rawMerchant.getTradeName(), rawMerchant.getEmail())) {
             return new JsonResponse("Error", "Email or Trade name has been registered.");
         }
-        rawMerchant.setPostDate(new Date());
-//        merchantManageService.createMerchant(rawMerchant);
+        rawMerchant.setPostDate(DateUtils.getNow());
+        merchantManageService.createMerchant(rawMerchant);
         // create merchant admin user
         IGUser merchantAdmin = new IGUser();
         merchantAdmin.setEmail(rawMerchant.getEmail());
         merchantAdmin.setNickname(rawMerchant.getContact1());
         merchantAdmin.setAuthorities(EnumSet.of(AppRole.MERCHANT));
         merchantAdmin.setMerchantKey(rawMerchant.getKey());
-//        userManageService.createUser(merchantAdmin);
+        userManageService.createUser(merchantAdmin);
         return new JsonResponse("OK", "");
     }
 

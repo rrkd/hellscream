@@ -3,11 +3,6 @@
     <meta name="description" content="service job search">
     <title>Register Merchant</title>
     <link href="/assets/css/prettify_bootstrap.css" rel="stylesheet">
-    <style>
-        form.error
-        {
-        }
-    </style>
 </head>
 <body>
 <div class="page-header">
@@ -131,6 +126,14 @@
             </div>
 
             <div class="control-group">
+                <label class="control-label" for="tradeName">Merchant Logo</label>
+                <div class="controls">
+                    <input name="name" size="30" type="file" id="merchantLogo" class="span12" placeholder="MerchantLogo">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+
+            <div class="control-group">
                 <label class="control-label" for="terms-and-conditions">Legal</label>
                 <div class="controls">
                     <label class="checkbox">
@@ -151,6 +154,24 @@
     </div>
 
 </div>
+<!-- uploading dialog -->
+<div class="modal fade" id="uploadImgDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Uploading Image</h4>
+            </div>
+            <div class="modal-body">
+                Please wait for a second...
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- uploading dialog end -->
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jqBootstrapValidation.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/prettify.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/merchant/merchant-create.js"></script>

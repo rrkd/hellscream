@@ -28,6 +28,8 @@ public abstract class BaseEntity implements Serializable {
 
     private Date createdOn = DateUtils.getNow();
 
+    private Boolean valid = Boolean.TRUE;
+
     public Key getKey() {
         return key;
     }
@@ -46,6 +48,14 @@ public abstract class BaseEntity implements Serializable {
 
     public String getKeyString() {
         return KeyFactory.keyToString(key);
+    }
+
+    public Boolean getValid() {
+        return valid;
+    }
+
+    public void setValid(Boolean valid) {
+        this.valid = valid;
     }
 
     @Override

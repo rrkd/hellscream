@@ -6,6 +6,8 @@ jQuery(document).ready(function ($) {
 
     prettyPrint();
 
+    var merchantLogo;
+
     $("#tradeName,#merchantName,#address1,#address2,#address3, #email, #terms-and-conditions").jqBootstrapValidation(
         {
             preventSubmit: true,
@@ -43,9 +45,16 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         $(this).tab("show");
     });
+
+    $('input[type=file]').on('change', function(event){
+        $('#uploadImgDlg').modal({
+
+        });
+        merchantLogo = generateClientFile(event);
+    });
 });
 
-function generateMerchant() {
+function generateMerchant(merchantLogo) {
     var merchant = {
         tradeName:$('#tradeName').val(),
         merchantName:$('#merchantName').val(),
@@ -58,6 +67,8 @@ function generateMerchant() {
         mobile:$('#mobile').val(),
         contact1:$('#contact1').val(),
         contact2:$('#contact2').val(),
+        imageResourceId:merchantLogo.resourceId,
+        imageFileName:merchantLogo.fileUrl,
         categoryList:[]
     };
     generateCategoryList(merchant.categoryList);
@@ -71,5 +82,48 @@ function generateCategoryList(categoryList) {
         categoryList.push(dataList[i].text);
     }
     return false;
+}
+
+function generateClientFile(event)
+{
+    var files = event.target.files;
+    var file = files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(){
+        var fileContent = reader.result.match(/,(.*)$/)[1];
+        var fileClient = {
+            resource_id:"",
+            title:file.name,
+            description:"test",
+            mimeType:file.type,
+            content:fileContent,
+            parents:[]
+        };
+        $.ajax({
+            type:"POST",
+            url:"/ws/drive",
+            data:JSON.stringify(fileClient),
+            contentType:'application/json',
+            success:function (data) {
+                if (data.status == 'OK') {
+                    alert('Merchant Logo has been added');
+                    var merchantInfo;
+                    merchantInfo.resourceId = data.resourceId;
+                    merchantInfo.fileUrl = data.fileUrl;
+                    return merchantInfo;
+                }
+                else {
+                    $('#merchantRsgErrorBox').show();
+                    $('#merchantRsgErrorBox').text(data.errorMessage);
+                    var merchantInfo;
+                    merchantInfo.resourceId = "";
+                    merchantInfo.fileUrl = "";
+                    return merchantInfo;
+                }
+                $('#uploadImgDlg').modal('hide');
+            }
+        });
+    };
 }
 
