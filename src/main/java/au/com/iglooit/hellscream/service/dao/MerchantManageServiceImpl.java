@@ -5,6 +5,7 @@ import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.AddressVO;
 import au.com.iglooit.hellscream.model.vo.MerchantSearchResult;
 import au.com.iglooit.hellscream.model.vo.MerchantVO;
+import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import au.com.iglooit.hellscream.service.IndexServiceHelp;
 import au.com.iglooit.hellscream.service.search.GeoSearchService;
@@ -12,6 +13,7 @@ import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.Index;
 import com.google.appengine.api.search.PutException;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -38,7 +40,6 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
     private GeoSearchService geoSearchService;
     @Resource
     private IndexServiceHelp indexServiceHelp;
-
 
 
     public MerchantManageServiceImpl() {
@@ -148,17 +149,23 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
         Integer startPage = pageNumber == null ? 1 : pageNumber;
         Query q = getEntityManager().createQuery("select c from Merchant c order by c.postDate desc")
                 .setMaxResults(PAGE_COUNT)
-                .setFirstResult((startPage-1) * PAGE_COUNT);
+                .setFirstResult((startPage - 1) * PAGE_COUNT);
         Query countQuery = getEntityManager().createQuery("select c from Merchant c order by c.postDate desc");
 
         MerchantSearchResult result = new MerchantSearchResult();
-        for(Merchant merchant : (List<Merchant>)q.getResultList()) {
+        WebProperties webProperties = WebProperties.getInstance();
+        String driveHost = webProperties.get("driver.host");
+        for (Merchant merchant : (List<Merchant>) q.getResultList()) {
             MerchantVO vo = new MerchantVO();
+            //change image name
+            if (!StringUtils.isBlank(merchant.getImageFileName())) {
+                merchant.setImageFileName(driveHost + merchant.getImageFileName());
+            }
             vo.setMerchant(merchant);
             result.getMerchantList().add(vo);
         }
         result.setPageNum(startPage);
-        result.setTotal(countQuery.getResultList().size()/PAGE_COUNT + 1);
+        result.setTotal(countQuery.getResultList().size() / PAGE_COUNT + 1);
         return result;
     }
 }

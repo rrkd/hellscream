@@ -1,10 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="page-header">
 
-    <h1>Merchant Details</h1>
+    <h1>${merchant.merchantName}</h1>
 
     <div class="headerdivider">
-        ${merchant.merchantName}
+
     </div>
 
 </div>
@@ -47,7 +47,7 @@
 
         <p class="clearfix">
 
-            <a href="contact.html" class="btn btn-primary"><i class="icon icon-envelope"></i>&nbsp; Contact</a>
+            <a href="contact.html" class="btn btn-primary"><i class="icon icon-envelope"></i>&nbsp; I want to contact this Merchant</a>
 
         </p>
 
