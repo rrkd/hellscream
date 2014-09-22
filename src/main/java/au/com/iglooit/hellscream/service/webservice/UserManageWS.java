@@ -1,11 +1,10 @@
 package au.com.iglooit.hellscream.service.webservice;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
-import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.VersionResponse;
 import au.com.iglooit.hellscream.security.AppRole;
-import au.com.iglooit.hellscream.service.dao.UserManageService;
+import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,7 +29,7 @@ public class UserManageWS {
     private static final Logger LOG = LoggerFactory.getLogger(UserManageWS.class);
 
     @Resource
-    private UserManageService userManageService;
+    private UserDAO userDAO;
 
     @RequestMapping(value = "/ws/user/version", method = RequestMethod.GET)
     public
@@ -50,7 +47,7 @@ public class UserManageWS {
         LOG.info("register a new user : " + user.getEmail());
         user.setCreatedOn(DateUtils.getNow());
         user.setAuthorities(new HashSet<AppRole>(Arrays.asList(AppRole.USER)));
-        userManageService.createUser(user);
+        userDAO.createUser(user);
         return new JsonResponse("OK", "");
     }
 }

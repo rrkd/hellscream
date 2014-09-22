@@ -4,15 +4,13 @@ import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.security.GaeUserAuthentication;
-import au.com.iglooit.hellscream.service.dao.CategoryGroupManageService;
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
-import au.com.iglooit.hellscream.service.dao.QuoteManageService;
+import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
-import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,18 +30,18 @@ import javax.annotation.Resource;
 public class QuoteController {
     private static final Logger LOG = LoggerFactory.getLogger(QuoteController.class);
     @Resource
-    private QuoteManageService quoteManageService;
+    private QuoteDAO quoteDAO;
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
     @Resource
     private QuoteService quoteService;
     @Resource
-    private CategoryGroupManageService categoryGroupManageService;
+    private CategoryGroupDAO categoryGroupDAO;
 
     @RequestMapping(value = "/quote/c", method = RequestMethod.GET)
     public ModelAndView postQuotePage() {
         ModelAndView modelAndView = new ModelAndView("quote/postQuote");
-        modelAndView.addObject("categoryGroupList", categoryGroupManageService.loadAll());
+        modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
         modelAndView.addObject("quoteList", quoteService.latestQuoteList());
         return modelAndView;
     }
@@ -51,7 +49,7 @@ public class QuoteController {
     @RequestMapping(value = "/quote/d/{keyString}", method = RequestMethod.GET)
     public ModelAndView quoteDetails(@PathVariable String keyString) {
         ModelAndView modelAndView = new ModelAndView("quote/quoteDetails");
-        Quote quote = quoteManageService.loadQuote(KeyFactory.stringToKey(keyString));
+        Quote quote = quoteDAO.loadQuote(KeyFactory.stringToKey(keyString));
         modelAndView.addObject("quote", quote);
         modelAndView.addObject("quoteList", quoteService.latestQuoteList());
         return modelAndView;
@@ -62,8 +60,8 @@ public class QuoteController {
         LOG.debug("create a new quote transaction for Quote: " + keyString);
         GaeUserAuthentication auth = (GaeUserAuthentication)SecurityContextHolder.getContext().getAuthentication();
         IGUser user = (IGUser)auth.getPrincipal();
-        Merchant merchant = merchantManageService.findByKey(user.getMerchantKey());
-        Quote quote = quoteManageService.loadQuote(KeyFactory.stringToKey(keyString));
+        Merchant merchant = merchantDAO.findByKey(user.getMerchantKey());
+        Quote quote = quoteDAO.loadQuote(KeyFactory.stringToKey(keyString));
         ModelAndView modelAndView = new ModelAndView("quote/applyQuote");
 
         modelAndView.addObject("quote", quote);

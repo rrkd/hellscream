@@ -4,8 +4,8 @@ import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.security.GaeUserAuthentication;
-import au.com.iglooit.hellscream.service.dao.QuoteTransactionManageService;
-import au.com.iglooit.hellscream.service.dao.UserManageService;
+import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
+import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
 import au.com.iglooit.hellscream.service.quote.QuoteTransactionService;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,11 +31,11 @@ public class UserProfileController {
     private static final Logger LOG = LoggerFactory.getLogger(UserProfileController.class);
 
     @Resource
-    private UserManageService userManageService;
+    private UserDAO userDAO;
     @Resource
     private QuoteService quoteService;
     @Resource
-    private QuoteTransactionManageService quoteTransactionManageService;
+    private QuoteTransactionDAO quoteTransactionDAO;
     @Resource
     private QuoteTransactionService quoteTransactionService;
 
@@ -71,7 +70,7 @@ public class UserProfileController {
 
     @RequestMapping(value = "/u/c/{transactionKeyString}", method = RequestMethod.GET)
     public ModelAndView contactMerchantPage(@PathVariable String transactionKeyString) {
-        QuoteTransaction quoteTransaction = quoteTransactionManageService.findByKey(
+        QuoteTransaction quoteTransaction = quoteTransactionDAO.findByKey(
                 KeyFactory.stringToKey(transactionKeyString));
         if (quoteTransaction == null) {
             LOG.error("Transaction does NOT exist.");

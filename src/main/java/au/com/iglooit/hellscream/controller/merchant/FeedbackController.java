@@ -1,6 +1,6 @@
 package au.com.iglooit.hellscream.controller.merchant;
 
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,12 +23,12 @@ public class FeedbackController {
     private static final Logger LOG = LoggerFactory.getLogger(FeedbackController.class);
 
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
 
     @RequestMapping(value = "/fd/m/{keyString}", method = RequestMethod.GET)
     public ModelAndView messageBoxPage(@PathVariable String keyString) {
         ModelAndView modelAndView = new ModelAndView("feedback/merchantFeedback");
-        modelAndView.addObject("merchant", merchantManageService.findByKey(KeyFactory.stringToKey(keyString)));
+        modelAndView.addObject("merchant", merchantDAO.findByKey(KeyFactory.stringToKey(keyString)));
         return modelAndView;
     }
 }

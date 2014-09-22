@@ -5,8 +5,8 @@ import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.security.AppRole;
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
-import au.com.iglooit.hellscream.service.dao.UserManageService;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.apache.commons.lang.StringUtils;
@@ -31,15 +31,15 @@ import java.util.List;
 @Controller
 public class MerchantManageWS {
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
     @Resource
-    private UserManageService userManageService;
+    private UserDAO userDAO;
 
     @RequestMapping(value = "/ws/merchant", method = RequestMethod.GET)
     public
     @ResponseBody
     List<Merchant> findUser() {
-        return merchantManageService.findAllMerchants();
+        return merchantDAO.findAllMerchants();
     }
 
     @RequestMapping(value = "/ws/merchant",
@@ -49,18 +49,18 @@ public class MerchantManageWS {
     @ResponseBody
     JsonResponse addMerchant(@RequestBody Merchant rawMerchant) {
         // check the email and trade name
-        if (merchantManageService.checkExistMerchant(rawMerchant.getTradeName(), rawMerchant.getEmail())) {
+        if (merchantDAO.checkExistMerchant(rawMerchant.getTradeName(), rawMerchant.getEmail())) {
             return new JsonResponse("Error", "Email or Trade name has been registered.");
         }
         rawMerchant.setPostDate(DateUtils.getNow());
-        merchantManageService.createMerchant(rawMerchant);
+        merchantDAO.createMerchant(rawMerchant);
         // create merchant admin user
         IGUser merchantAdmin = new IGUser();
         merchantAdmin.setEmail(rawMerchant.getEmail());
         merchantAdmin.setNickname(rawMerchant.getContact1());
         merchantAdmin.setAuthorities(EnumSet.of(AppRole.MERCHANT));
         merchantAdmin.setMerchantKey(rawMerchant.getKey());
-        userManageService.createUser(merchantAdmin);
+        userDAO.createUser(merchantAdmin);
         return new JsonResponse("OK", "");
     }
 
@@ -73,7 +73,7 @@ public class MerchantManageWS {
         if (StringUtils.isBlank(keyString)) {
             throw new AppX("Can not update merchant because key is null");
         }
-        Merchant merchant = (Merchant) merchantManageService.findByKey(KeyFactory.stringToKey(keyString));
+        Merchant merchant = (Merchant) merchantDAO.findByKey(KeyFactory.stringToKey(keyString));
         merchant.setAddress1(rawMerchant.getAddress1());
         merchant.setAddress2(rawMerchant.getAddress2());
         merchant.setAddress3(rawMerchant.getAddress3());
@@ -87,7 +87,7 @@ public class MerchantManageWS {
         merchant.setLastUpdateTime(new Date());
         merchant.setTradeName(rawMerchant.getTradeName());
 
-        merchantManageService.modifyMerchant(merchant);
+        merchantDAO.modifyMerchant(merchant);
         return new JsonResponse("OK", "");
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
  * Date: 2/09/2014
  * Time: 9:20 PM
  */
-public interface QuoteManageService extends IEntityService<Quote> {
+public interface QuoteDAO extends IEntityService<Quote> {
     void createQuote(Quote quote);
     Quote loadQuote(Key key);
     List<Quote> findQuoteByEmail(String email);

@@ -1,8 +1,8 @@
 package au.com.iglooit.hellscream.controller;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
-import au.com.iglooit.hellscream.service.dao.CategoryGroupManageService;
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
+import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
 import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import org.springframework.stereotype.Controller;
@@ -23,11 +23,11 @@ import javax.annotation.Resource;
 @Controller
 public class MerchantController {
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
     @Resource
     private SuggestMerchantService suggestMerchantService;
     @Resource
-    private CategoryGroupManageService categoryGroupManageService;
+    private CategoryGroupDAO categoryGroupDAO;
 
     @RequestMapping(value = "/merchant", method = RequestMethod.GET)
     public ModelAndView merchantPage(@RequestParam("p") Integer pageNumber) {
@@ -37,7 +37,7 @@ public class MerchantController {
             pageNumber = 1;
         }
         ModelAndView modelAndView = new ModelAndView("merchant");
-        modelAndView.addObject("searchResultList", merchantManageService.findMerchants(pageNumber));
+        modelAndView.addObject("searchResultList", merchantDAO.findMerchants(pageNumber));
         return modelAndView;
     }
 
@@ -45,7 +45,7 @@ public class MerchantController {
     public ModelAndView merchantDetails(@PathVariable String tradeNameUrl) {
         String tradeName = MerchantIdentifierConvert.convertToTradeName(tradeNameUrl);
         ModelAndView modelAndView = new ModelAndView("merchant/details");
-        Merchant merchant = merchantManageService.findByTradeName(tradeName);
+        Merchant merchant = merchantDAO.findByTradeName(tradeName);
         modelAndView.addObject("merchant", merchant);
         modelAndView.addObject("similarMerchants", suggestMerchantService.similarMerchant(merchant.getKey(), 4));
         return modelAndView;
@@ -54,7 +54,7 @@ public class MerchantController {
     @RequestMapping(value = "/merchant/create", method = RequestMethod.GET)
     public ModelAndView registerMerchantPage() {
         ModelAndView modelAndView = new ModelAndView("merchant/createMerchant");
-        modelAndView.addObject("categoryGroupList", categoryGroupManageService.loadAll());
+        modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
         return modelAndView;
     }
 

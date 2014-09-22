@@ -12,7 +12,7 @@ import java.util.List;
  * Date: 14/09/2014
  * Time: 1:59 PM
  */
-public interface QuoteFeedbackMsgManageService extends IEntityService<QuoteFeedbackMsg>{
+public interface QuoteFeedbackMsgDAO extends IEntityService<QuoteFeedbackMsg>{
     QuoteFeedbackMsg getLatestQuoteFeedbackMsg();
     void createFeebackMsg(QuoteFeedbackMsg quoteFeedbackMsg);
     List<QuoteFeedbackMsg> findByMerchant(Key key);

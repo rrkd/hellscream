@@ -1,7 +1,7 @@
 package au.com.iglooit.hellscream.security;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
-import au.com.iglooit.hellscream.service.dao.UserManageService;
+import au.com.iglooit.hellscream.service.dao.UserDAO;
 import com.google.appengine.api.users.User;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
@@ -31,12 +31,12 @@ import javax.annotation.Resource;
 public class GoogleAccountsAuthenticationProvider implements AuthenticationProvider, MessageSourceAware {
     protected MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
     @Resource
-    private UserManageService userManageService;
+    private UserDAO userDAO;
 
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         User googleUser = (User) authentication.getPrincipal();
 
-        IGUser user = userManageService.findByEmail(googleUser.getEmail());
+        IGUser user = userDAO.findByEmail(googleUser.getEmail());
 
         if (user == null) {
             // IGUser not in registry. Needs to register
@@ -57,8 +57,8 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
         return PreAuthenticatedAuthenticationToken.class.isAssignableFrom(authentication);
     }
 
-    public void setUserManageService(UserManageService userManageService) {
-        this.userManageService = userManageService;
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     public void setMessageSource(MessageSource messageSource) {

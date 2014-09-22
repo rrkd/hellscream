@@ -1,8 +1,8 @@
 package au.com.iglooit.hellscream.controller;
 
 import au.com.iglooit.hellscream.model.entity.Category;
-import au.com.iglooit.hellscream.service.dao.CategoryManageService;
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
+import au.com.iglooit.hellscream.service.dao.CategoryDAO;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.search.MerchantFTSearchService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +23,9 @@ public class SearchController {
     @Resource
     private MerchantFTSearchService merchantFTSearchService;
     @Resource
-    private CategoryManageService categoryManageService;
+    private CategoryDAO categoryDAO;
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView searchPage(@RequestParam("q") String queryString, @RequestParam("local") String localString) {
@@ -38,11 +38,11 @@ public class SearchController {
     @RequestMapping(value = "/search/c", method = RequestMethod.GET)
     public ModelAndView searchCategoryPage(@RequestParam("q") String queryString) {
         ModelAndView modelAndView = new ModelAndView("search");
-        Category category = categoryManageService.findByCategoryUrl(queryString);
+        Category category = categoryDAO.findByCategoryUrl(queryString);
         if(category != null)
         {
             modelAndView.addObject("merchantList",
-                    merchantManageService.findByCategoryName(category.getName()));
+                    merchantDAO.findByCategoryName(category.getName()));
         } else {
             modelAndView.addObject("merchantList",null);
         }

@@ -2,7 +2,7 @@ package au.com.iglooit.hellscream.service.webservice;
 
 import au.com.iglooit.hellscream.model.entity.QuoteFeedbackMsg;
 import au.com.iglooit.hellscream.model.vo.QuoteVO;
-import au.com.iglooit.hellscream.service.dao.QuoteFeedbackMsgManageService;
+import au.com.iglooit.hellscream.service.dao.QuoteFeedbackMsgDAO;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ import java.util.List;
 public class SuggestServiceWS {
     private static final Logger LOG = LoggerFactory.getLogger(SuggestServiceWS.class);
     @Resource
-    private QuoteFeedbackMsgManageService quoteFeedbackMsgManageService;
+    private QuoteFeedbackMsgDAO quoteFeedbackMsgDAO;
     @Resource
     private QuoteService quoteService;
 
@@ -34,7 +34,7 @@ public class SuggestServiceWS {
     public
     @ResponseBody
     QuoteFeedbackMsg latestQuoteFeedbackMsg() {
-        return quoteFeedbackMsgManageService.getLatestQuoteFeedbackMsg();
+        return quoteFeedbackMsgDAO.getLatestQuoteFeedbackMsg();
     }
 
     @RequestMapping(value = "/ws/ss/latestQuote",

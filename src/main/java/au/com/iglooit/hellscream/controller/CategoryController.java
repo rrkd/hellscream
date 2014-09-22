@@ -1,8 +1,7 @@
 package au.com.iglooit.hellscream.controller;
 
-import au.com.iglooit.hellscream.model.entity.Category;
 import au.com.iglooit.hellscream.model.entity.CategoryGroup;
-import au.com.iglooit.hellscream.service.dao.CategoryGroupManageService;
+import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,19 +23,19 @@ import javax.annotation.Resource;
 public class CategoryController {
     private static final Logger LOG = LoggerFactory.getLogger(CategoryController.class);
     @Resource
-    private CategoryGroupManageService categoryGroupManageService;
+    private CategoryGroupDAO categoryGroupDAO;
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public ModelAndView categoryPage() {
         ModelAndView modelAndView = new ModelAndView("category/categoryGroup");
-        modelAndView.addObject("categoryGroupList", categoryGroupManageService.loadAll());
+        modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
         return modelAndView;
     }
 
     @RequestMapping(value = "/category/{keyString}", method = RequestMethod.GET)
     public ModelAndView categoryPage(@PathVariable String keyString) {
         ModelAndView modelAndView = new ModelAndView("category/category");
-        CategoryGroup categoryGroup = categoryGroupManageService.loadByKey(KeyFactory.stringToKey(keyString));
+        CategoryGroup categoryGroup = categoryGroupDAO.loadByKey(KeyFactory.stringToKey(keyString));
         modelAndView.addObject("categoryGroup", categoryGroup);
         return modelAndView;
     }

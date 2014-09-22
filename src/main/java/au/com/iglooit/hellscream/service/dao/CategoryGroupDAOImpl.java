@@ -1,6 +1,5 @@
 package au.com.iglooit.hellscream.service.dao;
 
-import au.com.iglooit.hellscream.model.entity.Category;
 import au.com.iglooit.hellscream.model.entity.CategoryGroup;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import com.google.appengine.api.datastore.Key;
@@ -16,9 +15,9 @@ import java.util.List;
  * Time: 8:26 PM
  */
 @Repository
-public class CategoryGroupManageServiceImpl extends BaseRepository<CategoryGroup>
-        implements CategoryGroupManageService {
-    public CategoryGroupManageServiceImpl() {
+public class CategoryGroupDAOImpl extends BaseRepository<CategoryGroup>
+        implements CategoryGroupDAO {
+    public CategoryGroupDAOImpl() {
         super(CategoryGroup.class);
     }
 

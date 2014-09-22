@@ -1,8 +1,8 @@
 package au.com.iglooit.hellscream.controller.admin;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
-import au.com.iglooit.hellscream.service.dao.CategoryGroupManageService;
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
+import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,20 +24,20 @@ import javax.annotation.Resource;
 public class MerchantManageController {
     private static final Logger LOG = LoggerFactory.getLogger(MerchantManageController.class);
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
     @Resource
-    private CategoryGroupManageService categoryGroupManageService;
+    private CategoryGroupDAO categoryGroupDAO;
 
     @RequestMapping(value = "/ad/merchant/{key}", method = RequestMethod.GET)
     public ModelAndView merchantModifyPage(@PathVariable String key) {
         LOG.info("hit the merchantModifyPage with " + key);
         ModelAndView modelAndView = new ModelAndView("ad/merchantManage");
-        Merchant merchant = (Merchant)merchantManageService.findByKey(KeyFactory.stringToKey(key));
+        Merchant merchant = (Merchant) merchantDAO.findByKey(KeyFactory.stringToKey(key));
         if(merchant == null) {
             LOG.error("Can not find Merchant by " + key);
         }
         modelAndView.addObject("merchant", merchant);
-        modelAndView.addObject("categoryGroupList", categoryGroupManageService.loadAll());
+        modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
         return modelAndView;
     }
 }

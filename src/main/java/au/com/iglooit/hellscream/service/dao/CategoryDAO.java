@@ -10,7 +10,7 @@ import java.util.List;
  * Date: 25/08/2014
  * Time: 5:11 PM
  */
-public interface CategoryManageService extends IEntityService<Category>{
+public interface CategoryDAO extends IEntityService<Category>{
     void createCategory(Category category);
     Category findByName(String name);
     List<Category> findByCategory(String category);

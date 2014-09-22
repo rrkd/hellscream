@@ -7,9 +7,9 @@ import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.model.entity.QuoteTransactionStatus;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.QuoteTransactionVO;
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
-import au.com.iglooit.hellscream.service.dao.QuoteManageService;
-import au.com.iglooit.hellscream.service.dao.QuoteTransactionManageService;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.service.dao.QuoteDAO;
+import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.quote.QuoteHelper;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
@@ -37,11 +37,11 @@ import javax.annotation.Resource;
 public class QuoteManageWS {
     private static final Logger LOG = LoggerFactory.getLogger(QuoteManageWS.class);
     @Resource
-    private QuoteManageService quoteManageService;
+    private QuoteDAO quoteDAO;
     @Resource
-    private QuoteTransactionManageService quoteTransactionManageService;
+    private QuoteTransactionDAO quoteTransactionDAO;
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
     @Resource
     private EMailService eMailService;
     @Resource
@@ -78,17 +78,17 @@ public class QuoteManageWS {
         QuoteTransaction quoteTransaction = new QuoteTransaction();
         quoteTransaction.convertFromVO(quoteTransactionVO);
 
-        Merchant merchant = merchantManageService.findByKey(KeyFactory.stringToKey(
+        Merchant merchant = merchantDAO.findByKey(KeyFactory.stringToKey(
                 quoteTransactionVO.getMerchantKeyString()));
         if (merchant == null) {
             return new JsonResponse("Error", "Merchant doesn't exist");
         }
         quoteTransaction.setMerchant(merchant);
 
-        Quote quote = quoteManageService.loadQuote(KeyFactory.stringToKey(quoteKey));
+        Quote quote = quoteDAO.loadQuote(KeyFactory.stringToKey(quoteKey));
         quote.setUpdateDate(DateUtils.getNow());
         quote.getQuoteTransactions().add(quoteTransaction);
-        quoteManageService.update(quote);
+        quoteDAO.update(quote);
         LOG.info("[nick] update quote");
         return new JsonResponse("OK", "");
     }
@@ -101,13 +101,13 @@ public class QuoteManageWS {
     JsonResponse approveQuoteTransaction(@PathVariable String transactionKeyString) {
         // change quote transaction
         QuoteTransaction quoteTransaction =
-                quoteTransactionManageService.findByKey(KeyFactory.stringToKey(transactionKeyString));
+                quoteTransactionDAO.findByKey(KeyFactory.stringToKey(transactionKeyString));
         if (quoteTransaction == null) {
             LOG.error("quote transaction not exist");
             return new JsonResponse("Error", "quote transaction not exist");
         }
         quoteTransaction.setQuoteTransactionStatus(QuoteTransactionStatus.Contacting);
-        quoteTransactionManageService.update(quoteTransaction);
+        quoteTransactionDAO.update(quoteTransaction);
         // send email
 
         eMailService.sendUserContactEmail(QuoteHelper.generateUserContactEmailVO(quoteTransaction));

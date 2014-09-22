@@ -8,7 +8,7 @@ import au.com.iglooit.hellscream.model.entity.MerchantFeedbackMsg;
  * Date: 22/09/2014
  * Time: 1:28 PM
  */
-public interface MerchantFeedbackMsgManageService extends IEntityService<MerchantFeedbackMsg> {
+public interface MerchantFeedbackMsgDAO extends IEntityService<MerchantFeedbackMsg> {
     void createMerchantFeedbackMsg(MerchantFeedbackMsg msg);
     MerchantFeedbackMsg getLatestMsg();
 }

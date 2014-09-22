@@ -18,9 +18,9 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class QuoteFeedbackMsgManageServiceImpl extends BaseRepository<QuoteFeedbackMsg>
-        implements QuoteFeedbackMsgManageService {
-    public QuoteFeedbackMsgManageServiceImpl() {
+public class QuoteFeedbackMsgDAOImpl extends BaseRepository<QuoteFeedbackMsg>
+        implements QuoteFeedbackMsgDAO {
+    public QuoteFeedbackMsgDAOImpl() {
         super(QuoteFeedbackMsg.class);
     }
 

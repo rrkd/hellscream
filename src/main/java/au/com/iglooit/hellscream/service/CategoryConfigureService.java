@@ -4,8 +4,8 @@ import au.com.bytecode.opencsv.CSVReader;
 import au.com.iglooit.hellscream.model.entity.Category;
 import au.com.iglooit.hellscream.model.entity.CategoryGroup;
 import au.com.iglooit.hellscream.properties.WebProperties;
-import au.com.iglooit.hellscream.service.dao.CategoryGroupManageService;
-import au.com.iglooit.hellscream.service.dao.CategoryManageService;
+import au.com.iglooit.hellscream.service.dao.CategoryDAO;
+import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
 import au.com.iglooit.hellscream.utils.CategoryIdentifierConvert;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -28,9 +28,9 @@ import java.util.List;
 @Component
 public class CategoryConfigureService {
     @Resource
-    private CategoryManageService categoryManageService;
+    private CategoryDAO categoryDAO;
     @Resource
-    private CategoryGroupManageService categoryGroupManageService;
+    private CategoryGroupDAO categoryGroupDAO;
     private static final Logger LOG = LoggerFactory.getLogger(CategoryConfigureService.class);
 
     @PostConstruct
@@ -57,15 +57,15 @@ public class CategoryConfigureService {
             String categoryGroupName = nextLine[1];
             if (!StringUtils.isBlank(categoryName) && !StringUtils.isBlank(categoryGroupName)) {
                 // find CategoryGroup
-                CategoryGroup group = categoryGroupManageService.findByName(categoryGroupName);
+                CategoryGroup group = categoryGroupDAO.findByName(categoryGroupName);
                 if (group == null) {
                     //create group
                     group = new CategoryGroup();
                     group.setName(categoryGroupName);
                     group.setDescription(categoryGroupName);
-                    categoryGroupManageService.createCategoryGroup(group);
+                    categoryGroupDAO.createCategoryGroup(group);
                 }
-                Category category = categoryManageService.findByName(categoryName);
+                Category category = categoryDAO.findByName(categoryName);
                 if (category == null) {
                     category = new Category();
                     category.setName(categoryName);
@@ -73,13 +73,13 @@ public class CategoryConfigureService {
                     category.setGroup(group);
                     category.setUrl(CategoryIdentifierConvert.convertToURL(categoryName));
                     LOG.info("crate category: " + categoryName);
-                    categoryManageService.createCategory(category);
+                    categoryDAO.createCategory(category);
                 } else {
                     category.setName(categoryName);
                     category.setDescription(categoryName);
                     category.setGroup(group);
                     category.setUrl(CategoryIdentifierConvert.convertToURL(categoryName));
-                    categoryManageService.update(category);
+                    categoryDAO.update(category);
                     LOG.info("update category: " + categoryName);
                 }
             }
@@ -87,17 +87,17 @@ public class CategoryConfigureService {
     }
 
     private void removeCategory() {
-        List<Category> categoryList = categoryManageService.findAll();
+        List<Category> categoryList = categoryDAO.findAll();
         for (Category category : categoryList) {
-            categoryManageService.removeEntity(category);
+            categoryDAO.removeEntity(category);
         }
 
     }
 
     private void removeCategoryGroup() {
-        List<CategoryGroup> categoryGroupList = categoryGroupManageService.findAll();
+        List<CategoryGroup> categoryGroupList = categoryGroupDAO.findAll();
         for (CategoryGroup categoryGroup : categoryGroupList) {
-            categoryGroupManageService.removeEntity(categoryGroup);
+            categoryGroupDAO.removeEntity(categoryGroup);
         }
     }
 }

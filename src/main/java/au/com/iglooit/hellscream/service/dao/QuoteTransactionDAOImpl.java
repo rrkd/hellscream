@@ -21,9 +21,9 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class QuoteTransactionManageServiceImpl extends BaseRepository<QuoteTransaction>
-        implements QuoteTransactionManageService {
-    public QuoteTransactionManageServiceImpl() {
+public class QuoteTransactionDAOImpl extends BaseRepository<QuoteTransaction>
+        implements QuoteTransactionDAO {
+    public QuoteTransactionDAOImpl() {
         super(QuoteTransaction.class);
     }
 

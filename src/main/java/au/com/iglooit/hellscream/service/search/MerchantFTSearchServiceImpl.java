@@ -2,7 +2,7 @@ package au.com.iglooit.hellscream.service.search;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.service.IndexServiceHelp;
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Index;
@@ -24,14 +24,14 @@ import java.util.List;
 @Component
 public class MerchantFTSearchServiceImpl implements MerchantFTSearchService {
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
     @Resource
     private IndexServiceHelp indexServiceHelp;
 
     @Override
     public List<Merchant> searchByKeyWord(String keyword) {
         if (StringUtils.isBlank(keyword)) {
-            return merchantManageService.findAllMerchants();
+            return merchantDAO.findAllMerchants();
         } else {
             Index merchantIndex = indexServiceHelp.getMerchantIndex();
             Results<ScoredDocument> results = merchantIndex.search(keyword.replaceAll("-", " "));
@@ -40,7 +40,7 @@ public class MerchantFTSearchServiceImpl implements MerchantFTSearchService {
             List<Merchant> merchantList = new ArrayList<Merchant>();
             for (ScoredDocument document : results) {
                 Key key = KeyFactory.stringToKey(document.getId());
-                Merchant merchant = (Merchant) merchantManageService.findByKey(key);
+                Merchant merchant = (Merchant) merchantDAO.findByKey(key);
                 if (merchant != null) {
                     merchantList.add(merchant);
                 }
@@ -63,7 +63,7 @@ public class MerchantFTSearchServiceImpl implements MerchantFTSearchService {
         List<Merchant> merchantList = new ArrayList<Merchant>();
         for (ScoredDocument document : results) {
             Key key = KeyFactory.stringToKey(document.getId());
-            Merchant merchant = (Merchant) merchantManageService.findByKey(key);
+            Merchant merchant = (Merchant) merchantDAO.findByKey(key);
             if (merchant != null) {
                 merchantList.add(merchant);
             }

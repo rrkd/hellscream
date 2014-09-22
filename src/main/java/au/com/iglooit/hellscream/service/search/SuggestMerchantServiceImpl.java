@@ -2,7 +2,7 @@ package au.com.iglooit.hellscream.service.search;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import com.google.appengine.api.datastore.Key;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
@@ -20,17 +20,17 @@ import java.util.List;
 @Component
 public class SuggestMerchantServiceImpl implements SuggestMerchantService {
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
 
     @Override
     public List<Merchant> similarMerchant(Key key, Integer count) {
-        return merchantManageService.findAllMerchants().subList(0, count);
+        return merchantDAO.findAllMerchants().subList(0, count);
     }
 
     @Override
     public List<String> quoteMerchantEmail(Quote quote) {
         List<String> result = new ArrayList<>();
-        List<Merchant> merchantList = merchantManageService.findAllMerchants();
+        List<Merchant> merchantList = merchantDAO.findAllMerchants();
         for (Merchant merchant : merchantList) {
             if (!StringUtils.isBlank(merchant.getEmail())) {
                 result.add(merchant.getEmail());

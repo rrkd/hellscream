@@ -11,7 +11,7 @@ import java.util.List;
  * Date: 26/08/2014
  * Time: 8:26 PM
  */
-public interface CategoryGroupManageService extends IEntityService<CategoryGroup> {
+public interface CategoryGroupDAO extends IEntityService<CategoryGroup> {
     void createCategoryGroup(CategoryGroup group);
     CategoryGroup findByName(String name);
     List<CategoryGroup> loadAll();

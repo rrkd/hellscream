@@ -4,8 +4,8 @@ import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.MerchantFeedbackMsg;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.MerchantFeedbackMsgVO;
-import au.com.iglooit.hellscream.service.dao.MerchantFeedbackMsgManageService;
-import au.com.iglooit.hellscream.service.dao.MerchantManageService;
+import au.com.iglooit.hellscream.service.dao.MerchantFeedbackMsgDAO;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.apache.commons.lang.StringUtils;
@@ -27,9 +27,9 @@ import javax.annotation.Resource;
 @Controller
 public class FeedbackServiceWS {
     @Resource
-    private MerchantFeedbackMsgManageService merchantFeedbackMsgManageService;
+    private MerchantFeedbackMsgDAO merchantFeedbackMsgDAO;
     @Resource
-    private MerchantManageService merchantManageService;
+    private MerchantDAO merchantDAO;
 
     @RequestMapping(value = "/ws/fd/m/{keyString}",
             method = RequestMethod.POST,
@@ -42,7 +42,7 @@ public class FeedbackServiceWS {
         }
         msg.setMerchantKey(KeyFactory.stringToKey(keyString));
         msg.setCreatedOn(DateUtils.getNow());
-        merchantFeedbackMsgManageService.createMerchantFeedbackMsg(msg);
+        merchantFeedbackMsgDAO.createMerchantFeedbackMsg(msg);
         return new JsonResponse(JsonResponse.OK, "");
     }
 
@@ -51,14 +51,14 @@ public class FeedbackServiceWS {
     public
     @ResponseBody
     MerchantFeedbackMsgVO latestFeedback() {
-        MerchantFeedbackMsg msg = merchantFeedbackMsgManageService.getLatestMsg();
+        MerchantFeedbackMsg msg = merchantFeedbackMsgDAO.getLatestMsg();
         MerchantFeedbackMsgVO vo = new MerchantFeedbackMsgVO();
         vo.setComment(msg.getComment());
         vo.setPostDate(msg.getCreatedOn());
         vo.setRank(msg.getRank());
         vo.setUserEmail(msg.getUserEmail());
         vo.setUserName(msg.getUserName());
-        Merchant merchant = merchantManageService.findByKey(msg.getMerchantKey());
+        Merchant merchant = merchantDAO.findByKey(msg.getMerchantKey());
         vo.setMerchantTradeName(merchant.getTradeName());
         vo.setMerchantUrl(merchant.getUrl());
         return vo;

@@ -16,9 +16,9 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class MerchantFeedbackMsgManageServiceImpl extends BaseRepository<MerchantFeedbackMsg>
-        implements MerchantFeedbackMsgManageService {
-    public MerchantFeedbackMsgManageServiceImpl() {
+public class MerchantFeedbackMsgDAOImpl extends BaseRepository<MerchantFeedbackMsg>
+        implements MerchantFeedbackMsgDAO {
+    public MerchantFeedbackMsgDAOImpl() {
         super(MerchantFeedbackMsg.class);
     }
 

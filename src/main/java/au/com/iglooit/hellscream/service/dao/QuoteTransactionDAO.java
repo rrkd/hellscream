@@ -11,7 +11,7 @@ import java.util.List;
  * Date: 3/09/2014
  * Time: 2:04 PM
  */
-public interface QuoteTransactionManageService extends IEntityService<QuoteTransaction> {
+public interface QuoteTransactionDAO extends IEntityService<QuoteTransaction> {
     void createQuoteTransaction(QuoteTransaction quoteTransaction);
     List<QuoteTransaction> findQuoteTransactionByMerchant(Merchant merchant, Integer limit);
 }

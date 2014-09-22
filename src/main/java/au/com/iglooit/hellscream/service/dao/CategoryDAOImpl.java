@@ -14,8 +14,8 @@ import java.util.List;
  * Time: 5:11 PM
  */
 @Repository
-public class CategoryManageServiceImpl extends BaseRepository<Category> implements CategoryManageService {
-    public CategoryManageServiceImpl() {
+public class CategoryDAOImpl extends BaseRepository<Category> implements CategoryDAO {
+    public CategoryDAOImpl() {
         super(Category.class);
     }
 

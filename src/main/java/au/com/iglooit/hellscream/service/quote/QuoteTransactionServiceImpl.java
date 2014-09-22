@@ -7,9 +7,9 @@ import au.com.iglooit.hellscream.model.entity.QuoteStatus;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.model.entity.QuoteTransactionStatus;
 import au.com.iglooit.hellscream.model.vo.QuoteMsgVO;
-import au.com.iglooit.hellscream.service.dao.QuoteManageService;
-import au.com.iglooit.hellscream.service.dao.QuoteTransactionManageService;
-import au.com.iglooit.hellscream.service.dao.UserManageService;
+import au.com.iglooit.hellscream.service.dao.QuoteDAO;
+import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
+import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.mail.UserContactEmailVO;
 import org.slf4j.Logger;
@@ -30,20 +30,20 @@ import java.util.List;
 public class QuoteTransactionServiceImpl implements QuoteTransactionService {
     private static final Logger LOG = LoggerFactory.getLogger(QuoteTransactionServiceImpl.class);
     @Resource
-    private QuoteTransactionManageService quoteTransactionManageService;
+    private QuoteTransactionDAO quoteTransactionDAO;
     @Resource
-    private QuoteManageService quoteManageService;
+    private QuoteDAO quoteDAO;
     @Resource
-    private UserManageService userManageService;
+    private UserDAO userDAO;
     @Resource
     private EMailService eMailService;
     @Override
     public List<QuoteMsgVO> findLatestMessage(Merchant merchant) {
         List<QuoteMsgVO> voList = new ArrayList<>();
-        List<QuoteTransaction> quoteTransactionList = quoteTransactionManageService.findQuoteTransactionByMerchant(merchant, 10);
+        List<QuoteTransaction> quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 10);
         for(QuoteTransaction quoteTransaction : quoteTransactionList) {
             QuoteMsgVO vo = new QuoteMsgVO();
-            IGUser user = userManageService.findByEmail(quoteTransaction.getQuote().getClientUserEmail());
+            IGUser user = userDAO.findByEmail(quoteTransaction.getQuote().getClientUserEmail());
             if (user == null) {
                 LOG.error("User of quote does not exist.");
                 continue;
@@ -63,12 +63,12 @@ public class QuoteTransactionServiceImpl implements QuoteTransactionService {
         Quote quote = quoteTransaction.getQuote();
         quoteTransaction.getQuote().setStatus(QuoteStatus.Contacting);
         quoteTransaction.setQuoteTransactionStatus(QuoteTransactionStatus.Contacting);
-        quoteManageService.update(quote);
+        quoteDAO.update(quote);
         // send email
         UserContactEmailVO vo = new UserContactEmailVO();
         vo.setQuoteTransaction(quoteTransaction);
         vo.setToAddress(quoteTransaction.getMerchant().getEmail());
-        IGUser user = userManageService.findByEmail(quote.getClientUserEmail());
+        IGUser user = userDAO.findByEmail(quote.getClientUserEmail());
         vo.setUser(user);
         eMailService.sendUserContactEmail(vo);
     }

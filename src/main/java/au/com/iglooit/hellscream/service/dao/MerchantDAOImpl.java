@@ -33,8 +33,8 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class MerchantManageServiceImpl extends BaseRepository<Merchant> implements MerchantManageService {
-    private static final Logger LOG = LoggerFactory.getLogger(MerchantManageServiceImpl.class);
+public class MerchantDAOImpl extends BaseRepository<Merchant> implements MerchantDAO {
+    private static final Logger LOG = LoggerFactory.getLogger(MerchantDAOImpl.class);
     private static final Integer PAGE_COUNT = 10;
     @Resource
     private GeoSearchService geoSearchService;
@@ -42,7 +42,7 @@ public class MerchantManageServiceImpl extends BaseRepository<Merchant> implemen
     private IndexServiceHelp indexServiceHelp;
 
 
-    public MerchantManageServiceImpl() {
+    public MerchantDAOImpl() {
         super(Merchant.class);
     }
 

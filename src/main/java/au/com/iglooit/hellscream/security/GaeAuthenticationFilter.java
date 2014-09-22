@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
-import au.com.iglooit.hellscream.service.dao.UserManageService;
+import au.com.iglooit.hellscream.service.dao.UserDAO;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import org.slf4j.Logger;
@@ -34,7 +34,7 @@ import org.springframework.web.filter.GenericFilterBean;
  */
 public class GaeAuthenticationFilter extends GenericFilterBean {
     @Resource
-    private UserManageService userManageService;
+    private UserDAO userDAO;
     private static final String REGISTRATION_URL = "/register/u";
 
     private final Logger logger = LoggerFactory.getLogger(getClass());

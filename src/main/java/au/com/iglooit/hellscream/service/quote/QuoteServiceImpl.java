@@ -4,7 +4,7 @@ import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.model.entity.QuoteStatus;
 import au.com.iglooit.hellscream.model.vo.QuoteVO;
 import au.com.iglooit.hellscream.properties.WebProperties;
-import au.com.iglooit.hellscream.service.dao.QuoteManageService;
+import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.mail.QuoteEmailVO;
 import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
@@ -31,7 +31,7 @@ public class QuoteServiceImpl implements QuoteService {
     private static final Integer LATEST_QUOTE = 10;
 
     @Resource
-    private QuoteManageService quoteManageService;
+    private QuoteDAO quoteDAO;
     @Resource
     private SuggestMerchantService suggestMerchantService;
     @Resource
@@ -40,7 +40,7 @@ public class QuoteServiceImpl implements QuoteService {
     @Override
     public Map<String, List<Quote>> loadUserQuoteList(String email) {
 
-        List<Quote> quoteList = quoteManageService.findQuoteByEmail(email);
+        List<Quote> quoteList = quoteDAO.findQuoteByEmail(email);
         LOG.info("[nick] find quote list: " + quoteList.size() + " by " + email);
         Map<String, List<Quote>> builder = new HashMap<>();
         builder.put(QuoteStatus.Contacting.name(), new ArrayList<Quote>());
@@ -63,7 +63,7 @@ public class QuoteServiceImpl implements QuoteService {
         List<String> emailList = suggestMerchantService.quoteMerchantEmail(quote);
         // create quote
         quote.setSendEmailList(emailList);
-        quoteManageService.createQuote(quote);
+        quoteDAO.createQuote(quote);
         // send email
         QuoteEmailVO vo = new QuoteEmailVO();
         vo.setQuoteURL(host + quoteUrl + quote.getKeyString());
@@ -73,7 +73,7 @@ public class QuoteServiceImpl implements QuoteService {
 
     @Override
     public List<QuoteVO> latestQuoteList() {
-        List<Quote> quoteList = quoteManageService.findQuoteByDate(DateUtils.getOneMonthAgo(), DateUtils.getNow());
+        List<Quote> quoteList = quoteDAO.findQuoteByDate(DateUtils.getOneMonthAgo(), DateUtils.getNow());
         List<QuoteVO> result = new ArrayList<>();
         int len = quoteList.size() > LATEST_QUOTE ? LATEST_QUOTE : quoteList.size();
         for (int i = 0; i < len; i++) {
