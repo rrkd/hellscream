@@ -45,6 +45,7 @@ public class Merchant extends BaseEntity {
     private String formatAddress;
     private String imageResourceId;
     private String imageFileName;
+    private String canonicalSlugId;
 
     public Merchant() {
     }
@@ -227,6 +228,14 @@ public class Merchant extends BaseEntity {
 
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
+    }
+
+    public String getCanonicalSlugId() {
+        return canonicalSlugId;
+    }
+
+    public void setCanonicalSlugId(String canonicalSlugId) {
+        this.canonicalSlugId = canonicalSlugId;
     }
 
     @Override

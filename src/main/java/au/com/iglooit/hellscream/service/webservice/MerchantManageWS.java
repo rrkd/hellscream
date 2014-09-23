@@ -8,6 +8,7 @@ import au.com.iglooit.hellscream.security.AppRole;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.utils.DateUtils;
+import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -53,6 +54,7 @@ public class MerchantManageWS {
             return new JsonResponse("Error", "Email or Trade name has been registered.");
         }
         rawMerchant.setPostDate(DateUtils.getNow());
+        rawMerchant.setCanonicalSlugId(MerchantIdentifierConvert.convertToURL(rawMerchant.getTradeName()));
         merchantDAO.createMerchant(rawMerchant);
         // create merchant admin user
         IGUser merchantAdmin = new IGUser();
