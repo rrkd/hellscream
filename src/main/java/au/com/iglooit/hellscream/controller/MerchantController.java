@@ -1,8 +1,9 @@
 package au.com.iglooit.hellscream.controller;
 
-import au.com.iglooit.hellscream.model.entity.Merchant;
+import au.com.iglooit.hellscream.model.vo.MerchantVO;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
 import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,8 @@ public class MerchantController {
     @Resource
     private MerchantDAO merchantDAO;
     @Resource
+    private MerchantService merchantService;
+    @Resource
     private SuggestMerchantService suggestMerchantService;
     @Resource
     private CategoryGroupDAO categoryGroupDAO;
@@ -43,11 +46,14 @@ public class MerchantController {
 
     @RequestMapping(value = "/merchant/details/{tradeNameUrl}", method = RequestMethod.GET)
     public ModelAndView merchantDetails(@PathVariable String tradeNameUrl) {
-        String tradeName = MerchantIdentifierConvert.convertToTradeName(tradeNameUrl);
+        MerchantVO merchant = merchantService.findMerchantByMerchantURL(tradeNameUrl);
+        if (merchant == null) {
+            return new ModelAndView("redirect: /error/404");
+        }
         ModelAndView modelAndView = new ModelAndView("merchant/details");
-        Merchant merchant = merchantDAO.findByTradeName(tradeName);
-        modelAndView.addObject("merchant", merchant);
-        modelAndView.addObject("similarMerchants", suggestMerchantService.similarMerchant(merchant.getKey(), 4));
+        modelAndView.addObject("vo", merchant);
+        modelAndView.addObject("similarMerchants", suggestMerchantService.similarMerchant(
+                merchant.getMerchant().getKey(), 4));
         return modelAndView;
     }
 

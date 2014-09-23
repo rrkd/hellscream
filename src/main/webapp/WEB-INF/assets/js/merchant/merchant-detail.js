@@ -1,76 +1,75 @@
-$(window).load(function() {
-
+jQuery(document).ready(function ($) {
+    $('.merchant-rank').raty();
+    $('.merchant-rank').each(function () {
+        $(this).raty('score', $(this).attr("data-rank"));
+    });
     $('.flexslider').flexslider({
 
-        pauseOnHover: false,
+        pauseOnHover:false,
 
-        slideshow: true,                //Boolean: Animate slider automatically
+        slideshow:true, //Boolean: Animate slider automatically
 
-        slideshowSpeed: 4000,           //Integer: Set the speed of the slideshow cycling, in milliseconds
+        slideshowSpeed:4000, //Integer: Set the speed of the slideshow cycling, in milliseconds
 
-        animationSpeed: 1300,
+        animationSpeed:1300,
 
-        animation: "slide",              //String: Select your animation type, "fade" or "slide"
+        animation:"slide", //String: Select your animation type, "fade" or "slide"
 
-        easing: "swing",               //{NEW} String: Determines the easing method used in jQuery transitions. jQuery easing plugin is supported!
+        easing:"swing", //{NEW} String: Determines the easing method used in jQuery transitions. jQuery easing plugin is supported!
 
-        direction: "horizontal",
+        direction:"horizontal",
 
-        controlNav: true,               //Boolean: Create navigation for paging control of each clide? Note: Leave true for manualControls usage
+        controlNav:true, //Boolean: Create navigation for paging control of each clide? Note: Leave true for manualControls usage
 
-        directionNav: true
+        directionNav:true
 
     });
 
-});
-
-$(window).load(function(){
-
     $('#recent-projects').carouFredSel({
 
-        responsive: true,
+        responsive:true,
 
-        width: '100%',
+        width:'100%',
 
-        auto: true,
+        auto:true,
 
-        circular	: true,
+        circular:true,
 
-        infinite	: false,
+        infinite:false,
 
-        prev : {
+        prev:{
 
-            button		: "#car_prev",
+            button:"#car_prev",
 
-            key			: "left",
-
-        },
-
-        next : {
-
-            button		: "#car_next",
-
-            key			: "right",
+            key:"left"
 
         },
 
-        swipe: {
+        next:{
 
-            onMouse: true,
+            button:"#car_next",
 
-            onTouch: true
+            key:"right"
 
         },
 
-        scroll : 1500,
+        swipe:{
 
-        items: {
+            onMouse:true,
 
-            visible: {
+            onTouch:true
 
-                min: 4,
+        },
 
-                max: 4
+        scroll:1500,
+
+        items:{
+
+            visible:{
+
+                min:4,
+
+                max:4
 
             }
 
@@ -78,19 +77,15 @@ $(window).load(function(){
 
     });
 
-});
+    $("img.imgOpa").hover(function () {
 
-$(document).ready(function(){
-
-    $("img.imgOpa").hover(function() {
-
-            $(this).stop().animate({opacity: "0.6"}, 'slow');
+            $(this).stop().animate({opacity:"0.6"}, 'slow');
 
         },
 
-        function() {
+        function () {
 
-            $(this).stop().animate({opacity: "1.0"}, 'slow');
+            $(this).stop().animate({opacity:"1.0"}, 'slow');
 
         });
 

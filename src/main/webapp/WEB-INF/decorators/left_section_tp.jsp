@@ -27,7 +27,7 @@
 
                 <li class="clearfix">
 
-                    <a href="#"><img src="img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
+                    <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
 
                     <a href="#">"The apple- pickers on the ladders raised a hum..."</a><br>
 
@@ -37,7 +37,7 @@
 
                 <li class="clearfix">
 
-                    <a href="#"><img src="img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
+                    <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
 
                     <a href="#">"Alice was beginning to get very tired of sitting..."</a><br>
 
@@ -47,7 +47,7 @@
 
                 <li class="clearfix">
 
-                    <a href="#"><img src="img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
+                    <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
 
                     <a href="#">"Let us begin at the simplest point, what is a comic..."</a><br>
 
@@ -57,7 +57,7 @@
 
                 <li class="clearfix">
 
-                    <a href="#"><img src="img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
+                    <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
 
                     <a href="#">"I assume it as self-evident that those who, at any given..."</a><br>
 
@@ -67,7 +67,7 @@
 
                 <li class="clearfix">
 
-                    <a href="#"><img src="img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
+                    <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
 
                     <a href="#">"The greatest length or breadth of a full grown..."</a><br>
 

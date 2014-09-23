@@ -125,13 +125,13 @@
                 </div>
             </div>
 
-            <div class="control-group">
-                <label class="control-label" for="tradeName">Merchant Logo</label>
-                <div class="controls">
-                    <input name="name" size="30" type="file" id="merchantLogo" class="span12" placeholder="MerchantLogo">
-                    <p class="help-block"></p>
-                </div>
-            </div>
+            <%--<div class="control-group">--%>
+                <%--<label class="control-label" for="tradeName">Merchant Logo</label>--%>
+                <%--<div class="controls">--%>
+                    <%--<input name="name" size="30" type="file" id="merchantLogo" class="span12" placeholder="MerchantLogo">--%>
+                    <%--<p class="help-block"></p>--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
             <div class="control-group">
                 <label class="control-label" for="terms-and-conditions">Legal</label>

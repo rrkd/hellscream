@@ -33,7 +33,7 @@ jQuery(document).ready(function ($) {
                     }
                 });
 
-                event.preventDefault();
+                event.preventDefault()
             },
             filter: function() {
                 return $(this).is(":visible");
@@ -41,16 +41,24 @@ jQuery(document).ready(function ($) {
         }
     );
 
+    $("#merchantRegisterForm").submit(function(e) {
+        e.preventDefault();
+    });
+
     $("a[data-toggle=\"tab\"]").click(function(e) {
         e.preventDefault();
         $(this).tab("show");
     });
 
-    $('input[type=file]').on('change', function(event){
-        $('#uploadImgDlg').modal({
+//    $('input[type=file]').on('change', function(event){
+//        $('#uploadImgDlg').modal({
+//
+//        });
+//        merchantLogo = uploadMerchantLogo(event);
+//    });
 
-        });
-        merchantLogo = generateClientFile(event);
+    $('#createMerchantBtn').click(function(){
+
     });
 });
 
@@ -67,8 +75,6 @@ function generateMerchant(merchantLogo) {
         mobile:$('#mobile').val(),
         contact1:$('#contact1').val(),
         contact2:$('#contact2').val(),
-        imageResourceId:merchantLogo.resourceId,
-        imageFileName:merchantLogo.fileUrl,
         categoryList:[]
     };
     generateCategoryList(merchant.categoryList);
@@ -84,7 +90,7 @@ function generateCategoryList(categoryList) {
     return false;
 }
 
-function generateClientFile(event)
+function uploadMerchantLogo(event)
 {
     var files = event.target.files;
     var file = files[0];

@@ -12,9 +12,9 @@ import java.io.Serializable;
  */
 public class MerchantVO implements Serializable {
     private Merchant merchant;
-    private Integer feedbackCount;
-    private Integer rank;
-    private Integer quoteCount;
+    private Integer feedbackCount = 0;
+    private Integer rank = 3;
+    private Integer quoteCount = 0;
 
     public MerchantVO() {
     }

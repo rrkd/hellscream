@@ -1,12 +1,14 @@
 package au.com.iglooit.hellscream.service.webservice;
 
 import au.com.iglooit.hellscream.exception.AppX;
+import au.com.iglooit.hellscream.exception.MerchantManageException;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.security.AppRole;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
+import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -35,6 +37,8 @@ public class MerchantManageWS {
     private MerchantDAO merchantDAO;
     @Resource
     private UserDAO userDAO;
+    @Resource
+    private MerchantService merchantService;
 
     @RequestMapping(value = "/ws/merchant", method = RequestMethod.GET)
     public
@@ -49,21 +53,12 @@ public class MerchantManageWS {
     public
     @ResponseBody
     JsonResponse addMerchant(@RequestBody Merchant rawMerchant) {
-        // check the email and trade name
-        if (merchantDAO.checkExistMerchant(rawMerchant.getTradeName(), rawMerchant.getEmail())) {
-            return new JsonResponse("Error", "Email or Trade name has been registered.");
+        try {
+            merchantService.createMerchant(rawMerchant);
+        } catch (MerchantManageException e) {
+            return new JsonResponse(JsonResponse.Error, e.getMessage());
         }
-        rawMerchant.setPostDate(DateUtils.getNow());
-        rawMerchant.setCanonicalSlugId(MerchantIdentifierConvert.convertToURL(rawMerchant.getTradeName()));
-        merchantDAO.createMerchant(rawMerchant);
-        // create merchant admin user
-        IGUser merchantAdmin = new IGUser();
-        merchantAdmin.setEmail(rawMerchant.getEmail());
-        merchantAdmin.setNickname(rawMerchant.getContact1());
-        merchantAdmin.setAuthorities(EnumSet.of(AppRole.MERCHANT));
-        merchantAdmin.setMerchantKey(rawMerchant.getKey());
-        userDAO.createUser(merchantAdmin);
-        return new JsonResponse("OK", "");
+        return new JsonResponse(JsonResponse.OK, "");
     }
 
     @RequestMapping(value = "/ws/merchant/{keyString}",

@@ -91,7 +91,7 @@
 
                                 <li><a href="/merchant">Contact Us</a></li>
 
-                                <li><a href="/merchant">List Merchant</a></li>
+                                <li><a href="/merchant?p=1">List Merchant</a></li>
 
                                 <li><a href="/search">Search</a></li>
 

@@ -20,6 +20,7 @@
     <decorator name="index" page="index_tp.jsp">
         <pattern>/index</pattern>
         <pattern>/home</pattern>
+        <pattern>/error*</pattern>
     </decorator>
     <!-- quote -->
     <decorator name="quote" page="section_tp_2.jsp">

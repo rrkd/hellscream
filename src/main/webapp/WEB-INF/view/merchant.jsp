@@ -1,5 +1,10 @@
 <%@include file="globe.jsp" %>
-<html>
+<head>
+    <meta name="description" content="merchant list">
+    <title>Merchant List</title>
+    <link href="/assets/css/jquery.raty.css" rel="stylesheet">
+</head>
+<body>
 <div class="page-header">
 
     <h1>Merchant List</h1>
@@ -29,7 +34,7 @@
                 </c:choose>
                 <p>
                 <h4>
-                    <a href="merchant/details/${vo.merchant.url}">${vo.merchant.tradeName}</a>
+                    <a href="merchant/details/${vo.merchant.canonicalSlugId}">${vo.merchant.tradeName}</a>
                 </h4>
                 <a class="btn btn-small btn-inverse" href="#">120</a>
                 <a class="btn btn-small btn-success" href="#">5</a>
@@ -38,7 +43,7 @@
                     <a class="btn btn-small" href="#">${category}</a>
                 </c:forEach>
                 </p>
-
+                    <div class="merchant-rank" data-rank="${vo.rank}"></div>
                 <p>
                         ${vo.merchant.description}
                 </p>
@@ -182,3 +187,7 @@
     </div>
 
 </div>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.raty.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/merchant.js">
+</script>
+</body>

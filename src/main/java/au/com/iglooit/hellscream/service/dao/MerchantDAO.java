@@ -26,4 +26,6 @@ public interface MerchantDAO extends IEntityService<Merchant> {
     Boolean checkExistMerchant(String tradeName, String email);
 
     MerchantSearchResult findMerchants(Integer pageNumber);
+
+    Merchant findByURL(String url);
 }

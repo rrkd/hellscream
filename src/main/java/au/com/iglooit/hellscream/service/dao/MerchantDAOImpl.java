@@ -137,11 +137,13 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
 
     @Override
     public Boolean checkExistMerchant(String tradeName, String email) {
-        Query q = getEntityManager().createQuery("select c from Merchant c " +
-                "where c.tradeName=:tradeName or c.email=:email ")
-                .setParameter("tradeName", tradeName)
+        Query q1 = getEntityManager().createQuery("select c from Merchant c " +
+                "where c.tradeName=:tradeName")
+                .setParameter("tradeName", tradeName);
+        Query q2 = getEntityManager().createQuery("select c from Merchant c " +
+                "where c.email=:email ")
                 .setParameter("email", email);
-        return q.getResultList().size() > 0 ? Boolean.TRUE : Boolean.FALSE;
+        return q1.getResultList().size() > 0 || q2.getResultList().size() > 0 ? Boolean.TRUE : Boolean.FALSE;
     }
 
     @Override
@@ -167,5 +169,14 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
         result.setPageNum(startPage);
         result.setTotal(countQuery.getResultList().size() / PAGE_COUNT + 1);
         return result;
+    }
+
+    @Override
+    public Merchant findByURL(String url) {
+        Query q = getEntityManager().createQuery("select c from Merchant c " +
+                "where c.canonicalSlugId=:canonicalSlugId")
+                .setParameter("canonicalSlugId", url);
+        List<Merchant> resultList = q.getResultList();
+        return resultList.size() > 0 ? resultList.get(0) : null;
     }
 }
