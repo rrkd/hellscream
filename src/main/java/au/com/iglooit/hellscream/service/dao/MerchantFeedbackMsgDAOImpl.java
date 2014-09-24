@@ -2,6 +2,7 @@ package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.MerchantFeedbackMsg;
 import au.com.iglooit.hellscream.repository.BaseRepository;
+import com.google.appengine.api.datastore.Key;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,5 +33,16 @@ public class MerchantFeedbackMsgDAOImpl extends BaseRepository<MerchantFeedbackM
         Query q = getEntityManager().createQuery("select c from MerchantFeedbackMsg c order by c.createdOn desc ");
         List<MerchantFeedbackMsg> msgList = q.getResultList();
         return msgList.size() > 0 ? msgList.get(0) : null;
+    }
+
+    @Override
+    public List<MerchantFeedbackMsg> findFeedbackMsg(Key merchantKey, Integer size) {
+        Query q = getEntityManager().createQuery("select c from MerchantFeedbackMsg c " +
+                "where c.merchantKey=:merchantKey order by c.createdOn desc ")
+                .setParameter("merchantKey", merchantKey);
+        if (size != null) {
+            q.setMaxResults(size);
+        }
+        return q.getResultList();
     }
 }

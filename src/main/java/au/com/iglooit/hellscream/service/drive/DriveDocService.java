@@ -70,8 +70,6 @@ public class DriveDocService {
                 result.setStatus("Error");
                 result.setErrorMessage("Can't save merchant logo.");
             }
-            HttpEntity re = response.getEntity();
-            EntityUtils.consume(re);
         } catch (Exception e) {
             LOG.error("Can't save file", e);
         } finally {

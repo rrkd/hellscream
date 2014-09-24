@@ -3,9 +3,9 @@ package au.com.iglooit.hellscream.controller;
 import au.com.iglooit.hellscream.model.vo.MerchantVO;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.service.feedback.FeedbackService;
 import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
-import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +31,8 @@ public class MerchantController {
     private SuggestMerchantService suggestMerchantService;
     @Resource
     private CategoryGroupDAO categoryGroupDAO;
+    @Resource
+    private FeedbackService feedbackService;
 
     @RequestMapping(value = "/merchant", method = RequestMethod.GET)
     public ModelAndView merchantPage(@RequestParam("p") Integer pageNumber) {
@@ -53,7 +55,9 @@ public class MerchantController {
         ModelAndView modelAndView = new ModelAndView("merchant/details");
         modelAndView.addObject("vo", merchant);
         modelAndView.addObject("similarMerchants", suggestMerchantService.similarMerchant(
-                merchant.getMerchant().getKey(), 4));
+                merchant.getMerchant().getKey(), 3));
+        modelAndView.addObject("feedBackList",
+                feedbackService.findFeedbackForMerchant(merchant.getMerchant().getKey(), 5));
         return modelAndView;
     }
 

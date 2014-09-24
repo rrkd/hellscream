@@ -55,24 +55,24 @@
 
         </ul>
         <br/>
-        <div class="row">
-            <div class="span4" align="right">Email</div>
+        <div class="row-fluid">
+            <div class="span4" >Email</div>
             <div class="span8">${vo.merchant.email}</div>
         </div>
-        <div class="row">
-            <div class="span4" align="right">Phone</div>
+        <div class="row-fluid">
+            <div class="span4" >Phone</div>
             <div class="span8">${vo.merchant.phone}</div>
         </div>
-        <div class="row">
-            <div class="span4" align="right">Address</div>
+        <div class="row-fluid">
+            <div class="span4" >Address</div>
             <div class="span8">${vo.merchant.address1}</div>
         </div>
-        <div class="row">
-            <div class="span4" align="right"></div>
+        <div class="row-fluid">
+            <div class="span4" ></div>
             <div class="span8">${vo.merchant.address2}</div>
         </div>
-        <div class="row">
-            <div class="span4" align="right"></div>
+        <div class="row-fluid">
+            <div class="span4" ></div>
             <div class="span8">${vo.merchant.address3}</div>
         </div>
         <br/>
@@ -131,59 +131,26 @@
 
         <div id="myTabContent" class="tab-content multi-sidebar">
 
-            <div class="tab-pane fade" id="recentPost">
+            <div class="tab-pane fade active in" id="recentPost">
 
                 <ul class="sidebar-latest">
+                    <c:forEach items="${feedBackList}" var="feedback">
 
                     <li class="clearfix">
 
                         <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
 
-                        <a href="#">"The apple- pickers on the ladders raised a hum..."</a><br>
-
-                        <small><a href="#"><span class="entry-date">July 25, 2013</span></a></small>
-
-                    </li>
-
-                    <li class="clearfix">
-
-                        <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
-
-                        <a href="#">"Alice was beginning to get very tired of sitting..."</a><br>
-
-                        <small><a href="#"><span class="entry-date">June 14, 2013</span></a></small>
+                        <a href="#">${feedback.userName}</a><br>
+                        <div class="merchant-rank" data-rank="${feedback.rank}"></div>
+                        <a href="#">"${feedback.comment}"</a><br>
+                        <small><a href="#"><span class="entry-date">${igooit:formatDate(feedback.postDate)}</span></a></small>
 
                     </li>
+                    </c:forEach>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" onclick="location.href = '/fd/m/${vo.merchant.keyString}';"> I want to say <i class="icon-comment icon-white"></i></button><br />
 
-                    <li class="clearfix">
-
-                        <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
-
-                        <a href="#">"Let us begin at the simplest point, what is a comic..."</a><br>
-
-                        <small><a href="#"><span class="entry-date">May 7, 2013</span></a></small>
-
-                    </li>
-
-                    <li class="clearfix">
-
-                        <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
-
-                        <a href="#">"I assume it as self-evident that those who, at any given..."</a><br>
-
-                        <small><a href="#"><span class="entry-date">April 3, 2013</span></a></small>
-
-                    </li>
-
-                    <li class="clearfix">
-
-                        <a href="#"><img src="/assets/img/demo/avatar.jpg" class="attachment-thumbnail" alt=""></a>
-
-                        <a href="#">"The greatest length or breadth of a full grown..."</a><br>
-
-                        <small><a href="#"><span class="entry-date">February 16, 2013</span></a></small>
-
-                    </li>
+                    </div>
 
                 </ul>
 

@@ -1,6 +1,9 @@
 package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.MerchantFeedbackMsg;
+import com.google.appengine.api.datastore.Key;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,4 +14,5 @@ import au.com.iglooit.hellscream.model.entity.MerchantFeedbackMsg;
 public interface MerchantFeedbackMsgDAO extends IEntityService<MerchantFeedbackMsg> {
     void createMerchantFeedbackMsg(MerchantFeedbackMsg msg);
     MerchantFeedbackMsg getLatestMsg();
+    List<MerchantFeedbackMsg> findFeedbackMsg(Key merchantKey, Integer size);
 }
