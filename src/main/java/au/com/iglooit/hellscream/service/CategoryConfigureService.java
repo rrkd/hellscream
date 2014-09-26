@@ -37,7 +37,7 @@ public class CategoryConfigureService {
     public void init() throws Exception {
         LOG.info("init category");
         WebProperties webProperties = WebProperties.getInstance();
-        Boolean initData = Boolean.valueOf(webProperties.get("init.data"));
+        Boolean initData = Boolean.valueOf(webProperties.get("init.category.data"));
         if (initData) {
             // delete category and categorygroup
             LOG.info("init model - all data will be removed.");

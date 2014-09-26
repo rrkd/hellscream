@@ -6,8 +6,6 @@ import com.google.appengine.api.search.Document;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Set;
@@ -34,13 +32,13 @@ public class IGUser extends BaseEntity {
     @Basic
     private Key merchantKey;
 
-    public IGUser () {
+    public IGUser() {
 
     }
 
     /**
      * Pre-registration constructor.
-     *
+     * <p/>
      * Assigns the user the "NEW_USER" role only.
      */
     public IGUser(String userId, String nickname, String email) {
@@ -64,7 +62,7 @@ public class IGUser extends BaseEntity {
         this.authorities = authorities;
         this.forename = forename;
         this.surname = surname;
-        this.enabled= enabled;
+        this.enabled = enabled;
     }
 
     public String getUserId() {
@@ -157,6 +155,18 @@ public class IGUser extends BaseEntity {
 
     public String getAddress3() {
         return address3;
+    }
+
+    public Boolean getIsUser() {
+        return authorities.contains(AppRole.USER);
+    }
+
+    public Boolean getIsMerchant() {
+        return authorities.contains(AppRole.MERCHANT);
+    }
+
+    public Boolean getIsAdmin() {
+        return authorities.contains(AppRole.ADMIN);
     }
 
     public void setAddress3(String address3) {

@@ -25,58 +25,6 @@ jQuery(document).ready(function ($) {
 
     });
 
-    $('#recent-projects').carouFredSel({
-
-        responsive:true,
-
-        width:'100%',
-
-        auto:true,
-
-        circular:true,
-
-        infinite:false,
-
-        prev:{
-
-            button:"#car_prev",
-
-            key:"left"
-
-        },
-
-        next:{
-
-            button:"#car_next",
-
-            key:"right"
-
-        },
-
-        swipe:{
-
-            onMouse:true,
-
-            onTouch:true
-
-        },
-
-        scroll:1500,
-
-        items:{
-
-            visible:{
-
-                min:4,
-
-                max:4
-
-            }
-
-        }
-
-    });
-
     $("img.imgOpa").hover(function () {
 
             $(this).stop().animate({opacity:"0.6"}, 'slow');

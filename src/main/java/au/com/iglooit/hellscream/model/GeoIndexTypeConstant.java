@@ -10,4 +10,5 @@ public final class GeoIndexTypeConstant {
     private GeoIndexTypeConstant() {
     }
     public static final String MERCHANT_TYPE = "Merchant";
+    public static final String SUBURB_TYPE = "Suburb";
 }

@@ -21,9 +21,7 @@
 
         <p>
 
-            <b>Year</b> : 2013 | <b>Client</b> : ${vo.merchant.contact1} | <b>Category</b> : Shop Online<br/>
-
-            <b>Contribution</b> : Script & SEO | <b>Completion Time</b> : 35 Days
+            <b>Register Date</b> : ${igooit:formatDate(vo.merchant.postDate)}
 
         </p>
 
@@ -32,6 +30,11 @@
         <div class="merchant-rank" data-rank="${vo.rank}"></div>
 
         </p>
+        <p>
+            <c:forEach items="${vo.merchant.categoryList}" var="category" begin="0">
+                <a class="btn btn-small" href="#">${category}</a>
+            </c:forEach>
+        </p>
 
         <p>
 
@@ -39,21 +42,6 @@
 
         </p>
 
-        <ul class="icons-ul">
-
-            <li><i class="icon-li icon-ok"></i>Nesciunt tofu stumptown aliqua</li>
-
-            <li><i class="icon-li icon-ok"></i>Retro synth master</li>
-
-            <li><i class="icon-li icon-ok"></i>Mustache cliche tempor</li>
-
-            <li><i class="icon-li icon-ok"></i>Williamsburg carles vegan</li>
-
-            <li><i class="icon-li icon-ok"></i>Reprehenderit butcher retro</li>
-
-            <li><i class="icon-li icon-ok"></i>Butcher retro keffiyeh</li>
-
-        </ul>
         <br/>
         <div class="row-fluid">
             <div class="span4" >Email</div>
@@ -74,6 +62,10 @@
         <div class="row-fluid">
             <div class="span4" ></div>
             <div class="span8">${vo.merchant.address3}</div>
+        </div>
+        <div class="row-fluid">
+            <div class="span4" >Contact</div>
+            <div class="span8">${vo.merchant.contact1}</div>
         </div>
         <br/>
         <p class="clearfix">
@@ -259,4 +251,63 @@
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery.raty.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/merchant/merchant-detail.js"></script>
+<script type="text/javascript">
+
+    $(window).load(function(){
+
+        $('#recent-projects').carouFredSel({
+
+            responsive: true,
+
+            width: '100%',
+
+            auto: true,
+
+            circular	: true,
+
+            infinite	: false,
+
+            prev : {
+
+                button		: "#car_prev",
+
+                key			: "left",
+
+            },
+
+            next : {
+
+                button		: "#car_next",
+
+                key			: "right",
+
+            },
+
+            swipe: {
+
+                onMouse: true,
+
+                onTouch: true
+
+            },
+
+            scroll : 1500,
+
+            items: {
+
+                visible: {
+
+                    min: 4,
+
+                    max: 4
+
+                }
+
+            }
+
+        });
+
+    });
+
+</script>
 </body>

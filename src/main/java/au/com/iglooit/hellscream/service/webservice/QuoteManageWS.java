@@ -11,10 +11,13 @@ import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
+import au.com.iglooit.hellscream.service.queue.QuoteQueue;
 import au.com.iglooit.hellscream.service.quote.QuoteHelper;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+
+import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
 /**
  * Created with IntelliJ IDEA.
@@ -55,6 +60,8 @@ public class QuoteManageWS {
     JsonResponse postQuote(@RequestBody Quote quote) {
         // update post date
         quote.setPostDate(DateUtils.getNow());
+        // reparse the suburb key
+        quote.setSuburbKey(KeyFactory.stringToKey(quote.getSuburbKey().getKind()));
         quote.setStatus(QuoteStatus.Quoting);
         quote.setCreatedOn(DateUtils.getNow());
         quoteService.createQuote(quote);

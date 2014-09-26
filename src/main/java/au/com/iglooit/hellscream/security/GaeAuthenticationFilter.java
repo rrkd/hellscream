@@ -1,14 +1,5 @@
 package au.com.iglooit.hellscream.security;
 
-import java.io.IOException;
-import javax.annotation.Resource;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
 import com.google.appengine.api.users.User;
@@ -28,6 +19,15 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 import org.springframework.util.Assert;
 import org.springframework.web.filter.GenericFilterBean;
 
+import javax.annotation.Resource;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 
 /**
  * @author Luke Taylor
@@ -43,13 +43,14 @@ public class GaeAuthenticationFilter extends GenericFilterBean {
     private AuthenticationManager authenticationManager;
     private AuthenticationFailureHandler failureHandler = new SimpleUrlAuthenticationFailureHandler();
 
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain) throws IOException, ServletException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User googleUser = UserServiceFactory.getUserService().getCurrentUser();
-        if (authentication != null && !loggedInUserMatchesGaeUser(authentication, googleUser)) {
+        if (!loggedInUserMatchesGaeUser(authentication, googleUser)) {
             SecurityContextHolder.clearContext();
             authentication = null;
-            ((HttpServletRequest)request).getSession().invalidate();
+            ((HttpServletRequest) request).getSession().invalidate();
         }
 
         if (authentication == null) {
@@ -72,30 +73,43 @@ public class GaeAuthenticationFilter extends GenericFilterBean {
                     }
 
                 } catch (AuthenticationException e) {
-                    failureHandler.onAuthenticationFailure((HttpServletRequest)request, (HttpServletResponse)response, e);
+                    failureHandler.onAuthenticationFailure((HttpServletRequest) request, (HttpServletResponse) response,
+                            e);
 
                     return;
                 }
             }
+        }
+        if (authentication != null && authentication.getAuthorities().contains(AppRole.NEW_USER)) {
+            SecurityContextHolder.clearContext();
+            ((HttpServletRequest) request).getSession().invalidate();
+            logger.debug("New user authenticated. Redirecting to registration page");
+            ((HttpServletResponse) response).sendRedirect(REGISTRATION_URL);
+
+            return;
         }
 
         chain.doFilter(request, response);
     }
 
     private boolean loggedInUserMatchesGaeUser(Authentication authentication, User googleUser) {
-        assert authentication != null;
+        if (authentication == null) {
+            return false;
+        }
 
         if (googleUser == null) {
             // IGUser has logged out of GAE but is still logged into application
             return false;
         }
 
-        IGUser gaeUser = (IGUser)authentication.getPrincipal();
+        IGUser gaeUser = (IGUser) authentication.getPrincipal();
         logger.debug("gae user " + gaeUser.getEmail());
         if (!gaeUser.getEmail().equals(googleUser.getEmail())) {
             return false;
         }
-
+        if (userDAO.findByEmail(googleUser.getEmail()) == null) {
+            return false;
+        }
         return true;
 
     }

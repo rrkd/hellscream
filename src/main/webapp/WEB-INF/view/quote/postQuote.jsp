@@ -16,35 +16,86 @@
 
             <div>
 
-                Basic Information
+                Quote Details
 
             </div>
 
         </div>
+        <div class="alert alert-error" id="merchantRsgErrorBox" style="display: none;">
 
-        <form action="#">
+            <button type="button" class="close" data-dismiss="alert">x</button>
 
-            <input name="name" size="30" type="text" id="email" class="span12" placeholder="Email">
-            <input name="name" size="30" type="text" id="title" class="span12" placeholder="Title">
-            <select multiple="multiple" name="name" size="30" id="category_select"
-                    class="populate placeholder select2-offscreen span12" style="margin-bottom: 10px; margin-left: 0;">
-                <c:forEach items="${categoryGroupList}" var="categoryGroup">
-                    <optgroup label="${categoryGroup.name}">
-                        <c:forEach items="${categoryGroup.categoryList}" var="category">
-                            <option value="${category.name}">${category.name}</option>
+            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+
+        </div>
+
+        <form class="form-horizontal" id="postQuoteForm" novalidate>
+            <div class="control-group">
+                <label class="control-label" for="email">Email</label>
+                <div class="controls">
+                    <sec:authorize access="isAuthenticated()">
+                        <sec:authentication property='principal.email' var="userEmail"/>
+                        <input name="email" size="30" type="text" id="email" value="${userEmail}" class="span12" placeholder="Email" required>
+                    </sec:authorize>
+                    <sec:authorize access="isAnonymous()">
+                        <input name="email" size="30" type="text" id="email" class="span12" placeholder="Email" required>
+                    </sec:authorize>
+
+                    <p class="help-block">Your email address</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="quoteTitle">Title</label>
+                <div class="controls">
+                    <input name="quoteTitle" size="30" type="text" id="quoteTitle" class="span12" placeholder="Title" required>
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="category_select">Category</label>
+                <div class="controls">
+                    <select multiple="multiple" name="category" size="30" id="category_select"
+                            class="populate placeholder select2-offscreen span12" style="margin-bottom: 10px; margin-left: 0;">
+                        <c:forEach items="${categoryGroupList}" var="categoryGroup">
+                            <optgroup label="${categoryGroup.name}">
+                                <c:forEach items="${categoryGroup.categoryList}" var="category">
+                                    <option value="${category.name}">${category.name}</option>
+                                </c:forEach>
+                            </optgroup>
                         </c:forEach>
-                    </optgroup>
-                </c:forEach>
-            </select>
-            <textarea id="description" name="message" class="span12" placeholder="Description" rows="8"></textarea>
+                    </select>
+                    <p class="help-block"></p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="suburb">Suburb</label>
+                <div class="controls">
+                    <input type='hidden' name="suburb" size="30" id="suburb"
+                            class="populate placeholder select2-offscreen span12" style="margin-bottom: 10px; margin-left: 0;">
+
+                    </input>
+                    <p class="help-block"></p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="description">Description</label>
+                <div class="controls">
+                    <textarea id="description" name="description" class="span12" placeholder="Description" rows="8"></textarea>
+                    <p class="help-block">Descripte your requirement  </p>
+                </div>
+            </div>
             <br/>
-
-
-            <input value="Post" id="create_merchant" class="btn btn-primary top10">
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary"> Post Quote <i class="icon-ok icon-white"></i></button><br />
+            </div>
 
         </form>
 
     </div>
 
 </div>
-<script type="text/javascript" src="/assets/js/postQuote.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jqBootstrapValidation.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/prettify.js"></script>
+<script type="text/javascript" src="/assets/js/quote/postQuote.js"></script>

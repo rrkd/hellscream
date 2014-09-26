@@ -31,6 +31,8 @@ public class Quote extends BaseEntity {
     private List<String> returnEmailList;
     private Date postDate;
     private Date updateDate;
+    @Basic
+    private Key suburbKey;
     @Enumerated(EnumType.STRING)
     private QuoteStatus status = QuoteStatus.Quoting;
     @Basic
@@ -146,5 +148,13 @@ public class Quote extends BaseEntity {
     @Override
     public Document toGeoDocument() {
         throw new UnsupportedOperationException("Quote can't support Geo search");
+    }
+
+    public Key getSuburbKey() {
+        return suburbKey;
+    }
+
+    public void setSuburbKey(Key suburbKey) {
+        this.suburbKey = suburbKey;
     }
 }

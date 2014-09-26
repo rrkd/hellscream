@@ -11,6 +11,7 @@ import au.com.iglooit.hellscream.service.quote.QuoteService;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +44,15 @@ public class QuoteController {
         ModelAndView modelAndView = new ModelAndView("quote/postQuote");
         modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
         modelAndView.addObject("quoteList", quoteService.latestQuoteList());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication instanceof GaeUserAuthentication) {
+            GaeUserAuthentication auth = (GaeUserAuthentication) authentication;
+            if (auth.getPrincipal() != null) {
+                if (auth.getPrincipal() instanceof IGUser) {
+                    modelAndView.addObject("user", (IGUser) auth.getPrincipal());
+                }
+            }
+        }
         return modelAndView;
     }
 
@@ -58,8 +68,8 @@ public class QuoteController {
     @RequestMapping(value = "/quote/t/{keyString}", method = RequestMethod.GET)
     public ModelAndView addQuoteTransaction(@PathVariable String keyString) {
         LOG.debug("create a new quote transaction for Quote: " + keyString);
-        GaeUserAuthentication auth = (GaeUserAuthentication)SecurityContextHolder.getContext().getAuthentication();
-        IGUser user = (IGUser)auth.getPrincipal();
+        GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
+        IGUser user = (IGUser) auth.getPrincipal();
         Merchant merchant = merchantDAO.findByKey(user.getMerchantKey());
         Quote quote = quoteDAO.loadQuote(KeyFactory.stringToKey(keyString));
         ModelAndView modelAndView = new ModelAndView("quote/applyQuote");

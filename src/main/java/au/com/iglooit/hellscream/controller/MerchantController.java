@@ -55,7 +55,7 @@ public class MerchantController {
         ModelAndView modelAndView = new ModelAndView("merchant/details");
         modelAndView.addObject("vo", merchant);
         modelAndView.addObject("similarMerchants", suggestMerchantService.similarMerchant(
-                merchant.getMerchant().getKey(), 3));
+                merchant.getMerchant().getKey(), 4));
         modelAndView.addObject("feedBackList",
                 feedbackService.findFeedbackForMerchant(merchant.getMerchant().getKey(), 5));
         return modelAndView;

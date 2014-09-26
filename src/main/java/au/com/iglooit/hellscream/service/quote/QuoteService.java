@@ -1,8 +1,6 @@
 package au.com.iglooit.hellscream.service.quote;
 
-import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
-import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.model.vo.QuoteVO;
 
 import java.util.List;
@@ -16,6 +14,8 @@ import java.util.Map;
  */
 public interface QuoteService {
     Map<String, List<Quote>> loadUserQuoteList(String email);
+
     void createQuote(Quote quote);
+
     List<QuoteVO> latestQuoteList();
 }

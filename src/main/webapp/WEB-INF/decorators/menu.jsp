@@ -60,9 +60,22 @@
 
                         <li class="divider-vertical"></li>
 
-                        <li><a href="/quote/c">Post Quotes</a></li>
+                        <sec:authorize access="isAuthenticated()">
+                            <sec:authentication property='principal.isUser' var="isUser"/>
+                            <c:if test="${isUser}">
+                                <li><a href="/quote/c">Post Quotes</a></li>
 
-                        <li class="divider-vertical"></li>
+                                <li class="divider-vertical"></li>
+                            </c:if>
+                        </sec:authorize>
+                        <sec:authorize access="isAnonymous()">
+                            <li><a href="/quote/c">Post Quotes</a></li>
+
+                            <li class="divider-vertical"></li>
+                        </sec:authorize>
+
+
+
 
                         <li><a href="/merchant/create">List Your Business</a></li>
 

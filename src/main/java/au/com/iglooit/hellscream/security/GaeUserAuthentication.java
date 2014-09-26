@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 /**
  * Authentication object representing a fully-authenticated user.
  *
- * @author Luke Taylor
+ * @author nicholas
  */
 public class GaeUserAuthentication implements Authentication {
     private final IGUser principal;

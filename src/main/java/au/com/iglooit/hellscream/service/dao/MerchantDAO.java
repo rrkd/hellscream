@@ -15,6 +15,8 @@ import java.util.List;
 public interface MerchantDAO extends IEntityService<Merchant> {
     List<Merchant> findAllMerchants();
 
+    List<Merchant> findMerchants(int pos, int size);
+
     Merchant findByTradeName(String tradeName);
 
     void createMerchant(Merchant merchant);
@@ -22,6 +24,8 @@ public interface MerchantDAO extends IEntityService<Merchant> {
     void modifyMerchant(Merchant merchant);
 
     List<Merchant> findByCategoryName(String categoryName);
+
+    List<Merchant> findByCategoryName(List<String> categoryName);
 
     Boolean checkExistMerchant(String tradeName, String email);
 

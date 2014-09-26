@@ -54,6 +54,14 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     }
 
     @Override
+    public List<Merchant> findMerchants(int pos, int size) {
+        Query q = getEntityManager().createQuery("select c from Merchant c ")
+                .setFirstResult(pos)
+                .setMaxResults(size);
+        return q.getResultList();
+    }
+
+    @Override
     public Merchant findByTradeName(String tradeName) {
         return findAll().get(0);
     }
@@ -132,6 +140,26 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
         LOG.info("query merchant by " + categoryName);
         Query q = getEntityManager().createQuery("select c from Merchant c where c.categoryList=:categoryName ")
                 .setParameter("categoryName", categoryName);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Merchant> findByCategoryName(List<String> categoryName) {
+        LOG.info("query merchant by " + categoryName);
+        StringBuilder queryBuilder = new StringBuilder("select c from Merchant c where ");
+        if(categoryName.size() == 1) {
+            queryBuilder.append(" c.categoryList=:categoryName0 ");
+        } else {
+            queryBuilder.append(" c.categoryList=:categoryName0 ");
+            for (int i = 1; i < categoryName.size(); i++) {
+                queryBuilder.append(" or c.categoryList=:categoryName" + i);
+            }
+        }
+        Query q = getEntityManager().createQuery(queryBuilder.toString());
+        for (int i = 0; i < categoryName.size(); i++) {
+            q.setParameter("categoryName" + i, categoryName.get(i));
+        }
+
         return q.getResultList();
     }
 

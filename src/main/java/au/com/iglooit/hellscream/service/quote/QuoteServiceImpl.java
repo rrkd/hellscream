@@ -7,8 +7,11 @@ import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.mail.QuoteEmailVO;
+import au.com.iglooit.hellscream.service.queue.QuoteQueue;
 import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
 import au.com.iglooit.hellscream.utils.DateUtils;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -18,6 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
 /**
  * Created with IntelliJ IDEA.
@@ -58,17 +63,10 @@ public class QuoteServiceImpl implements QuoteService {
         WebProperties webProperties = WebProperties.getInstance();
         String host = webProperties.get("host");
         String quoteUrl = webProperties.get("quote.add.transaction.url");
-
-        // get merchant email list
-        List<String> emailList = suggestMerchantService.quoteMerchantEmail(quote);
-        // create quote
-        quote.setSendEmailList(emailList);
         quoteDAO.createQuote(quote);
-        // send email
-        QuoteEmailVO vo = new QuoteEmailVO();
-        vo.setQuoteURL(host + quoteUrl + quote.getKeyString());
-        vo.setToAddressList(emailList);
-        eMailService.sendQuoteEmail(vo);
+        // put into the queue
+        Queue queue = QueueFactory.getDefaultQueue();
+        queue.add(withUrl(QuoteQueue.QUOTE_QUEUE_URL).param("keyString", quote.getKeyString()));
     }
 
     @Override

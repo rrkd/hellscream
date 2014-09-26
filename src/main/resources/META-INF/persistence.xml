@@ -13,6 +13,7 @@
         <class>au.com.iglooit.hellscream.model.entity.QuoteTransaction</class>
         <class>au.com.iglooit.hellscream.model.entity.QuoteFeedbackMsg</class>
         <class>au.com.iglooit.hellscream.model.entity.MerchantFeedbackMsg</class>
+        <class>au.com.iglooit.hellscream.model.entity.Suburb</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>

@@ -22,15 +22,18 @@ public class IndexServiceHelp {
     private static final Logger LOG = LoggerFactory.getLogger(IndexServiceHelp.class);
 
     public static final String MERCHANT_INDEX_NAME = "merchant_index";
+    public static final String SUBURB_INDEX_NAME = "suburb_index";
     public static final String GEO_INDEX_NAME = "geo_index";
     private Index merchantIndex;
     private Index geoMerchantIndex;
+    private Index suburbIndex;
 
     @PostConstruct
     public void init() throws Exception {
         LOG.info("init index");
         merchantIndex = initMerchantIndex();
         geoMerchantIndex = initMerchantGeoIndex();
+        suburbIndex = initSuburbIndex();
     }
 
     private Index initMerchantIndex() {
@@ -47,6 +50,23 @@ public class IndexServiceHelp {
         // create a new index;
         LOG.info("create new index " + MERCHANT_INDEX_NAME);
         IndexSpec indexSpec = IndexSpec.newBuilder().setName(MERCHANT_INDEX_NAME).build();
+        return SearchServiceFactory.getSearchService().getIndex(indexSpec);
+    }
+
+    private Index initSuburbIndex() {
+        GetResponse<Index> response = SearchServiceFactory.getSearchService().getIndexes(
+                GetIndexesRequest.newBuilder().setSchemaFetched(true).build());
+        if (response != null) {
+            // List out elements of Schema
+            for (Index index : response) {
+                if (index.getName().equals(SUBURB_INDEX_NAME)) {
+                    return index;
+                }
+            }
+        }
+        // create a new index;
+        LOG.info("create new index " + SUBURB_INDEX_NAME);
+        IndexSpec indexSpec = IndexSpec.newBuilder().setName(SUBURB_INDEX_NAME).build();
         return SearchServiceFactory.getSearchService().getIndex(indexSpec);
     }
 
@@ -73,5 +93,9 @@ public class IndexServiceHelp {
 
     public Index getGeoMerchantIndex() {
         return geoMerchantIndex;
+    }
+
+    public Index getSuburbIndex() {
+        return suburbIndex;
     }
 }

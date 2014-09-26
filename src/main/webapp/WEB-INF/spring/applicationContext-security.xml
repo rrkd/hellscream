@@ -14,12 +14,11 @@
     <http pattern="/_ah/**" security="none" />
     <http pattern="loggedout" security="none" />
     <http pattern="logout" security="none" />
+    <http pattern="/register/**" security="none" />
 
     <http use-expressions="true" entry-point-ref="gaeEntryPoint">
         <intercept-url pattern="/" access="permitAll" />
         <intercept-url pattern="/home" access="permitAll" />
-        <intercept-url pattern="/logout" access="permitAll" />
-        <intercept-url pattern="/register/**" access="permitAll" />
         <intercept-url pattern="/merchant" access="permitAll" />
         <intercept-url pattern="/quote" access="permitAll" />
         <intercept-url pattern="/search" access="permitAll" />
