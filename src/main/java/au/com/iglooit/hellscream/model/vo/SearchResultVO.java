@@ -12,21 +12,21 @@ import java.util.List;
  * Date: 22/09/2014
  * Time: 8:07 PM
  */
-public class MerchantSearchResult implements Serializable {
-    private List<MerchantVO> merchantList = new ArrayList<>();
+public class SearchResultVO<T> implements Serializable {
+    private List<T> voList = new ArrayList<>();
     private Integer total;
     private Integer pageNum;
 
-    public MerchantSearchResult() {
+    public SearchResultVO() {
 
     }
 
-    public List<MerchantVO> getMerchantList() {
-        return merchantList;
+    public List<T> getVoList() {
+        return voList;
     }
 
-    public void setMerchantList(List<MerchantVO> merchantList) {
-        this.merchantList = merchantList;
+    public void setVoList(List<T> voList) {
+        this.voList = voList;
     }
 
     public Integer getTotal() {

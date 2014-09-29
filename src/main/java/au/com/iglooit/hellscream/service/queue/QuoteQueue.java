@@ -1,5 +1,6 @@
 package au.com.iglooit.hellscream.service.queue;
 
+import au.com.iglooit.hellscream.controller.QuoteController;
 import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
@@ -42,7 +43,6 @@ public class QuoteQueue {
     public ResponseEntity QuoteHandler(@RequestParam("keyString") String quoteKey) {
         WebProperties webProperties = WebProperties.getInstance();
         String host = webProperties.get("host");
-        String quoteUrl = webProperties.get("quote.add.transaction.url");
 
         assert quoteKey != null;
         LOG.info("Hand quote message for " + quoteKey);
@@ -54,8 +54,10 @@ public class QuoteQueue {
         quoteDAO.update(quote);
         // send email
         QuoteEmailVO vo = new QuoteEmailVO();
-        vo.setQuoteURL(host + quoteUrl + quote.getKeyString());
+        vo.setQuoteApplyURL(host + QuoteController.QUOTE_MERCHANT_QUERY_URL + quote.getKeyString());
+        vo.setQuoteApplyURL(host + QuoteController.QUOTE_TRANSACTION_URL + quote.getKeyString());
         vo.setToAddressList(emailList);
+        vo.setQuote(quote);
         eMailService.sendQuoteEmail(vo);
         return new ResponseEntity<String>(HttpStatus.OK);
     }

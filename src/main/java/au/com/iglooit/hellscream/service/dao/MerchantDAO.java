@@ -1,8 +1,7 @@
 package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
-import au.com.iglooit.hellscream.model.vo.MerchantSearchResult;
-import com.google.appengine.api.datastore.Key;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public interface MerchantDAO extends IEntityService<Merchant> {
 
     Boolean checkExistMerchant(String tradeName, String email);
 
-    MerchantSearchResult findMerchants(Integer pageNumber);
+    SearchResultVO findMerchants(Integer pageNumber);
 
     Merchant findByURL(String url);
 }

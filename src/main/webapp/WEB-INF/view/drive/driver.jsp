@@ -19,7 +19,12 @@
     function generateQuote() {
         var quote = {
             toAddressList:['rrkd.platform@gmail.com'],
-            quoteURL:'http://fit-territory-708.appspot.com/home'
+            quoteURL:'http://fit-territory-708.appspot.com/home',
+            quote: {
+                categoryList:['Wattle GROVE','Sydney'],
+                title:"Test quote",
+                description:"This is the test quote."
+            }
         };
         return JSON.stringify(quote);
     }

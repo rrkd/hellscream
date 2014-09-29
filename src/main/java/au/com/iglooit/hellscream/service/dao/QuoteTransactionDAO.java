@@ -2,6 +2,7 @@ package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ import java.util.List;
  */
 public interface QuoteTransactionDAO extends IEntityService<QuoteTransaction> {
     void createQuoteTransaction(QuoteTransaction quoteTransaction);
-    List<QuoteTransaction> findQuoteTransactionByMerchant(Merchant merchant, Integer limit);
+    SearchResultVO<QuoteTransaction> findQuoteTransactionByMerchant(Merchant merchant, Integer page);
 }

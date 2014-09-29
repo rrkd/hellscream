@@ -9,7 +9,7 @@
 
     <meta charset="utf-8">
 
-    <title>Merchant List</title>
+    <title><decorator:title default="Welcome to ..."></decorator:title></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

@@ -1,4 +1,4 @@
-<%@include file="../globe.jsp"%><html>
+<%@include file="../globe.jsp"%>
 <div class="row-fluid">
 
     <div class="span12">

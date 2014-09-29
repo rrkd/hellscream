@@ -1,4 +1,11 @@
-<%@include file="../globe.jsp"%><html>
+<%@include file="../globe.jsp" %>
+<html>
+<html>
+<head>
+    <meta name="description" content="Quote List">
+    <title>Quote List - Merchant</title>
+</head>
+<body>
 <div class="page-header">
 
     <h1>My Quote</h1>
@@ -35,6 +42,8 @@
 
             <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
 
+            <li class=""><a href="#all" data-toggle="tab">All</a></li>
+
         </ul>
 
         <div id="myTabContent" class="tab-content">
@@ -43,39 +52,47 @@
 
                 <c:if test="${not empty quoteList['Quoting']}">
                     <c:set var="quotingList" value="${quoteList['Quoting']}"/>
+                    <div class="quoteList">
+                        <!-- Panels ================================================== -->
 
-                    <!-- Panels ================================================== -->
+                        <c:forEach items="${quotingList}" var="quotingItem">
+                            <div class="row-fluid">
 
-                    <c:forEach items="${quotingList}" var="quotingItem">
-                        <div class="row-fluid">
+                                <div class="panel">
 
-                            <div class="panel">
+                                    <div class="info-box-inner">
 
-                                <div class="info-box-inner">
+                                        <div class="info-content">
 
-                                    <div class="info-content">
+                                            <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a>
+                                            </h4>
 
-                                        <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a></h4>
+                                            <p>
 
-                                        <p>
+                                                    ${quotingItem.description}
 
-                                                ${quotingItem.description}
+                                            </p>
 
-                                        </p>
+                                        </div>
+                                        <div class="clearfix">
 
-                                    </div>
-                                    <div class="clearfix">
+                                        </div>
 
                                     </div>
 
                                 </div>
 
                             </div>
-
-                        </div>
-                    </c:forEach>
-
+                        </c:forEach>
+                    </div>
+                    <div class="form-actions" align="center">
+                        <button type="submit" class="btn btn-primary">Load More >> <i class="icon-ok icon-white"></i>
+                        </button>
+                        <br/>
+                        (100 more)
+                    </div>
                 </c:if>
+
 
             </div>
 
@@ -159,6 +176,10 @@
 
             </div>
 
+            <div class="tab-pane fade" id="all">
+
+            </div>
+
         </div>
 
         <!-- END Tabs -->
@@ -166,7 +187,7 @@
     </div>
 
 </div>
-
+</body>
 
 <!-- /END Panels -->
 <script type="text/javascript" src="/assets/js/postQuote.js"></script>

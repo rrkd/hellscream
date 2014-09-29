@@ -7,6 +7,7 @@ import au.com.iglooit.hellscream.model.entity.QuoteStatus;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.model.entity.QuoteTransactionStatus;
 import au.com.iglooit.hellscream.model.vo.QuoteMsgVO;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
@@ -40,8 +41,8 @@ public class QuoteTransactionServiceImpl implements QuoteTransactionService {
     @Override
     public List<QuoteMsgVO> findLatestMessage(Merchant merchant) {
         List<QuoteMsgVO> voList = new ArrayList<>();
-        List<QuoteTransaction> quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 10);
-        for(QuoteTransaction quoteTransaction : quoteTransactionList) {
+        SearchResultVO<QuoteTransaction> quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 10);
+        for(QuoteTransaction quoteTransaction : quoteTransactionList.getVoList()) {
             QuoteMsgVO vo = new QuoteMsgVO();
             IGUser user = userDAO.findByEmail(quoteTransaction.getQuote().getClientUserEmail());
             if (user == null) {

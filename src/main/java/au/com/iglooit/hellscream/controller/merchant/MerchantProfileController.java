@@ -4,10 +4,12 @@ import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
+import au.com.iglooit.hellscream.service.quote.QuoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -38,29 +40,41 @@ public class MerchantProfileController {
     @Resource
     private MerchantDAO merchantDAO;
 
+    @Resource
+    private QuoteService quoteService;
+
     @RequestMapping(value = "/merchant/msg", method = RequestMethod.GET)
     public ModelAndView messageBoxPage() {
-        GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
-        IGUser user = (IGUser)auth.getPrincipal();
-        if( user == null) {
-            LOG.error("You haven't login, please login firstly.");
-            throw new AppX("User need to login ");
-        }
-
-        Merchant merchant = merchantDAO.findByKey(user.getMerchantKey());
-        if( merchant == null) {
-            LOG.error("You are not a user of Merchant.");
-            throw new AppX("You are not a user of Merchant.");
-        }
+        Merchant merchant = getLoginMerchant();
 
         ModelAndView modelAndView = new ModelAndView("merchant/quoteMessage");
-        List<QuoteTransaction> quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 10);
+        SearchResultVO quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 10);
         modelAndView.addObject("latestMsgList", quoteTransactionList);
         return modelAndView;
     }
 
     @RequestMapping(value = "/merchant/p", method = RequestMethod.GET)
     public ModelAndView merchantProfile() {
+        Merchant merchant = getLoginMerchant();
+
+        ModelAndView modelAndView = new ModelAndView("m/merchantProfile");
+        SearchResultVO<QuoteTransaction> quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 10);
+        modelAndView.addObject("latestMsgList", quoteTransactionList);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/merchant/q", method = RequestMethod.GET)
+    public ModelAndView merchantQuoteListPage() {
+        ModelAndView modelAndView = new ModelAndView("merchant/quoteList");
+        Merchant merchant = getLoginMerchant();
+        // find the quote by merchant
+
+        modelAndView.addObject("merchant", merchant);
+        modelAndView.addObject("latestQuote", quoteService.findQuoteTransactionByMerchant(merchant, 1));
+        return modelAndView;
+    }
+
+    private Merchant getLoginMerchant() {
         GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
         IGUser user = (IGUser)auth.getPrincipal();
         if( user == null) {
@@ -73,10 +87,7 @@ public class MerchantProfileController {
             LOG.error("You are not a user of Merchant.");
             throw new AppX("You are not a user of Merchant.");
         }
-
-        ModelAndView modelAndView = new ModelAndView("m/merchantProfile");
-        List<QuoteTransaction> quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 10);
-        modelAndView.addObject("latestMsgList", quoteTransactionList);
-        return modelAndView;
+        return merchant;
     }
+
 }

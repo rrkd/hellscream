@@ -1,441 +1,406 @@
+#set( $quote = $quoteEmailVO.quote )
+<div bgcolor="#fefefe">
+<table style="border-collapse:collapse;border-spacing:0;background-color:#fefefe;width:100%;min-width:620px;table-layout:fixed">
+    <tbody>
+    <tr>
+        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+            <center>
+                <div style="font-size:54px;line-height:54px">&nbsp;</div>
+                <table style="border-collapse:collapse;border-spacing:0;Margin-left:auto;Margin-right:auto;width:560px">
+                    <tbody>
+                    <tr>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;color:#aaaaaa;font-size:24px;font-family:Georgia,serif"
+                            align="left">
+                            <table style="border-collapse:collapse;border-spacing:0">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:27px;padding-left:0;padding-right:0;vertical-align:top;color:#202020;font-size:32px;font-weight:bold;line-height:42px;font-family:Georgia,serif"
+                                        align="left"><img
+                                            style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0;display:block;max-width:167px"
+                                            src="https://ci4.googleusercontent.com/proxy/OfxMD0j531WUCR5ETKe5ZZPEMfg4UzqnOggKnyOPYpRMPehJav6Gw1AKeEqxKySIHOd_ElnFPS4A57LFpjbpquLNpovuz4fFL5IvMY3KUqMyJw=s0-d-e1-ft#http://i1.cmail2.com/ei/t/C6/7C1/3E6/231606/csfinal/logo.png"
+                                            alt="" width="167" height="52"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </center>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-<!DOCTYPE html>
+<table style="border-collapse:collapse;border-spacing:0;background-color:#fefefe;width:100%;min-width:620px;table-layout:fixed">
+    <tbody>
+    <tr>
+        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+            <center>
+                <table style="border-collapse:collapse;border-spacing:0;Margin-left:auto;Margin-right:auto;width:600px">
+                    <tbody>
+                    <tr>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;text-align:left;color:#353638">
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-<html lang="en">
+                                        <h1 style="Margin-top:0;font-weight:400;font-family:Georgia,serif;font-size:32px;line-height:42px;Margin-bottom:24px">
+                                            You have a new Message</h1>
 
-<head>
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:17px;line-height:27px">
+                                            There is a new quote you might be interest in</p>
 
-    <meta charset="utf-8">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-    <title>Quote Email</title>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            Title:</p>
+                                    </td>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            $quote.title</p>
 
-    <meta name="description" content="">
+                                    </td>
 
-    <meta name="author" content="">
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            Category:</p>
+                                    </td>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-    <!-- Le styles -->
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            #foreach( $category in $quote.categoryList )
+                                                <span>$category</span>
+                                            #end
 
-    <link href="http://spring-forest-538.appspot.com/assets/css/bootstrap.css" rel="stylesheet">
+                                        </p>
 
-    <link href="http://spring-forest-538.appspot.com/assets/css/style.css" rel="stylesheet">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            Suburb:</p>
+                                    </td>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-    <link href="http://spring-forest-538.appspot.com/assets/css/icons.css" rel="stylesheet">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            $quoteEmailVO.suburb
+                                        </p>
 
-    <link href="http://spring-forest-538.appspot.com/assets/css/bootstrap-responsive.css" rel="stylesheet">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            Description:</p>
+                                    </td>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-    <link rel="stylesheet" id="main-color" href="http://spring-forest-538.appspot.com/assets/css/skin-orange.css" media="screen"/>
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            $quote.description</p>
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-    <!--[if lt IE 9]>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-    <script src="http://spring-forest-538.appspot.com/assets/js/html5shiv.js"></script>
+                                        <div style="min-height:20px">&nbsp;</div>
 
-    <![endif]-->
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-    <!-- Fav and touch icons -->
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://spring-forest-538.appspot.com/assets/img/ico/apple-touch-icon-144-precomposed.png">
+                                        <div style="Margin-bottom:27px" align="center">
+                                            <a style="color:#888888;text-decoration:none!important;border-left-color:#888888;border-left-style:solid;border-left-width:1px;border-top-color:#888888;border-top-style:solid;border-top-width:1px;border-bottom-color:#888888;border-bottom-style:solid;border-bottom-width:1px;border-right-color:#888888;border-right-style:solid;border-right-width:1px;border-radius:5px;display:inline-block;font-size:15px;line-height:24px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;text-align:center;font-family:Georgia,serif"
+                                               href="$quoteEmailVO.quoteApplyURL" target="_blank">Replay
+                                                This Quote</a>
+                                        </div>
 
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://spring-forest-538.appspot.com/assets/img/ico/apple-touch-icon-114-precomposed.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://spring-forest-538.appspot.com/assets/img/ico/apple-touch-icon-72-precomposed.png">
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-    <link rel="apple-touch-icon-precomposed" href="http://spring-forest-538.appspot.com/assets/img/ico/apple-touch-icon-57-precomposed.png">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:17px;line-height:27px">
+                                            I want to see <a href="$quoteEmailVO.quoteURL">Quote details</a></p>
 
-    <link rel="shortcut icon" href="http://spring-forest-538.appspot.com/assets/img/ico/favicon.png">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </center>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-</head>
+<table style="border-collapse:collapse;border-spacing:0;background-color:#fefefe;width:100%;min-width:620px;table-layout:fixed">
+    <tbody>
+    <tr>
+        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+            <center>
+                <table style="border-collapse:collapse;border-spacing:0;Margin-left:auto;Margin-right:auto;width:600px">
+                    <tbody>
+                    <tr>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;text-align:left;color:#353638;width:200px">
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-<body class="boxed">
+                                        <h2 style="Margin-top:0;font-weight:700;font-family:Georgia,serif;font-size:16px;line-height:24px;Margin-bottom:12px">
+                                            Article</h2>
 
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:21px;font-size:13px;line-height:21px">
+                                            Vivamus at convallis risus. Ali quam erat volutpat In eu purus fermen tum,
+                                            luctus turpi.</p>
 
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-<div class="body">
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-<!-- Navigation -->
+                                        <center style="font-size:4px;line-height:4px;Margin-bottom:21px">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span>
+                                        </center>
 
-<header>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
 
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:21px;font-size:13px;line-height:21px">
+                                            Lacinia auctor nisl. Maecenas fer men tum sed fringilla purus.</p>
 
-</header>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-<div class="text-center">
+                            <div style="font-size:9px;line-height:9px">&nbsp;</div>
+                        </td>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;text-align:left;color:#353638;width:200px">
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
 
-    <img src="http://spring-forest-538.appspot.com/assets/img/sha.png" class="slidershadow" alt="">
+                                        <h2 style="Margin-top:0;font-weight:700;font-family:Georgia,serif;font-size:16px;line-height:24px;Margin-bottom:12px">
+                                            Article</h2>
 
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:21px;font-size:13px;line-height:21px">
+                                            Enim ligula sed scelerisque quam luctus nec. Duis tincidunt est ut eleifend
+                                            volutpat.</p>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <center style="font-size:4px;line-height:4px;Margin-bottom:21px">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span>
+                                        </center>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <blockquote
+                                                style="Margin-top:0;Margin-right:0;Margin-bottom:0;padding-right:0;font-style:italic;border-left-color:#808080;border-left-style:solid;border-left-width:2px;color:#808080;Margin-left:0;padding-left:13px">
+                                            <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:21px;font-size:13px;line-height:21px">
+                                                Curabitur scelerisque nunc lorem, non imper morbi plac erat.</p>
+                                        </blockquote>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div style="font-size:9px;line-height:9px">&nbsp;</div>
+                        </td>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;text-align:left;color:#353638;width:200px">
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <h2 style="Margin-top:0;font-weight:700;font-family:Georgia,serif;font-size:16px;line-height:24px;Margin-bottom:12px">
+                                            Article</h2>
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:21px;font-size:13px;line-height:21px">
+                                            Diet justo pretium quis. Phasellus et nunc ac lacus faucibus venenatis id
+                                            ornare odio. Donec blandit volutpat erat, ornare semper nisl lobor.</p>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div style="font-size:9px;line-height:9px">&nbsp;</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </center>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table style="border-collapse:collapse;border-spacing:0;background-color:#fefefe;width:100%;min-width:620px;table-layout:fixed">
+    <tbody>
+    <tr>
+        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+            <center>
+                <table style="border-collapse:collapse;border-spacing:0;Margin-left:auto;Margin-right:auto;width:560px">
+                    <tbody>
+                    <tr>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top"
+                            align="center">
+                            <div style="font-size:11px;line-height:17px;color:#bbbbbb;Margin-bottom:17px;font-family:Georgia,serif">
+                                &nbsp;</div>
+                            <center style="font-size:4px;line-height:4px;Margin-bottom:10px">
+                                <table style="border-collapse:collapse;border-spacing:0;Margin-bottom:27px;Margin-left:auto;Margin-right:auto">
+                                    <tbody>
+                                    <tr>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span></td>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;font-size:1px;line-height:1px;width:8px">
+                                            &nbsp;</td>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span></td>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;font-size:1px;line-height:1px;width:8px">
+                                            &nbsp;</td>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </center>
+
+                            <div style="color:#bbbbbb;font-size:11px;line-height:17px;Margin-bottom:17px;font-family:Georgia,serif">
+                                <span>No Images? <a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                                    href="http://preview.cmail2.com/t/t-e-jjjrhiy-l-y/" target="_blank">Click
+                                    here</a></span>
+                    <span><span><br>
+</span><span>&nbsp;&nbsp;·&nbsp;&nbsp;</span></span>
+                                <span><a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                         href="http://client.updatemyprofile.com/t-l-2AD73FFF-l-j" target="_blank">Preferences</a></span>
+                                <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+                                <a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                   href="http://preview.cmail2.com/t/t-u-jjjrhiy-l-t/" target="_blank">Unsubscribe</a>
+                            </div>
+
+                            <div style="color:#bbbbbb;font-size:11px;line-height:17px;Margin-bottom:17px;font-family:Georgia,serif">
+                                <span><a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                         href="http://preview.cmail2.com/t/t-fb-jjjrhiy-l-i/" rel="cs_facebox"
+                                         target="_blank">Like</a></span>
+                                <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+                                <span><a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                         href="http://preview.cmail2.com/t/t-tw-jjjrhiy-l-d/" target="_blank">Tweet</a></span>
+                                <span>&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+                                <span><a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                         href="http://client.forwardtomyfriend.com/t-l-2AD73FFF-jjjrhiy-l-p"
+                                         target="_blank">Forward</a></span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="font-size:54px;line-height:54px">&nbsp;</div>
+            </center>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<img style="border-left-width:0!important;border-top-width:0!important;border-bottom-width:0!important;border-right-width:0!important;min-height:1px!important;width:1px!important;margin-top:0!important;margin-bottom:0!important;margin-left:0!important;margin-right:0!important;padding-top:0!important;padding-bottom:0!important;padding-left:0!important;padding-right:0!important"
+     src="https://ci5.googleusercontent.com/proxy/Luiv5E_AhViJM4zIxJ4vIzf8XxjZ6aPmZV5g6iBcqicqJdl5Dd6aRv_JJz3MhUpD-ZBM6K2gPgfonElRu8o=s0-d-e1-ft#https://cmail2.com/t/t-o-jjjrhiy-l/o.gif"
+     width="1" height="1" border="0" alt="">
+
+<div class="yj6qo"></div>
+<div class="adL">
 </div>
-
-<!-- /end header -->
-
-<div class="container">
-
-    <div class="page-header">
-
-        <h1>You have a new Message</h1>
-
-        <div class="headerdivider">
-
-        </div>
-
-    </div>
-
-    <div class="row-fluid services">
-
-        <div class="span8">
-
-            <h2><i class="icon-magic"></i>Responsive</h2>
-
-            <p>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="$quoteEmailVO.quoteURL" class="more">Apply »</a>
-
-            </p>
-
-        </div>
-
-    </div>
-
-    <div class="row-fluid graysection text-center">
-
-        <p class="lead bottom0">
-
-            <i class="icon-phone"></i> Got a project in mind? We are at your service! Call us now: <a>+ 89 676 546 43</a>
-
-        </p>
-
-    </div>
-
-    <div class="row-fluid services">
-
-        <div class="span4">
-
-            <h2><i class="icon-bolt"></i> Infinite scalability</h2>
-
-            <p>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="#" class="more">Learn more »</a>
-
-            </p>
-
-        </div>
-
-        <div class="span4">
-
-            <h2><i class="icon-google-plus"></i>Web Design</h2>
-
-            <p>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="#" class="more">Learn more »</a>
-
-            </p>
-
-        </div>
-
-        <div class="span4">
-
-            <h2><i class="icon-dashboard"></i>Social integration</h2>
-
-            <p>
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="#" class="more">Learn more »</a>
-
-            </p>
-
-        </div>
-
-    </div>
-
-    <div class="row-fluid top30">
-
-        <div class="span12">
-
-            <div class="info-box shadow-large bottom0">
-
-                <div class="info-box-inner">
-
-                    <div class="info-content">
-
-                        <h4>Responsive, Smart Design, Easy Customization</h4>
-
-                        <p>
-
-                            Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris. Fusce suscipit.
-
-                        </p>
-
-                    </div>
-
-                    <a style="float: right;" class="btn btn-primary btn-large" href="#"><i class="icon-download-alt"></i> Download this Theme</a>
-
-                    <div class="clearfix">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
 </div>
-
-<!-- FOOTER BEGIN
-
-================================================== -->
-
-<div class="footer footerdark">
-
-    <div class="text-center wraptotop">
-
-        <a class="totop"><i class="icon-chevron-up"></i></a>
-
-    </div>
-
-    <div class="container">
-
-        <!-- 1st row -->
-
-        <div class="row-fluid">
-
-            <div class="span4">
-
-                <h1 class="title"><i class="icon-heart"></i> About us</h1>
-
-                <hr>
-
-                <p>
-
-                    Introducing a premium HTML5 & CSS3 template for multipurpose use. Responsive layout, professional design & lots of features.
-
-                </p>
-
-                <p>
-
-                    Made with love by  <a href="http://www.wowthemes.net">WowThemes.net</a> .
-
-                </p>
-
-                <p class="footerlogo">
-
-                    Biscaya
-
-                </p>
-
-            </div>
-
-            <div class="span4">
-
-                <h1 class="title">Testimonials</h1>
-
-                <hr>
-
-                <div id="quotes">
-
-                    <div class="textItem">
-
-                        <div class="avatar">
-
-                            <img src="http://spring-forest-538.appspot.com/assets/img/demo/test1.png" alt="avatar">
-
-                        </div>
-
-                        "Before turning to those moral and mental aspects of the matter which present the greatest difficulties, let the inquirer begin by mastering more elementary problems.<span style="font-family:arial;">"</span><br/><b> Jesse T, Los Angeles </b>
-
-                    </div>
-
-                    <div class="textItem">
-
-                        <div class="avatar">
-
-                            <img src="http://spring-forest-538.appspot.com/assets/img/demo/test2.gif" alt="avatar">
-
-                        </div>
-
-                        "How often have I said to you that when you have eliminated the impossible, whatever remains, however improbable, must be the truth?<span style="font-family:arial;">"</span><br/><b>Ralph G. Flowers </b>
-
-                    </div>
-
-                    <div class="textItem">
-
-                        <div class="avatar">
-
-                            <img src="http://spring-forest-538.appspot.com/assets/img/demo/test1.png" alt="avatar">
-
-                        </div>
-
-                        "It is a capital mistake to theorize before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts.<span style="font-family:arial;">"</span><br/><b>Kerry I. McClanahan </b>
-
-                    </div>
-
-                    <div class="textItem">
-
-                        <div class="avatar">
-
-                            <img src="http://spring-forest-538.appspot.com/assets/img/demo/test2.gif" alt="avatar">
-
-                        </div>
-
-                        "We must fall back upon the old axiom that when all other contingencies fail, whatever remains, however improbable, must be the truth.<span style="font-family:arial;">"</span><br/><b>Randy K. Deleon </b>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="span4">
-
-                <h1 class="title">Questions?</h1>
-
-                <hr>
-
-                <div class="done">
-
-                    <div class="alert alert-success">
-
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-
-                        Your message has been sent. Thank you!
-
-                    </div>
-
-                </div>
-
-                <form method="post" action="contact.php" id="contactform">
-
-                    <div class="form">
-
-                        <div class="controls controls-row">
-
-                            <input class="span6" type="text" name="name" placeholder="Name">
-
-                            <input class="span6" type="text" name="email" placeholder="E-mail">
-
-                        </div>
-
-                        <div class="controls">
-
-                            <textarea class="span12" name="comment" rows="4" placeholder="Message"></textarea>
-
-                        </div>
-
-                        <input type="submit" id="submit" class="btn" value="Send">
-
-                    </div>
-
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- 2nd row -->
-
-<div class="footerbottom footerbottomdark">
-
-    <div class="container">
-
-        <div class="row-fluid">
-
-            <!-- left -->
-
-            <div class="span4 smallspacetop">
-
-                <p class="smaller">
-
-                    <span class="copyright">© </span> Copyright 2013 Biscaya. Be nice.
-
-                </p>
-
-            </div>
-
-            <!-- right -->
-
-            <div class="span8 smallspacetop">
-
-                <div class="pull-right smaller">
-
-                    <ul class="footermenu">
-
-                        <li><a href="#">Home</a></li>
-
-                        <li><a href="#">Work</a></li>
-
-                        <li><a href="#">Pages</a></li>
-
-                        <li><a href="#">Blog</a></li>
-
-                        <li><a href="#">Contact</a></li>
-
-                    </ul>
-
-                </div>
-
-                <div class="clearfix">
-
-                </div>
-
-            </div>
-
-            <!-- end right -->
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- FOOTER END
-
-================================================== -->
-
-</div>
-
-<!-- /.body -->
-
-<!-- Le javascript
-
-================================================== -->
-
-<!-- Placed at the end of the document so the pages load faster -->
-
-<script src="http://spring-forest-538.appspot.com/assets/js/jquery.js"></script>
-
-<script src="http://spring-forest-538.appspot.com/assets/js/bootstrap.js"></script>
-
-<script src="http://spring-forest-538.appspot.com/assets/js/plugins.js"></script>
-
-<script src="http://spring-forest-538.appspot.com/assets/js/custom.js"></script>
-
-<!--BEGIN DEMO PANEL
-
-================================================== -->
-
-<!-- Style Switcher Files-->
-
-<link rel="stylesheet" href="http://spring-forest-538.appspot.com/assets/demo/css/style-switcher.css" media="screen"/>
-
-<link rel="stylesheet" href="http://spring-forest-538.appspot.com/assets/demo/css/colorpicker.css" media="screen"/>
-
-<script type="text/javascript" src="http://spring-forest-538.appspot.com/assets/demo/js/jquery.cookie.js"></script>
-
-<script type="text/javascript" src="http://spring-forest-538.appspot.com/assets/demo/js/styleswitch.js"></script>
-
-<script type="text/javascript" src="http://spring-forest-538.appspot.com/assets/demo/js/colorpicker.js"></script>
-
-<script type="text/javascript" src="http://spring-forest-538.appspot.com/assets/demo/js/switcher.js"></script>
-
-
-</body>
-
-</html>

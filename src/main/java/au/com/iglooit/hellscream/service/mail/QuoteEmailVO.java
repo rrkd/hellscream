@@ -1,5 +1,7 @@
 package au.com.iglooit.hellscream.service.mail;
 
+import au.com.iglooit.hellscream.model.entity.Quote;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,6 +14,8 @@ import java.util.List;
 public class QuoteEmailVO implements Serializable {
     private List<String> toAddressList;
     private String quoteURL;
+    private String quoteApplyURL;
+    private Quote quote;
 
     public QuoteEmailVO() {
 
@@ -31,5 +35,21 @@ public class QuoteEmailVO implements Serializable {
 
     public void setQuoteURL(String quoteURL) {
         this.quoteURL = quoteURL;
+    }
+
+    public Quote getQuote() {
+        return quote;
+    }
+
+    public void setQuote(Quote quote) {
+        this.quote = quote;
+    }
+
+    public String getQuoteApplyURL() {
+        return quoteApplyURL;
+    }
+
+    public void setQuoteApplyURL(String quoteApplyURL) {
+        this.quoteApplyURL = quoteApplyURL;
     }
 }

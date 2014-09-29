@@ -7,17 +7,15 @@ import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.model.entity.QuoteTransactionStatus;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.QuoteTransactionVO;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
-import au.com.iglooit.hellscream.service.queue.QuoteQueue;
 import au.com.iglooit.hellscream.service.quote.QuoteHelper;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.taskqueue.Queue;
-import com.google.appengine.api.taskqueue.QueueFactory;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,8 +27,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-
-import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
 /**
  * Created with IntelliJ IDEA.
@@ -119,5 +115,21 @@ public class QuoteManageWS {
 
         eMailService.sendUserContactEmail(QuoteHelper.generateUserContactEmailVO(quoteTransaction));
         return new JsonResponse("OK", "");
+    }
+
+    @RequestMapping(value = "/ws/quoteTransaction/list/{keyString}/{pageNumber}",
+            method = RequestMethod.GET)
+    public
+    @ResponseBody
+    SearchResultVO<QuoteTransactionVO> quoteTransactionList(@PathVariable String keyString,
+                                                            @PathVariable Integer pageNumber) {
+        Merchant merchant = merchantDAO.findByKey(KeyFactory.stringToKey(keyString));
+        if (pageNumber == null) {
+            pageNumber = 1;
+        } else if (pageNumber < 0) {
+            pageNumber = 1;
+        }
+
+        return quoteService.findQuoteTransactionByMerchant(merchant, pageNumber);
     }
 }

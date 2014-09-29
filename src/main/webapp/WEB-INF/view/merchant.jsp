@@ -19,7 +19,7 @@
 
     <!-- item -->
 
-    <c:forEach items="${searchResultList.merchantList}" var="vo">
+    <c:forEach items="${searchResultList.voList}" var="vo">
         <div class="row-fluid">
 
                 <%--<div class="panel1">--%>
@@ -74,7 +74,7 @@
                         <li><a href="/merchant?p=${searchResultList.pageNum - 1}"><<</a></li>
                     </c:otherwise>
                 </c:choose>
-
+                <%--middle buttons--%>
                 <c:choose>
                     <c:when test="${searchResultList.total <= 3}">
                         <c:forEach begin="0" end="${searchResultList.total - 1}" varStatus="loop">
@@ -122,6 +122,7 @@
 
                     </c:otherwise>
                 </c:choose>
+                <%-- the "..." button--%>
                 <c:choose>
                     <c:when test="${searchResultList.pageNum >= 3}">
                         <c:if test="${searchResultList.pageNum < searchResultList.total}">

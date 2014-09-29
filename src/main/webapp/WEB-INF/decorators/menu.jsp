@@ -83,15 +83,31 @@
                         <sec:authorize access="isAuthenticated()">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account
                                 <b class="caret"></b></a>
+                                <sec:authentication property='principal.isUser' var="isUser"/>
+                                <c:choose>
+                                    <c:when test="${isUser}">
+                                        <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                <ul class="dropdown-menu js-activated" style="display: none;">
+                                            <li><a href="/u/p/<sec:authentication property='principal.keyString'/>">Profile</a></li>
+                                            <li><a href="/u/q">My Quote</a></li>
+                                            <li><a href="/u/msg">My Message</a></li>
+                                            <!--.dropdown-->
 
-                                    <li><a href="/u/p/<sec:authentication property='principal.keyString'/>">Profile</a></li>
-                                    <li><a href="/u/q">My Quote</a></li>
-                                    <li><a href="/merchant/msg">My Message</a></li>
-                                    <!--.dropdown-->
+                                        </ul>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                </ul>
+                                            <li><a href="/u/p/<sec:authentication property='principal.keyString'/>">Profile</a></li>
+                                            <li><a href="/merchant/q">My Quote List</a></li>
+                                            <li><a href="/merchant/msg">My Message</a></li>
+                                            <!--.dropdown-->
+
+                                        </ul>
+                                    </c:otherwise>
+                                </c:choose>
+
+
                             <li class="divider-vertical"></li>
                         </sec:authorize>
 

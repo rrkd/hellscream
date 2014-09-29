@@ -3,7 +3,7 @@ package au.com.iglooit.hellscream.service.dao;
 import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.AddressVO;
-import au.com.iglooit.hellscream.model.vo.MerchantSearchResult;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.model.vo.MerchantVO;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.repository.BaseRepository;
@@ -175,14 +175,14 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     }
 
     @Override
-    public MerchantSearchResult findMerchants(Integer pageNumber) {
+    public SearchResultVO<MerchantVO> findMerchants(Integer pageNumber) {
         Integer startPage = pageNumber == null ? 1 : pageNumber;
         Query q = getEntityManager().createQuery("select c from Merchant c order by c.postDate desc")
                 .setMaxResults(PAGE_COUNT)
                 .setFirstResult((startPage - 1) * PAGE_COUNT);
         Query countQuery = getEntityManager().createQuery("select c from Merchant c order by c.postDate desc");
 
-        MerchantSearchResult result = new MerchantSearchResult();
+        SearchResultVO<MerchantVO> resultVO = new SearchResultVO<MerchantVO>();
         WebProperties webProperties = WebProperties.getInstance();
         String driveHost = webProperties.get("driver.host");
         for (Merchant merchant : (List<Merchant>) q.getResultList()) {
@@ -192,11 +192,11 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
                 merchant.setImageFileName(driveHost + merchant.getImageFileName());
             }
             vo.setMerchant(merchant);
-            result.getMerchantList().add(vo);
+            resultVO.getVoList().add(vo);
         }
-        result.setPageNum(startPage);
-        result.setTotal(countQuery.getResultList().size() / PAGE_COUNT + 1);
-        return result;
+        resultVO.setPageNum(startPage);
+        resultVO.setTotal(countQuery.getResultList().size() / PAGE_COUNT + 1);
+        return resultVO;
     }
 
     @Override
