@@ -132,4 +132,17 @@ public class QuoteManageWS {
 
         return quoteService.findQuoteTransactionByMerchant(merchant, pageNumber);
     }
+
+    @RequestMapping(value = "/ws/quoteTransaction/{keyString}",
+            method = RequestMethod.GET)
+    public
+    @ResponseBody
+    QuoteTransactionVO quoteDetails(@PathVariable String keyString) {
+        assert StringUtils.isNotBlank(keyString);
+        QuoteTransaction qt = quoteTransactionDAO.findByKey(KeyFactory.stringToKey(keyString));
+        if(qt == null) {
+
+        }
+        return new QuoteTransactionVO(qt);
+    }
 }

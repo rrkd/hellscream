@@ -1,4 +1,5 @@
 <%@include file="../globe.jsp" %>
+<html>
 <head>
     <meta name="description" content="merchant list">
     <title>My Quote List</title>
@@ -188,3 +189,4 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/merchant/merchantQuoteList.js" />
 </body>
+</html>

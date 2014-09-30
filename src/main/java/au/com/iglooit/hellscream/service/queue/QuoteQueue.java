@@ -30,7 +30,7 @@ import java.util.List;
 public class QuoteQueue {
     private static final Logger LOG = LoggerFactory.getLogger(QuoteQueue.class);
     public static final String QUOTE_QUEUE_URL = "/pq/quote/";
-    public static final String QUOTE_QUEUE_NAME = "quote_queue";
+    public static final String QUOTE_QUEUE_NAME = "quote-q";
     @Resource
     private EMailService eMailService;
     @Resource

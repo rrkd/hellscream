@@ -1,6 +1,5 @@
 <%@include file="../globe.jsp" %>
 <html>
-<html>
 <head>
     <meta name="description" content="Quote List">
     <title>Quote List - Merchant</title>
@@ -59,27 +58,14 @@
                             <div class="row-fluid">
 
                                 <div class="panel">
+                                    <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a>
+                                    </h4>
 
-                                    <div class="info-box-inner">
+                                    <p>
 
-                                        <div class="info-content">
+                                        ${quotingItem.description}
 
-                                            <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a>
-                                            </h4>
-
-                                            <p>
-
-                                                    ${quotingItem.description}
-
-                                            </p>
-
-                                        </div>
-                                        <div class="clearfix">
-
-                                        </div>
-
-                                    </div>
-
+                                    </p>
                                 </div>
 
                             </div>
@@ -191,3 +177,4 @@
 
 <!-- /END Panels -->
 <script type="text/javascript" src="/assets/js/postQuote.js"></script>
+</html>

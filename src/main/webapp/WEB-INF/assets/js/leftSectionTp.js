@@ -13,7 +13,7 @@ function initLatestFeedbackQuoteMsg($) {
             if (!$.isEmptyObject(data)) {
                 $('#latestComment').text(data.comment)
                 $('#testimonialName').text(data.userName);
-                var merchantLink = $("<a href='merchant/details/" + data.merchantUrl + "'>" + data.merchantTradeName + "</a>")
+                var merchantLink = $("<a href='merchant/details/" + data.canonicalSlugId + "'>" + data.merchantTradeName + "</a>")
                 $('#feedbackMerchant').append(merchantLink);
             }
         }
