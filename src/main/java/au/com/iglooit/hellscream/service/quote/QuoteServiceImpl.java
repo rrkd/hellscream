@@ -88,4 +88,9 @@ public class QuoteServiceImpl implements QuoteService {
     public SearchResultVO<QuoteVO> loadUserQuoteList(String email, Integer page) {
         return quoteDAO.findQuoteByEmail(email, page);
     }
+
+    @Override
+    public SearchResultVO<QuoteVO> loadLatestUserQuoteList(String email) {
+        return quoteDAO.findQuoteByEmail(email, 1);
+    }
 }

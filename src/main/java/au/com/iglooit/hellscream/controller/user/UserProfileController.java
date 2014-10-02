@@ -48,6 +48,7 @@ public class UserProfileController {
         } else {
             ModelAndView modelAndView = new ModelAndView("u/userProfile");
             modelAndView.addObject("iguser", user);
+            modelAndView.addObject("quoteList", quoteService.loadLatestUserQuoteList(user.getEmail()));
             return modelAndView;
         }
 

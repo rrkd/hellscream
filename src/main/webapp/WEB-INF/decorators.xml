@@ -20,6 +20,10 @@
         <pattern>/home</pattern>
         <pattern>/error*</pattern>
         <pattern>/message*</pattern>
+        <pattern>/aboutus</pattern>
+        <pattern>/contactus</pattern>
+        <pattern>/faq</pattern>
+        <pattern>/howitworks</pattern>
     </decorator>
     <!-- quote -->
     <decorator name="quote" page="section_tp_2.jsp">

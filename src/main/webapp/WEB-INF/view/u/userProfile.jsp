@@ -1,6 +1,13 @@
+<%@include file="../globe.jsp" %>
+<html>
+<head>
+    <meta name="description" content="User Profile">
+    <title>User Profile - ${iguser.nickname}</title>
+</head>
+<body>
 <div class="page-header">
 
-    <h1>User Profile</h1>
+    <h1>User Profile - ${iguser.nickname}</h1>
 
     <div class="headerdivider">
 
@@ -10,262 +17,234 @@
 
 <div class="row-fluid top30">
 
-    <div class="span6">
+    <div class="span12">
 
-        <p>
+        <div class="titleborder">
 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet. In eu justo a felis faucibus ornare vel id metus.
+            <div>
 
-        </p>
+                Basic Information
 
-        <p class="panel">
+            </div>
 
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula. Fusce eget metus lorem, ac viverra leo. Nullam convallis, arcu vel pellentesque sodales, nisi est.
+        </div>
 
-        </p>
+        <!-- Left Tabs
 
-        <p>
+              ================================================== -->
 
-            Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipisci. Praesent id metus ante, ut condimentum magna. Nam bibendum, felis eget.
+        <div class="tabbable tabs-left">
 
-        </p>
+            <!--bootstrap tabs implementation-->
 
-    </div>
+            <ul class="nav nav-tabs">
 
-    <div class="span6 top5">
+                <!--tabs-->
 
-        <div class="flexslider">
+                <li class="active">
 
-            <ul class="slides">
-
-                <li>
-
-                    <img src="img/demo/r1.jpg" alt="">
+                    <a data-toggle="tab" href="#tab1">About Me</a>
 
                 </li>
 
                 <li>
 
-                    <img src="img/demo/r2.jpg" alt="">
+                    <a data-toggle="tab" href="#tab2">Contact Info</a>
 
                 </li>
 
             </ul>
 
+            <!--tabs content -->
+
+            <div class="tab-content">
+
+                <div id="tab1" class="tab-pane active fade in">
+
+                    <div class="row-fluid">
+                        <div class="span4"><b>Nickname</b></div>
+                        <div class="span8">${iguser.nickname}</div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4"><b>Email</b></div>
+                        <div class="span8">${iguser.email}</div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4"><b>Forename</b></div>
+                        <div class="span8">${iguser.forename}</div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4"><b>Surname</b></div>
+                        <div class="span8">${iguser.surname}</div>
+                    </div>
+                    <a href="">Edit</a>
+                </div>
+
+                <div id="tab2" class="tab-pane fade ">
+
+                    <div class="row-fluid">
+                        <div class="span4"><b>Mobile</b></div>
+                        <div class="span8">${iguser.mobile}</div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4"><b>Address</b></div>
+                        <div class="span8">${iguser.address1}</div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4"></div>
+                        <div class="span8">${iguser.address2}</div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4"></div>
+                        <div class="span8">${iguser.address3}</div>
+                    </div>
+                    <a href="">Edit</a>
+                </div>
+
+            </div>
+
+            <!--tab content -->
+
         </div>
+
+        <!-- END Left Tabs -->
 
     </div>
 
-</div>
+    <div class="span12">
+        <div class="titleborder">
 
-<div class="row-fluid top15">
+            <div>
 
-    <div class="span6">
+                Usage
+
+            </div>
+
+        </div>
+
+        <div class="row-fluid">
+
+            <div class="span4">
+
+                <a href="#">
+
+                    <div class="service-box">
+
+                        <h3>Quote</h3>
+
+                        <div class="circleicon">
+
+                            <i class="icon-list"></i>
+
+                        </div>
+
+                        <p>
+
+                            100 Quote
+
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+            <div class="span4">
+
+                <a href="#">
+
+                    <div class="service-box black">
+
+                        <h3>Message</h3>
+
+                        <div class="circleicon">
+
+                            <i class="icon-envelope"></i>
+
+                        </div>
+
+                        <p>
+
+                            100 Message
+
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+            <div class="span4">
+
+                <a href="#">
+
+                    <div class="service-box black">
+
+                        <h3>Feedback</h3>
+
+                        <div class="circleicon">
+
+                            <i class="icon-thumbs-up"></i>
+
+                        </div>
+
+                        <p>
+
+                            100 Feedback
+
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="span12">
 
         <div class="titleborder">
 
             <div>
 
-                Skills
+                Latest Quotes
 
             </div>
 
         </div>
 
-        <ul id="skill">
-
-            <li><span class="thebar progressdefault" style="width:100%;"></span>
-
-                <h3><i class="icon-tag"></i> Financial Analysis</h3>
-
-            </li>
-
-            <li><span class="thebar progressdefault" style="width:80%;"></span>
-
-                <h3><i class="icon-pushpin"></i> Consulting</h3>
-
-            </li>
-
-            <li><span class="thebar progressdefault" style="width:70%;"></span>
-
-                <h3><i class="icon-ticket"></i> Tech Support</h3>
-
-            </li>
-
-            <li><span class="thebar progressdefault" style="width:50%;"></span>
-
-                <h3><i class="icon-legal"></i> Legal Department</h3>
-
-            </li>
-
-        </ul>
-
-    </div>
-
-    <div class="span6">
-
-        <div class="titleborder">
-
-            <div>
-
-                Mission
-
-            </div>
-
+        <div class="listContainer">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Post Time</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="dataTableBody">
+                    <c:forEach items="${quoteList.voList}" var="vo" varStatus="loop">
+                        <tr>
+                            <td>${loop.index}</td>
+                            <td>${vo.title}</td>
+                            <td>${vo.postDate}</td>
+                            <td><a href="">details >></a></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div>
-
-        <div class="box effect2 bottom0">
-
-            <i class="icon-quote-left icon-4x pull-left icon-muted"></i>
-
-            <p>
-
-                Use a few of the new styles together, and you've got easy pull quotes or a great introductory article image. Or spinning icons for loading and refreshing content. Or fun big icons in multi-line buttons. You can combine all of them in any combination to get lots of new possibilities.
-
-            </p>
-
-            <p>
-
-                Use a few of the new styles together, and you've got easy pull quotes or a great introductory article image. Or spinning icons for loading.
-
-            </p>
-
-        </div>
-
+        <p align="right">
+            <a href="/u/q"> All Quotes</a>
+        </p>
     </div>
 
 </div>
-
-<div class="row-fluid">
-
-    <div class="titleborder top20">
-
-        <div>
-
-            Team
-
-        </div>
-
-    </div>
-
-    <div class="span4 left0">
-
-        <div class="thumbnail">
-
-            <img src="img/demo/team1.jpg" alt="">
-
-            <div class="caption">
-
-                <h4>Ralph P. Peters</h4>
-
-                <span class="primarycol">- Manager at Company -</span>
-
-                <p>
-
-                    Praesent id metus ante, ut condimentum magna. Nam bibendum, felis eget.<br>
-
-                </p>
-
-                <ul class="social-icons">
-
-                    <li><a href="#"><i class="icon-envelope"></i></a></li>
-
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-
-                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
-
-                    <li><a href="#"><i class="icon-pinterest"></i></a></li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="span4">
-
-        <div class="thumbnail">
-
-            <img src="img/demo/team2.jpg" alt="">
-
-            <div class="caption">
-
-                <h4>Emma M. Coffey</h4>
-
-                <span class="primarycol">- Lawyer at Construct Inc -</span>
-
-                <p>
-
-                    Praesent id metus ante, ut condimentum magna. Nam bibendum, felis eget.<br>
-
-                </p>
-
-                <ul class="social-icons">
-
-                    <li><a href="#"><i class="icon-envelope"></i></a></li>
-
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-
-                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
-
-                    <li><a href="#"><i class="icon-pinterest"></i></a></li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="span4">
-
-        <div class="thumbnail">
-
-            <img src="img/demo/team3.jpg" alt="">
-
-            <div class="caption">
-
-                <h4>Eugene B. Bedwell</h4>
-
-                <span class="primarycol">- Owner of Biscaya -</span>
-
-                <p>
-
-                    Praesent id metus ante, ut condimentum magna. Nam bibendum, felis eget.<br>
-
-                </p>
-
-                <ul class="social-icons">
-
-                    <li><a href="#"><i class="icon-envelope"></i></a></li>
-
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-
-                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
-
-                    <li><a href="#"><i class="icon-pinterest"></i></a></li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/user/userProfile.js"></script>
+</body>
+</html>

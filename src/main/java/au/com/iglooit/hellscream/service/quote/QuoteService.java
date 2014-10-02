@@ -24,4 +24,6 @@ public interface QuoteService {
     SearchResultVO<QuoteTransactionVO> findQuoteTransactionByMerchant(Merchant merchant, Integer page);
 
     SearchResultVO<QuoteVO> loadUserQuoteList(String email, Integer page);
+
+    SearchResultVO<QuoteVO> loadLatestUserQuoteList(String email);
 }

@@ -48,4 +48,28 @@ public class HomeController {
     public String loggedOut() {
         return "loggedout";
     }
+
+    @RequestMapping(value = "/aboutus", method = RequestMethod.GET)
+    public ModelAndView aboutUsPage() {
+        ModelAndView modelAndView = new ModelAndView("aboutus");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/contactus", method = RequestMethod.GET)
+    public ModelAndView contactUsPage() {
+        ModelAndView modelAndView = new ModelAndView("contactus");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/faq", method = RequestMethod.GET)
+    public ModelAndView faqPage() {
+        ModelAndView modelAndView = new ModelAndView("faq");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/howitworks", method = RequestMethod.GET)
+    public ModelAndView howItWorksPage() {
+        ModelAndView modelAndView = new ModelAndView("howitworks");
+        return modelAndView;
+    }
 }

@@ -60,6 +60,10 @@
 
                         <li class="divider-vertical"></li>
 
+                        <li><a href="/howitworks">How it works</a></li>
+
+                        <li class="divider-vertical"></li>
+
                         <sec:authorize access="isAuthenticated()">
                             <sec:authentication property='principal.isUser' var="isUser"/>
                             <c:if test="${isUser}">
@@ -74,12 +78,20 @@
                             <li class="divider-vertical"></li>
                         </sec:authorize>
 
+                        <sec:authorize access="isAuthenticated()">
+                            <sec:authentication property='principal.isMerchant' var="isMerchant"/>
+                            <c:if test="${isMerchant}">
+                                <li><a href="/merchant/create">List Your Business</a></li>
 
+                                <li class="divider-vertical"></li>
+                            </c:if>
+                        </sec:authorize>
+                        <sec:authorize access="isAnonymous()">
+                            <li><a href="/merchant/create">List Your Business</a></li>
 
+                            <li class="divider-vertical"></li>
+                        </sec:authorize>
 
-                        <li><a href="/merchant/create">List Your Business</a></li>
-
-                        <li class="divider-vertical"></li>
                         <sec:authorize access="isAuthenticated()">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account
                                 <b class="caret"></b></a>
@@ -88,7 +100,7 @@
                                     <c:when test="${isUser}">
                                         <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                            <li><a href="/u/p/<sec:authentication property='principal.keyString'/>">Profile</a></li>
+                                            <li><a href="/u/p">Profile</a></li>
                                             <li><a href="/u/q">My Quote</a></li>
                                             <li><a href="/u/msg">My Message</a></li>
                                             <!--.dropdown-->
@@ -116,21 +128,23 @@
 
                             <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                <li><a href="/merchant">About Us</a></li>
+                                <li><a href="/aboutus">About Us</a></li>
 
-                                <li><a href="/merchant">Contact Us</a></li>
+                                <li><a href="/contactus">Contact Us</a></li>
 
-                                <li><a href="/merchant?p=1">List Merchant</a></li>
+                                <li><a href="/faq">FAQ</a></li>
 
-                                <li><a href="/search">Search</a></li>
+                                <%--<li><a href="/merchant?p=1">List Merchant</a></li>--%>
 
-                                <li><a href="/ad/merchant/create">Create Merchant</a></li>
+                                <%--<li><a href="/search">Search</a></li>--%>
 
-                                <li><a href="/category">List Category</a></li>
+                                <%--<li><a href="/ad/merchant/create">Create Merchant</a></li>--%>
 
-                                <li><a href="/u/q">My Quote</a></li>
+                                <%--<li><a href="/category">List Category</a></li>--%>
 
-                                <li><a href="/quote/t/ahFzcHJpbmctZm9yZXN0LTUzOHISCxIFUXVvdGUYgICAgICAkQgM">Test Apply Quote</a></li>
+                                <%--<li><a href="/u/q">My Quote</a></li>--%>
+
+                                <%--<li><a href="/quote/t/ahFzcHJpbmctZm9yZXN0LTUzOHISCxIFUXVvdGUYgICAgICAkQgM">Test Apply Quote</a></li>--%>
 
                                 <!--.dropdown-->
 
