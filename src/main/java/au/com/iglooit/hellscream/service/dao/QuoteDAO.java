@@ -1,6 +1,8 @@
 package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.Quote;
+import au.com.iglooit.hellscream.model.vo.QuoteVO;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import com.google.appengine.api.datastore.Key;
 
 import java.util.Date;
@@ -17,4 +19,5 @@ public interface QuoteDAO extends IEntityService<Quote> {
     Quote loadQuote(Key key);
     List<Quote> findQuoteByEmail(String email);
     List<Quote> findQuoteByDate(Date startDate, Date endDate);
+    SearchResultVO<QuoteVO> findQuoteByEmail(String email, Integer page);
 }

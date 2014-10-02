@@ -1,99 +1,126 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="../globe.jsp" %>
+<html>
+<head>
+    <meta name="description" content="Merchant Message Box">
+    <title>Message Box - Merchant</title>
+</head>
+<body>
 <div class="page-header">
 
-    <h1>Message Box</h1>
+    <h1>Message Box - ${merchant.merchantName}</h1>
 
     <div class="headerdivider">
-        ${merchant.merchantName}
+
     </div>
+    <input name="name" size="30" type="hidden" id="merchantKeyString" class="span12"
+           value="${merchant.keyString}">
 
 </div>
 
 <div class="row-fluid">
-
     <div class="span12">
+        <div class="listContainer">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Quote Title</th>
+                    <th>Post Time</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="dataTableBody">
 
-        <div class="titleborder">
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
 
-            <div>
+            <ul class="pagination-box">
 
-                List of Message
-
-            </div>
+            </ul>
 
         </div>
-
-        <!-- Tabs
-
-              ================================================== -->
-
-        <ul id="myTab" class="nav nav-tabs">
-
-            <li class="active"><a href="#home" data-toggle="tab">Latest Message</a></li>
-
-            <li class=""><a href="#profile" data-toggle="tab">History</a></li>
-
-        </ul>
-
-        <div id="myTabContent" class="tab-content">
-
-            <div class="tab-pane fade active in" id="home">
-
-                <c:forEach items="${latestMsgList}" var="msg">
-                <div class="row-fluid">
-
-                    <div class="panel">
-
-                        User ${msg.userName} is interest in your response and you can contact him by <br>
-                        Email : ${msg.userEmail}
-                        Mobile: ${msg.mobile}
-                    </div>
-
-                    <div class="clearfix">
-
-                    </div>
-
-                </div>
-                </c:forEach>
-
-            </div>
-
-            <div class="tab-pane fade" id="profile">
-
-                <p>
-
-                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
-
-                </p>
-
-                <p>
-
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum.
-
-                </p>
-
-            </div>
-
-            <div class="tab-pane fade" id="something">
-
-                <p>
-
-                    Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
-
-                </p>
-
-                <p>
-
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum.
-
-                </p>
-
-            </div>
-
-        </div>
-
-        <!-- END Tabs -->
-
     </div>
 
 </div>
+<!-- Modal -->
+<div class="modal fade" id="msgDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel"><b>Message</b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="tabbable tabs-left">
+
+                    <!--bootstrap tabs implementation-->
+
+                    <ul class="nav nav-tabs">
+
+                        <!--tabs-->
+
+                        <li class="active">
+
+                            <a data-toggle="tab" href="#userDetailsTab">User Details</a>
+
+                        </li>
+
+                        <li>
+
+                            <a data-toggle="tab" href="#commentTab">Comment</a>
+
+                        </li>
+
+                    </ul>
+
+                    <!--tabs content -->
+
+                    <div class="tab-content">
+
+                        <div id="userDetailsTab" class="tab-pane active fade in">
+                            <div class="row-fluid">
+                                <div class="span4" style="font-family:open_sansbold">User Name</div>
+                                <div class="span8 " id="userNameField">
+
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span4" style="font-family:open_sansbold">Email</div>
+                                <div class="span8" id="emailField"></div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span4" style="font-family:open_sansbold">Mobile</div>
+                                <div class="span8" id="phoneField"></div>
+                            </div>
+                        </div>
+
+                        <div id="commentTab" class="tab-pane fade ">
+                            <div class="row-fluid">
+                                <div class="span4" style="font-family:open_sansbold">Comment</div>
+                                <div class="span8 " id="userComment"></div>
+                            </div>
+                        </div>
+
+                        <div id="quoteMessage" class="tab-pane fade ">
+
+
+                        </div>
+
+                    </div>
+
+                    <!--tab content -->
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/merchant/merchantQuoteMsg.js"></script>
+</body>
+</html>

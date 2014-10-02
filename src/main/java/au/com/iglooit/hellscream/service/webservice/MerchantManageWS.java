@@ -2,15 +2,14 @@ package au.com.iglooit.hellscream.service.webservice;
 
 import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.exception.MerchantManageException;
-import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
-import au.com.iglooit.hellscream.security.AppRole;
+import au.com.iglooit.hellscream.model.vo.QuoteContactMsgVO;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.service.dao.QuoteContactMsgDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.service.merchant.MerchantService;
-import au.com.iglooit.hellscream.utils.DateUtils;
-import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.EnumSet;
 import java.util.List;
 
 /**
@@ -39,6 +37,8 @@ public class MerchantManageWS {
     private UserDAO userDAO;
     @Resource
     private MerchantService merchantService;
+    @Resource
+    private QuoteContactMsgDAO quoteContactMsgDAO;
 
     @RequestMapping(value = "/ws/merchant", method = RequestMethod.GET)
     public
@@ -86,5 +86,15 @@ public class MerchantManageWS {
 
         merchantDAO.modifyMerchant(merchant);
         return new JsonResponse("OK", "");
+    }
+
+    @RequestMapping(value = "/ws/merchant/{keyString}/cm/{pageNumber}",
+            method = RequestMethod.GET)
+    public
+    @ResponseBody
+    SearchResultVO<QuoteContactMsgVO> contactMsg(@PathVariable String keyString, @PathVariable Integer pageNumber) {
+        assert StringUtils.isNotBlank(keyString);
+        Merchant merchant = merchantDAO.findByKey(KeyFactory.stringToKey(keyString));
+        return quoteContactMsgDAO.findContactMsg(merchant, pageNumber);
     }
 }

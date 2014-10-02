@@ -41,8 +41,7 @@ public class UserProfileController {
 
     @RequestMapping(value = "/u/p", method = RequestMethod.GET)
     public ModelAndView profilePage() {
-        GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
-        IGUser user = (IGUser) auth.getPrincipal();
+        IGUser user = currentUser();
         if (user.getMerchantKey() != null) {
             ModelAndView modelAndView = new ModelAndView("redirect:/merchant/p");
             return modelAndView;
@@ -56,15 +55,18 @@ public class UserProfileController {
 
     @RequestMapping(value = "/u/q", method = RequestMethod.GET)
     public ModelAndView myQuotePage() {
-        GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
-        IGUser user = (IGUser) auth.getPrincipal();
-        if (user == null) {
-            LOG.error("You haven't login, please login firstly.");
-            throw new AppX("User need to login ");
-        }
+        IGUser user = currentUser();
         ModelAndView modelAndView = new ModelAndView("quote/myQuote");
         modelAndView.addObject("iguser", user);
         modelAndView.addObject("quoteList", quoteService.loadUserQuoteList(user.getEmail()));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/u/qa", method = RequestMethod.GET)
+    public ModelAndView quoteHistoryPage() {
+        IGUser user = currentUser();
+        ModelAndView modelAndView = new ModelAndView("quote/quoteHistory");
+        modelAndView.addObject("iguser", user);
         return modelAndView;
     }
 
@@ -77,8 +79,18 @@ public class UserProfileController {
             throw new AppX("Transaction does NOT exist");
         }
         quoteTransactionService.contactMerchant(quoteTransaction);
-        ModelAndView modelAndView = new ModelAndView("quote/contactMerchant");
+        ModelAndView modelAndView = new ModelAndView("message/contactMerchant");
         modelAndView.addObject("quoteTransaction", quoteTransaction);
         return modelAndView;
+    }
+
+    private IGUser currentUser() {
+        GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
+        IGUser user = (IGUser) auth.getPrincipal();
+        if (user == null) {
+            LOG.error("You haven't login, please login firstly.");
+            throw new AppX("User need to login ");
+        }
+        return user;
     }
 }

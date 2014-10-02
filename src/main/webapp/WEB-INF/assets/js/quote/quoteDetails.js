@@ -31,10 +31,15 @@ function fillUpQuoteTransactionDlg(keyString) {
                 $('#applyRawPrice').text(data.rawPrice);
                 $('#applyServiceType').text(data.serviceType);
                 $('#applyComment').text(data.comment);
-                $('.modal-contact-merchant').click(function(){
-                    contactWithMerchant(data.keyString);
+                if(data.status == 'Appending') {
+                    $('.modal-contact-merchant').show();
+                    $('.modal-contact-merchant').click(function(){
+                        contactWithMerchant(keyString);
 
-                });
+                    });
+                }  else {
+                    $('.modal-contact-merchant').hide();
+            }
                 dialog.modal('toggle');
             }
 
@@ -43,6 +48,6 @@ function fillUpQuoteTransactionDlg(keyString) {
 
 }
 
-function contactWithMerchant(merchantKeyString) {
-    window.location.href="/u/c/" + merchantKeyString;
+function contactWithMerchant(transactionKeyString) {
+    window.location.href="/u/c/" + transactionKeyString;
 }

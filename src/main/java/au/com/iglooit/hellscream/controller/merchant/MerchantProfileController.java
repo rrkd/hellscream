@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -50,6 +49,7 @@ public class MerchantProfileController {
         ModelAndView modelAndView = new ModelAndView("merchant/quoteMessage");
         SearchResultVO quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 10);
         modelAndView.addObject("latestMsgList", quoteTransactionList);
+        modelAndView.addObject("merchant", merchant);
         return modelAndView;
     }
 
@@ -57,8 +57,9 @@ public class MerchantProfileController {
     public ModelAndView merchantProfile() {
         Merchant merchant = getLoginMerchant();
 
-        ModelAndView modelAndView = new ModelAndView("m/merchantProfile");
-        SearchResultVO<QuoteTransaction> quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 10);
+        ModelAndView modelAndView = new ModelAndView("merchant /merchantProfile");
+        SearchResultVO<QuoteTransaction> quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(
+                merchant, 10);
         modelAndView.addObject("latestMsgList", quoteTransactionList);
         return modelAndView;
     }
@@ -76,14 +77,14 @@ public class MerchantProfileController {
 
     private Merchant getLoginMerchant() {
         GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
-        IGUser user = (IGUser)auth.getPrincipal();
-        if( user == null) {
+        IGUser user = (IGUser) auth.getPrincipal();
+        if (user == null) {
             LOG.error("You haven't login, please login firstly.");
             throw new AppX("User need to login ");
         }
 
         Merchant merchant = merchantDAO.findByKey(user.getMerchantKey());
-        if( merchant == null) {
+        if (merchant == null) {
             LOG.error("You are not a user of Merchant.");
             throw new AppX("You are not a user of Merchant.");
         }

@@ -15,166 +15,80 @@
 
 </div>
 
-<div class="row-fluid">
+    <!-- Filtering Menu
 
-    <div class="span12">
+        ================================================== -->
 
-        <div class="titleborder">
+    <div class="row-fluid">
 
-            <div>
+        <div class="span12 text-center">
 
-                List of Message
+            <div id="filter">
 
-            </div>
+                <ul>
 
-        </div>
+                    <li><a href="" data-filter="*" class="filter-btn selected"><i class="icon icon-reorder"></i>&nbsp; All Items</a>
+                    </li>
 
-        <!-- Tabs
+                    <li><a href="" data-filter=".Quoting" class="filter-btn"><i class="icon icon-th-large"></i>&nbsp; Quoting</a></li>
 
-              ================================================== -->
+                    <li><a href="" data-filter=".Contacting" class="filter-btn"><i class="icon icon-comment"></i>&nbsp; Contacting</a></li>
 
-        <ul id="myTab" class="nav nav-tabs">
+                    <li><a href="" data-filter=".Feedback" class="filter-btn"><i class="icon icon-thumbs-up"></i>&nbsp; Feedback</a></li>
 
-            <li class="active"><a href="#quoting" data-toggle="tab">Quoting</a></li>
+                    <li><a href="/u/qa"><i class="icon icon-archive"></i>&nbsp; History</a></li>
 
-            <li class=""><a href="#contacting" data-toggle="tab">Contacting</a></li>
-
-            <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
-
-            <li class=""><a href="#all" data-toggle="tab">All</a></li>
-
-        </ul>
-
-        <div id="myTabContent" class="tab-content">
-
-            <div class="tab-pane fade active in" id="quoting">
-
-                <c:if test="${not empty quoteList['Quoting']}">
-                    <c:set var="quotingList" value="${quoteList['Quoting']}"/>
-                    <div class="quoteList">
-                        <!-- Panels ================================================== -->
-
-                        <c:forEach items="${quotingList}" var="quotingItem">
-                            <div class="row-fluid">
-
-                                <div class="panel">
-                                    <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a>
-                                    </h4>
-
-                                    <p>
-
-                                        ${quotingItem.description}
-
-                                    </p>
-                                </div>
-
-                            </div>
-                        </c:forEach>
-                    </div>
-                    <div class="form-actions" align="center">
-                        <button type="submit" class="btn btn-primary">Load More >> <i class="icon-ok icon-white"></i>
-                        </button>
-                        <br/>
-                        (100 more)
-                    </div>
-                </c:if>
-
-
-            </div>
-
-            <div class="tab-pane fade" id="contacting">
-
-                <c:if test="${not empty quoteList['Contacting']}">
-                    <c:set var="quotingList" value="${quoteList['Contacting']}"/>
-
-                    <!-- Panels ================================================== -->
-
-                    <c:forEach items="${quotingList}" var="quotingItem">
-                        <div class="row-fluid">
-
-                            <div class="panel">
-
-                                <div class="info-box-inner">
-
-                                    <div class="info-content">
-
-                                        <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a></h4>
-
-                                        <p>
-
-                                                ${quotingItem.description}
-
-                                        </p>
-
-                                    </div>
-                                    <div class="clearfix">
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </c:forEach>
-
-                </c:if>
-
-            </div>
-
-            <div class="tab-pane fade" id="feedback">
-
-                <c:if test="${not empty quoteList['Feedback']}">
-                    <c:set var="quotingList" value="${quoteList['Feedback']}"/>
-
-                    <!-- Panels ================================================== -->
-
-                    <c:forEach items="${quotingList}" var="quotingItem">
-                        <div class="row-fluid">
-
-                            <div class="panel">
-
-                                <div class="info-box-inner">
-
-                                    <div class="info-content">
-
-                                        <h4><a href="/quote/d/${quotingItem.keyString}">${quotingItem.title}</a></h4>
-
-                                        <p>
-
-                                                ${quotingItem.description}
-
-                                        </p>
-
-                                    </div>
-                                    <div class="clearfix">
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </c:forEach>
-
-                </c:if>
-
-            </div>
-
-            <div class="tab-pane fade" id="all">
+                </ul>
 
             </div>
 
         </div>
-
-        <!-- END Tabs -->
 
     </div>
 
-</div>
+    <!-- END filtering menu -->
+
+    <div id="content">
+
+    <!-- box 1 -->
+    <c:forEach items="${quoteList}" var="quote">
+        <div class="boxportfolio25 item ${quote.status}">
+
+            <div class="box effect2">
+                <p class="small datepost">
+                    <a href="/quote/d/${quote.keyString}" style="font-size: 15px;">${quote.title}</a>
+                </p>
+                <p>
+                    <span class="">${quote.quoteTransactionCount} replies</span> <br/>
+                    <c:choose>
+                        <c:when test="${quote.status == 'Quoting'}">
+                            <a class="btn btn-small btn-info">${quote.status}</a>
+                        </c:when>
+                        <c:when test="${quote.status == 'Contacting'}">
+                            <a class="btn btn-small btn-primary">${quote.status}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="btn btn-small btn-success">${quote.status}</a>
+                        </c:otherwise>
+                    </c:choose>
+
+                </p>
+
+            </div>
+
+        </div>
+    </c:forEach>
+
+
+
+    <!-- next box etc -->
+
+    <!-- MASONRY ITEMS END -->
+
+    </div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/quote/myQuote.js"></script>
 </body>
 
 <!-- /END Panels -->
-<script type="text/javascript" src="/assets/js/postQuote.js"></script>
 </html>

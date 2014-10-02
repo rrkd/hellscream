@@ -19,6 +19,7 @@
         <pattern>/index</pattern>
         <pattern>/home</pattern>
         <pattern>/error*</pattern>
+        <pattern>/message*</pattern>
     </decorator>
     <!-- quote -->
     <decorator name="quote" page="section_tp_2.jsp">

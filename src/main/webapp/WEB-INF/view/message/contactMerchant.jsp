@@ -1,4 +1,10 @@
 <%@include file="../globe.jsp"%>
+<html>
+<head>
+    <meta name="description" content="Send Message to Merchant">
+    <title>Send Message to Merchant</title>
+</head>
+<body>
 <div class="row-fluid">
 
     <div class="span12">
@@ -22,3 +28,4 @@
     </div>
 
 </div>
+</body>

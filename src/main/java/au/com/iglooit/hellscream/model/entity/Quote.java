@@ -11,6 +11,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,8 +38,8 @@ public class Quote extends BaseEntity {
     private QuoteStatus status = QuoteStatus.Quoting;
     @Basic
     private List<Key> userSelectedMerchant;
-    @OneToMany(mappedBy = "quote", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<QuoteTransaction> quoteTransactions;
+    @OneToMany(mappedBy = "quote", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<QuoteTransaction> quoteTransactions = new ArrayList<>();
 
     public Quote() {
 
@@ -156,5 +157,9 @@ public class Quote extends BaseEntity {
 
     public void setSuburbKey(Key suburbKey) {
         this.suburbKey = suburbKey;
+    }
+
+    public Integer getQuoteTransactionCount(){
+        return quoteTransactions == null ? 0 : quoteTransactions.size();
     }
 }

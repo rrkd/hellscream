@@ -3,11 +3,13 @@ package au.com.iglooit.hellscream.service.quote;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
+import au.com.iglooit.hellscream.model.entity.QuoteContactMsg;
 import au.com.iglooit.hellscream.model.entity.QuoteStatus;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.model.entity.QuoteTransactionStatus;
 import au.com.iglooit.hellscream.model.vo.QuoteMsgVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
+import au.com.iglooit.hellscream.service.dao.QuoteContactMsgDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
@@ -38,6 +40,8 @@ public class QuoteTransactionServiceImpl implements QuoteTransactionService {
     private UserDAO userDAO;
     @Resource
     private EMailService eMailService;
+    @Resource
+    private QuoteContactMsgDAO quoteContactMsgDAO;
     @Override
     public List<QuoteMsgVO> findLatestMessage(Merchant merchant) {
         List<QuoteMsgVO> voList = new ArrayList<>();
@@ -72,5 +76,8 @@ public class QuoteTransactionServiceImpl implements QuoteTransactionService {
         IGUser user = userDAO.findByEmail(quote.getClientUserEmail());
         vo.setUser(user);
         eMailService.sendUserContactEmail(vo);
+        // save contact msg
+        QuoteContactMsg msg = new QuoteContactMsg(quoteTransaction);
+        quoteContactMsgDAO.createQuoteContactMsg(msg);
     }
 }

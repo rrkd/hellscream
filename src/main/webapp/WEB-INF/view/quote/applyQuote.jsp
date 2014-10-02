@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="tradeName">Trade Name</label>
+                        <label class="control-label" for="tradeName">Days</label>
 
                         <div class="controls">
                             <input name="name" size="30" type="number" id="rawDay" class="span12" placeholder="rawDays">
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="tradeName">Trade Name</label>
+                        <label class="control-label" for="tradeName">Price</label>
 
                         <div class="controls">
                             <input name="name" size="30" data-symbol="$" type="number" min="0.01" step="0.01" id="rawPrice"
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="tradeName">Trade Name</label>
+                        <label class="control-label" for="tradeName">Start Time</label>
 
                         <div class="controls">
                             <select name="name" size="30" id="type_select"
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="tradeName">Trade Name</label>
+                        <label class="control-label" for="tradeName">Description</label>
 
                         <div class="controls">
                             <textarea id="description" name="message" class="span12" placeholder="Description"

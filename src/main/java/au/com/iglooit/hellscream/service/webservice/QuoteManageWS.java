@@ -1,5 +1,6 @@
 package au.com.iglooit.hellscream.service.webservice;
 
+import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.model.entity.QuoteStatus;
@@ -7,10 +8,12 @@ import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.model.entity.QuoteTransactionStatus;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.QuoteTransactionVO;
+import au.com.iglooit.hellscream.model.vo.QuoteVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
+import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.quote.QuoteHelper;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
@@ -47,6 +50,8 @@ public class QuoteManageWS {
     private EMailService eMailService;
     @Resource
     private QuoteService quoteService;
+    @Resource
+    private UserDAO userDAO;
 
     @RequestMapping(value = "/ws/quote",
             method = RequestMethod.POST,
@@ -140,9 +145,19 @@ public class QuoteManageWS {
     QuoteTransactionVO quoteDetails(@PathVariable String keyString) {
         assert StringUtils.isNotBlank(keyString);
         QuoteTransaction qt = quoteTransactionDAO.findByKey(KeyFactory.stringToKey(keyString));
-        if(qt == null) {
+        if (qt == null) {
 
         }
         return new QuoteTransactionVO(qt);
+    }
+
+    @RequestMapping(value = "/ws/quote/list/{keyString}/{pageNumber}",
+            method = RequestMethod.GET)
+    public
+    @ResponseBody
+    SearchResultVO<QuoteVO> quoteList(@PathVariable String keyString, @PathVariable Integer pageNumber) {
+        assert StringUtils.isNotBlank(keyString);
+        IGUser user = userDAO.findByKey(KeyFactory.stringToKey(keyString));
+        return quoteService.loadUserQuoteList(user.getEmail(), pageNumber);
     }
 }
