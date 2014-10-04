@@ -2,7 +2,11 @@ package au.com.iglooit.hellscream.service.statistic;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,33 +16,38 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class StatisticServiceImpl implements StatisticService {
+    @Resource
+    private MerchantDAO merchantDAO;
+    @Resource
+    private QuoteDAO quoteDAO;
+
     @Override
-    public Integer quoteCount() {
-        return 100;
+    public Long quoteCount() {
+        return quoteDAO.countQuote();
     }
 
     @Override
-    public Integer merchantCount() {
-        return 100;
+    public Long merchantCount() {
+        return merchantDAO.countMerchant();
     }
 
     @Override
-    public Integer feedbackCount() {
-        return 100;
+    public Long feedbackCount() {
+        return 100L;
     }
 
     @Override
-    public Integer msgCount() {
-        return 100;
+    public Long msgCount() {
+        return 100L;
     }
 
     @Override
-    public Integer quoteCount(IGUser user) {
-        return 100;
+    public Long quoteCount(IGUser user) {
+        return 100L;
     }
 
     @Override
-    public Integer quoteCount(Merchant merchant) {
-        return 100;
+    public Long quoteCount(Merchant merchant) {
+        return 100L;
     }
 }

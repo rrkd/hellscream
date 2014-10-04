@@ -83,6 +83,13 @@ public class QuoteDAOImpl extends BaseRepository<Quote> implements QuoteDAO {
     }
 
     @Override
+    public Long countQuote() {
+        Query q = getEntityManager()
+                .createQuery("select count(q) from Quote q ");
+        return (Long)q.getSingleResult();
+    }
+
+    @Override
     public List<Quote> findQuoteByDate(Date startDate, Date endDate) {
         Query q = getEntityManager()
                 .createQuery("select q from Quote q " +

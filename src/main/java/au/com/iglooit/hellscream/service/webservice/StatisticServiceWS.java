@@ -1,11 +1,14 @@
 package au.com.iglooit.hellscream.service.webservice;
 
 import au.com.iglooit.hellscream.model.vo.HomeStatisticVO;
+import au.com.iglooit.hellscream.service.statistic.StatisticService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class StatisticServiceWS {
+    @Resource
+    private StatisticService statisticService;
+
     @RequestMapping(value = "/ws/st/quoteCount",
             method = RequestMethod.GET)
     public
@@ -69,10 +75,10 @@ public class StatisticServiceWS {
     @ResponseBody
     HomeStatisticVO homeStatisticData() {
         HomeStatisticVO vo = new HomeStatisticVO();
-        vo.setFeedbackCount(100);
-        vo.setMerchantCount(100);
-        vo.setMsgCount(100);
-        vo.setQuoteCount(100);
+        vo.setFeedbackCount(statisticService.feedbackCount());
+        vo.setMerchantCount(statisticService.merchantCount());
+        vo.setMsgCount(statisticService.msgCount());
+        vo.setQuoteCount(statisticService.quoteCount());
         return vo;
     }
 }

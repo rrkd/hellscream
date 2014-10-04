@@ -35,7 +35,6 @@ public class CategoryConfigureService {
 
     @PostConstruct
     public void init() throws Exception {
-        LOG.info("init category");
         WebProperties webProperties = WebProperties.getInstance();
         Boolean initData = Boolean.valueOf(webProperties.get("init.category.data"));
         if (initData) {

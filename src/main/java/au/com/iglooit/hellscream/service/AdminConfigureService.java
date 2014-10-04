@@ -27,7 +27,6 @@ public class AdminConfigureService {
 
     @PostConstruct
     public void init() throws Exception {
-        LOG.info("init admin configuration");
         WebProperties webProperties = WebProperties.getInstance();
         Boolean initData = Boolean.valueOf(webProperties.get("init.admin.data"));
         if (initData) {

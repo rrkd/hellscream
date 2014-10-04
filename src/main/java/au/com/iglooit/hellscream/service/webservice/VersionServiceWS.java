@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class VersionServiceWS {
-    @RequestMapping(value = "/ws/user/version", method = RequestMethod.GET)
+    @RequestMapping(value = "/ws/version", method = RequestMethod.GET)
     public
     @ResponseBody
     VersionResponse versionResponse() {

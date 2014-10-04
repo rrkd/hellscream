@@ -250,4 +250,10 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
 
         return q.getResultList();
     }
+
+    @Override
+    public Long countMerchant() {
+        Query q = getEntityManager().createQuery("select count(c) from Merchant c ");
+        return (Long)q.getSingleResult();
+    }
 }

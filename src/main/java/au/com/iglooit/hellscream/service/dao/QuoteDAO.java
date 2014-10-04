@@ -20,4 +20,5 @@ public interface QuoteDAO extends IEntityService<Quote> {
     List<Quote> findQuoteByEmail(String email);
     List<Quote> findQuoteByDate(Date startDate, Date endDate);
     SearchResultVO<QuoteVO> findQuoteByEmail(String email, Integer page);
+    Long countQuote();
 }

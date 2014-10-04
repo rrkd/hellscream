@@ -10,10 +10,10 @@ import au.com.iglooit.hellscream.model.entity.Merchant;
  * Time: 12:06 PM
  */
 public interface StatisticService {
-    Integer quoteCount();
-    Integer merchantCount();
-    Integer feedbackCount();
-    Integer msgCount();
-    Integer quoteCount(IGUser user);
-    Integer quoteCount(Merchant merchant);
+    Long quoteCount();
+    Long merchantCount();
+    Long feedbackCount();
+    Long msgCount();
+    Long quoteCount(IGUser user);
+    Long quoteCount(Merchant merchant);
 }

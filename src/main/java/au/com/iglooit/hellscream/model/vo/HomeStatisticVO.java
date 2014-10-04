@@ -9,44 +9,44 @@ import java.io.Serializable;
  * Time: 1:46 PM
  */
 public class HomeStatisticVO implements Serializable {
-    private Integer quoteCount;
-    private Integer merchantCount;
-    private Integer feedbackCount;
-    private Integer msgCount;
+    private Long quoteCount;
+    private Long merchantCount;
+    private Long feedbackCount;
+    private Long msgCount;
 
     public HomeStatisticVO() {
 
     }
 
-    public Integer getQuoteCount() {
+    public Long getQuoteCount() {
         return quoteCount;
     }
 
-    public void setQuoteCount(Integer quoteCount) {
+    public void setQuoteCount(Long quoteCount) {
         this.quoteCount = quoteCount;
     }
 
-    public Integer getMerchantCount() {
+    public Long getMerchantCount() {
         return merchantCount;
     }
 
-    public void setMerchantCount(Integer merchantCount) {
+    public void setMerchantCount(Long merchantCount) {
         this.merchantCount = merchantCount;
     }
 
-    public Integer getFeedbackCount() {
+    public Long getFeedbackCount() {
         return feedbackCount;
     }
 
-    public void setFeedbackCount(Integer feedbackCount) {
+    public void setFeedbackCount(Long feedbackCount) {
         this.feedbackCount = feedbackCount;
     }
 
-    public Integer getMsgCount() {
+    public Long getMsgCount() {
         return msgCount;
     }
 
-    public void setMsgCount(Integer msgCount) {
+    public void setMsgCount(Long msgCount) {
         this.msgCount = msgCount;
     }
 }

@@ -36,4 +36,6 @@ public interface MerchantDAO extends IEntityService<Merchant> {
     SearchResultVO<MerchantVO> findMerchants(String prefix, Integer pageNumber);
 
     List<Merchant> findLatestMerchant(Integer size);
+
+    Long countMerchant();
 }
