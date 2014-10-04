@@ -46,9 +46,9 @@ public class MerchantController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/merchant/details/{tradeNameUrl}", method = RequestMethod.GET)
-    public ModelAndView merchantDetails(@PathVariable String tradeNameUrl) {
-        MerchantVO merchant = merchantService.findMerchantByMerchantURL(tradeNameUrl);
+    @RequestMapping(value = "/merchant/details/{canonicalSlugId}", method = RequestMethod.GET)
+    public ModelAndView merchantDetails(@PathVariable String canonicalSlugId) {
+        MerchantVO merchant = merchantService.findMerchantByMerchantURL(canonicalSlugId);
         if (merchant == null) {
             return new ModelAndView("redirect: /error/404");
         }

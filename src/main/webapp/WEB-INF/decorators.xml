@@ -11,8 +11,8 @@
         <pattern>/loggedout</pattern>
     </decorator>
     <!-- admin console -->
-    <decorator name="merchant" page="section_tp.jsp">
-        <pattern>/ad/*</pattern>
+    <decorator name="merchant" page="index_tp.jsp">
+        <pattern>/admin*</pattern>
     </decorator>
     <!-- default -->
     <decorator name="index" page="index_tp.jsp">

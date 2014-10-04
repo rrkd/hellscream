@@ -22,6 +22,16 @@
     </filter-mapping>
 
     <servlet>
+        <servlet-name>_ah_sessioncleanup</servlet-name>
+        <servlet-class>com.google.apphosting.utils.servlet.SessionCleanupServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>_ah_sessioncleanup</servlet-name>
+        <url-pattern>/_ah/sessioncleanup</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
@@ -53,6 +63,15 @@
         <error-code>403</error-code>
         <location>/WEB-INF/view/error/403.jsp</location>
     </error-page>
+
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/_ah/sessioncleanup</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
 
     <welcome-file-list>
         <welcome-file>home</welcome-file>

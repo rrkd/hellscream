@@ -89,7 +89,7 @@
 
                 <li>
 
-                    <img src="http://www.wowthemes.net/demo/serenity/img/temp/masonry/12.jpg" alt="">
+                    <img src="${vo.merchant.imageFileName}" alt="">
 
                 </li>
 
@@ -216,7 +216,7 @@
 
                                 <div class="featured-projects-image">
 
-                                    <a href="#"><img src="/assets/img/demo/300x200.png" class="imgOpa" alt=""></a>
+                                    <a href="#"><img src="${similarMerchant.imageFileName}" class="imgOpa" alt=""></a>
 
                                 </div>
 

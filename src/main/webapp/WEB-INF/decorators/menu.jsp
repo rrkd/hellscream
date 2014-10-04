@@ -1,4 +1,9 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+    <sec:authentication property='principal.isUser' var="isUser"/>
+    <sec:authentication property='principal.isMerchant' var="isMerchant"/>
+    <sec:authentication property='principal.isAdmin' var="isAdmin"/>
+</sec:authorize>
 <div class="container clearfix">
 
     <div class="row-fluid">
@@ -65,7 +70,6 @@
                         <li class="divider-vertical"></li>
 
                         <sec:authorize access="isAuthenticated()">
-                            <sec:authentication property='principal.isUser' var="isUser"/>
                             <c:if test="${isUser}">
                                 <li><a href="/quote/c">Post Quotes</a></li>
 
@@ -79,7 +83,6 @@
                         </sec:authorize>
 
                         <sec:authorize access="isAuthenticated()">
-                            <sec:authentication property='principal.isMerchant' var="isMerchant"/>
                             <c:if test="${isMerchant}">
                                 <li><a href="/merchant/create">List Your Business</a></li>
 
@@ -95,7 +98,7 @@
                         <sec:authorize access="isAuthenticated()">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account
                                 <b class="caret"></b></a>
-                                <sec:authentication property='principal.isUser' var="isUser"/>
+
                                 <c:choose>
                                     <c:when test="${isUser}">
                                         <ul class="dropdown-menu js-activated" style="display: none;">
@@ -107,7 +110,7 @@
 
                                         </ul>
                                     </c:when>
-                                    <c:otherwise>
+                                    <c:when test="${isMerchant}">
                                         <ul class="dropdown-menu js-activated" style="display: none;">
 
                                             <li><a href="/merchant/p/<sec:authentication property='principal.keyString'/>">Profile</a></li>
@@ -116,7 +119,16 @@
                                             <!--.dropdown-->
 
                                         </ul>
-                                    </c:otherwise>
+                                    </c:when>
+                                    <c:when test="${isAdmin}">
+                                        <ul class="dropdown-menu js-activated" style="display: none;">
+
+                                            <li><a href="/ad/merchant">User Management</a></li>
+                                            <li><a href="/ad/user">Merchant Management</a></li>
+                                            <!--.dropdown-->
+
+                                        </ul>
+                                    </c:when>
                                 </c:choose>
 
 

@@ -76,6 +76,7 @@
                 <i class="fontawesome-icon medium circle-white center icon-briefcase"></i>
             </div>
             <h4>Merchant</h4>
+            <p id="merchantCount"></p>
         </div>
 
     </div>
@@ -85,6 +86,7 @@
                 <i class="fontawesome-icon medium circle-white center icon-list"></i>
             </div>
             <h4>Quote</h4>
+            <p id="quoteCount"></p>
         </div>
 
     </div>
@@ -94,6 +96,7 @@
                 <i class="fontawesome-icon medium circle-white center icon-comments"></i>
             </div>
             <h4>Comment</h4>
+            <p id="commentCount"></p>
         </div>
 
     </div>
@@ -103,6 +106,7 @@
                 <i class="fontawesome-icon medium circle-white center icon-thumbs-up"></i>
             </div>
             <h4>Deal</h4>
+            <p id="feedbackCount"></p>
         </div>
 
     </div>
@@ -115,7 +119,7 @@
 
         <div class="span9">
 
-            <h4 class="top0"><spring:message code="home.whyshuoldIneedtosignup"/> </h4>
+            <h4 class="top0"><spring:message code="home.howitworks"/> </h4>
 
             Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non fermentum.
 
@@ -123,9 +127,9 @@
 
         <div class="span3 text-center top15">
 
-            <a href="/register/u" class="btn btn-primary btn-large">
+            <a href="/howitworks" class="btn btn-primary btn-large">
 
-                <i class="icon icon-download-alt"></i> <spring:message code="home.register" /> </a>
+                <i class="icon icon-download-alt"></i> <spring:message code="home.iwanttoknowmore" /> </a>
 
         </div>
 
@@ -145,7 +149,7 @@
 
             <div>
 
-                Recent Projects
+                New Register Merchant
 
             </div>
 
@@ -169,65 +173,28 @@
 
                 <ul id="recent-projects">
 
-                    <!--work 1-->
+                    <c:forEach items="${latestMerchants}" var="merchant">
 
                     <li>
 
                         <p>
 
-                            <img src="/assets/img/demo/300x200.png" class="imgproject" alt="">
+                            <img src="${merchant.imageFileName}" class="imgproject" alt="">
 
-                            <b>Biz Leaders</b> is a unique multi-purpose HTML template, with a very professional design, perfect for a corporate, business or portfolio website. Features: Easy to setup 16 HTML files Responsive Layouts 6 Color Skins 2 Layouts – Wide and Boxed Working AJAX contact form Slider Recent Work Carousel Clients Area Twitter Feeds Animated Team Boxes Text/Testimonials Rotator <a href="#">[...]</a>
+                            <b>${merchant.tradeName}</b><br>
+                            ${merchant.shortDesc}
+                            <a href="/merchant/details/${merchant.canonicalSlugId}">[...]</a>
 
                         </p>
 
                         <p>
 
-                            <a href="#fakelink" class="btn btn-primary"><i class="icon-share-alt"></i> Get it now</a>
+                            <a href="/merchant/details/${merchant.canonicalSlugId}" class="btn btn-primary"><i class="icon-share-alt"></i> More</a>
 
                         </p>
 
                     </li>
-
-                    <!--work 2-->
-
-                    <li>
-
-                        <p>
-
-                            <img src="/assets/img/demo/300x200.png" class="imgproject" alt="">
-
-                            <b>Studio Francesca</b> is a responsive wordpress theme highly suitable to showcase your portfolio , but multi-purpose adaptable due to its home & blog variations, page templates and powerful features & options. Features Responsive 3 Home Page Variations full slider/boxed/none 3 Blog Variations – 3 box column, 2 box column, single column 3 Archive Variations <a href="http://www.wowthemes.net/themes/francescawp/">[...]</a>
-
-                        </p>
-
-                        <p>
-
-                            <a href="#fakelink" class="btn btn-primary"><i class="icon-share-alt"></i> Get it now</a>
-
-                        </p>
-
-                    </li>
-
-                    <!--work 3-->
-
-                    <li>
-
-                        <p>
-
-                            <img src="/assets/img/demo/300x200.png" class="imgproject" alt="">
-
-                            <b>Serenity </b> is a responsive worpdress theme mainly created for freelancers and business companies who need to showcase their work. It is adaptable though to any other related project. This light-weight theme is generous, built with custom types and shortcodes to customize each page according to your project. This lightweight theme can do much more. <a href="http://www.wowthemes.net/themes/serenitywp/">[...]</a>
-
-                        </p>
-
-                        <p>
-
-                            <a href="#fakelink" class="btn btn-primary"><i class="icon-share-alt"></i> Get it now</a>
-
-                        </p>
-
-                    </li>
+                    </c:forEach>
 
                 </ul>
 
@@ -302,6 +269,34 @@
                 </p>
 
             </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row-fluid top25">
+
+    <div class="panel1">
+
+        <div class="span9">
+
+            <h4 class="top0"><spring:message code="home.whyshuoldIneedtosignup"/> </h4>
+
+            Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non fermentum.
+
+        </div>
+
+        <div class="span3 text-center top15">
+
+            <a href="/register/u" class="btn btn-primary btn-large">
+
+                <i class="icon icon-download-alt"></i> <spring:message code="home.register" /> </a>
+
+        </div>
+
+        <div class="clearfix">
 
         </div>
 
@@ -528,7 +523,7 @@
 
         <article>
 
-            <img src="/assets/img/temp/masonry/helsinki-94309_640.jpg" alt="" class="imgOpa">
+            <img src="/assets/img/quote.jpeg" alt="" class="imgOpa">
 
             <div class="date">
 
@@ -553,6 +548,150 @@
     </div>
     </c:forEach>
 </div>
+<script type="text/javascript">
+
+    $(window).load(function(){
+        if($('#recent-projects') !== null) {
+
+            $('#recent-projects').carouFredSel({
+
+                responsive: true,
+
+                width: '100%',
+
+                auto: true,
+
+                circular	: true,
+
+                infinite	: false,
+
+                prev : {
+
+                    button		: "#car_prev",
+
+                    key			: "left"
+
+                },
+
+                next : {
+
+                    button		: "#car_next",
+
+                    key			: "right"
+
+                },
+
+                swipe: {
+
+                    onMouse: true,
+
+                    onTouch: true
+
+                },
+
+                scroll : 1500,
+
+                items: {
+
+                    visible: {
+
+                        min: 1,
+
+                        max: 1
+
+                    }
+
+                }
+
+            });
+        }
+
+    });
+
+</script>
+
+<!-- CALL ACCORDION -->
+
+<script type="text/javascript">
+
+    $(".accordion h3").eq(0).addClass("active");
+
+    $(".accordion .accord_cont").eq(0).show();
+
+    $(".accordion h3").click(function(){
+
+        $(this).next(".accord_cont").slideToggle("slow")
+
+                .siblings(".accord_cont:visible").slideUp("slow");
+
+        $(this).toggleClass("active");
+
+        $(this).siblings("h3").removeClass("active");
+
+    });
+
+</script>
+
+<!-- CALL CAMERA SLIDER -->
+
+<script>
+
+    jQuery(function(){
+
+        jQuery('#camera_wrap_4').camera({
+
+            height: 'auto',
+
+            loader: 'bar',
+
+            pagination: false,
+
+            thumbnails: false,
+
+            hover: true,
+
+            opacityOnGrid: false,
+
+            fx: 'random',
+
+            transPeriod: 1500,
+
+            time: 7000,
+
+            overlayer: true,
+
+            imagePath: 'img/'
+
+        });
+
+    });
+
+</script>
+
+<!-- CALL FEATURED WORK -->
+
+<!-- Call opacity on hover images from recent news-->
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $("img.imgOpa").hover(function() {
+
+                    $(this).stop().animate({opacity: "0.6"}, 'slow');
+
+                },
+
+                function() {
+
+                    $(this).stop().animate({opacity: "1.0"}, 'slow');
+
+                });
+
+    });
+
+</script>
+
 <script type="text/javascript" src="/assets/js/home.js"></script>
 </body>
 </html>

@@ -3,7 +3,10 @@ package au.com.iglooit.hellscream.service.merchant;
 import au.com.iglooit.hellscream.exception.MerchantManageException;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.MerchantVO;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import com.google.appengine.api.datastore.Key;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,7 +16,9 @@ import com.google.appengine.api.datastore.Key;
  */
 public interface MerchantService {
     MerchantVO findMerchantByKey(Key key);
-    MerchantVO findMerchantByMerchantURL(String merchantURL);
+    MerchantVO findMerchantByMerchantURL(String canonicalSlugId);
     void createMerchant(Merchant merchant) throws MerchantManageException;
     MerchantVO findByURL(String url);
+    SearchResultVO<MerchantVO> findMerchantByPrefix(String prefix, Integer page);
+    List<Merchant> findLatestMerchant();
 }

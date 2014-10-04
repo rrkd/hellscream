@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
+import au.com.iglooit.hellscream.model.vo.MerchantVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 
 import java.util.List;
@@ -30,5 +31,9 @@ public interface MerchantDAO extends IEntityService<Merchant> {
 
     SearchResultVO findMerchants(Integer pageNumber);
 
-    Merchant findByURL(String url);
+    Merchant findByURL(String canonicalSlugId);
+
+    SearchResultVO<MerchantVO> findMerchants(String prefix, Integer pageNumber);
+
+    List<Merchant> findLatestMerchant(Integer size);
 }

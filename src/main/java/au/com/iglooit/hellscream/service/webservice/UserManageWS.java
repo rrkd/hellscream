@@ -31,12 +31,7 @@ public class UserManageWS {
     @Resource
     private UserDAO userDAO;
 
-    @RequestMapping(value = "/ws/user/version", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    VersionResponse versionResponse() {
-        return new VersionResponse("1.0");
-    }
+
 
     @RequestMapping(value = "/ws/user",
             method = RequestMethod.POST,

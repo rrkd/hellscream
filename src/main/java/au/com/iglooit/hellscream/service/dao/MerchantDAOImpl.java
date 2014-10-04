@@ -3,8 +3,8 @@ package au.com.iglooit.hellscream.service.dao;
 import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.AddressVO;
-import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.model.vo.MerchantVO;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import au.com.iglooit.hellscream.service.IndexServiceHelp;
@@ -147,7 +147,7 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     public List<Merchant> findByCategoryName(List<String> categoryName) {
         LOG.info("query merchant by " + categoryName);
         StringBuilder queryBuilder = new StringBuilder("select c from Merchant c where ");
-        if(categoryName.size() == 1) {
+        if (categoryName.size() == 1) {
             queryBuilder.append(" c.categoryList=:categoryName0 ");
         } else {
             queryBuilder.append(" c.categoryList=:categoryName0 ");
@@ -200,11 +200,54 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     }
 
     @Override
-    public Merchant findByURL(String url) {
+    public Merchant findByURL(String canonicalSlugId) {
         Query q = getEntityManager().createQuery("select c from Merchant c " +
                 "where c.canonicalSlugId=:canonicalSlugId")
-                .setParameter("canonicalSlugId", url);
+                .setParameter("canonicalSlugId", canonicalSlugId);
         List<Merchant> resultList = q.getResultList();
         return resultList.size() > 0 ? resultList.get(0) : null;
+    }
+
+    @Override
+    public SearchResultVO<MerchantVO> findMerchants(String prefix, Integer pageNumber) {
+        assert StringUtils.isNotBlank(prefix);
+        Integer startPage = pageNumber == null ? 1 : pageNumber;
+        Query q = getEntityManager().createQuery("select c from Merchant c " +
+                "where c.tradeName>=:key1 and c.tradeName<:key2 ")
+                .setParameter("key1", prefix)
+                .setParameter("key2", prefix + "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
+                .setMaxResults(PAGE_COUNT)
+                .setFirstResult((startPage - 1) * PAGE_COUNT);
+        Query countQuery = getEntityManager().createQuery("select count(c) from Merchant c " +
+                "where c.tradeName>=:key1 and c.tradeName<:key2 ")
+                .setParameter("key1", prefix)
+                .setParameter("key2", prefix + "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+
+        SearchResultVO<MerchantVO> resultVO = new SearchResultVO<MerchantVO>();
+        WebProperties webProperties = WebProperties.getInstance();
+        String driveHost = webProperties.get("driver.host");
+        for (Merchant merchant : (List<Merchant>) q.getResultList()) {
+            MerchantVO vo = new MerchantVO();
+            //change image name
+            if (!StringUtils.isBlank(merchant.getImageFileName())) {
+                merchant.setImageFileName(driveHost + merchant.getImageFileName());
+            }
+            vo.setMerchant(merchant);
+            resultVO.getVoList().add(vo);
+        }
+        resultVO.setPageNum(startPage);
+        resultVO.setTotal(((Long)countQuery.getSingleResult()).intValue() / PAGE_COUNT + 1);
+        return resultVO;
+    }
+
+    @Override
+    public List<Merchant> findLatestMerchant(Integer size) {
+        assert size > 0;
+        Query q = getEntityManager().createQuery("select c from Merchant c " +
+                "where c.valid = true " +
+                "order by c.postDate desc")
+                .setMaxResults(size);
+
+        return q.getResultList();
     }
 }

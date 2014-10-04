@@ -31,7 +31,7 @@ public class SuggestMerchantServiceImpl implements SuggestMerchantService {
 
     @Override
     public List<Merchant> similarMerchant(Key key, Integer count) {
-        return merchantDAO.findAllMerchants().subList(0, count);
+        return merchantDAO.findMerchants(0, count);
     }
 
     @Override

@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Entity
 public class Merchant extends BaseEntity {
-
+    private static final String DEFAULT_MERCHANT_IMG = "/assets/img/default-merchant1.jpeg";
     // must be unique
     private String tradeName;
     private String merchantName;
@@ -44,7 +44,7 @@ public class Merchant extends BaseEntity {
     private String suburb;
     private String formatAddress;
     private String imageResourceId;
-    private String imageFileName;
+    private String imageFileName = DEFAULT_MERCHANT_IMG;
     private String canonicalSlugId;
 
     public Merchant() {
@@ -223,7 +223,7 @@ public class Merchant extends BaseEntity {
     }
 
     public String getImageFileName() {
-        return imageFileName;
+        return StringUtils.isNotBlank(imageFileName) ? imageFileName : DEFAULT_MERCHANT_IMG;
     }
 
     public void setImageFileName(String imageFileName) {

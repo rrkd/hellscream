@@ -1,5 +1,6 @@
 package au.com.iglooit.hellscream.controller;
 
+import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
 import com.google.appengine.api.users.UserServiceFactory;
 import org.slf4j.Logger;
@@ -26,11 +27,14 @@ public class HomeController {
     private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
     @Resource
     private QuoteService quoteService;
+    @Resource
+    private MerchantService merchantService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView homePage(Locale locale) {
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("latestQuote", quoteService.latestQuoteList());
+        modelAndView.addObject("latestMerchants", merchantService.findLatestMerchant());
         LOG.info("Welcome home! The client locale is {}.", locale);
         return modelAndView;
     }

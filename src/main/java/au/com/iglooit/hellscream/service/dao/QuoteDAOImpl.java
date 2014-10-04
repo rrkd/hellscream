@@ -85,7 +85,7 @@ public class QuoteDAOImpl extends BaseRepository<Quote> implements QuoteDAO {
     @Override
     public List<Quote> findQuoteByDate(Date startDate, Date endDate) {
         Query q = getEntityManager()
-                .createQuery("select q from Quote q join fetch q.quoteTransactions " +
+                .createQuery("select q from Quote q " +
                         "where q.postDate>=:startDate and q.postDate<=:endDate " +
                         "order by q.postDate desc")
                 .setParameter("startDate", startDate)

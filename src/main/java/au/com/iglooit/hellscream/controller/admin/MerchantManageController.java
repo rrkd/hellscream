@@ -28,16 +28,22 @@ public class MerchantManageController {
     @Resource
     private CategoryGroupDAO categoryGroupDAO;
 
-    @RequestMapping(value = "/ad/merchant/{key}", method = RequestMethod.GET)
-    public ModelAndView merchantModifyPage(@PathVariable String key) {
-        LOG.info("hit the merchantModifyPage with " + key);
-        ModelAndView modelAndView = new ModelAndView("ad/merchantManage");
-        Merchant merchant = (Merchant) merchantDAO.findByKey(KeyFactory.stringToKey(key));
-        if(merchant == null) {
-            LOG.error("Can not find Merchant by " + key);
-        }
-        modelAndView.addObject("merchant", merchant);
-        modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
+//    @RequestMapping(value = "/ad/merchant/{key}", method = RequestMethod.GET)
+//    public ModelAndView merchantModifyPage(@PathVariable String key) {
+//        LOG.info("hit the merchantModifyPage with " + key);
+//        ModelAndView modelAndView = new ModelAndView("ad/merchant/merchantDetails");
+//        Merchant merchant = (Merchant) merchantDAO.findByKey(KeyFactory.stringToKey(key));
+//        if(merchant == null) {
+//            LOG.error("Can not find Merchant by " + key);
+//        }
+//        modelAndView.addObject("merchant", merchant);
+//        modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
+//        return modelAndView;
+//    }
+
+    @RequestMapping(value = "/admin/merchant", method = RequestMethod.GET)
+    public ModelAndView merchantManagePage() {
+        ModelAndView modelAndView = new ModelAndView("admin/merchantList");
         return modelAndView;
     }
 }

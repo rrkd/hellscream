@@ -4,16 +4,19 @@ import au.com.iglooit.hellscream.exception.MerchantManageException;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.MerchantVO;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.security.AppRole;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.Key;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.EnumSet;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -35,8 +38,8 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
-    public MerchantVO findMerchantByMerchantURL(String merchantURL) {
-        return generateMerchantVO(merchantDAO.findByURL(merchantURL));  //To change body of implemented methods use File | Settings | File Templates.
+    public MerchantVO findMerchantByMerchantURL(String canonicalSlugId) {
+        return generateMerchantVO(merchantDAO.findByURL(canonicalSlugId));  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -59,6 +62,19 @@ public class MerchantServiceImpl implements MerchantService {
     @Override
     public MerchantVO findByURL(String url) {
         return generateMerchantVO(merchantDAO.findByURL(url));
+    }
+
+    @Override
+    public SearchResultVO<MerchantVO> findMerchantByPrefix(String prefix, Integer page) {
+        if(StringUtils.isNotBlank(prefix)) {
+            return merchantDAO.findMerchants(prefix, page);
+        }
+        return merchantDAO.findMerchants(page);
+    }
+
+    @Override
+    public List<Merchant> findLatestMerchant() {
+        return merchantDAO.findLatestMerchant(3);
     }
 
     private MerchantVO generateMerchantVO(Merchant merchant) {

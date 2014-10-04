@@ -24,7 +24,7 @@ public class IGUser extends BaseEntity {
     private String forename;
     private String surname;
     private Set<AppRole> authorities;
-    private boolean enabled;
+    private boolean enabled = true;
     private String mobile;
     private String address1;
     private String address2;
