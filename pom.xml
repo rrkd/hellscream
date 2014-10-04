@@ -28,34 +28,28 @@
         </gae.home>
         <appengine.target.version>1.8.7</appengine.target.version>
         <jdk.version>1.7</jdk.version>
+        <wro4j.version>1.7.6</wro4j.version>
     </properties>
 
     <profiles>
-        <!-- We can configure our integration server to activate this profile and
-                  perform gae:deploy, thus uploading latest snapshot to the http://1.latest.<applicationName>.appspot.com
-                  automatically -->
+        <!-- This profile is for local develop -->
         <profile>
-            <id>integration-build</id>
+            <id>local-build</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
-                <gae.application.version>stage</gae.application.version>
+                <develop.mode>develop</develop.mode>
+                <minify>false</minify>
             </properties>
         </profile>
 
-        <!-- This profile will activate automatically during release and upload
-                  application to the http://2.latest.<applicationName>.appspot.com (We might
-                  want to set the 2nd version as our applications Default version to be accessible
-                  at http://<applicationName>.appspot.com) -->
+        <!-- This profile is for release build and deployment -->
         <profile>
             <id>release-build</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
-
             <properties>
-                <gae.application.version>release</gae.application.version>
+                <develop.mode>release</develop.mode>
+                <minify>true</minify>
             </properties>
         </profile>
     </profiles>
@@ -177,6 +171,30 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
+                <plugin>
+                    <groupId>ro.isdc.wro4j</groupId>
+                    <artifactId>wro4j-maven-plugin</artifactId>
+                    <version>${wro4j.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!--<targetGroups>basic-header.min,basic-footer.min,feedback.min</targetGroups>-->
+                        <minimize>${minify}</minimize>
+                        <destinationFolder>${basedir}/src/main/webapp/WEB-INF/assets/wro/</destinationFolder>
+                        <contextFolder>${basedir}/src/main/webapp/WEB-INF/assets/</contextFolder>
+                        <wroFile>${basedir}/src/main/webapp/WEB-INF/wro.xml</wroFile>
+                        <wroManagerFactory>ro.isdc.wro.extensions.manager.standalone.GoogleStandaloneManagerFactory</wroManagerFactory>
+                        <ignoreMissingResources>false</ignoreMissingResources>
+                    </configuration>
+                </plugin>
+
 
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->

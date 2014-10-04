@@ -17,19 +17,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-
-    <link href="/assets/css/bootstrap.css" rel="stylesheet">
-
-    <link href="/assets/css/style.css" rel="stylesheet">
-
-    <link href="/assets/css/icons.css" rel="stylesheet">
-
-    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <link href="/assets/css/select2.css" rel="stylesheet">
-
-    <link rel="stylesheet" id="main-color" href="/assets/css/skin-orange.css" media="screen"/>
-
+    <link href="/assets/wro/section-2-header.min.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 
     <!--[if lt IE 9]>
@@ -50,7 +38,7 @@
 
     <link rel="shortcut icon" href="/assets/img/ico/favicon.png">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="/assets/wro/section-2-header.min.js"></script>
 
 </head>
 
@@ -99,23 +87,7 @@
 
 <!-- Placed at the end of the document so the pages load faster -->
 
-<script src="/assets/js/bootstrap.js"></script>
-
-<script src="/assets/js/plugins.js"></script>
-
-<script src="/assets/js/custom.js"></script>
-
-<script src="/assets/js/search.js"></script>
-
-
-
-<!--BEGIN DEMO PANEL
-
-================================================== -->
-
-<script type="text/javascript" src="/assets/js/select2.min.js"></script>
-
-<!-- DEMO PANEL -->
+<script src="/assets/wro/section-2-footer.min.js"></script>
 
 <%@include file="feedback.jsp"%>
 

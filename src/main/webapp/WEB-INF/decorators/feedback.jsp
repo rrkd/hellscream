@@ -1,16 +1,7 @@
 <!-- Style Switcher Files-->
 
-<link rel="stylesheet" href="/assets/demo/css/style-switcher.css" media="screen"/>
-
-<link rel="stylesheet" href="/assets/demo/css/colorpicker.css" media="screen"/>
-
-<script type="text/javascript" src="/assets/demo/js/jquery.cookie.js"></script>
-
-<script type="text/javascript" src="/assets/demo/js/styleswitch.js"></script>
-
-<script type="text/javascript" src="/assets/demo/js/colorpicker.js"></script>
-
-<script type="text/javascript" src="/assets/demo/js/switcher.js"></script>
+<link href="/assets/wro/feedback.min.css" rel="stylesheet">
+<script type="text/javascript" src="/assets/wro/feedback.min.js"></script>
 <!-- DEMO PANEL -->
 
 <div id="switcher-handle">
@@ -37,9 +28,9 @@
 
             </p>
 
-            <input id="feedbackNameTxt" type="text" name="name" placeholder="Name">
-            <input id="feedbackEmailTxt" type="text" name="email" placeholder="E-mail">
-            <textarea id="feedbackContent" name="comment" rows="4" placeholder="Message"></textarea>
+            <input id="feedbackNameTxt" type="text" name="name" placeholder="Name" style="width: 130px">
+            <input id="feedbackEmailTxt" type="text" name="email" placeholder="E-mail" style="width: 130px">
+            <textarea id="feedbackContent" name="comment" rows="4" placeholder="Message" style="width: 130px"></textarea>
 
             <div class="switcher-divider">
 
