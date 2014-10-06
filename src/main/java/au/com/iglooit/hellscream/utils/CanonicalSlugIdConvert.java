@@ -12,8 +12,8 @@ package au.com.iglooit.hellscream.utils;
  * tradeName Nicholas Zhu
  * url: Nicholas-Zhu.html
  */
-public final class MerchantIdentifierConvert {
-    private MerchantIdentifierConvert() {
+public final class CanonicalSlugIdConvert {
+    private CanonicalSlugIdConvert() {
 
     }
 

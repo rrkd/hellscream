@@ -8,8 +8,8 @@ import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.security.AppRole;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
+import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
 import au.com.iglooit.hellscream.utils.DateUtils;
-import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.Key;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
@@ -48,7 +48,7 @@ public class MerchantServiceImpl implements MerchantService {
             throw new MerchantManageException("Duplicated merchant name: " + merchant.getTradeName());
         }
         merchant.setPostDate(DateUtils.getNow());
-        merchant.setCanonicalSlugId(MerchantIdentifierConvert.convertToURL(merchant.getTradeName()));
+        merchant.setCanonicalSlugId(CanonicalSlugIdConvert.convertToURL(merchant.getTradeName()));
         merchantDAO.createMerchant(merchant);
         // create merchant admin user
         IGUser merchantAdmin = new IGUser();

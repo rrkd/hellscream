@@ -6,6 +6,7 @@ import au.com.iglooit.hellscream.model.entity.CategoryGroup;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.CategoryDAO;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
+import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
 import au.com.iglooit.hellscream.utils.CategoryIdentifierConvert;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -62,6 +63,7 @@ public class CategoryConfigureService {
                     group = new CategoryGroup();
                     group.setName(categoryGroupName);
                     group.setDescription(categoryGroupName);
+                    group.setUrl(CanonicalSlugIdConvert.convertToURL(categoryGroupName));
                     categoryGroupDAO.createCategoryGroup(group);
                 }
                 Category category = categoryDAO.findByName(categoryName);
@@ -70,14 +72,14 @@ public class CategoryConfigureService {
                     category.setName(categoryName);
                     category.setDescription(categoryName);
                     category.setGroup(group);
-                    category.setUrl(CategoryIdentifierConvert.convertToURL(categoryName));
+                    category.setUrl(CanonicalSlugIdConvert.convertToURL(categoryName));
                     LOG.info("crate category: " + categoryName);
                     categoryDAO.createCategory(category);
                 } else {
                     category.setName(categoryName);
                     category.setDescription(categoryName);
                     category.setGroup(group);
-                    category.setUrl(CategoryIdentifierConvert.convertToURL(categoryName));
+                    category.setUrl(CanonicalSlugIdConvert.convertToURL(categoryName));
                     categoryDAO.update(category);
                     LOG.info("update category: " + categoryName);
                 }

@@ -1,8 +1,8 @@
 package au.com.iglooit.hellscream.model.entity;
 
 import au.com.iglooit.hellscream.model.GeoIndexTypeConstant;
+import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
 import au.com.iglooit.hellscream.utils.DescriptionUtils;
-import au.com.iglooit.hellscream.utils.MerchantIdentifierConvert;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.Field;
@@ -139,7 +139,7 @@ public class Merchant extends BaseEntity {
     }
 
     public String getUrl() {
-        return MerchantIdentifierConvert.convertToURL(tradeName);
+        return CanonicalSlugIdConvert.convertToURL(tradeName);
     }
 
     public Date getLastUpdateTime() {

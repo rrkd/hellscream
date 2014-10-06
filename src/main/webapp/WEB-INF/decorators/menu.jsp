@@ -10,7 +10,12 @@
 
         <div class="span12">
 
-            <h1 class="brandlogo"><a href="/home"><img src="/assets/img/logo.png" alt=""></a></h1>
+            <div class="brandlogo">
+
+                <a href="/home"><img src="/assets/img/logo.png" alt="huafu"></a><br/>
+                <a href="/home?lang=en" style="margin: 1px;"><img src="/assets/img/au_logo.png" alt="English"></a>
+                <a href="/home?lang=zh_CN" style="margin: 1px;"><img src="/assets/img/cn_logo.png" alt="China"></a>
+            </div>
 
             <div class="topinfo">
 
@@ -123,8 +128,8 @@
                                     <c:when test="${isAdmin}">
                                         <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                            <li><a href="/ad/merchant">User Management</a></li>
-                                            <li><a href="/ad/user">Merchant Management</a></li>
+                                            <li><a href="/admin/user">User Management</a></li>
+                                            <li><a href="/admin/merchant">Merchant Management</a></li>
                                             <!--.dropdown-->
 
                                         </ul>
@@ -145,18 +150,6 @@
                                 <li><a href="/contactus">Contact Us</a></li>
 
                                 <li><a href="/faq">FAQ</a></li>
-
-                                <%--<li><a href="/merchant?p=1">List Merchant</a></li>--%>
-
-                                <%--<li><a href="/search">Search</a></li>--%>
-
-                                <%--<li><a href="/ad/merchant/create">Create Merchant</a></li>--%>
-
-                                <%--<li><a href="/category">List Category</a></li>--%>
-
-                                <%--<li><a href="/u/q">My Quote</a></li>--%>
-
-                                <%--<li><a href="/quote/t/ahFzcHJpbmctZm9yZXN0LTUzOHISCxIFUXVvdGUYgICAgICAkQgM">Test Apply Quote</a></li>--%>
 
                                 <!--.dropdown-->
 

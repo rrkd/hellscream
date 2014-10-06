@@ -1,12 +1,12 @@
 <%@include file="../globe.jsp"%><html>
 <head>
     <meta name="description" content="service job search">
-    <title>Administrator - Merchant</title>
+    <title>Administrator - User</title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>Merchant Management</h1>
+    <h1>User Management</h1>
 
     <div class="headerdivider">
 
@@ -46,7 +46,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Merchant Name</th>
+                    <th>User Name</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -66,6 +66,6 @@
 
     </div>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/ad/merchant/merchantList.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/ad/user/userList.js"></script>
 </body>
 </html>

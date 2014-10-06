@@ -6,6 +6,7 @@ package au.com.iglooit.hellscream.utils;
  * Date: 28/08/2014
  * Time: 7:48 AM
  */
+@Deprecated
 public final class CategoryIdentifierConvert {
     private CategoryIdentifierConvert() {
 

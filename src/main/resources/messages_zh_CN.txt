@@ -1,3 +1,4 @@
+home.cn=中文
 home.welcome=你好
 home.register=我想试试
 home.needcontact=需要帮助? 联系我们:

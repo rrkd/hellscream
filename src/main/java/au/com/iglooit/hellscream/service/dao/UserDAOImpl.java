@@ -1,8 +1,13 @@
 package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
+import au.com.iglooit.hellscream.model.entity.Merchant;
+import au.com.iglooit.hellscream.model.vo.MerchantVO;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
+import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import au.com.iglooit.hellscream.security.AppRole;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -23,7 +28,7 @@ import java.util.Set;
 @Transactional
 public class UserDAOImpl extends BaseRepository<IGUser> implements UserDAO {
     private static final Logger LOG = LoggerFactory.getLogger(UserDAOImpl.class);
-
+    private static final Integer PAGE_COUNT = 10;
     public UserDAOImpl() {
         super(IGUser.class);
     }
@@ -67,5 +72,48 @@ public class UserDAOImpl extends BaseRepository<IGUser> implements UserDAO {
             return result.get(0);
         }
         return null;
+    }
+
+    @Override
+    public SearchResultVO<IGUser> findUserByPrefix(String keyword, Integer pageNumber) {
+        assert StringUtils.isNotBlank(keyword);
+        Integer startPage = pageNumber == null ? 1 : pageNumber;
+        Query q = getEntityManager().createQuery("select c from IGUser c " +
+                "where c.nickname>=:key1 and c.nickname<:key2 ")
+                .setParameter("key1", keyword)
+                .setParameter("key2", keyword + "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
+                .setMaxResults(PAGE_COUNT)
+                .setFirstResult((startPage - 1) * PAGE_COUNT);
+        Query countQuery = getEntityManager().createQuery("select count(c) from IGUser c " +
+                "where c.nickname>=:key1 and c.nickname<:key2 ")
+                .setParameter("key1", keyword)
+                .setParameter("key2", keyword + "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+
+        SearchResultVO<IGUser> resultVO = new SearchResultVO<IGUser>();
+        for (IGUser user : (List<IGUser>) q.getResultList()) {
+            resultVO.getVoList().add(user);
+        }
+        resultVO.setPageNum(startPage);
+        resultVO.setTotal(((Long)countQuery.getSingleResult()).intValue() / PAGE_COUNT + 1);
+        return resultVO;
+    }
+
+    @Override
+    public SearchResultVO<IGUser> findUserByPrefix(Integer page) {
+        Integer startPage = page == null ? 1 : page;
+        Query q = getEntityManager().createQuery("select c from IGUser c " +
+                "where c.nickname>=:key1 and c.nickname<:key2 ")
+                .setMaxResults(PAGE_COUNT)
+                .setFirstResult((startPage - 1) * PAGE_COUNT);
+        Query countQuery = getEntityManager().createQuery("select count(c) from IGUser c " +
+                "where c.nickname>=:key1 and c.nickname<:key2 ");
+
+        SearchResultVO<IGUser> resultVO = new SearchResultVO<IGUser>();
+        for (IGUser user : (List<IGUser>) q.getResultList()) {
+            resultVO.getVoList().add(user);
+        }
+        resultVO.setPageNum(startPage);
+        resultVO.setTotal(((Long)countQuery.getSingleResult()).intValue() / PAGE_COUNT + 1);
+        return resultVO;
     }
 }

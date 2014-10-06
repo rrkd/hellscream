@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
+import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,4 +15,6 @@ public interface UserDAO extends IEntityService<IGUser> {
     IGUser findByEmail(String email);
     void modifyUser(IGUser IGUser);
     IGUser findByUserId(String userId);
+    SearchResultVO<IGUser> findUserByPrefix(String keyword, Integer page);
+    SearchResultVO<IGUser> findUserByPrefix(Integer page);
 }
