@@ -1,7 +1,12 @@
 jQuery(document).ready(function ($) {
+    initLatestMerchant($);
     initLatestFeedbackQuoteMsg($);
     initLatestQuote($);
 });
+
+function initLatestMerchant($) {
+
+}
 
 function initLatestFeedbackQuoteMsg($) {
     $.ajax({
