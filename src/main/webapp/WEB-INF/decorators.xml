@@ -9,6 +9,7 @@
     <decorator name="login" page="index_tp.jsp">
         <pattern>/logout</pattern>
         <pattern>/loggedout</pattern>
+        <pattern>/login</pattern>
     </decorator>
     <!-- admin console -->
     <decorator name="merchant" page="index_tp.jsp">

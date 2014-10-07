@@ -57,11 +57,11 @@
 
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/view/error/404.jsp</location>
+        <location>/public/404.jsp</location>
     </error-page>
     <error-page>
-        <error-code>403</error-code>
-        <location>/WEB-INF/view/error/403.jsp</location>
+        <error-code>500</error-code>
+        <location>/public/500.jsp</location>
     </error-page>
 
     <security-constraint>
@@ -74,6 +74,6 @@
     </security-constraint>
 
     <welcome-file-list>
-        <welcome-file>home</welcome-file>
+        <welcome-file>public/home.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

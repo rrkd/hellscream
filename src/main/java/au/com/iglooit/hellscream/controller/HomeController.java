@@ -39,7 +39,7 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/logout", method= RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().invalidate();
 
@@ -48,7 +48,18 @@ public class HomeController {
         response.sendRedirect(logoutUrl);
     }
 
-    @RequestMapping(value = "/loggedout", method= RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.getSession().invalidate();
+
+        String loginURL = UserServiceFactory.getUserService().createLoginURL("/home");
+        ModelAndView modelAndView = new ModelAndView("login");
+        modelAndView.addObject("googleUrl", loginURL);
+        return modelAndView;
+
+    }
+
+    @RequestMapping(value = "/loggedout", method = RequestMethod.GET)
     public String loggedOut() {
         return "loggedout";
     }

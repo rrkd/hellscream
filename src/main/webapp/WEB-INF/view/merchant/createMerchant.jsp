@@ -48,14 +48,14 @@
             <div class="control-group">
                 <label class="control-label" for="tradeName">Merchant Name</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="MerchantName" required>
+                    <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="MerchantName" maxlength="500" required>
                     <p class="help-block">Your Merchant Name</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Email</label>
                 <div class="controls">
-                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" required>
+                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" maxlength="500" required>
                     <p class="help-block">Contact Email</p>
                 </div>
             </div>
@@ -78,49 +78,49 @@
             <div class="control-group">
                 <label class="control-label" for="tradeName">Description</label>
                 <div class="controls">
-                    <textarea id="description" name="message" class="span12" placeholder="Description" rows="8"></textarea>
+                    <textarea id="description" name="message" class="span12" placeholder="Description" rows="8" maxlength="500"></textarea>
                     <p class="help-block">What is your service about</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Address Line 1</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address1" class="span12" placeholder="Address1" required>
+                    <input name="name" size="30" type="text" id="address1" class="span12" placeholder="Address1" maxlength="500" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Address Line 2</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address2" class="span12" placeholder="Address2" required>
+                    <input name="name" size="30" type="text" id="address2" class="span12" placeholder="Address2" maxlength="500" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Address Line 3</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address3" class="span12" placeholder="Address3" required>
+                    <input name="name" size="30" type="text" id="address3" class="span12" placeholder="Address3" maxlength="500" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">phone</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="phone" class="span12" placeholder="Phone">
+                    <input name="name" size="30" type="text" id="phone" class="span12" placeholder="Phone" maxlength="500">
                     <p class="help-block">Phone</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Contact One</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="contact1" class="span12" placeholder="Contact One">
+                    <input name="name" size="30" type="text" id="contact1" class="span12" placeholder="Contact One" maxlength="500">
                     <p class="help-block">Contact Person</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Contact two</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="contact2" class="span12" placeholder="Contact Tow">
+                    <input name="name" size="30" type="text" id="contact2" class="span12" placeholder="Contact Tow" maxlength="500">
                     <p class="help-block"></p>
                 </div>
             </div>

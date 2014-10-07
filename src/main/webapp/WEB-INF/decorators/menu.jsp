@@ -49,7 +49,7 @@
                         Welcome back <sec:authentication property="principal.nickname"/>.<a href="/logout">Logout</a>
                     </sec:authorize>
                     <sec:authorize access="isAnonymous()">
-                        Welcome Guest.<a href="/u/p">Login</a>
+                        Welcome Guest.<a href="/login">Login</a>
                     </sec:authorize>
 
                 </div>
@@ -89,9 +89,9 @@
 
                         <sec:authorize access="isAuthenticated()">
                             <c:if test="${isMerchant}">
-                                <li><a href="/merchant/create">List Your Business</a></li>
+                                <%--<li><a href="/merchant/create">List Your Business</a></li>--%>
 
-                                <li class="divider-vertical"></li>
+                                <%--<li class="divider-vertical"></li>--%>
                             </c:if>
                         </sec:authorize>
                         <sec:authorize access="isAnonymous()">
