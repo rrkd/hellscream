@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.security;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
+import au.com.iglooit.hellscream.model.entity.UserOriginalSystem;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
 import com.google.appengine.api.users.User;
 import org.springframework.context.MessageSource;
@@ -34,13 +35,39 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
     private UserDAO userDAO;
 
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        User googleUser = (User) authentication.getPrincipal();
+        IGUser user = null;
+        if(authentication.getPrincipal() instanceof User) {
+            User googleUser = (User) authentication.getPrincipal();
 
-        IGUser user = userDAO.findByEmail(googleUser.getEmail());
+            user = userDAO.findByEmail(googleUser.getEmail());
+            if (user == null) {
+                // IGUser not in registry. Needs to register
+                IGUser rawUser = new IGUser(googleUser.getUserId(), googleUser.getNickname(), googleUser.getEmail());
+                user = userDAO.signUpAsNewDefaultUser(rawUser);
+            }
+            user.setUserOriginalSystem(UserOriginalSystem.GOOGLE);
+        } else if (authentication.getPrincipal() instanceof com.face4j.facebook.entity.User) {
+            com.face4j.facebook.entity.User facebookUser = (com.face4j.facebook.entity.User) authentication.getPrincipal();
+            user = userDAO.findByEmail(facebookUser.getEmail());
 
-        if (user == null) {
-            // IGUser not in registry. Needs to register
-            user = new IGUser(googleUser.getUserId(), googleUser.getNickname(), googleUser.getEmail());
+            if (user == null) {
+                // IGUser not in registry. Needs to register
+                IGUser rawUser = new IGUser("", facebookUser.getName(), facebookUser.getEmail());
+                user = userDAO.signUpAsNewDefaultUser(rawUser);
+            }
+            user.setUserOriginalSystem(UserOriginalSystem.FACEBOOK);
+        } else if (authentication.getPrincipal() instanceof IGUser) {
+            user = userDAO.findByEmail(((IGUser)authentication.getPrincipal()).getEmail());
+
+            if (user == null) {
+                // IGUser not in registry. Needs to register
+                IGUser rawUser = new IGUser("", "", user.getEmail());
+                rawUser.setUserOriginalSystem(UserOriginalSystem.DB);
+                user = userDAO.signUpAsNewDefaultUser(rawUser);
+            }
+            user.setUserOriginalSystem(UserOriginalSystem.DB);
+        } else {
+            throw new InvalidAuthenticationException("user is invalid");
         }
 
         if (!user.isEnabled()) {

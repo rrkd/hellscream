@@ -7,11 +7,13 @@
 <body>
 <div class="page-header">
 
-    <h1>Create a New Merchant</h1>
+    <h1>Post Your Business</h1>
 
     <div class="headerdivider">
 
     </div>
+    <input name="name" size="30" type="hidden" id="userKeyString" class="span12"
+           value="${user.keyString}">
 
 </div>
 
@@ -36,6 +38,13 @@
         </div>
         <form class="form-horizontal" id="merchantRegisterForm" novalidate>
             <div class="control-group">
+                <label class="control-label" for="email">Email</label>
+                <div class="controls">
+                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" value="${user.email}" readonly>
+                    <p class="help-block">This email will be your contact email.</p>
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="tradeName">Trade Name</label>
                 <div class="controls">
                     <input name="tradeName" size="30" class="span12" type="text"
@@ -52,13 +61,7 @@
                     <p class="help-block">Your Merchant Name</p>
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="tradeName">Email</label>
-                <div class="controls">
-                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" maxlength="500" required>
-                    <p class="help-block">Contact Email</p>
-                </div>
-            </div>
+
             <div class="control-group">
                 <label class="control-label" for="tradeName">Category</label>
                 <div class="controls">
@@ -125,14 +128,6 @@
                 </div>
             </div>
 
-            <%--<div class="control-group">--%>
-                <%--<label class="control-label" for="tradeName">Merchant Logo</label>--%>
-                <%--<div class="controls">--%>
-                    <%--<input name="name" size="30" type="file" id="merchantLogo" class="span12" placeholder="MerchantLogo">--%>
-                    <%--<p class="help-block"></p>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-
             <div class="control-group">
                 <label class="control-label" for="terms-and-conditions">Legal</label>
                 <div class="controls">
@@ -171,6 +166,25 @@
     </div>
 </div>
 <!-- uploading dialog end -->
+
+<!-- success dialog -->
+<div class="modal fade" id="successDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="successDlgLabel">Merchant Created</h4>
+            </div>
+            <div class="modal-body">
+                Your business has been posted. Now you can modify your profile.
+            </div>
+            <div class="modal-footer">
+                <a href="/home" class="btn btn-default" data-dismiss="modal">Go To Home</a>
+                <a href="/merchant/profile" class="btn btn-primary">Go To Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- success dialog end -->
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jqBootstrapValidation.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/prettify.js"></script>

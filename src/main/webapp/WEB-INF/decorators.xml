@@ -2,7 +2,7 @@
     <decorator name="merchant" page="section_tp.jsp">
         <pattern>/search*</pattern>
         <pattern>/category*</pattern>
-        <pattern>/register*</pattern>
+
         <pattern>/p/*</pattern>
     </decorator>
     <!-- user -->
@@ -10,6 +10,7 @@
         <pattern>/logout</pattern>
         <pattern>/loggedout</pattern>
         <pattern>/login</pattern>
+        <pattern>/register*</pattern>
     </decorator>
     <!-- admin console -->
     <decorator name="merchant" page="index_tp.jsp">
@@ -30,6 +31,7 @@
     <decorator name="quote" page="section_tp_2.jsp">
         <pattern>/quote*</pattern>
         <pattern>/merchant*</pattern>
+        <pattern>/m*</pattern>
         <pattern>/fd*</pattern>
     </decorator>
     <!-- quote -->

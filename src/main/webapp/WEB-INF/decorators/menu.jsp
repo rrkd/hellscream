@@ -74,31 +74,27 @@
 
                         <li class="divider-vertical"></li>
 
-                        <sec:authorize access="isAuthenticated()">
-                            <c:if test="${isUser}">
-                                <li><a href="/quote/c">Post Quotes</a></li>
-
-                                <li class="divider-vertical"></li>
-                            </c:if>
-                        </sec:authorize>
-                        <sec:authorize access="isAnonymous()">
-                            <li><a href="/quote/c">Post Quotes</a></li>
-
-                            <li class="divider-vertical"></li>
-                        </sec:authorize>
-
-                        <sec:authorize access="isAuthenticated()">
-                            <c:if test="${isMerchant}">
-                                <%--<li><a href="/merchant/create">List Your Business</a></li>--%>
-
-                                <%--<li class="divider-vertical"></li>--%>
-                            </c:if>
-                        </sec:authorize>
-                        <sec:authorize access="isAnonymous()">
-                            <li><a href="/merchant/create">List Your Business</a></li>
-
-                            <li class="divider-vertical"></li>
-                        </sec:authorize>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Service
+                            <b class="caret"></b></a>
+                            <ul class="dropdown-menu js-activated" style="display: none;">
+                                <sec:authorize access="isAuthenticated()">
+                                    <c:if test="${isUser}">
+                                        <li><a href="/quote/c">Post Quotes</a></li>
+                                    </c:if>
+                                </sec:authorize>
+                                <sec:authorize access="isAnonymous()">
+                                    <li><a href="/quote/c">Post Quotes</a></li>
+                                </sec:authorize>
+                                <sec:authorize access="isAuthenticated()">
+                                    <c:if test="${not isMerchant}">
+                                        <li><a href="/m/create">List Your Business</a></li>
+                                    </c:if>
+                                </sec:authorize>
+                                <sec:authorize access="isAnonymous()">
+                                    <li><a href="/m/create">List Your Business</a></li>
+                                </sec:authorize>
+                            </ul>
+                        <li class="divider-vertical"></li>
 
                         <sec:authorize access="isAuthenticated()">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account

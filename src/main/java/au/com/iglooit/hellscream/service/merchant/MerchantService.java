@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.service.merchant;
 
 import au.com.iglooit.hellscream.exception.MerchantManageException;
+import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.MerchantVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
@@ -17,7 +18,7 @@ import java.util.List;
 public interface MerchantService {
     MerchantVO findMerchantByKey(Key key);
     MerchantVO findMerchantByMerchantURL(String canonicalSlugId);
-    void createMerchant(Merchant merchant) throws MerchantManageException;
+    void createMerchant(Merchant merchant, IGUser user) throws MerchantManageException;
     MerchantVO findByURL(String url);
     SearchResultVO<MerchantVO> findMerchantByPrefix(String prefix, Integer page);
     List<Merchant> findLatestMerchant();

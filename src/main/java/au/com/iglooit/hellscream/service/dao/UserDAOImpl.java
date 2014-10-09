@@ -116,4 +116,24 @@ public class UserDAOImpl extends BaseRepository<IGUser> implements UserDAO {
         resultVO.setTotal(((Long)countQuery.getSingleResult()).intValue() / PAGE_COUNT + 1);
         return resultVO;
     }
+
+    @Override
+    public Boolean validUser(String email, String password) {
+        Query q = getEntityManager().createQuery("select c from IGUser c " +
+                "where c.email=:email and c.password=:password ")
+                .setParameter("email",email)
+                .setParameter("password", password);
+        if(q.getResultList().size() > 0) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    @Override
+    public IGUser signUpAsNewDefaultUser(IGUser user) {
+        user.setNickname(user.getEmail());
+        user.setAuthorities(EnumSet.of(AppRole.USER));
+        add(user);
+        return user;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

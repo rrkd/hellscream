@@ -3,12 +3,13 @@ jQuery(document).ready(function ($) {
     $('#category_select').select2({
         placeholder:"Category Select"
     });
+    $('#successDlg').appendTo('body');
 
     prettyPrint();
 
     var merchantLogo;
 
-    $("#tradeName,#merchantName,#address1,#address2,#address3, #email, #terms-and-conditions").jqBootstrapValidation(
+    $("#tradeName,#merchantName,#address1,#address2,#address3,#terms-and-conditions").jqBootstrapValidation(
         {
             preventSubmit: true,
             submitError: function($form, event, errors) {
@@ -18,13 +19,17 @@ jQuery(document).ready(function ($) {
             submitSuccess: function($form, event) {
                 $.ajax({
                     type:"POST",
-                    url:"/ws/merchant",
+                    url:"/ws/"+$('#userKeyString').val()+"/listMerchant",
                     data:generateMerchant(),
                     contentType:'application/json',
                     success:function (data) {
                         if (data.status == 'OK') {
-                            alert('Merchant has been added');
+
                             $('#merchantRsgErrorBox').hide();
+                            $('#successDlg').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
                         }
                         else {
                             $('#merchantRsgErrorBox').show();
@@ -62,7 +67,7 @@ jQuery(document).ready(function ($) {
     });
 });
 
-function generateMerchant(merchantLogo) {
+function generateMerchant() {
     var merchant = {
         tradeName:$('#tradeName').val(),
         merchantName:$('#merchantName').val(),

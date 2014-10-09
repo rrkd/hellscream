@@ -22,7 +22,7 @@
 
             <div>
 
-                User Information
+                User Register
 
             </div>
 
@@ -36,6 +36,34 @@
         </div>
         <form class="form-horizontal" id="merchantRegisterForm" novalidate>
             <div class="control-group">
+                <label class="control-label" for="email">Email</label>
+                <div class="controls">
+                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" required>
+                    <p class="help-block">Contact Email</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                    <input name="password" size="30" type="password" id="password" class="span12" placeholder="Password"
+                           minlength="6"
+                           data-validation-regex-regex="[a-zA-Z0-9\s]+"
+                           data-validation-regex-message="Passwords must contain at least six characters, including uppercase, lowercase letters and numbers" required>
+                    <p class="help-block">Passwords can only contain at least six characters, including uppercase, lowercase letters and numbers</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password2">Re-enter Password</label>
+                <div class="controls">
+                    <input name="password2" size="30" type="password" id="password2" class="span12" placeholder="Re-enter Password"
+                           data-validation-matches-match="password"
+                           data-validation-matches-message=
+                                   "Must match password entered above" required>
+                    <p class="help-block"></p>
+                </div>
+            </div>
+
+            <div class="control-group">
                 <label class="control-label" for="nickname">Nickname</label>
                 <div class="controls">
                     <input name="nickname" size="30" class="span12" type="text"
@@ -48,22 +76,15 @@
             <div class="control-group">
                 <label class="control-label" for="forename">Forename</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="forename" class="span12" placeholder="MerchantName" required>
+                    <input name="name" size="30" type="text" id="forename" class="span12" placeholder="Forename" required>
                     <p class="help-block">Your Forename</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="surname">Surname</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="surname" class="span12" placeholder="MerchantName" required>
+                    <input name="name" size="30" type="text" id="surname" class="span12" placeholder="Surname" required>
                     <p class="help-block">Your Surname</p>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="email">Email</label>
-                <div class="controls">
-                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" required>
-                    <p class="help-block">Contact Email</p>
                 </div>
             </div>
 
@@ -116,7 +137,7 @@
 
             <br/>
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary"> Post My Service <i class="icon-ok icon-white"></i></button><br />
+                <button type="submit" class="btn btn-primary"> Sign Up <i class="icon-ok icon-white"></i></button><br />
                 (I've read all documents.)
             </div>
         </form>
@@ -124,7 +145,8 @@
     </div>
 
 </div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/sha256.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jqBootstrapValidation.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/prettify.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/register.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/register/userRegister.js"></script>
 </body>

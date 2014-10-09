@@ -15,7 +15,38 @@
 
 </div>
     <div class="row-fluid">
-        <div class="span12">
+        <div class="span6">
+            <div class="titleborder">
+
+                <div>
+
+                    Login
+
+                </div>
+
+            </div>
+            <div class="span12">
+                <div class="alert alert-error" id="merchantRsgErrorBox" style="display: none;">
+
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+
+                    <strong>Error!</strong> You username or password is invalid.</span>
+
+                </div>
+                <form action="#">
+
+                    <input name="name" size="30" type="text" id="username" class="span6" placeholder="Username"><br/>
+
+                    <input name="name" size="30" type="password" id="password" class="span6" placeholder="Password">
+                    <br/>
+
+
+                    <input value="Login" id="login_btn" class="btn btn-primary top10">
+
+                </form>
+            </div>
+        </div>
+        <div class="span6">
             <div class="titleborder">
 
                 <div>
@@ -26,12 +57,18 @@
 
             </div>
             <div class="span12">
-                <a class="btn btn-large btn-success" href="${googleUrl}">
-                    <i class="icon-google-plus-sign"></i>
-                    Log in Use Google</a>
-                <a class="btn btn-large btn-success" href="#">
-                    <i class="icon-facebook-sign"></i>
-                    Log in Use Facebook</a>
+                <p>
+                    <a class="btn btn-large btn-success" href="${googleUrl}">
+                        <i class="icon-google-plus-sign"></i>
+                        Log in Use Google</a>
+
+                </p>
+                <p>
+
+                </p>
+                    <a class="btn btn-large btn-success" href="${facebookUrl}">
+                        <i class="icon-facebook-sign"></i>
+                        Log in Use Facebook</a>
                 <br/>
             </div>
         </div>
@@ -62,10 +99,11 @@
                     <li><i class="icon-li icon-ok"></i>Send Message to Merchant</li>
 
                 </ul>
-                <a class="btn btn-large btn-primary" href="#">
+                <p>
+                    <a class="btn btn-large btn-primary" href="/register/user">
                     <i class="icon-user"></i>
                     Sign Up As User</a>
-
+                </p>
             </div>
         </div>
         <div class="span6">
@@ -92,11 +130,15 @@
                     <li><i class="icon-li icon-ok"></i>Update Your News</li>
 
                 </ul>
-                <a class="btn btn-large btn-primary" href="#">
+                <p>
+                    <a class="btn btn-large btn-primary" href="/register/merchant">
                     <i class="icon-suitcase"></i>
                     Sign Up As Merchant</a>
+                </p>
             </div>
         </div>
     </div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/sha256.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/login.js"></script>
 </body>
 </html>

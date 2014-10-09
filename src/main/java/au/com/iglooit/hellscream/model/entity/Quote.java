@@ -38,7 +38,7 @@ public class Quote extends BaseEntity {
     private QuoteStatus status = QuoteStatus.Quoting;
     @Basic
     private List<Key> userSelectedMerchant;
-    @OneToMany(mappedBy = "quote", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "quote", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<QuoteTransaction> quoteTransactions = new ArrayList<>();
 
     public Quote() {

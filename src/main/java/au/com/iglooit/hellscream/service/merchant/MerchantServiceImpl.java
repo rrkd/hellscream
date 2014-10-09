@@ -43,7 +43,7 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
-    public void createMerchant(Merchant merchant) throws MerchantManageException {
+    public void createMerchant(Merchant merchant, IGUser user) throws MerchantManageException {
         if (merchantDAO.checkExistMerchant(merchant.getTradeName(), merchant.getEmail())) {
             throw new MerchantManageException("Duplicated merchant name: " + merchant.getTradeName());
         }
@@ -51,12 +51,9 @@ public class MerchantServiceImpl implements MerchantService {
         merchant.setCanonicalSlugId(CanonicalSlugIdConvert.convertToURL(merchant.getTradeName()));
         merchantDAO.createMerchant(merchant);
         // create merchant admin user
-        IGUser merchantAdmin = new IGUser();
-        merchantAdmin.setEmail(merchant.getEmail());
-        merchantAdmin.setNickname(merchant.getContact1());
-        merchantAdmin.setAuthorities(EnumSet.of(AppRole.MERCHANT));
-        merchantAdmin.setMerchantKey(merchant.getKey());
-        userDAO.createUser(merchantAdmin);
+        user.setAuthorities(EnumSet.of(AppRole.MERCHANT, AppRole.USER));
+        user.setMerchantKey(merchant.getKey());
+        userDAO.update(user);
     }
 
     @Override

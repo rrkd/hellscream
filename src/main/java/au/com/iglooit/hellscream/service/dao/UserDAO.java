@@ -17,4 +17,6 @@ public interface UserDAO extends IEntityService<IGUser> {
     IGUser findByUserId(String userId);
     SearchResultVO<IGUser> findUserByPrefix(String keyword, Integer page);
     SearchResultVO<IGUser> findUserByPrefix(Integer page);
+    Boolean validUser(String email, String password);
+    IGUser signUpAsNewDefaultUser(IGUser user);
 }

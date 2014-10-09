@@ -19,6 +19,8 @@
 
         <js>/js/jquery.js</js>
 
+        <js>/js/iglooit.js</js>
+
     </group>
 
     <group name="basic-footer.min">
@@ -55,6 +57,8 @@
         <css>/css/skin-orange.css</css>
 
         <js>/js/jquery.js</js>
+
+        <js>/js/iglooit.js</js>
     </group>
 
     <group name="section-2-footer.min">

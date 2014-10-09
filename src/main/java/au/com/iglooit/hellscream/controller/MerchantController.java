@@ -1,11 +1,17 @@
 package au.com.iglooit.hellscream.controller;
 
+import au.com.iglooit.hellscream.exception.AppX;
+import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.vo.MerchantVO;
+import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.feedback.FeedbackService;
 import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +29,7 @@ import javax.annotation.Resource;
  */
 @Controller
 public class MerchantController {
+    private static final Logger LOG = LoggerFactory.getLogger(MerchantController.class);
     @Resource
     private MerchantDAO merchantDAO;
     @Resource
@@ -61,11 +68,28 @@ public class MerchantController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/merchant/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/m/create", method = RequestMethod.GET)
     public ModelAndView registerMerchantPage() {
+        IGUser user = currentUser();
+        if(user.getIsMerchant()) {
+            //redirect to merchant profile
+            ModelAndView modelAndView = new ModelAndView("merchant/profile");
+            return modelAndView;
+        }
         ModelAndView modelAndView = new ModelAndView("merchant/createMerchant");
         modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 
+    private IGUser currentUser() {
+        GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
+        IGUser user = (IGUser) auth.getPrincipal();
+        if (user == null) {
+            LOG.error("You haven't login, please login firstly.");
+            throw new AppX("User need to login ");
+        }
+
+        return user;
+    }
 }

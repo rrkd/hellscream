@@ -2,9 +2,12 @@ package au.com.iglooit.hellscream.controller;
 
 import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
-import com.google.appengine.api.users.UserServiceFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.authentication.AuthenticationDetailsSource;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.Locale;
 
 /**
@@ -25,10 +26,13 @@ import java.util.Locale;
 @Controller
 public class HomeController {
     private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
+    private final AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails> ads = new WebAuthenticationDetailsSource();
     @Resource
     private QuoteService quoteService;
     @Resource
     private MerchantService merchantService;
+    @Resource
+    private AuthenticationManager authenticationManager;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView homePage(Locale locale) {
@@ -37,31 +41,6 @@ public class HomeController {
         modelAndView.addObject("latestMerchants", merchantService.findLatestMerchant());
         LOG.info("Welcome home! The client locale is {}.", locale);
         return modelAndView;
-    }
-
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        request.getSession().invalidate();
-
-        String logoutUrl = UserServiceFactory.getUserService().createLogoutURL("/loggedout");
-
-        response.sendRedirect(logoutUrl);
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        request.getSession().invalidate();
-
-        String loginURL = UserServiceFactory.getUserService().createLoginURL("/home");
-        ModelAndView modelAndView = new ModelAndView("login");
-        modelAndView.addObject("googleUrl", loginURL);
-        return modelAndView;
-
-    }
-
-    @RequestMapping(value = "/loggedout", method = RequestMethod.GET)
-    public String loggedOut() {
-        return "loggedout";
     }
 
     @RequestMapping(value = "/aboutus", method = RequestMethod.GET)

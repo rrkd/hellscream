@@ -2,16 +2,21 @@ package au.com.iglooit.hellscream.service.webservice;
 
 import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.exception.MerchantManageException;
+import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.QuoteContactMsgVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
+import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteContactMsgDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +36,7 @@ import java.util.List;
  */
 @Controller
 public class MerchantManageWS {
+    private static final Logger LOG = LoggerFactory.getLogger(MerchantManageWS.class);
     @Resource
     private MerchantDAO merchantDAO;
     @Resource
@@ -47,14 +53,21 @@ public class MerchantManageWS {
         return merchantDAO.findAllMerchants();
     }
 
-    @RequestMapping(value = "/ws/merchant",
+    @RequestMapping(value = "/ws/{userKey}/listMerchant",
             method = RequestMethod.POST,
             headers = {"Content-type=application/json"})
     public
     @ResponseBody
-    JsonResponse addMerchant(@RequestBody Merchant rawMerchant) {
+    JsonResponse addMerchant(@RequestBody Merchant rawMerchant, @PathVariable String userKey) {
+        assert StringUtils.isNotBlank(userKey);
+
         try {
-            merchantService.createMerchant(rawMerchant);
+            IGUser user = userDAO.findByKey(KeyFactory.stringToKey(userKey));
+            if(user == null) {
+                LOG.error("Invalid user for merchant.");
+                throw new AppX("Invalid user for merchant.");
+            }
+            merchantService.createMerchant(rawMerchant, user);
         } catch (MerchantManageException e) {
             return new JsonResponse(JsonResponse.Error, e.getMessage());
         }

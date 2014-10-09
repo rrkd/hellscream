@@ -518,6 +518,11 @@
             <version>2.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>au.com.iglooit</groupId>
+            <artifactId>facebook4j</artifactId>
+            <version>1.0</version>
+        </dependency>
 
     </dependencies>
 

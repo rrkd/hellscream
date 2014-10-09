@@ -29,8 +29,10 @@ public class IGUser extends BaseEntity {
     private String address1;
     private String address2;
     private String address3;
+    private UserOriginalSystem userOriginalSystem = UserOriginalSystem.GOOGLE;
     @Basic
     private Key merchantKey;
+    private String password;
 
     public IGUser() {
 
@@ -192,5 +194,21 @@ public class IGUser extends BaseEntity {
     @Override
     public Document toGeoDocument() {
         throw new UnsupportedOperationException("IGUser can't support Geo search");
+    }
+
+    public UserOriginalSystem getUserOriginalSystem() {
+        return userOriginalSystem;
+    }
+
+    public void setUserOriginalSystem(UserOriginalSystem userOriginalSystem) {
+        this.userOriginalSystem = userOriginalSystem;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

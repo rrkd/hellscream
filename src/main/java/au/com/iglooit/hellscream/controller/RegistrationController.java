@@ -31,10 +31,19 @@ public class RegistrationController {
     @Resource
     private UserRegistry registry;
 
-    @RequestMapping(value = "/register/u", method= RequestMethod.GET)
-    public String registerPage() {
-        LOG.info("hit register user page.");
+    @RequestMapping(value = "/register/user", method= RequestMethod.GET)
+    public String userRegisterPage() {
         return "register/userRegister";
+    }
+
+    @RequestMapping(value = "/register/merchant", method= RequestMethod.GET)
+    public String merchantRegisterPage() {
+        return "register/merchantRegister";
+    }
+
+    @RequestMapping(value = "/register/user/success", method= RequestMethod.GET)
+    public String userRegisterPageSuccess() {
+        return "register/userRegisterSuccess";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)

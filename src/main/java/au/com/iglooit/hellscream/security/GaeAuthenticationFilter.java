@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.security;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
+import au.com.iglooit.hellscream.model.entity.UserOriginalSystem;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -47,6 +48,7 @@ public class GaeAuthenticationFilter extends GenericFilterBean {
                          FilterChain chain) throws IOException, ServletException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User googleUser = UserServiceFactory.getUserService().getCurrentUser();
+        // only check the gae user
         if (!loggedInUserMatchesGaeUser(authentication, googleUser)) {
             SecurityContextHolder.clearContext();
             authentication = null;
@@ -96,21 +98,33 @@ public class GaeAuthenticationFilter extends GenericFilterBean {
         if (authentication == null) {
             return false;
         }
+        if(authentication.getPrincipal() instanceof  IGUser) {
+            if(((IGUser)authentication.getPrincipal()).getUserOriginalSystem().equals(UserOriginalSystem.GOOGLE)) {
+                if (googleUser == null) {
+                    // IGUser has logged out of GAE but is still logged into application
+                    return false;
+                }
 
-        if (googleUser == null) {
-            // IGUser has logged out of GAE but is still logged into application
+                IGUser gaeUser = (IGUser) authentication.getPrincipal();
+                logger.debug("gae user " + gaeUser.getEmail());
+                if (!gaeUser.getEmail().equals(googleUser.getEmail())) {
+                    return false;
+                }
+                if (userDAO.findByEmail(googleUser.getEmail()) == null) {
+                    return false;
+                }
+                return true;
+            }
+            else {
+                // ignore checking
+                return true;
+            }
+
+        } else {
+            // invilad user, clear session
             return false;
         }
 
-        IGUser gaeUser = (IGUser) authentication.getPrincipal();
-        logger.debug("gae user " + gaeUser.getEmail());
-        if (!gaeUser.getEmail().equals(googleUser.getEmail())) {
-            return false;
-        }
-        if (userDAO.findByEmail(googleUser.getEmail()) == null) {
-            return false;
-        }
-        return true;
 
     }
 
