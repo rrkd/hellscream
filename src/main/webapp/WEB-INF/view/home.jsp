@@ -30,9 +30,23 @@
 
         <div data-src="/assets/img/demo/slide2.jpg">
 
-            <div class="camera_caption fadeFromRight">
+            <div class="camera_caption fadeFromBottom">
 
-                <h1>Professional Design & Elegant Code</h1>
+                <h1>Post Quote</h1>
+
+						<span>
+
+						Beautiful behind the scenes too! Biscaya Template comes with top notch customer support to help you get your business online fast. </span>
+
+            </div>
+
+        </div>
+
+        <div data-src="/assets/img/demo/slide1.jpg">
+
+            <div class="camera_caption fadeFrom">
+
+                <h1>List Your Business</h1>
 
 						<span>
 
