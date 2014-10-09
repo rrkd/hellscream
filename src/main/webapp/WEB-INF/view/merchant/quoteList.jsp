@@ -1,7 +1,7 @@
 <%@include file="../globe.jsp" %>
 <html>
 <head>
-    <meta name="description" content="merchant list">
+    <meta name="description" content="merchant quote list">
     <title>My Quote List</title>
     <link href="/assets/css/jquery.raty.css" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
 
 </div>
 
-<div class="row-fluid">
+<div class="row-fluid top30">
     <div class="span12">
 
         <!-- Tabs
@@ -44,7 +44,7 @@
 
                         <p class="small datepost">
 
-                            Posted on ${transaction.quotePostDate} <span class="floatright" title="3 responses"><a href="#"><img src="img/comments.png" alt=""></a></span>
+                            Posted on ${transaction.quotePostDate} <span class="floatright" title="3 responses"><a href="#"><img src="/assets/img/comments.png" alt=""></a></span>
 
                         </p>
 
@@ -72,7 +72,19 @@
 
             <div class="tab-pane fade" id="allQuote">
                 <div class="listContainer">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Post Time</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="dataTableBody">
 
+                        </tbody>
+                    </table>
                 </div>
                 <div class="pagination">
 
@@ -92,7 +104,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal hide fade" id="quoteTransactionDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="quoteTransactionDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -187,6 +199,6 @@
     </div>
 </div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/merchant/merchantQuoteList.js" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/merchant/merchantQuoteList.js"></script>
 </body>
 </html>

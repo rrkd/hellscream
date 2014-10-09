@@ -2,7 +2,6 @@
     <decorator name="merchant" page="section_tp.jsp">
         <pattern>/search*</pattern>
         <pattern>/category*</pattern>
-
         <pattern>/p/*</pattern>
     </decorator>
     <!-- user -->

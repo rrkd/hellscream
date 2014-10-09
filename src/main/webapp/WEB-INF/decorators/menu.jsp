@@ -115,7 +115,7 @@
                                         <ul class="dropdown-menu js-activated" style="display: none;">
 
                                             <li><a href="/merchant/p/<sec:authentication property='principal.keyString'/>">Profile</a></li>
-                                            <li><a href="/merchant/q">My Quote List</a></li>
+                                            <li><a href="/m/q">My Quote List</a></li>
                                             <li><a href="/merchant/msg">My Message</a></li>
                                             <!--.dropdown-->
 

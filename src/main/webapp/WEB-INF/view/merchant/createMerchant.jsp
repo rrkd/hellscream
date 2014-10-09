@@ -1,4 +1,5 @@
-<%@include file="../globe.jsp"%><html>
+<%@include file="../globe.jsp"%>
+<html>
 <head>
     <meta name="description" content="service job search">
     <title>Register Merchant</title>
@@ -190,3 +191,4 @@
 <script src="${pageContext.request.contextPath}/assets/js/prettify.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/merchant/merchant-create.js"></script>
 </body>
+</html>

@@ -1,7 +1,7 @@
 var transactionVOList;
 jQuery(document).ready(function ($) {
 
-    initQuoteList();
+//    initQuoteList();
     $('#quoteTransactionDetail').appendTo('body');
 
 })
@@ -29,23 +29,21 @@ function refreshListAll(data) {
 }
 
 function refreshListContainer(searchResult) {
-    var listContainer = $('.listContainer');
+    var listContainer = $('#dataTableBody');
     listContainer.empty();
     if (searchResult.voList.length > 0) {
         for (var index = 0; index < searchResult.voList.length; index++) {
             var vo = searchResult.voList[index];
-            listContainer.append('' +
-                '<div class="panel1">' +
-                '<p class="small datepost">' +
-                '<span style="font-family:open_sansbold; font-size: 18px;" class="text-info">' + vo.quoteTitle + '  </span>' +
-                '<span class="badge badge-warning">' + vo.status + '</span>' +
-                '</p>' +
-                '<p><i>Days: ' + vo.rawDay + ' Price: $' + vo.rawPrice + '</i></p>' +
-                '<p align="right"><a class="quoteItem" href="#" data-index="'+index+'">read more</a></p>' +
-                '</div>');
+            listContainer.append('<tr>' +
+                '<td>'+index+'</td>' +
+                '<td>'+vo.quoteTitle + '</td>' +
+                '<td>'+vo.quotePostDate + '</td>' +
+                '<td><a class="quoteItem" href="#" data-index="'+index+'">details >></a></td>' +
+            '</tr>');
         }
         quoteItemListener();
     }
+
 }
 
 function refreshPagination(searchResult) {

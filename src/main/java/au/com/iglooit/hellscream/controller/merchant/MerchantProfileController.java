@@ -64,7 +64,7 @@ public class MerchantProfileController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/merchant/q", method = RequestMethod.GET)
+    @RequestMapping(value = "/m/q", method = RequestMethod.GET)
     public ModelAndView merchantQuoteListPage() {
         ModelAndView modelAndView = new ModelAndView("merchant/quoteList");
         Merchant merchant = getLoginMerchant();
