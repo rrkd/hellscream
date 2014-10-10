@@ -43,9 +43,10 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
             if (user == null) {
                 // IGUser not in registry. Needs to register
                 IGUser rawUser = new IGUser(googleUser.getUserId(), googleUser.getNickname(), googleUser.getEmail());
+                rawUser.setUserOriginalSystem(UserOriginalSystem.GOOGLE);
                 user = userDAO.signUpAsNewDefaultUser(rawUser);
             }
-            user.setUserOriginalSystem(UserOriginalSystem.GOOGLE);
+
         } else if (authentication.getPrincipal() instanceof com.face4j.facebook.entity.User) {
             com.face4j.facebook.entity.User facebookUser = (com.face4j.facebook.entity.User) authentication.getPrincipal();
             user = userDAO.findByEmail(facebookUser.getEmail());
@@ -53,9 +54,10 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
             if (user == null) {
                 // IGUser not in registry. Needs to register
                 IGUser rawUser = new IGUser("", facebookUser.getName(), facebookUser.getEmail());
+                rawUser.setUserOriginalSystem(UserOriginalSystem.FACEBOOK);
                 user = userDAO.signUpAsNewDefaultUser(rawUser);
             }
-            user.setUserOriginalSystem(UserOriginalSystem.FACEBOOK);
+
         } else if (authentication.getPrincipal() instanceof IGUser) {
             user = userDAO.findByEmail(((IGUser)authentication.getPrincipal()).getEmail());
 
@@ -65,7 +67,6 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
                 rawUser.setUserOriginalSystem(UserOriginalSystem.DB);
                 user = userDAO.signUpAsNewDefaultUser(rawUser);
             }
-            user.setUserOriginalSystem(UserOriginalSystem.DB);
         } else {
             throw new InvalidAuthenticationException("user is invalid");
         }

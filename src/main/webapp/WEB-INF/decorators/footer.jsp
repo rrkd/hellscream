@@ -37,7 +37,7 @@
 
                 <p class="footerlogo">
 
-                    Biscaya
+                    <a href="/aboutus">Huafu</a>
 
                 </p>
 
@@ -175,7 +175,7 @@
 
                 <p class="smaller">
 
-                    <span class="copyright">© </span> Copyright 2013 Biscaya. Be nice.
+                    <span class="copyright">©</span> Copyright 2014 Huafu.
 
                 </p>
 
@@ -189,15 +189,11 @@
 
                     <ul class="footermenu">
 
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/home">Home</a></li>
 
-                        <li><a href="#">Work</a></li>
+                        <li><a href="/faq">FAQ</a></li>
 
-                        <li><a href="#">Pages</a></li>
-
-                        <li><a href="#">Blog</a></li>
-
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="/contactus">Contact</a></li>
 
                     </ul>
 

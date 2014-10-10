@@ -246,10 +246,13 @@ public class Merchant extends BaseEntity {
                 .addField(Field.newBuilder().setName("email").setText(getEmail()))
                 .addField(Field.newBuilder().setName("merchantName").setText(getMerchantName()))
                 .addField(Field.newBuilder().setName("description").setText(getDescription()))
-                .addField(Field.newBuilder().setName("phone").setText(getPhone()))
-                .addField(Field.newBuilder().setName("point").setGeoPoint(
-                        new GeoPoint(latitude.doubleValue(), longitude.doubleValue())))
-                .addField(Field.newBuilder().setName("address").setText(
+                .addField(Field.newBuilder().setName("phone").setText(getPhone()));
+        if (latitude != null && longitude != null) {
+            builder.addField(Field.newBuilder().setName("point").setGeoPoint(
+                    new GeoPoint(latitude.doubleValue(), longitude.doubleValue())));
+        }
+
+        builder.addField(Field.newBuilder().setName("address").setText(
                         StringUtils.isBlank(getFormatAddress()) ? "" : getFormatAddress()))
                 .addField(Field.newBuilder().setName("suburb").setText(
                         StringUtils.isBlank(getSuburb()) ? "" : getSuburb()))
@@ -265,11 +268,14 @@ public class Merchant extends BaseEntity {
 
     @Override
     public Document toGeoDocument() {
-        return Document.newBuilder()
-                .setId("geo-" + KeyFactory.keyToString(getKey()))
-                .addField(Field.newBuilder().setName("point").setGeoPoint(
-                        new GeoPoint(latitude.doubleValue(), longitude.doubleValue())))
-                .addField(Field.newBuilder().setName("type").setText(GeoIndexTypeConstant.MERCHANT_TYPE))
-                .build();
+        Document.Builder builder = Document.newBuilder()
+                .setId("geo-" + KeyFactory.keyToString(getKey()));
+        if (latitude != null && longitude != null) {
+            builder.addField(Field.newBuilder().setName("point").setGeoPoint(
+                    new GeoPoint(latitude.doubleValue(), longitude.doubleValue())));
+        }
+        builder.addField(Field.newBuilder().setName("type").setText(GeoIndexTypeConstant.MERCHANT_TYPE));
+
+        return builder.build();
     }
 }

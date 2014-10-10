@@ -35,13 +35,13 @@
 
                 <div class="infophone">
 
-                    <i class="icon-phone"></i> Tel: +8 737 924 6035
+                    <i class="icon-phone"></i> Tel: +61 433 274 987
 
                 </div>
 
                 <div class="infoaddress">
 
-                    3953 Berkley Street, Fort Washington, 19034
+                    1 Berkley Street, Fort Washington, 2009
 
                 </div>
                 <div>
@@ -161,7 +161,7 @@
 
                         <input id="keyWord_text" type="text" onfocus="if(this.value =='Enter search keywords here...' ) this.value=''"
                                onblur="if(this.value=='') this.value='Enter search keywords here...'"
-                               value="Enter search keywords here..." name="q">
+                               value="Find service..." name="q">
 
                         <a id="searchBtn" href="#"></a>
                     </form>
@@ -175,3 +175,11 @@
     </div>
 
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#searchBtn').click(function () {
+            window.location.href = "search?q=" + $('#keyWord_text').val().split(" ").join("-");
+            return false;
+        });
+    });
+</script>

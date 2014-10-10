@@ -83,7 +83,7 @@
                 <label class="control-label" for="tradeName">Description</label>
                 <div class="controls">
                     <textarea id="description" name="message" class="span12" placeholder="Description" rows="8" maxlength="500"></textarea>
-                    <p class="help-block">What is your service about</p>
+                    <p class="help-block">Describe the services your business offers? include your experience, qualifications etc</p>
                 </div>
             </div>
             <div class="control-group">

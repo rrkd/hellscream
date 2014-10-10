@@ -1,7 +1,6 @@
 <decorators defaultdir="/WEB-INF/decorators">
     <decorator name="merchant" page="section_tp.jsp">
-        <pattern>/search*</pattern>
-        <pattern>/category*</pattern>
+
         <pattern>/p/*</pattern>
     </decorator>
     <!-- user -->
@@ -32,6 +31,8 @@
         <pattern>/merchant*</pattern>
         <pattern>/m*</pattern>
         <pattern>/fd*</pattern>
+        <pattern>/search*</pattern>
+        <pattern>/category*</pattern>
     </decorator>
     <!-- quote -->
     <decorator name="user" page="section_tp_2.jsp">
