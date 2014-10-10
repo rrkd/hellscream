@@ -48,9 +48,7 @@ public class LocalLoginHandler {
         try {
             Authentication authentication = authenticationManager.authenticate(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-//            // Create a new session and add the security context.
-            HttpSession session = request.getSession(true);
-            session.setAttribute("username", user.getEmail());
+
             LOG.info("Local user " + user.getEmail());
             if (authentication.getAuthorities().contains(AppRole.NEW_USER)) {
                 LOG.debug("New user authenticated. Redirecting to registration page");

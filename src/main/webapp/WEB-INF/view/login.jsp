@@ -1,8 +1,8 @@
 <%@include file="globe.jsp" %>
 <html>
 <head>
-    <meta name="description" content="About Us">
-    <title>About Us</title>
+    <meta name="description" content="Login">
+    <title>Login</title>
 </head>
 <body>
 <div class="page-header">
