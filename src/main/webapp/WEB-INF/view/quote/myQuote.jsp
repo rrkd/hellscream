@@ -54,7 +54,7 @@
     <c:forEach items="${quoteList}" var="quote">
         <div class="boxportfolio25 item ${quote.status}">
 
-            <div class="box effect2">
+            <div class="box">
                 <p class="small datepost">
                     <a href="/quote/d/${quote.keyString}" style="font-size: 15px;">${quote.title}</a>
                 </p>
