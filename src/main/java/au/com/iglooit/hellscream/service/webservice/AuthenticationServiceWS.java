@@ -37,7 +37,7 @@ public class AuthenticationServiceWS {
             headers = {"Content-type=application/json"})
     public
     @ResponseBody
-    JsonResponse contactUsEmail(@RequestBody LoginVO vo, HttpServletRequest request,
+    JsonResponse checkUserEmail(@RequestBody LoginVO vo, HttpServletRequest request,
                                 HttpServletResponse response) throws IOException, ServletException, FacebookException {
         if (userDAO.validUser(vo.getUsername(), vo.getPassword())) {
             return new JsonResponse(JsonResponse.OK, "");

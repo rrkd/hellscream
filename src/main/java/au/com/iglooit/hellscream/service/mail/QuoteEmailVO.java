@@ -15,6 +15,7 @@ public class QuoteEmailVO implements Serializable {
     private List<String> toAddressList;
     private String quoteURL;
     private String quoteApplyURL;
+    private String suburb;
     private Quote quote;
 
     public QuoteEmailVO() {
@@ -51,5 +52,13 @@ public class QuoteEmailVO implements Serializable {
 
     public void setQuoteApplyURL(String quoteApplyURL) {
         this.quoteApplyURL = quoteApplyURL;
+    }
+
+    public String getSuburb() {
+        return suburb;
+    }
+
+    public void setSuburb(String suburb) {
+        this.suburb = suburb;
     }
 }

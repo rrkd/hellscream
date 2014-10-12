@@ -45,29 +45,4 @@ public class RegistrationController {
     public String userRegisterPageSuccess() {
         return "register/userRegisterSuccess";
     }
-
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@Valid RegistrationForm form, BindingResult result) {
-        if (result.hasErrors()) {
-            return null;
-        }
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        IGUser currentUser = (IGUser)authentication.getPrincipal();
-        Set<AppRole> roles = EnumSet.of(AppRole.USER);
-
-        if (UserServiceFactory.getUserService().isUserAdmin()) {
-            roles.add(AppRole.ADMIN);
-        }
-
-        IGUser IGUser = new IGUser(currentUser.getUserId(), currentUser.getNickname(), currentUser.getEmail(),
-                form.getForename(), form.getSurname(), roles, true);
-
-        registry.registerUser(IGUser);
-
-        // Update the context with the full authentication
-        SecurityContextHolder.getContext().setAuthentication(new GaeUserAuthentication(IGUser, authentication.getDetails()));
-
-        return "redirect:/home";
-    }
 }

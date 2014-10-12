@@ -118,6 +118,24 @@
     </div>
 
 </div>
+
+<div class="modal fade" id="successDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="successDlgLabel">Merchant Created</h4>
+            </div>
+            <div class="modal-body">
+                Your Quote has been posted.
+            </div>
+            <div class="modal-footer">
+                <a href="/home" class="btn btn-default" data-dismiss="modal">Go To Home</a>
+                <a href="/u/q" class="btn btn-primary">Go To My Quote</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jqBootstrapValidation.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/prettify.js"></script>
 <script type="text/javascript" src="/assets/js/quote/postQuote.js"></script>

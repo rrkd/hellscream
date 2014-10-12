@@ -132,3 +132,15 @@ jQuery(document).ready(function ($) {
             });
 
 });
+
+jQuery(document).ready(function ($) {
+    $(".box").hover(
+        function() {
+            $( this).removeClass("effect2")
+            $( this).addClass("effect5")
+        }, function() {
+            $( this).removeClass("effect5")
+            $( this).addClass("effect2")
+        }
+    );
+});

@@ -62,7 +62,9 @@ public class QuoteManageWS {
         // update post date
         quote.setPostDate(DateUtils.getNow());
         // reparse the suburb key
-        quote.setSuburbKey(KeyFactory.stringToKey(quote.getSuburbKey().getKind()));
+        if (quote.getSuburbKey() != null) {
+            quote.setSuburbKey(KeyFactory.stringToKey(quote.getSuburbKey().getKind()));
+        }
         quote.setStatus(QuoteStatus.Quoting);
         quote.setCreatedOn(DateUtils.getNow());
         quoteService.createQuote(quote);

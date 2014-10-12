@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+    $('#successDlg').appendTo('body');
     $('#create_merchant').click(function () {
         $.ajax({
             type:"POST",
@@ -6,12 +7,20 @@ jQuery(document).ready(function ($) {
             data:generateQuote(),
             contentType:'application/json',
             success:function (data) {
-                if (data.status == 'OK') alert('Quote has been added');
+                if (data.status == 'OK') {
+                    $('#successDlg').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+                }
                 else alert('Failed adding quote: ' + data.status + ', ' + data.errorMessage);
             }
         });
     });
 
+    $("#postQuoteForm").submit(function(e) {
+        e.preventDefault();
+    });
 
     $('#category_select').select2({
         placeholder:"Category Select"
@@ -77,11 +86,15 @@ jQuery(document).ready(function ($) {
 });
 
 function generateQuote() {
+    var suburb = null;
+    if ($('#suburb').select2('data') != null) {
+        suburb = $('#suburb').select2('data').id;
+    }
     var quote = {
         clientUserEmail:$('#email').val(),
         title:$('#quoteTitle').val(),
         description:$('#description').val(),
-        suburbKey:$('#suburb').select2('data').id,
+        suburbKey:suburb,
         categoryList:[]
     };
     generateCategoryList(quote.categoryList);

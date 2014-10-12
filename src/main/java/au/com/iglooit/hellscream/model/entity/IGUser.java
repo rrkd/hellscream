@@ -197,7 +197,7 @@ public class IGUser extends BaseEntity {
     }
 
     public UserOriginalSystem getUserOriginalSystem() {
-        return userOriginalSystem;
+        return userOriginalSystem == null ? UserOriginalSystem.GOOGLE : userOriginalSystem;
     }
 
     public void setUserOriginalSystem(UserOriginalSystem userOriginalSystem) {

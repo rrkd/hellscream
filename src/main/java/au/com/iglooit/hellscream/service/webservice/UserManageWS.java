@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.service.webservice;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
+import au.com.iglooit.hellscream.model.entity.UserOriginalSystem;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.VersionResponse;
 import au.com.iglooit.hellscream.security.AppRole;
@@ -42,6 +43,7 @@ public class UserManageWS {
         LOG.info("register a new user : " + user.getEmail());
         user.setCreatedOn(DateUtils.getNow());
         user.setAuthorities(new HashSet<AppRole>(Arrays.asList(AppRole.USER)));
+        user.setUserOriginalSystem(UserOriginalSystem.DB);
         userDAO.createUser(user);
         return new JsonResponse("OK", "");
     }

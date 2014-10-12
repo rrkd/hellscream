@@ -20,6 +20,7 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -47,6 +48,10 @@ public class FacebookLoginHandler {
         try {
             Authentication authentication = authenticationManager.authenticate(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            HttpSession session = request.getSession(true);
+            session.setAttribute("username", fbUser.getEmail());
+
             LOG.info("Facebook user " + fbUser.getName());
             if (authentication.getAuthorities().contains(AppRole.NEW_USER)) {
                 LOG.debug("New user authenticated. Redirecting to registration page");
