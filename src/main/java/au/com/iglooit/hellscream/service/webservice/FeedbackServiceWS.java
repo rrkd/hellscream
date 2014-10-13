@@ -36,13 +36,19 @@ public class FeedbackServiceWS {
             headers = {"Content-type=application/json"})
     public
     @ResponseBody
-    JsonResponse addMerchant(@PathVariable String keyString, @RequestBody MerchantFeedbackMsg msg) {
+    JsonResponse addMerchantFeedback(@PathVariable String keyString, @RequestBody MerchantFeedbackMsg msg) {
         if (StringUtils.isBlank(keyString)) {
             return new JsonResponse(JsonResponse.Error, "Merchant key can not be blank.");
         }
         msg.setMerchantKey(KeyFactory.stringToKey(keyString));
         msg.setCreatedOn(DateUtils.getNow());
         merchantFeedbackMsgDAO.createMerchantFeedbackMsg(msg);
+        // update merchant
+        Merchant merchant = merchantDAO.findByKey(KeyFactory.stringToKey(keyString));
+        merchant.setFeedbackCount(merchant.getFeedbackCount() + 1);
+        merchant.setRank((merchant.getFeedbackCount() * merchant.getRank()
+                + msg.getRank()) / merchant.getFeedbackCount());
+        merchantDAO.update(merchant);
         return new JsonResponse(JsonResponse.OK, "");
     }
 

@@ -26,6 +26,7 @@
     <group name="basic-footer.min">
         <js>/js/bootstrap.js</js>
         <js>/js/plugins.js</js>
+        <js>/js/search.js</js>
         <js>/js/custom.js</js>
     </group>
 

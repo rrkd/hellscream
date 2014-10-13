@@ -1,11 +1,16 @@
 jQuery(document).ready(function ($) {
+    $('#search').submit(function(e) {
+        e.preventDefault();
+    });
     $('#searchBtn').click(function () {
-        window.location.href = "search?q=" + $('#keyWord_text').val().split(" ").join("-");
+        var keyword = $('#keyWord_text').val().split(" ").join("-");
+        window.location.href = "search?q=" + keyword + "&local=";
         return false;
     });
-    $('.keyWord_text').keydown(function(event) {
+    $('#keyWord_text').keydown(function(event) {
         if (event.keyCode == 13) {
-            window.location.href = "search?q=" + $('#keyWord_text').val().split(" ").join("-");
+            var keyword = $('#keyWord_text').val().split(" ").join("-");
+            window.location.href = "search?q=" + keyword + "&local=";
             return false;
         }
     });

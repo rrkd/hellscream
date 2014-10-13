@@ -162,4 +162,26 @@ public class QuoteManageWS {
         IGUser user = userDAO.findByKey(KeyFactory.stringToKey(keyString));
         return quoteService.loadUserQuoteList(user.getEmail(), pageNumber);
     }
+
+    @RequestMapping(value = "/ws/quote/{merchantKeyString}",
+            method = RequestMethod.POST,
+            headers = {"Content-type=application/json"})
+    public
+    @ResponseBody
+    JsonResponse sendQuoteToMerchant(@PathVariable String merchantKeyString, @RequestBody Quote quote) {
+        // update post date
+        quote.setPostDate(DateUtils.getNow());
+        // reparse the suburb key
+        if (quote.getSuburbKey() != null) {
+            quote.setSuburbKey(KeyFactory.stringToKey(quote.getSuburbKey().getKind()));
+        }
+        // get merchant
+        Merchant merchant = merchantDAO.findByKey(KeyFactory.stringToKey(merchantKeyString));
+
+        quote.setStatus(QuoteStatus.Quoting);
+        quote.setCreatedOn(DateUtils.getNow());
+        quoteService.createMerchantQuote(quote, merchant);
+        LOG.info("create quote " + quote.getTitle());
+        return new JsonResponse("OK", "");
+    }
 }

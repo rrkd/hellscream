@@ -29,9 +29,9 @@ public class SearchController {
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public ModelAndView searchPage(@RequestParam("q") String queryString, @RequestParam("local") String localString) {
-        ModelAndView modelAndView = new ModelAndView("search");
+        ModelAndView modelAndView = new ModelAndView("searchResult");
         modelAndView.addObject("merchantList",
-                merchantFTSearchService.searchByKeyWordAndLocal(queryString.replaceAll(" ", "-"), localString));
+                merchantFTSearchService.searchByKeyWordAndLocal(queryString.replaceAll(" ", "-"), localString, 0, -1));
         return modelAndView;
     }
 
@@ -39,12 +39,11 @@ public class SearchController {
     public ModelAndView searchCategoryPage(@RequestParam("q") String queryString) {
         ModelAndView modelAndView = new ModelAndView("search");
         Category category = categoryDAO.findByCategoryUrl(queryString);
-        if(category != null)
-        {
+        if (category != null) {
             modelAndView.addObject("merchantList",
                     merchantDAO.findByCategoryName(category.getName()));
         } else {
-            modelAndView.addObject("merchantList",null);
+            modelAndView.addObject("merchantList", null);
         }
         return modelAndView;
     }

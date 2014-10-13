@@ -11,6 +11,6 @@ import java.util.List;
  * Time: 4:40 PM
  */
 public interface MerchantFTSearchService {
-    public List<Merchant> searchByKeyWord(String keyword);
-    public List<Merchant> searchByKeyWordAndLocal(String keyword, String local);
+    public List<Merchant> searchByKeyWord(String keyword, int from, int size);
+    public List<Merchant> searchByKeyWordAndLocal(String keyword, String local, int from, int size);
 }

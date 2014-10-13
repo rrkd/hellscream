@@ -46,6 +46,10 @@ public class Merchant extends BaseEntity {
     private String imageResourceId;
     private String imageFileName = DEFAULT_MERCHANT_IMG;
     private String canonicalSlugId;
+    private Integer rank = 3;
+    private Integer feedbackCount;
+    private Integer quoteCount;
+    private Integer applyQuoteCount;
 
     public Merchant() {
     }
@@ -236,6 +240,38 @@ public class Merchant extends BaseEntity {
 
     public void setCanonicalSlugId(String canonicalSlugId) {
         this.canonicalSlugId = canonicalSlugId;
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
+    }
+
+    public Integer getFeedbackCount() {
+        return feedbackCount;
+    }
+
+    public void setFeedbackCount(Integer feedbackCount) {
+        this.feedbackCount = feedbackCount;
+    }
+
+    public Integer getQuoteCount() {
+        return quoteCount;
+    }
+
+    public void setQuoteCount(Integer quoteCount) {
+        this.quoteCount = quoteCount;
+    }
+
+    public Integer getApplyQuoteCount() {
+        return applyQuoteCount;
+    }
+
+    public void setApplyQuoteCount(Integer applyQuoteCount) {
+        this.applyQuoteCount = applyQuoteCount;
     }
 
     @Override

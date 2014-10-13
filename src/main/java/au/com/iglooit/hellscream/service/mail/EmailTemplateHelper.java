@@ -60,7 +60,7 @@ public final class EmailTemplateHelper {
                 "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
         ve.init();
         VelocityContext context = new VelocityContext();
-        context.put("quoteEmailVO", vo);
+        context.put("userContactEmailVO", vo);
 
         /*
          *   get the Template

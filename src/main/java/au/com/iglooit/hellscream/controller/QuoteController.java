@@ -83,6 +83,11 @@ public class QuoteController {
                 break;
             }
         }
+        if(!bApplied) {
+            // update merchant
+            merchant.setApplyQuoteCount(merchant.getApplyQuoteCount() + 1);
+            merchantDAO.update(merchant);
+        }
 
         ModelAndView modelAndView = new ModelAndView("quote/applyQuote");
         modelAndView.addObject("bApplied", bApplied);

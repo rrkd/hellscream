@@ -157,10 +157,10 @@
 
                     </ul>
 
-                    <form id="search" action="search" method="GET">
+                    <form id="search">
 
-                        <input id="keyWord_text" type="text" onfocus="if(this.value =='Enter search keywords here...' ) this.value=''"
-                               onblur="if(this.value=='') this.value='Enter search keywords here...'"
+                        <input id="keyWord_text" type="text" onfocus="if(this.value =='Find service...' ) this.value=''"
+                               onblur="if(this.value=='') this.value='Find service...'"
                                value="Find service..." name="q">
 
                         <a id="searchBtn" href="#"></a>
@@ -175,11 +175,3 @@
     </div>
 
 </div>
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $('#searchBtn').click(function () {
-            window.location.href = "search?q=" + $('#keyWord_text').val().split(" ").join("-");
-            return false;
-        });
-    });
-</script>

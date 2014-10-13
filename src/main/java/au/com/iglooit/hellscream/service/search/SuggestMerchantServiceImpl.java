@@ -49,6 +49,9 @@ public class SuggestMerchantServiceImpl implements SuggestMerchantService {
                 if (!StringUtils.isBlank(merchant.getEmail())
                         && merchant.getSuburb().equalsIgnoreCase(suburb.getName())) {
                     result.add(merchant.getEmail());
+                    // update statistic
+                    merchant.setQuoteCount(merchant.getQuoteCount() + 1);
+                    merchantDAO.update(merchant);
                     if (result.size() > MAX_QUOTE_EMAIL_COUNT) {
                         return new ArrayList<>(result);
                     }

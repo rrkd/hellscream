@@ -19,6 +19,8 @@ public interface QuoteService {
 
     void createQuote(Quote quote);
 
+    void createMerchantQuote(Quote quote, Merchant merchant);
+
     List<QuoteVO> latestQuoteList();
 
     SearchResultVO<QuoteTransactionVO> findQuoteTransactionByMerchant(Merchant merchant, Integer page);
