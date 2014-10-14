@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta name="description" content="About Us">
-    <title>About Us</title>
+    <title><spring:message code="aboutus.title"></spring:message></title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>About Us</h1>
+    <h1><spring:message code="aboutus.title"></spring:message></h1>
 
     <div class="headerdivider">
 
@@ -21,21 +21,22 @@
 
         <p>
 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet. In eu justo a felis faucibus ornare vel id metus.
+            <spring:message code="aboutus.brief"></spring:message>
 
         </p>
 
         <p class="panel">
 
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula. Fusce eget metus lorem, ac viverra leo. Nullam convallis, arcu vel pellentesque sodales, nisi est.
+            <spring:message code="aboutus.individual"></spring:message>
 
         </p>
 
-        <p>
+        <p class="panel">
 
-            Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipisci. Praesent id metus ante, ut condimentum magna. Nam bibendum, felis eget.
+            <spring:message code="aboutus.merchants"></spring:message>
 
         </p>
+
 
     </div>
 
@@ -73,7 +74,7 @@
 
             <div>
 
-                Skills
+                <spring:message code="aboutus.skills"></spring:message>
 
             </div>
 
@@ -83,25 +84,25 @@
 
             <li><span class="thebar progressdefault" style="width:100%;"></span>
 
-                <h3><i class="icon-tag"></i> Financial Analysis</h3>
+                <h3><i class="icon-tag"></i> <spring:message code="aboutus.skills.satisfaction"></spring:message></h3>
 
             </li>
 
             <li><span class="thebar progressdefault" style="width:80%;"></span>
 
-                <h3><i class="icon-pushpin"></i> Consulting</h3>
+                <h3><i class="icon-pushpin"></i> <spring:message code="aboutus.skills.ratingsystem"></spring:message></h3>
 
             </li>
 
             <li><span class="thebar progressdefault" style="width:70%;"></span>
 
-                <h3><i class="icon-ticket"></i> Tech Support</h3>
+                <h3><i class="icon-ticket"></i> <spring:message code="aboutus.skills.future"></spring:message></h3>
 
             </li>
 
             <li><span class="thebar progressdefault" style="width:50%;"></span>
 
-                <h3><i class="icon-legal"></i> Legal Department</h3>
+                <h3><i class="icon-legal"></i> <spring:message code="aboutus.skills.technologies"></spring:message></h3>
 
             </li>
 
@@ -115,7 +116,7 @@
 
             <div>
 
-                Mission
+                <spring:message code="aboutus.missions"></spring:message>
 
             </div>
 
@@ -127,13 +128,13 @@
 
             <p>
 
-                Use a few of the new styles together, and you've got easy pull quotes or a great introductory article image. Or spinning icons for loading and refreshing content. Or fun big icons in multi-line buttons. You can combine all of them in any combination to get lots of new possibilities.
+                <spring:message code="aboutus.mission1"></spring:message>
 
             </p>
 
             <p>
 
-                Use a few of the new styles together, and you've got easy pull quotes or a great introductory article image. Or spinning icons for loading.
+                <spring:message code="aboutus.mission2"></spring:message>
 
             </p>
 

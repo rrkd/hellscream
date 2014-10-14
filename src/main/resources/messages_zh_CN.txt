@@ -3,3 +3,71 @@ home.welcome=你好
 home.register=我想试试
 home.needcontact=需要帮助? 联系我们:
 home.whyshuoldIneedtosignup=为啥我要注册
+aboutus.title=华服网简介
+aboutus.brief=华服网（www.huafu.com.au)，是一家正在崛起，将成为澳洲最具有影响力和活力的中文信息网站之一，以满足用户需求为导向的信息交互平台。
+aboutus.individual=华服网向个人用户提供准确、有效的生活信息服务。可以让用户进行及时有效的信息搜索及服务需求的发布，使用户享受到高质量的信息服务。同时，伴随着市场和公司的高速成长，还将不断完善信息的运营监管机制，以确保信息的真实性和有效性，配合更加智能化的信息检索服务，从而真正成为澳洲华人在海外的不可或缺的生活助手。
+aboutus.merchants=华服网向商家用户提供最准确的目标消费用户群体，最直接的产品与服务展示平台，最有效的市场营销效果，最贴心的客户关系管理等服务。可以让商家用户更加方便寻找潜在用户，报价，交易，售后服务，公司财务管理等一条龙服务。同时，伴随着市场和公司的高速成长，我们会致力于提高商家用户在的知名度，可信度，和顾客的互动性。
+aboutus.skills=公司优势
+aboutus.skills.satisfaction=个人用户使用满意度
+aboutus.skills.ratingsystem=商家服务评分系统
+aboutus.skills.future=商家平台未来发展前景
+aboutus.skills.technologies=公司技术和资讯服务能力
+aboutus.missions=公司目标
+aboutus.mission1=华服网将建设成澳洲最专业的分类信息和报价服务网站，为大众提供一个高效、简单、经济而又真实的互联网信息服务平台。
+aboutus.mission2=我们的目标就是成为澳洲海外华人信息平台，成为您生活中不可或缺的一部分！
+
+faq.individual= 个人使用
+faq.individual.procedures=免费报价流程
+faq.procedures.detail=1.免费发布服务请求  <br/>2.商家给你免费报价 <br/>3.选择适合你的商家
+faq.individual.quote=如何免费发布服务请求
+faq.quote.procedure=1.请登陆华服网<br/>2.在主菜单点击<a href="/quote/c">免费发布信息</a><br/>3.填写基本信息(服务分类,服务时间,服务地点,服务描述,邮箱地址,称呼)<br/>4.点击发布 <br/>5.商家收到你服务后根据你联络方式给你报价
+faq.individual.registration=发布服务请求，电话或者邮箱是必须的吗？
+faq.registration.required=对的，商家需要这些信息去跟你联络，比如报价之类。
+faq.individual.quotedisplay=发布的服务请求会显示我地址，和电话号吗？
+faq.quotedisplay.detail=不会！为了保护你的隐私，你的电话号码，地址等都不会显示在网站。网站只显示你的服务请求内容,和地区。
+faq.individual.quotemodify=发布的服务请求还可以修改吗？
+faq.quotemodify.answer=不可以，发布的服务请求立刻会发到商家，商家会根据服务请求报价。如果你想修改，你需要直接跟商家商量
+
+
+
+
+faq.merchants=公司使用
+faq.merchants.listing=如何免费登记公司店铺
+faq.listing.procedure=1.请登陆华服网<br/> 2.在主菜单点击<a href="/merchant/create">免费登记公司店铺</a><br/> 3.填写公司信息(公司名字，邮箱地址，服务类型，公司描述，地址，联络电话<br/> 4.上传公司LOGO,图片(强烈建议）
+faq.merchants.why=在华服网登记公司的优势
+faq.why.detail=1.大量客户通过华服网找商家<br/>2.华服网拥有最全面的商家群体<br/>3.华服网提升贵公司的信誉和知名度<br/>4.华服网增强贵公司和用户的互动性
+faq.merchants.ad=如何登广告
+faq.ad.detail=请联络我们广告部
+faq.merchants.feedback=如何提升顾客信息反馈
+faq.feedback.detail=信息反馈是客户给你服务的评价，如果你认为评价不合理，请跟我们联络
+faq.merchants.rating=如何提高星形排名
+faq.rating.detail= 默认星形排名是３星，越多华服网用户接受你的报价，越多成交量，星形排名就越高。
+
+
+
+faq.hottopics=热门话题
+faq.ht.whyquotes=为什么选择免费发布服务请求
+faq.ht.whyquotes.detail= 让商家主动联络你和给你报价，你可以从中挑选性价比比较好的商家。然后提供自己联络方式给商家。通过此方式，可以避免高于市场价成交，从而保护自己的正当权益
+faq.ht.howsearch=如何搜索商家
+faq.ht.howsearch.detail=1.请选择服务种类 2.请输入英文Suburn 我们会根据一定排序而返回商家
+faq.ht.howchoose=如何挑选商家
+faq.ht.howchoose.detail=在如此海量的商家中，我们建议用户尽可能选择信誉排名比较高的，交易量比较大的，或者是已经认证的商家。
+faq.ht.badfeedback=客户给我差评怎么办
+faq.ht.badfeedback.detail=如果你认为用户给差评是不合理，请发邮件跟我们联络，阐述你的理由。
+faq.ht.rating=如何提升公司星形排名
+faq.ht.rating.detail=默认星形排名是３星，越多华服网用户接受你的报价，越多成交量，星形排名就越高
+
+faq.termsofuse.privacy=用户隐私和帐号管理
+faq.termsofuse.privacy.detail=用户不应将其帐号、密码转让或出借予他人使用.如用户发现其帐号遭他人非法使用，应立即通知华服网。因黑客行为或用户的保管疏忽导致帐号、密码遭他人非法使用，华服网不承担任何责任。<br/>用户同意接受华服网通过电子邮件或其他方式向用户发送商品促销或其他相关商业信息。
+faq.termsofuse.conducts=使用规则
+faq.termsofuse.conductsdetail= 用户在使用华服网服务过程中，必须遵循以下规定： <br/>　- 遵守澳洲有关的法律和法规；<br/>　- 遵守所有与华服网服务有关的任何协议与规则；<br/>　- 不得为任何非法目的而使用华服网的服务；<br/>　- 不得利用华服网的网络服务上传、展示或传播任何虚假的、骚扰性的、中伤他人的、辱骂性的、恐吓性的、庸俗淫秽的或其他任何非法的信息资料;<br/>　- 不得侵犯其他任何第三方的专利权、著作权、商标权、名誉权或其他任何合法权益；<br/>　- 不得利用华服网服务系统进行任何不利于华服网的行为<br/>
+faq.termsofuse.conductsdetail1=如果用户在使用华服网服务时违反任何规定，华服网有权要求用户改正或直接采取一切必要的措施（包括但不限于更改或删除用户张贴的内容、暂停或终止用户使用华服网的权利）以减轻用户不当行为造成的影响.
+faq.termsofuse.conductsdetail2=本网站通过各种方式（包括但不限于网页公告、电子邮件、短信提醒等）作出的任何声明、通知、警示等内容视为本协议的一部分。用户如继续使用该等网络服 务，视为用户同意该等声明、通知、警示的内容。
+faq.termsofuse.conductsdetail3=如发生以下情形，华服网可能限制用户使用服务、发出警告通知、暂时中止、无限期地中止或终止用户资格及拒绝提供服务：<br/> - 用户违反使用规则；<br/> - 无法核证或验证用户向本公司提供的任何资料；<br/> - 用户行为可能对华服网造成损失或法律责任。
+faq.termsofuse.conductsdetail4=已登记公司商铺，默认接受用户的评论和华服网的星型排名
+faq.disclaimer=免责声明
+faq.disclaimer.detail=1. 用户明确同意其使用华服网服务所存在的风险将完全由其自己承担；因使用而产生的一切后果也由其自己承担，华服网不提供任何保证，亦不承担任何法律责任;<br/>2. 华服网不保证网络服务一定能满足用户的要求，也不保证服务不会中断，对服务的及时性、安全性、准确性也都不作担保。对于因不可抗力或华服网不能控制的原因造成的服务中断或其它缺陷，，华服网不提供任何保证，亦不承担任何法律责任。<br/>3. 华服信息内容系用户自行发布，来自网络，或其他途径，其真实性、合法性由发布人和相关信息来源负责，华服网不提供任何保证，亦不承担任何法律责任。
+
+faq.contact.heading=其他问题？
+faq.contact.detail=华服网致力提供服务水平，更好的为海外华人大家庭服务，真诚欢迎各位用户给我们提建议或者咨询
+faq.contact.button=发邮件
