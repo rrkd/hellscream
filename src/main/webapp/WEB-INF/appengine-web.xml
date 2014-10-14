@@ -17,4 +17,14 @@
     <resource-files>
         <include path="/**.xml" />
     </resource-files>
+
+    <automatic-scaling>
+        <min-idle-instances>1</min-idle-instances>
+        <!-- ‘automatic’ is the default value. -->
+        <max-idle-instances>2</max-idle-instances>
+        <!-- ‘automatic’ is the default value. -->
+        <min-pending-latency>automatic</min-pending-latency>
+        <max-pending-latency>30ms</max-pending-latency>
+        <max-concurrent-requests>50</max-concurrent-requests>
+    </automatic-scaling>
 </appengine-web-app>
