@@ -19,6 +19,8 @@
 
         <js>/js/jquery.js</js>
 
+        <js>/js/jquery-dateFormat.min.js</js>
+
         <js>/js/iglooit.js</js>
 
     </group>
@@ -58,6 +60,8 @@
         <css>/css/skin-orange.css</css>
 
         <js>/js/jquery.js</js>
+
+        <js>/js/jquery-dateFormat.min.js</js>
 
         <js>/js/iglooit.js</js>
     </group>

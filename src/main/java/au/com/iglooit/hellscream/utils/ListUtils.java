@@ -15,12 +15,15 @@ public final class ListUtils {
     }
 
     public static List getSubList(List list, int from, int size) {
+        int len = list.size();
         if (list.size() <= from) {
             return new ArrayList();
-        } else if ((size - from) >= list.size()) {
-            return list.subList(from, list.size() - 1);
+        } else if (size >= len) {
+            return list.subList(from, len - 1);
+        } else if ((from+size) >= len) {
+            return list.subList(from, len - 1);
         } else {
-            return list.subList(from, from + size);
+            return list.subList(from, size);
         }
     }
 }

@@ -27,13 +27,14 @@ public class SearchServiceWS {
     public
     @ResponseBody
     List<Merchant> contactUsEmail(@RequestParam("local") String local, @RequestParam("q") String key,
-                                @RequestParam("from") Integer from, @RequestParam("size") Integer size) {
+                                @RequestParam("from") Integer from, @RequestParam("size") Integer size,
+                                @RequestParam("category") String category) {
         if (size == null) {
             size = -1;
         }
         if (from == null) {
             from = 0;
         }
-        return merchantFTSearchService.searchByKeyWordAndLocal(key, local, from, size);
+        return merchantFTSearchService.searchByKeyWordAndLocal(key, local, category, from, size);
     }
 }

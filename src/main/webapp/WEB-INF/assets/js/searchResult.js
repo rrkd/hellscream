@@ -1,15 +1,57 @@
 var keyword = "";
 var suburb = "";
+var category = "";
 var size = 5;
 var currentIndex = 1;
 jQuery(document).ready(function ($) {
     keyword = getUrlParameter('q');
     suburb = getUrlParameter('local');
+    category = getUrlParameter('category');
     initRank();
     initSearchResult();
     $('#loadMore').click(function () {
         currentIndex = currentIndex + size;
         loadDate(currentIndex, size);
+    });
+
+    $('#filterCategory').select2({
+        placeholder:"Category Select",
+        allowClear: true
+    });
+
+    $('#filterSuburb').select2({
+        placeholder:"Suburb Select",
+        allowClear: true,
+        minimumInputLength: 3,
+        ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+            url: "/ws/geo/suburb",
+            dataType: 'json',
+            data: function (term, page) {
+                return {
+                    q: term,
+                    page:page
+                };
+            },
+            results: function (data, page) { // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to alter remote JSON data
+                return {results: data.suburbVOList};
+            }
+        }
+    });
+
+    prettyPrint();
+
+    $('#filterBtn').click(function(){
+        var filterWord = $('#filterWord').val().split(" ").join("-");
+        var filterSuburb = "";
+        var filterCategory = "";
+        if ($('#filterSuburb').select2('data') != null) {
+            filterSuburb = $('#filterSuburb').select2('data').postCode;
+        }
+        if ($('#filterCategory').select2('data') != null) {
+            filterCategory = $('#filterCategory').select2('data').id;
+        }
+        window.location.href = "search?q=" + filterWord + "&local=" + filterSuburb + "&category=" + filterCategory;
     });
 
 });
@@ -28,7 +70,7 @@ function initSearchResult() {
 function loadDate(from, size) {
     $.ajax({
         type:"GET",
-        url:"/ws/search?q=" + keyword + "&local=" + suburb + "&from=" + from + "&size=" + size,
+        url:"/ws/search?q=" + keyword + "&local=" + suburb + "&from=" + from + "&size=" + size + "&category=" + category,
         success:function (data) {
             appendToResultBox(data);
         }
@@ -37,14 +79,16 @@ function loadDate(from, size) {
 
 function appendToResultBox(data) {
     if (data.length <=0 ) {
-        $("#loadMore").prop('disabled', true);
+        $(".load-more").hide();
+    } else {
+        $(".load-more").show();
     }
     for (var i = 0; i < data.length; i++) {
         $('#resultContainer').append('<div class="hero-unit">' +
             '<h5><a href="#">' + data[i].tradeName + '</a></h5>' +
             '<div class="merchant-rank" data-rank="' + data[i].rank + '"></div>' +
             '<p class="small datepost">' +
-            'Posted on ' + data[i].postDate +
+            'Posted on ' + formatDate(data[i].postDate) +
             '<span class="floatright"title="3 responses"><a href="#"><img src="/assets/img/comments.png" alt=""></a></span>' +
             '</p>' +
             '<div class="innerblogboxtwo">' +
@@ -54,8 +98,8 @@ function appendToResultBox(data) {
             '</div>' +
             '<p class="continueread readmorebox">' +
             '<a href="merchant/details/' + data[i].url + '">Details</a>' +
-            '</p>'
-            + '</div>');
+            '</p>' +
+            '</div>');
     }
     initRank();
 }

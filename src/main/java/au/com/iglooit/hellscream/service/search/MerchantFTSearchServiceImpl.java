@@ -58,17 +58,28 @@ public class MerchantFTSearchServiceImpl implements MerchantFTSearchService {
     }
 
     @Override
-    public List<Merchant> searchByKeyWordAndLocal(String rawKeyword, String local, int from, int size) {
-        if (StringUtils.isBlank(local)) {
+    public List<Merchant> searchByKeyWordAndLocal(String rawKeyword, String local, String rawCategory, int from, int size) {
+        if (StringUtils.isBlank(local) && StringUtils.isBlank(rawCategory)) {
             return searchByKeyWord(rawKeyword, from, size);
         }
         Index merchantIndex = indexServiceHelp.getMerchantIndex();
         String keywords = rawKeyword.replaceAll("-", " ");
-        String query;
-        if(StringUtils.isBlank(keywords)) {
-            query = "(suburb=\"" + local + "\" OR postcode=\"" + local + "\")";
-        } else {
-            query = keywords + " AND (suburb=\"" + local + "\" OR postcode=\"" + local + "\")";
+        String category = rawCategory.replaceAll("-", " ");
+        String query = "";
+        if(StringUtils.isNotBlank(keywords)) {
+            query = keywords;
+        }
+        if (StringUtils.isNotBlank(local)) {
+            if(StringUtils.isNotBlank(query)) {
+                query = query + " AND ";
+            }
+            query = query + "(suburb=\"" + local + "\" OR postcode=\"" + local + "\")";
+        }
+        if (StringUtils.isNotBlank(category)) {
+            if(StringUtils.isNotBlank(query)) {
+                query = query + " AND ";
+            }
+            query = query + "(category=\"" + category + "\")";
         }
         Results<ScoredDocument> results = merchantIndex.search(query);
         // Iterate over the documents in the results

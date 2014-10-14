@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface MerchantFTSearchService {
     public List<Merchant> searchByKeyWord(String keyword, int from, int size);
-    public List<Merchant> searchByKeyWordAndLocal(String keyword, String local, int from, int size);
+    public List<Merchant> searchByKeyWordAndLocal(String keyword, String local, String category, int from, int size);
 }

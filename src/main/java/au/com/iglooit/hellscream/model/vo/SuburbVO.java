@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 public class SuburbVO implements Serializable {
     private String id;
+    private String postCode;
     private String text;
 
     public SuburbVO() {
@@ -21,6 +22,7 @@ public class SuburbVO implements Serializable {
     public SuburbVO(Suburb suburb) {
         this.id = suburb.getKeyString();
         this.text = suburb.getName() + " - " + suburb.getPostCode() + " (" + suburb.getState() + ")";
+        this.postCode = suburb.getPostCode();
     }
 
     public String getId() {
@@ -37,5 +39,13 @@ public class SuburbVO implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 }

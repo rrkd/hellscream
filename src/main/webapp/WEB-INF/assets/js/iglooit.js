@@ -60,3 +60,7 @@ function getUrlParameter(sParam)
         }
     }
 }
+
+function formatDate(rawDate) {
+    return $.format.date(new Date(rawDate), "dd/MM/yyyy");
+}
