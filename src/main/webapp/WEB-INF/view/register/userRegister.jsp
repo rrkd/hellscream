@@ -110,13 +110,6 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="phone">phone</label>
-                <div class="controls">
-                    <input name="name" size="30" type="text" id="phone" class="span12" placeholder="Phone">
-                    <p class="help-block">Phone</p>
-                </div>
-            </div>
-            <div class="control-group">
                 <label class="control-label" for="mobile">Mobile</label>
                 <div class="controls">
                     <input name="name" size="30" type="text" id="mobile" class="span12" placeholder="Phone">

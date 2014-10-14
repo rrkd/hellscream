@@ -97,43 +97,45 @@
                         <li class="divider-vertical"></li>
 
                         <sec:authorize access="isAuthenticated()">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account
+
+                            <c:if test="${isUser}">
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account
                                 <b class="caret"></b></a>
+                                <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                <c:choose>
-                                    <c:when test="${isUser}">
-                                        <ul class="dropdown-menu js-activated" style="display: none;">
+                                    <li><a href="/u/profile">User Profile</a></li>
+                                    <li><a href="/u/q">Posted Quote</a></li>
+                                    <!--.dropdown-->
 
-                                            <li><a href="/u/p">Profile</a></li>
-                                            <li><a href="/u/q">My Quote</a></li>
-                                            <li><a href="/u/msg">My Message</a></li>
-                                            <!--.dropdown-->
+                                </ul>
+                                <li class="divider-vertical"></li>
+                            </c:if>
+                            <c:if test="${isMerchant}">
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Business
+                                    <b class="caret"></b></a>
+                                    <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                        </ul>
-                                    </c:when>
-                                    <c:when test="${isMerchant}">
-                                        <ul class="dropdown-menu js-activated" style="display: none;">
+                                        <li><a href="/merchant/p">Merchant Profile</a></li>
+                                        <li><a href="/m/q">Applied Quote</a></li>
+                                        <li><a href="/merchant/msg">Message Box</a></li>
+                                        <!--.dropdown-->
 
-                                            <li><a href="/merchant/p/<sec:authentication property='principal.keyString'/>">Profile</a></li>
-                                            <li><a href="/m/q">My Quote List</a></li>
-                                            <li><a href="/merchant/msg">My Message</a></li>
-                                            <!--.dropdown-->
+                                    </ul>
+                                <li class="divider-vertical"></li>
+                            </c:if>
+                            <c:if test="${isAdmin}">
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin
+                                    <b class="caret"></b></a>
+                                    <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                        </ul>
-                                    </c:when>
-                                    <c:when test="${isAdmin}">
-                                        <ul class="dropdown-menu js-activated" style="display: none;">
+                                        <li><a href="/admin/user">User Management</a></li>
+                                        <li><a href="/admin/merchant">Merchant Management</a></li>
+                                        <!--.dropdown-->
 
-                                            <li><a href="/admin/user">User Management</a></li>
-                                            <li><a href="/admin/merchant">Merchant Management</a></li>
-                                            <!--.dropdown-->
+                                    </ul>
+                                <li class="divider-vertical"></li>
+                            </c:if>
 
-                                        </ul>
-                                    </c:when>
-                                </c:choose>
-
-
-                            <li class="divider-vertical"></li>
                         </sec:authorize>
 
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us

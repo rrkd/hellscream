@@ -66,8 +66,10 @@ public class FeedbackServiceWS {
             vo.setUserEmail(msg.getUserEmail());
             vo.setUserName(msg.getUserName());
             Merchant merchant = merchantDAO.findByKey(msg.getMerchantKey());
-            vo.setMerchantTradeName(merchant.getTradeName());
-            vo.setMerchantUrl(merchant.getUrl());
+            if (merchant != null) {
+                vo.setMerchantTradeName(merchant.getTradeName());
+                vo.setMerchantUrl(merchant.getUrl());
+            }
         }
         return vo;
     }

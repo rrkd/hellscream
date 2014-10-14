@@ -47,9 +47,9 @@ public class Merchant extends BaseEntity {
     private String imageFileName = DEFAULT_MERCHANT_IMG;
     private String canonicalSlugId;
     private Integer rank = 3;
-    private Integer feedbackCount;
-    private Integer quoteCount;
-    private Integer applyQuoteCount;
+    private Integer feedbackCount = 0;
+    private Integer quoteCount = 0;
+    private Integer applyQuoteCount = 0;
 
     public Merchant() {
     }
@@ -243,7 +243,7 @@ public class Merchant extends BaseEntity {
     }
 
     public Integer getRank() {
-        return rank;
+        return rank == null ? 3 : rank;
     }
 
     public void setRank(Integer rank) {
@@ -251,7 +251,7 @@ public class Merchant extends BaseEntity {
     }
 
     public Integer getFeedbackCount() {
-        return feedbackCount;
+        return feedbackCount == null ? 0 : feedbackCount;
     }
 
     public void setFeedbackCount(Integer feedbackCount) {
@@ -259,7 +259,7 @@ public class Merchant extends BaseEntity {
     }
 
     public Integer getQuoteCount() {
-        return quoteCount;
+        return quoteCount == null ? 0 : quoteCount;
     }
 
     public void setQuoteCount(Integer quoteCount) {
@@ -267,7 +267,7 @@ public class Merchant extends BaseEntity {
     }
 
     public Integer getApplyQuoteCount() {
-        return applyQuoteCount;
+        return applyQuoteCount == null ? 0 : applyQuoteCount;
     }
 
     public void setApplyQuoteCount(Integer applyQuoteCount) {
@@ -289,7 +289,7 @@ public class Merchant extends BaseEntity {
         }
 
         builder.addField(Field.newBuilder().setName("address").setText(
-                        StringUtils.isBlank(getFormatAddress()) ? "" : getFormatAddress()))
+                StringUtils.isBlank(getFormatAddress()) ? "" : getFormatAddress()))
                 .addField(Field.newBuilder().setName("suburb").setText(
                         StringUtils.isBlank(getSuburb()) ? "" : getSuburb()))
                 .addField(Field.newBuilder().setName("postcode").setText(

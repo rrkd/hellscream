@@ -77,7 +77,7 @@
                         <div class="span4"><b>Surname</b></div>
                         <div class="span8">${iguser.surname}</div>
                     </div>
-                    <a href="">Edit</a>
+                    <a href="/u/modify">Edit</a>
                 </div>
 
                 <div id="tab2" class="tab-pane fade ">
@@ -98,7 +98,7 @@
                         <div class="span4"></div>
                         <div class="span8">${iguser.address3}</div>
                     </div>
-                    <a href="">Edit</a>
+                    <a href="/u/modify">Edit</a>
                 </div>
 
             </div>

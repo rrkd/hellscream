@@ -39,18 +39,22 @@ public class UserProfileController {
     @Resource
     private QuoteTransactionService quoteTransactionService;
 
-    @RequestMapping(value = "/u/p", method = RequestMethod.GET)
+    @RequestMapping(value = "/u/profile", method = RequestMethod.GET)
     public ModelAndView profilePage() {
         IGUser user = currentUser();
-        if (user.getMerchantKey() != null) {
-            ModelAndView modelAndView = new ModelAndView("redirect:/merchant/p");
-            return modelAndView;
-        } else {
-            ModelAndView modelAndView = new ModelAndView("u/userProfile");
-            modelAndView.addObject("iguser", user);
-            modelAndView.addObject("quoteList", quoteService.loadLatestUserQuoteList(user.getEmail()));
-            return modelAndView;
-        }
+        ModelAndView modelAndView = new ModelAndView("u/userProfile");
+        modelAndView.addObject("iguser", user);
+        modelAndView.addObject("quoteList", quoteService.loadLatestUserQuoteList(user.getEmail()));
+        return modelAndView;
+
+    }
+
+    @RequestMapping(value = "/u/modify", method = RequestMethod.GET)
+    public ModelAndView modifyProfilePage() {
+        IGUser user = currentUser();
+        ModelAndView modelAndView = new ModelAndView("u/userModify");
+        modelAndView.addObject("iguser", user);
+        return modelAndView;
 
     }
 

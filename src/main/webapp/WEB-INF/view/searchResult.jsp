@@ -81,7 +81,7 @@
 
                 <p>
 
-                    <a href="merchant/details/${heroMerchant.keyString}" class="btn btn-primary btn-large">Read more
+                    <a href="merchant/details/${heroMerchant.url}" class="btn btn-primary btn-large">Read more
                         >></a>
 
                 </p>

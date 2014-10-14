@@ -4,9 +4,9 @@ var category = "";
 var size = 5;
 var currentIndex = 1;
 jQuery(document).ready(function ($) {
-    keyword = getUrlParameter('q');
-    suburb = getUrlParameter('local');
-    category = getUrlParameter('category');
+    keyword = getUrlParameter('q') === undefined ? "" : getUrlParameter('q');
+    suburb = getUrlParameter('local') === undefined ? "" : getUrlParameter('local');
+    category = getUrlParameter('category') === undefined ? "" : getUrlParameter('category');
     initRank();
     initSearchResult();
     $('#loadMore').click(function () {

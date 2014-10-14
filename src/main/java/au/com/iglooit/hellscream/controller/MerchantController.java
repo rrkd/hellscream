@@ -82,18 +82,6 @@ public class MerchantController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/merchant/update/{tradeNameUrl}", method = RequestMethod.GET)
-    public ModelAndView updatePage(@PathVariable String tradeNameUrl) {
-        MerchantVO merchant = merchantService.findMerchantByMerchantURL(tradeNameUrl);
-        if (merchant == null) {
-            return new ModelAndView("redirect: /error/404");
-        }
-        ModelAndView modelAndView = new ModelAndView("merchant/updateMerchant");
-        modelAndView.addObject("vo", merchant);
-        modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
-        return modelAndView;
-    }
-
     private IGUser currentUser() {
         GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
         IGUser user = (IGUser) auth.getPrincipal();

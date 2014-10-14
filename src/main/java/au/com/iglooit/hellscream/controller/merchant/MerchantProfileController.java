@@ -4,8 +4,10 @@ import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
+import au.com.iglooit.hellscream.model.vo.MerchantVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.security.GaeUserAuthentication;
+import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
@@ -14,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,15 +35,14 @@ public class MerchantProfileController {
 
     @Resource
     private QuoteDAO quoteDAO;
-
     @Resource
     private QuoteTransactionDAO quoteTransactionDAO;
-
     @Resource
     private MerchantDAO merchantDAO;
-
     @Resource
     private QuoteService quoteService;
+    @Resource
+    private CategoryGroupDAO categoryGroupDAO;
 
     @RequestMapping(value = "/merchant/msg", method = RequestMethod.GET)
     public ModelAndView messageBoxPage() {
@@ -57,7 +59,8 @@ public class MerchantProfileController {
     public ModelAndView merchantProfile() {
         Merchant merchant = getLoginMerchant();
 
-        ModelAndView modelAndView = new ModelAndView("merchant /merchantProfile");
+        ModelAndView modelAndView = new ModelAndView("merchant/merchantProfile");
+        modelAndView.addObject("merchant", merchant);
         SearchResultVO<QuoteTransaction> quoteTransactionList = quoteTransactionDAO.findQuoteTransactionByMerchant(
                 merchant, 10);
         modelAndView.addObject("latestMsgList", quoteTransactionList);
@@ -72,6 +75,14 @@ public class MerchantProfileController {
 
         modelAndView.addObject("merchant", merchant);
         modelAndView.addObject("latestQuote", quoteService.findQuoteTransactionByMerchant(merchant, 1));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/merchant/modify", method = RequestMethod.GET)
+    public ModelAndView updatePage(@PathVariable String tradeNameUrl) {
+        ModelAndView modelAndView = new ModelAndView("merchant/updateMerchant");
+        modelAndView.addObject("vo", getLoginMerchant());
+        modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
         return modelAndView;
     }
 

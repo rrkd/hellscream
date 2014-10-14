@@ -10,7 +10,7 @@
 
             <p class="lead">
 
-                Welcome new user. You might need to modify your <a href="/u/p">profile</a> to get better service experience.
+                Welcome new user. You might need to modify your <a href="/u/profile">profile</a> to get better service experience.
 
             </p>
 
