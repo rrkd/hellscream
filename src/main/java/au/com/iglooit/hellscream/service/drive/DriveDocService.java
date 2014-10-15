@@ -32,7 +32,7 @@ import static javax.servlet.http.HttpServletResponse.SC_OK;
 @Component
 public class DriveDocService {
     private static final Logger LOG = LoggerFactory.getLogger(DriveDocService.class);
-    private static final Integer TIME_OUT = 60;
+    private static final Integer TIME_OUT = 60 * 2;
     @Resource
     private HttpClient httpClient;
 

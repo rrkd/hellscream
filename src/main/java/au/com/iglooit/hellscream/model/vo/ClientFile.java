@@ -36,7 +36,7 @@ public class ClientFile implements Serializable {
     /**
      * ID of file.
      */
-    public String resource_id;
+    public String resourceId;
 
     /**
      * Title of file.
@@ -84,7 +84,7 @@ public class ClientFile implements Serializable {
      * Creates a new ClientFile based on the given File and content.
      */
     public ClientFile(File file, String content) {
-        this.resource_id = file.getId();
+        this.resourceId = file.getId();
         this.title = file.getTitle();
         this.description = file.getDescription();
         this.mimeType = file.getMimeType();
@@ -103,7 +103,7 @@ public class ClientFile implements Serializable {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         ClientFile other = gson.fromJson(in, ClientFile.class);
-        this.resource_id = other.resource_id;
+        this.resourceId = other.resourceId;
         this.title = other.title;
         this.description = other.description;
         this.mimeType = other.mimeType;
@@ -118,7 +118,7 @@ public class ClientFile implements Serializable {
      */
     public File toFile() {
         File file = new File();
-        file.setId(resource_id);
+        file.setId(resourceId);
         file.setTitle(title);
         file.setDescription(description);
         file.setMimeType(mimeType);

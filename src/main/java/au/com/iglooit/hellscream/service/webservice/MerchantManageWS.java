@@ -7,6 +7,7 @@ import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.QuoteContactMsgVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
+import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteContactMsgDAO;
@@ -80,6 +81,8 @@ public class MerchantManageWS {
     public
     @ResponseBody
     JsonResponse modifyMerchant(@PathVariable String keyString, @RequestBody Merchant rawMerchant) {
+        WebProperties webProperties = WebProperties.getInstance();
+        String driveHost = webProperties.get("driver.host");
         if (StringUtils.isBlank(keyString)) {
             throw new AppX("Can not update merchant because key is null");
         }
@@ -96,6 +99,10 @@ public class MerchantManageWS {
         merchant.setPhone(rawMerchant.getPhone());
         merchant.setLastUpdateTime(new Date());
         merchant.setTradeName(rawMerchant.getTradeName());
+        if(StringUtils.isNotBlank(rawMerchant.getImageResourceId())) {
+            merchant.setImageFileName(driveHost + rawMerchant.getImageFileName());
+            merchant.setImageResourceId(rawMerchant.getImageResourceId());
+        }
 
         merchantDAO.modifyMerchant(merchant);
         return new JsonResponse("OK", "");

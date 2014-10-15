@@ -41,21 +41,21 @@
                     <input name="tradeName" size="30" class="span12" type="text"
                            maxlength="50" minlength="3"
                            pattern="[a-zA-Z0-9\s]+"
-                           id="tradeName" placeholder="TradeName" value="${vo.merchant.tradeName}"  required >
+                           id="tradeName" placeholder="TradeName" value="${vo.tradeName}"  required >
                     <p class="help-block">Your trade name</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Merchant Name</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="MerchantName" value="${vo.merchant.merchantName}" required>
+                    <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="MerchantName" value="${vo.merchantName}" required>
                     <p class="help-block">Your Merchant Name</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Email</label>
                 <div class="controls">
-                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" value="${vo.merchant.email}" required>
+                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" value="${vo.email}" required>
                     <p class="help-block">Contact Email</p>
                 </div>
             </div>
@@ -78,49 +78,49 @@
             <div class="control-group">
                 <label class="control-label" for="tradeName">Description</label>
                 <div class="controls">
-                    <textarea id="description" name="message" value="${vo.merchant.description}" class="span12" placeholder="Description" rows="8"></textarea>
+                    <textarea id="description" name="message" class="span12" placeholder="Description" rows="8">${vo.description}</textarea>
                     <p class="help-block">What is your service about</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Address Line 1</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address1" value="${vo.merchant.address1}" class="span12" placeholder="Address1" required>
+                    <input name="name" size="30" type="text" id="address1" value="${vo.address1}" class="span12" placeholder="Address1" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Address Line 2</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address2" value="${vo.merchant.address2}" class="span12" placeholder="Address2" required>
+                    <input name="name" size="30" type="text" id="address2" value="${vo.address2}" class="span12" placeholder="Address2" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Address Line 3</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address3" value="${vo.merchant.address3}" class="span12" placeholder="Address3" required>
+                    <input name="name" size="30" type="text" id="address3" value="${vo.address3}" class="span12" placeholder="Address3" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">phone</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="phone" value="${vo.merchant.phone}" class="span12" placeholder="Phone">
+                    <input name="name" size="30" type="text" id="phone" value="${vo.phone}" class="span12" placeholder="Phone">
                     <p class="help-block">Phone</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Contact One</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="contact1" value="${vo.merchant.contact1}" class="span12" placeholder="Contact One">
+                    <input name="name" size="30" type="text" id="contact1" value="${vo.contact1}" class="span12" placeholder="Contact One">
                     <p class="help-block">Contact Person</p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Contact two</label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="contact2" value="${vo.merchant.contact2}" class="span12" placeholder="Contact Tow">
+                    <input name="name" size="30" type="text" id="contact2" value="${vo.contact2}" class="span12" placeholder="Contact Tow">
                     <p class="help-block"></p>
                 </div>
             </div>
@@ -128,37 +128,29 @@
             <div class="control-group">
                 <label class="control-label" for="tradeName">Merchant Logo</label>
                 <div class="controls">
-                    <input name="name" size="30" type="file" id="merchantLogo" class="span12" placeholder="MerchantLogo">
-                    <p class="help-block"></p>
+                    <p><img src="${vo.imageFileName}" alt="Merchant Logo" width="200" height="200"></p>
+                    <input name="name" size="30" type="file" id="merchantLogo" class="span12" placeholder="MerchantLogo" accept="image/gif, image/jpeg, image/png">
+                    <p class="help-block">gif, png or jpeg file, max size is 200K</p>
                 </div>
             </div>
 
-            <div class="control-group">
-                <label class="control-label" for="tradeName">Merchant Images</label>
-                <div class="controls">
-                    <input name="name" size="30" type="file" id="merchantImages" class="span12" placeholder="MerchantImages" multiple />
-                    <p class="help-block"></p>
-                </div>
-            </div>
-
-
-            <div class="control-group">
-                <label class="control-label" for="terms-and-conditions">Legal</label>
-                <div class="controls">
-                    <label class="checkbox">
-                        <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions" required data-validation-required-message="You must agree to the terms and conditions">
-                        I agree to the <a href="#">terms and conditions</a>
-                    </label>
-                    <p class="help-block"></p>
-                </div>
-            </div>
+            <%--<div class="control-group">--%>
+                <%--<label class="control-label" for="tradeName">Merchant Images</label>--%>
+                <%--<div class="controls">--%>
+                    <%--<input name="name" size="30" type="file" id="merchantImages" class="span12" placeholder="MerchantImages" multiple />--%>
+                    <%--<p class="help-block"></p>--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
             <br/>
             <input name="name" size="30" type="hidden" id="keyString" class="span12"
-                   value="${vo.merchant.keyString}">
+                   value="${vo.keyString}">
+            <input name="name" size="30" type="hidden" id="imageResourceId" class="span12"
+                   value="${vo.imageResourceId}">
+            <input name="name" size="30" type="hidden" id="keyId" class="span12"
+                   value="${vo.keyId}">
             <div class="form-actions">
                 <input value="Update" id="modify_merchant" class="btn btn-primary top10">
-                (I've read all documents.)
             </div>
         </form>
 

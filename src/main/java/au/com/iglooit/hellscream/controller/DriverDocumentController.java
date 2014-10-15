@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.controller;
 
 import au.com.iglooit.hellscream.model.vo.ClientFile;
+import au.com.iglooit.hellscream.model.vo.DriverFileResponse;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.service.drive.DriveDocService;
 import org.springframework.stereotype.Controller;
@@ -32,8 +33,7 @@ public class DriverDocumentController {
             headers = {"Content-type=application/json"})
     public
     @ResponseBody
-    JsonResponse contactUsEmail(@RequestBody ClientFile vo) {
-        driveDocService.storeFileToDrive(vo);
-        return new JsonResponse("OK", "");
+    DriverFileResponse contactUsEmail(@RequestBody ClientFile vo) {
+        return driveDocService.storeFileToDrive(vo);
     }
 }

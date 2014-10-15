@@ -1,4 +1,10 @@
+var merchantLogo;
+var merchantImages;
+var resourceId = '';
 jQuery(document).ready(function ($) {
+    resourceId = $('#imageResourceId').val();
+    resourceId = resourceId === null || resourceId === undefined ? '' : resourceId;
+    $('#uploadImgDlg').appendTo('body');
     $('#modify_merchant').click(function () {
         $.ajax({
             type:"PUT",
@@ -20,16 +26,16 @@ jQuery(document).ready(function ($) {
         $('#category_select').select2().val(selectedValue).trigger("change");
     }
 
-    var merchantLogo;
-    $('#merchantLogo').on('change', function(event){
-    $('#uploadImgDlg').modal('show');
-    merchantLogo = uploadMerchantLogo(event);
+
+    $('#merchantLogo').on('change', function (event) {
+
+        uploadMerchantLogo(event);
     });
 
-    var merchantImages;
-    $('#merchantImages').on('change', function(event){
+
+    $('#merchantImages').on('change', function (event) {
         $('#uploadImgDlg').modal('show');
-        uploadMerchantImages(event);
+        merchantImages = uploadMerchantImages(event);
     });
 });
 
@@ -50,6 +56,8 @@ function generateMerchant() {
         mobile:$('#mobile').val(),
         contact1:$('#contact1').val(),
         contact2:$('#contact2').val(),
+        imageResourceId:merchantLogo === undefined || merchantLogo === null ? '' : merchantLogo.resourceId,
+        imageFileName:merchantLogo === undefined || merchantLogo === null ? '' : merchantLogo.fileUrl,
         categoryList:[]
     };
     generateCategoryList(merchant.categoryList);
@@ -66,59 +74,22 @@ function generateCategoryList(categoryList) {
 }
 
 
-function uploadMerchantLogo(event)
-{
+function uploadMerchantLogo(event) {
+    var merchantKey = $('#keyId').val();
     var files = event.target.files;
     var file = files[0];
     var reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = function(){
+    reader.onload = function () {
         var fileContent = reader.result.match(/,(.*)$/)[1];
-        var fileClient = {
-            resource_id:"",
-            title:file.name,
-            description:"test",
-            mimeType:file.type,
-            content:fileContent,
-            parents:[]
-        };
-        $.ajax({
-            type:"POST",
-            url:"/ws/drive",
-            data:JSON.stringify(fileClient),
-            contentType:'application/json',
-            success:function (data) {
-                if (data.status == 'OK') {
-                    var merchantInfo;
-                    merchantInfo.resourceId = data.resourceId;
-                    merchantInfo.fileUrl = data.fileUrl;
-                    return merchantInfo;
-                }
-                else {
-                    $('#merchantRsgErrorBox').show();
-                    $('#merchantRsgErrorBox').text(data.errorMessage);
-                    var merchantInfo;
-                    merchantInfo.resourceId = "";
-                    merchantInfo.fileUrl = "";
-                    return merchantInfo;
-                }
-                $('#uploadImgDlg').modal('hide');
-            }
-        });
-    };
-}
-
-function uploadMerchantImages(event)
-{
-    $.each(event.target.files, function(index, file) {
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function(event){
-            var fileContent = reader.result.match(/,(.*)$/)[1];
+        if(file.size > 204800) {
+            alert("Max size is 200K.")
+        } else {
+            $('#uploadImgDlg').modal('show');
             var fileClient = {
-                resource_id:"",
-                title:file.name,
-                description:"test",
+                resourceId:resourceId,
+                title:merchantKey + "-logo" + file.name.substring(file.name.lastIndexOf(".")),
+                description:"merchant logo",
                 mimeType:file.type,
                 content:fileContent,
                 parents:[]
@@ -129,23 +100,65 @@ function uploadMerchantImages(event)
                 data:JSON.stringify(fileClient),
                 contentType:'application/json',
                 success:function (data) {
+
                     if (data.status == 'OK') {
-                        var merchantInfo;
-                        merchantInfo.resourceId = data.resourceId;
-                        merchantInfo.fileUrl = data.fileUrl;
-                        return merchantInfo;
+                        merchantLogo = {};
+                        merchantLogo.resourceId = data.resourceId;
+                        merchantLogo.fileUrl = data.fileUrl;
                     }
                     else {
                         $('#merchantRsgErrorBox').show();
                         $('#merchantRsgErrorBox').text(data.errorMessage);
-                        var merchantInfo;
-                        merchantInfo.resourceId = "";
-                        merchantInfo.fileUrl = "";
-                        return merchantInfo;
+                        merchantLogo = null;
                     }
-
+                    $('#uploadImgDlg').modal('hide');
                 }
             });
+        }
+    };
+}
+
+function uploadMerchantImages(event) {
+    $.each(event.target.files, function (index, file) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function (event) {
+            var fileContent = reader.result.match(/,(.*)$/)[1];
+            if(file.size > 204800) {
+                alert("Max size is 200K.")
+            } else {
+                var fileClient = {
+                    resource_id:"",
+                    title:merchantKey + "-img" + file.name.substring(file.name.lastIndexOf(".")),
+                    description:"merchant image",
+                    mimeType:file.type,
+                    content:fileContent,
+                    parents:[]
+                };
+                $.ajax({
+                    type:"POST",
+                    url:"/ws/drive",
+                    data:JSON.stringify(fileClient),
+                    contentType:'application/json',
+                    success:function (data) {
+                        if (data.status == 'OK') {
+                            var merchantInfo;
+                            merchantInfo.resourceId = data.resourceId;
+                            merchantInfo.fileUrl = data.fileUrl;
+                            return merchantInfo;
+                        }
+                        else {
+                            $('#merchantRsgErrorBox').show();
+                            $('#merchantRsgErrorBox').text(data.errorMessage);
+                            var merchantInfo;
+                            merchantInfo.resourceId = "";
+                            merchantInfo.fileUrl = "";
+                            return merchantInfo;
+                        }
+
+                    }
+                });
+            }
         };
         $('#uploadImgDlg').modal('hide');
     })

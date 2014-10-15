@@ -224,13 +224,12 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
                 .setParameter("key2", prefix + "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
 
         SearchResultVO<MerchantVO> resultVO = new SearchResultVO<MerchantVO>();
-        WebProperties webProperties = WebProperties.getInstance();
-        String driveHost = webProperties.get("driver.host");
+
         for (Merchant merchant : (List<Merchant>) q.getResultList()) {
             MerchantVO vo = new MerchantVO();
             //change image name
             if (!StringUtils.isBlank(merchant.getImageFileName())) {
-                merchant.setImageFileName(driveHost + merchant.getImageFileName());
+                merchant.setImageFileName(merchant.getImageFileName());
             }
             vo.setMerchant(merchant);
             resultVO.getVoList().add(vo);

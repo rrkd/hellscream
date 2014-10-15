@@ -50,6 +50,10 @@ public abstract class BaseEntity implements Serializable {
         return KeyFactory.keyToString(key);
     }
 
+    public Long getKeyId() {
+        return key.getId();
+    }
+
     public Boolean getValid() {
         return valid;
     }

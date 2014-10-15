@@ -79,7 +79,7 @@ public class MerchantProfileController {
     }
 
     @RequestMapping(value = "/merchant/modify", method = RequestMethod.GET)
-    public ModelAndView updatePage(@PathVariable String tradeNameUrl) {
+    public ModelAndView updatePage() {
         ModelAndView modelAndView = new ModelAndView("merchant/updateMerchant");
         modelAndView.addObject("vo", getLoginMerchant());
         modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
