@@ -190,8 +190,8 @@
                         <destinationFolder>${basedir}/src/main/webapp/WEB-INF/assets/wro/</destinationFolder>
                         <contextFolder>${basedir}/src/main/webapp/WEB-INF/assets/</contextFolder>
                         <wroFile>${basedir}/src/main/webapp/WEB-INF/wro.xml</wroFile>
-                        <wroManagerFactory>ro.isdc.wro.extensions.manager.standalone.GoogleStandaloneManagerFactory</wroManagerFactory>
-                        <ignoreMissingResources>false</ignoreMissingResources>
+                        <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
+                        <ignoreMissingResources>true</ignoreMissingResources>
                     </configuration>
                 </plugin>
 
