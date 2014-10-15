@@ -16,6 +16,7 @@ aboutus.missions=公司目标
 aboutus.mission1=华服网将建设成澳洲最专业的分类信息和报价服务网站，为大众提供一个高效、简单、经济而又真实的互联网信息服务平台。
 aboutus.mission2=我们的目标就是成为澳洲海外华人信息平台，成为您生活中不可或缺的一部分！
 
+faq.title=常见问题帮助
 faq.individual= 个人使用
 faq.individual.procedures=免费报价流程
 faq.procedures.detail=1.免费发布服务请求  <br/>2.商家给你免费报价 <br/>3.选择适合你的商家
@@ -28,9 +29,6 @@ faq.quotedisplay.detail=不会！为了保护你的隐私，你的电话号码�
 faq.individual.quotemodify=发布的服务请求还可以修改吗？
 faq.quotemodify.answer=不可以，发布的服务请求立刻会发到商家，商家会根据服务请求报价。如果你想修改，你需要直接跟商家商量
 
-
-
-
 faq.merchants=公司使用
 faq.merchants.listing=如何免费登记公司店铺
 faq.listing.procedure=1.请登陆华服网<br/> 2.在主菜单点击<a href="/merchant/create">免费登记公司店铺</a><br/> 3.填写公司信息(公司名字，邮箱地址，服务类型，公司描述，地址，联络电话<br/> 4.上传公司LOGO,图片(强烈建议）
@@ -42,8 +40,6 @@ faq.merchants.feedback=如何提升顾客信息反馈
 faq.feedback.detail=信息反馈是客户给你服务的评价，如果你认为评价不合理，请跟我们联络
 faq.merchants.rating=如何提高星形排名
 faq.rating.detail= 默认星形排名是３星，越多华服网用户接受你的报价，越多成交量，星形排名就越高。
-
-
 
 faq.hottopics=热门话题
 faq.ht.whyquotes=为什么选择免费发布服务请求
@@ -69,5 +65,5 @@ faq.disclaimer=免责声明
 faq.disclaimer.detail=1. 用户明确同意其使用华服网服务所存在的风险将完全由其自己承担；因使用而产生的一切后果也由其自己承担，华服网不提供任何保证，亦不承担任何法律责任;<br/>2. 华服网不保证网络服务一定能满足用户的要求，也不保证服务不会中断，对服务的及时性、安全性、准确性也都不作担保。对于因不可抗力或华服网不能控制的原因造成的服务中断或其它缺陷，，华服网不提供任何保证，亦不承担任何法律责任。<br/>3. 华服信息内容系用户自行发布，来自网络，或其他途径，其真实性、合法性由发布人和相关信息来源负责，华服网不提供任何保证，亦不承担任何法律责任。
 
 faq.contact.heading=其他问题？
-faq.contact.detail=华服网致力提供服务水平，更好的为海外华人大家庭服务，真诚欢迎各位用户给我们提建议或者咨询
-faq.contact.button=发邮件
+faq.contact.detail=华服网致力提高服务水平，更好的为海外华人大家庭服务，真诚欢迎各位用户给我们提建议或者咨询
+faq.contact.button=请联系

@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta name="description" content="About Us">
-    <title>About Us</title>
+    <title><spring:message code="faq.title"></spring:message></title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>F.A.Q.</h1>
+    <h1><spring:message code="faq.title"></spring:message></h1>
 
     <div class="headerdivider">
 
@@ -170,9 +170,9 @@
 
         <div class="span9">
 
-            <h4 class="top0">YOUR QUESTION NOT ON THE LIST?</h4>
+            <h4 class="top0"><spring:message code="faq.contact.heading"></spring:message></h4>
 
-            Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non fermentum.
+            <spring:message code="faq.contact.detail"></spring:message>
 
         </div>
 
@@ -180,7 +180,7 @@
 
             <a href="/contactus" class="btn btn-primary btn-large">
 
-                <i class="icon icon-envelope"></i>&nbsp; CONTACT US </a>
+                <i class="icon icon-envelope"></i><spring:message code="faq.contact.button"></spring:message></a>
 
         </div>
 
