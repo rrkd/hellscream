@@ -6,7 +6,7 @@ home.whyshuoldIneedtosignup=为啥我要注册
 aboutus.title=华服网简介
 aboutus.brief=华服网（www.huafu.com.au)，是一家正在崛起，将成为澳洲最具有影响力和活力的中文信息网站之一，以满足用户需求为导向的信息交互平台。
 aboutus.individual=华服网向个人用户提供准确、有效的生活信息服务。可以让用户进行及时有效的信息搜索及服务需求的发布，使用户享受到高质量的信息服务。同时，伴随着市场和公司的高速成长，还将不断完善信息的运营监管机制，以确保信息的真实性和有效性，配合更加智能化的信息检索服务，从而真正成为澳洲华人在海外的不可或缺的生活助手。
-aboutus.merchants=华服网向商家用户提供最准确的目标消费用户群体，最直接的产品与服务展示平台，最有效的市场营销效果，最贴心的客户关系管理等服务。可以让商家用户更加方便寻找潜在用户，报价，交易，售后服务，公司财务管理等一条龙服务。同时，伴随着市场和公司的高速成长，我们会致力于提高商家用户在的知名度，可信度，和顾客的互动性。
+aboutus.merchants=华服网向商家用户提供最准确的目标消费用户群体，最直接的产品与服务展示平台，最有效的市场营销效果，最贴心的客户关系管理等服务。可以让商家用户更加方便寻找潜在用户，报价，交易，售后服务，公司财务管理等一条龙服务。同时，伴随着市场和公司的高速成长，我们会致力于提高商家用户的知名度，可信度，和顾客的互动性。
 aboutus.skills=公司优势
 aboutus.skills.satisfaction=个人用户使用满意度
 aboutus.skills.ratingsystem=商家服务评分系统
@@ -67,3 +67,14 @@ faq.disclaimer.detail=1. 用户明确同意其使用华服网服务所存在的�
 faq.contact.heading=其他问题？
 faq.contact.detail=华服网致力提高服务水平，更好的为海外华人大家庭服务，真诚欢迎各位用户给我们提建议或者咨询
 faq.contact.button=请联系
+
+contactus.title=联系我们
+contactus.brief=请先阅读我们的<a href="/faq">帮助页面</a>. 如果您要举报某条信息，请留下信息的链接或编号以及举报原因。<br/>如果你是商家需要帮忙，请详细描述您的问题，我们会尽快回答您的问题。
+contactus.name=Name(你的称呼)
+contactus.email=E-mail Address(你的邮箱联络地址）
+contactus.content=Message(详细描述)
+contactus.send=提交
+contactus.location=公司总部
+contactus.hours=营业时间
+
+footer.aboutus=

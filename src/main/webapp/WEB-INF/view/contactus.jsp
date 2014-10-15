@@ -2,16 +2,21 @@
 <html>
 <head>
     <meta name="description" content="About Us">
-    <title>About Us</title>
+    <title><spring:message code="contactus.title"></spring:message></title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>Get in Touch</h1>
+    <h1><spring:message code="contactus.title"></spring:message></h1>
 
     <div class="headerdivider">
 
     </div>
+    </p>
+
+    <spring:message code="contactus.brief"></spring:message>
+
+    <p>
 
 </div>
 
@@ -21,15 +26,15 @@
 
         <form action="#" name="MYFORM" id="MYFORM">
 
-            <input name="name" size="30" type="text" id="name" class="span12" placeholder="Name">
+            <input name="name" size="30" type="text" id="name" class="span12" placeholder="<spring:message code="contactus.name"></spring:message>">
 
-            <input name="email" size="30" type="text" id="email" class="span12" placeholder="E-mail Address">
+            <input name="email" size="30" type="text" id="email" class="span12" placeholder="<spring:message code="contactus.email"></spring:message>">
 
-            <textarea id="message" name="message" class="span12" placeholder="Message" rows="8"></textarea>
+            <textarea id="message" name="message" class="span12" placeholder="<spring:message code="contactus.content"></spring:message>" rows="8"></textarea>
 
             <br/>
 
-            <input value="Send" type="submit" id="Send" class="btn btn-primary top10">
+            <input value="<spring:message code="contactus.send"></spring:message>" type="submit" id="Send" class="btn btn-primary top10">
 
         </form>
 
@@ -39,17 +44,17 @@
 
         <div class="box3">
 
-            <iframe class="gmap" style="width:98.2%;height:240px;" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=disney+paris&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=39.371738,86.572266&amp;ie=UTF8&amp;hq=disney&amp;hnear=Paris,+%C3%8Ele-de-France,+France&amp;t=m&amp;fll=48.881877,2.535095&amp;fspn=0.512051,1.352692&amp;st=103241701817924407489&amp;rq=1&amp;ev=zo&amp;split=1&amp;ll=49.027964,2.772675&amp;spn=0.315159,0.585022&amp;z=10&amp;iwloc=D&amp;output=embed&amp;output=embed">
+            <iframe class="gmap" style="width:98.2%;height:240px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3310.224948956142!2d150.989126!3d-33.935342!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12be5d54548671%3A0x9c40b8b113b6ecd6!2s66+Ashford+Ave%2C+Milperra+NSW+2214!5e0!3m2!1sen!2sau!4v1413373089701">
 
             </iframe>
 
-            <i class="icon-map-marker"></i> &nbsp;&nbsp;<i>Location</i>: 2536 Zamora Road, Missisipi, 74C
+            <i class="icon-map-marker"></i> &nbsp;&nbsp;<i><spring:message code="contactus.location"></spring:message></i>: 66 Ashford Ave Milperra NSW 2214
 
             <p>
 
             </p>
 
-            <i class="icon-reorder"></i> &nbsp;<i>Hours</i>: Monday - Friday, 09:00 - 17:00
+            <i class="icon-reorder"></i> &nbsp;<i><spring:message code="contactus.hours"></spring:message></i>: Monday - Friday, 09:00 - 17:00
 
             <p>
 

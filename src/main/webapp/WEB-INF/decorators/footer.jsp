@@ -24,8 +24,7 @@
 
                 <p>
 
-                    Introducing a premium HTML5 & CSS3 template for multipurpose use. Responsive layout, professional
-                    design & lots of features.
+                    <spring:message code="aboutus.title"></spring:message>
 
                 </p>
 
