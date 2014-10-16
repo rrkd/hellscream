@@ -1,4 +1,5 @@
-<%@include file="../globe.jsp"%><html>
+<%@include file="../globe.jsp"%>
+<html>
 <head>
     <meta name="description" content="merchant feedback ">
     <title>Merchant Feedback</title>
@@ -82,8 +83,25 @@
     </div>
 
 </div>
+<div class="modal fade" id="successDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="successDlgLabel">Feedback Created</h4>
+            </div>
+            <div class="modal-body">
+                Your feedback has been saved.
+            </div>
+            <div class="modal-footer">
+                <a href="/merchant/details/${merchant.url}" class="btn btn-primary">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jqBootstrapValidation.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/prettify.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.raty.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/feedback/merchantFeedback.js"></script>
 </body>
+</html>

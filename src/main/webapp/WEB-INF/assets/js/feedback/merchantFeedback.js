@@ -1,5 +1,6 @@
 jQuery(document).ready(function ($) {
     $('#rankBox').raty();
+    $('#successDlg').appendTo('body');
     $("#email,#userName, #comment").jqBootstrapValidation(
         {
             preventSubmit: true,
@@ -15,7 +16,10 @@ jQuery(document).ready(function ($) {
                     contentType:'application/json',
                     success:function (data) {
                         if (data.status == 'OK') {
-                            alert('You feedback has been submit');
+                            $('#successDlg').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
                             $('#merchantRsgErrorBox').hide();
                         }
                         else {

@@ -89,7 +89,7 @@
 
                 <li>
 
-                    <img src="${vo.merchant.imageFileName}" alt="">
+                    <img src="${vo.merchant.imageFileName}" alt="" style="width: 200px;">
 
                 </li>
 

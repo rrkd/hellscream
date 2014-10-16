@@ -1,22 +1,5 @@
 jQuery(document).ready(function ($) {
     $('#successDlg').appendTo('body');
-    $('#create_merchant').click(function () {
-        $.ajax({
-            type:"POST",
-            url:"/ws/quote",
-            data:generateQuote(),
-            contentType:'application/json',
-            success:function (data) {
-                if (data.status == 'OK') {
-                    $('#successDlg').modal({
-                        backdrop: 'static',
-                        keyboard: false
-                    });
-                }
-                else alert('Failed adding quote: ' + data.status + ', ' + data.errorMessage);
-            }
-        });
-    });
 
     $("#postQuoteForm").submit(function(e) {
         e.preventDefault();
@@ -62,7 +45,10 @@ jQuery(document).ready(function ($) {
                     contentType:'application/json',
                     success:function (data) {
                         if (data.status == 'OK') {
-                            alert('Merchant has been added');
+                            $('#successDlg').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
                             $('#merchantRsgErrorBox').hide();
                         }
                         else {
