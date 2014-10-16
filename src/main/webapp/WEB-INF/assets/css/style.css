@@ -2619,8 +2619,7 @@ transition:0.3s;
 list-style:none
 }
 .vuzz-pricing-table>div {
-border-top:#666;
-3px solid;
+border-top:#666 3px solid;
 margin-right:2%;
 list-style:none;
 text-shadow:none;

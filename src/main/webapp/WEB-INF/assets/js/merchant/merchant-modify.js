@@ -85,7 +85,10 @@ function uploadMerchantLogo(event) {
         if(file.size > 204800) {
             alert("Max size is 200K.")
         } else {
-            $('#uploadImgDlg').modal('show');
+            $('#uploadImgDlg').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
             var fileClient = {
                 resourceId:resourceId,
                 title:merchantKey + "-logo" + file.name.substring(file.name.lastIndexOf(".")),

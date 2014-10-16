@@ -123,7 +123,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="successDlgLabel">Merchant Created</h4>
+                <h4 class="modal-title" id="successDlgLabel">Quote Created</h4>
             </div>
             <div class="modal-body">
                 Your Quote has been posted.
