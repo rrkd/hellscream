@@ -5,7 +5,24 @@ jQuery(document).ready(function ($) {
 });
 
 function initLatestMerchant($) {
-
+    $.ajax({
+        type:"GET",
+        url:"/ws/merchant/latest",
+        data:{},
+        contentType:'application/json',
+        success:function (data) {
+            if (!$.isEmptyObject(data)) {
+                $('#latestMerchantContain').append('<p>' +
+                    '<a href="/merchant/details/'+data.url+'">'+data.tradeName+'</a><br/>' +
+                    '<span>'+data.shortDesc+'</span>' +
+                    '</p>');
+                $('#latestComment').text(data.comment)
+                $('#testimonialName').text(data.userName);
+                var merchantLink = $("<a href='merchant/details/" + data.canonicalSlugId + "'>" + data.merchantTradeName + "</a>")
+                $('#feedbackMerchant').append(merchantLink);
+            }
+        }
+    });
 }
 
 function initLatestFeedbackQuoteMsg($) {

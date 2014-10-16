@@ -167,7 +167,22 @@
         </div>
     </c:otherwise>
 </c:choose>
-
+<div class="modal fade" id="successDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="successDlgLabel">Quote Applied</h4>
+            </div>
+            <div class="modal-body">
+                You have applied this quote
+            </div>
+            <div class="modal-footer">
+                <a href="/home" class="btn btn-default" data-dismiss="modal">Go To Home</a>
+                <a href="/m/q" class="btn btn-primary">My Applied Quote</a>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jqBootstrapValidation.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/prettify.js"></script>
 <script type="text/javascript" src="/assets/js/quote/applyQuote.js"></script>

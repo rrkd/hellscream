@@ -8,7 +8,6 @@ import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.QuoteContactMsgVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.properties.WebProperties;
-import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteContactMsgDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
@@ -17,7 +16,6 @@ import com.google.appengine.api.datastore.KeyFactory;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -64,7 +62,7 @@ public class MerchantManageWS {
 
         try {
             IGUser user = userDAO.findByKey(KeyFactory.stringToKey(userKey));
-            if(user == null) {
+            if (user == null) {
                 LOG.error("Invalid user for merchant.");
                 throw new AppX("Invalid user for merchant.");
             }
@@ -99,7 +97,7 @@ public class MerchantManageWS {
         merchant.setPhone(rawMerchant.getPhone());
         merchant.setLastUpdateTime(new Date());
         merchant.setTradeName(rawMerchant.getTradeName());
-        if(StringUtils.isNotBlank(rawMerchant.getImageResourceId())) {
+        if (StringUtils.isNotBlank(rawMerchant.getImageResourceId())) {
             merchant.setImageFileName(driveHost + rawMerchant.getImageFileName());
             merchant.setImageResourceId(rawMerchant.getImageResourceId());
         }
@@ -116,5 +114,17 @@ public class MerchantManageWS {
         assert StringUtils.isNotBlank(keyString);
         Merchant merchant = merchantDAO.findByKey(KeyFactory.stringToKey(keyString));
         return quoteContactMsgDAO.findContactMsg(merchant, pageNumber);
+    }
+
+    @RequestMapping(value = "/ws/merchant/latest",
+            method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Merchant latestMerchant() {
+        List<Merchant> merchantList = merchantService.findLatestMerchant();
+        if (merchantList.size() > 0) {
+            return merchantList.get(0);
+        }
+        return null;
     }
 }

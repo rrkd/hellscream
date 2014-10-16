@@ -216,7 +216,7 @@
 
                                 <div class="featured-projects-image">
 
-                                    <a href="#"><img src="${similarMerchant.imageFileName}" class="imgOpa" alt=""></a>
+                                    <a href="#"><img src="${similarMerchant.imageFileName}" class="imgOpa" alt="" style="width: 100px;"></a>
 
                                 </div>
 

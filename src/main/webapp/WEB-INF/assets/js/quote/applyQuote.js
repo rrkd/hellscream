@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+    $('#successDlg').appendTo('body');
 
     $('#type_select').select2({
         placeholder:"Type Select"
@@ -21,7 +22,10 @@ jQuery(document).ready(function ($) {
                     contentType:'application/json',
                     success:function (data) {
                         if (data.status == 'OK') {
-                            alert('Merchant has been added');
+                            $('#successDlg').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
                             $('#merchantRsgErrorBox').hide();
                         }
                         else {

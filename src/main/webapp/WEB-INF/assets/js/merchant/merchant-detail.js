@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    $('.merchant-rank').raty();
+    $('.merchant-rank').raty({readOnly: true});
     $('.merchant-rank').each(function () {
         $(this).raty('score', $(this).attr("data-rank"));
     });

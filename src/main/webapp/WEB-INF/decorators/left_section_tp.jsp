@@ -5,8 +5,8 @@
 
         <h4 class="widget-title">Latest Merchant</h4>
 
-        <div>
-            <a href="#"> Merchant 1</a>
+        <div id="latestMerchantContain">
+
         </div>
 
     </div>

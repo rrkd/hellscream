@@ -278,6 +278,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/quote/quoteDetails.js" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/quote/quoteDetails.js" ></script>
 </body>
 </html>
