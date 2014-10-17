@@ -1,8 +1,30 @@
 home.cn=中文
 home.welcome=你好
+home.introduction=华服网！帮你找商家和报价的好助手！！
+home.introduction.detail= 免费发布服务请求, 商家主动联络你和给你报价,你选择适合你报价的商家。 生活是如此美好，一切都在你的掌握之中．我的服务请求，我做主！！
+home.merchant=已注册商家
+home.quote=服务请求
+home.comment=商家评论
+home.deal=已成交
+home.howitwork=服务请求流程
+home.howitwork.detail=1.免费发布服务请求 2.商家给你免费报价 3.了解商家的信誉和选择适合你的商家 4.向满意商家提供具体服务地址和联络方式
+home.howitwork.link=具体流程
+home.newregistermerchant=最新注册商家
+home.newregistermerchant.more=更多信息
+home.whychooseus=为什么选择华服网找商家和发布服务请求
+home.whychooseus.satisfation=用户群体满意度高
+home.whychooseus.satasfation.dt= 很多用户反馈的信息都是喜欢用华服网找商家，因为华服网提供准确、有效的生活信息服务．一个字形容就是：好！
+home.whychoous.ratingsystem= 合理的商家服务评分系统
+home.whychooseus.ratingsystem.dt=商家服务评分系统多方位提供商家的经营状况，服务历史，客户对商家的反馈信息等，让用户对商家有更加具体了解．让用户选择更安心，更明智．
+home.whychooseus.services=商家服务是种享受
+home.whychooseus.services.dt=在如此海量商家的社会，如何选择商家让我们无可适从．很多用户都喜欢在华服网直接发布服务请求，无需暴露个人信息，让商家主动找你报价，让你从被动转为主动，从寻求服务转为享受服务．
+home.whychooseus.convenience=简单方便
+home.whychooseus.convenience.dt=华服网强大的数据存储功能，强大的搜索功能，和简单的服务页面，让用户易于操作，用得更简单，更舒心．
+home.whyshuoldIneedtosignup=为啥我要注册
+home.whyshuoldIneedtosignup.dt=没想好．．．
 home.register=我想试试
 home.needcontact=需要帮助? 联系我们:
-home.whyshuoldIneedtosignup=为啥我要注册
+
 aboutus.title=华服网简介
 aboutus.brief=华服网（www.huafu.com.au)，是一家正在崛起，将成为澳洲最具有影响力和活力的中文信息网站之一，以满足用户需求为导向的信息交互平台。
 aboutus.individual=华服网向个人用户提供准确、有效的生活信息服务。可以让用户进行及时有效的信息搜索及服务需求的发布，使用户享受到高质量的信息服务。同时，伴随着市场和公司的高速成长，还将不断完善信息的运营监管机制，以确保信息的真实性和有效性，配合更加智能化的信息检索服务，从而真正成为澳洲华人在海外的不可或缺的生活助手。
@@ -16,8 +38,7 @@ aboutus.missions=公司目标
 aboutus.mission1=华服网将建设成澳洲最专业的分类信息和报价服务网站，为大众提供一个高效、简单、经济而又真实的互联网信息服务平台。
 aboutus.mission2=我们的目标就是成为澳洲海外华人信息平台，成为您生活中不可或缺的一部分！
 
-faq.title=常见问题帮助
-faq.individual= 个人使用
+faq.title=常见问题帮助q.individual= 个人使用
 faq.individual.procedures=免费报价流程
 faq.procedures.detail=1.免费发布服务请求  <br/>2.商家给你免费报价 <br/>3.选择适合你的商家
 faq.individual.quote=如何免费发布服务请求
@@ -77,4 +98,3 @@ contactus.send=提交
 contactus.location=公司总部
 contactus.hours=营业时间
 
-footer.aboutus=
