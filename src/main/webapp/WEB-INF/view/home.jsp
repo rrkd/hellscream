@@ -1,7 +1,7 @@
 <%@include file="globe.jsp"%><html>
 <head>
     <meta name="description" content="service job search">
-    <title>Welcome to huafu</title>
+    <title><spring:message code="home.title"/></title>
 </head>
 <body>
 <div class="row-fluid">
@@ -12,15 +12,13 @@
 
             <div class="camera_caption fadeFromTop">
 
-                <h1><spring:message code="home.findcategory" /></h1>
+                <h1><spring:message code="home.findmerchant.title" /></h1>
                 <div class="form" style="margin-top:0px;">
-				<span>
-
-                    Who did you need?<br/>
-                    <input id="searchMerchantKeyTxt" class="span10" type="text" name="name" placeholder="e.g. cleaner"><br/>
-                    Where are you?<br/>
-                    <input id="searchLocalTxt" class="span10" type="text" name="name" placeholder="enter your suburb or postcode"><br/>
-                    <input id="searchMerchantBtn" class="btn span10" value="Find Service">
+				<span><spring:message code="home.findmerchant.category" /><br/>
+                    <input id="searchMerchantKeyTxt" class="span10" type="text" name="name" placeholder="<spring:message code="home.findmerchant.category.samples" />"><br/>
+                    <spring:message code="home.findmerchant.where" /><br/>
+                    <input id="searchLocalTxt" class="span10" type="text" name="name" placeholder="<spring:message code="home.findmerchant.where.samples" />"><br/>
+                    <input id="searchMerchantBtn" class="btn span10" value="<spring:message code="home.findmerchant.button" />">
 
                 </span>
                 </div>
@@ -32,11 +30,11 @@
 
             <div class="camera_caption fadeFromBottom">
 
-                <h1>Post Quote</h1>
+                <h1><spring:message code="home.postquote" /></h1>
 
 						<span>
-
-						Beautiful behind the scenes too! Biscaya Template comes with top notch customer support to help you get your business online fast. </span>
+						<spring:message code="home.postquote.advantage" />
+                        </span>
 
             </div>
 
@@ -46,11 +44,9 @@
 
             <div class="camera_caption fadeFrom">
 
-                <h1>List Your Business</h1>
+                <h1><spring:message code="home.listmerchant" /></h1>
 
-						<span>
-
-						Beautiful behind the scenes too! Biscaya Template comes with top notch customer support to help you get your business online fast. </span>
+						<span><spring:message code="home.listmerchant.advantage" /> </span>
 
             </div>
 
@@ -70,13 +66,11 @@
 
     <div class="span12">
 
-        <h1>Introducing Huafu, <span class="primarycolor">Multipurpose</span> Service for your Business</h1>
+        <h1><span class="primarycolor"><spring:message code="home.introduction" /></span></h1>
 
         <p class="featured lead bottom10">
 
-            Highly-professional & modern website template created for you and your business prosperity. <br/>
-
-            Biscaya has all the flexibility and features needed for building a top-notch business website.
+            <spring:message code="home.introduction.detail" />
 
         </p>
 
@@ -89,7 +83,7 @@
             <div class="icon-box-top grey-box-icon-pos">
                 <i class="fontawesome-icon medium circle-white center icon-briefcase"></i>
             </div>
-            <h4>Merchant</h4>
+            <h4><spring:message code="home.merchant" /></h4>
             <p id="merchantCount"></p>
         </div>
 
@@ -99,7 +93,7 @@
             <div class="icon-box-top grey-box-icon-pos">
                 <i class="fontawesome-icon medium circle-white center icon-list"></i>
             </div>
-            <h4>Quote</h4>
+            <h4><spring:message code="home.quote" /></h4>
             <p id="quoteCount"></p>
         </div>
 
@@ -109,7 +103,7 @@
             <div class="icon-box-top grey-box-icon-pos">
                 <i class="fontawesome-icon medium circle-white center icon-comments"></i>
             </div>
-            <h4>Comment</h4>
+            <h4><spring:message code="home.comment" /></h4>
             <p id="commentCount"></p>
         </div>
 
@@ -119,7 +113,7 @@
             <div class="icon-box-top grey-box-icon-pos">
                 <i class="fontawesome-icon medium circle-white center icon-thumbs-up"></i>
             </div>
-            <h4>Deal</h4>
+            <h4><spring:message code="home.deal" /></h4>
             <p id="feedbackCount"></p>
         </div>
 
@@ -133,9 +127,9 @@
 
         <div class="span9">
 
-            <h4 class="top0"><spring:message code="home.howitworks"/> </h4>
+            <h4 class="top0"><spring:message code="home.howitwork"/></h4>
 
-            Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non fermentum.
+            <spring:message code="home.howitwork.detail"/>
 
         </div>
 
@@ -143,7 +137,7 @@
 
             <a href="/howitworks" class="btn btn-primary btn-large">
 
-                <i class="icon icon-download-alt"></i> <spring:message code="home.iwanttoknowmore" /> </a>
+                <i class="icon icon-download-alt"></i> <spring:message code="home.howitwork.link" /> </a>
 
         </div>
 
@@ -163,7 +157,7 @@
 
             <div>
 
-                New Register Merchant
+                <spring:message code="home.newregistermerchant"/>
 
             </div>
 
@@ -203,7 +197,7 @@
 
                         <p>
 
-                            <a href="/merchant/details/${merchant.canonicalSlugId}" class="btn btn-primary"><i class="icon-share-alt"></i> More</a>
+                            <a href="/merchant/details/${merchant.canonicalSlugId}" class="btn btn-primary"><i class="icon-share-alt"></i> <spring:message code="home.newregistermerchant.more"/></a>
 
                         </p>
 
@@ -228,7 +222,7 @@
 
             <div>
 
-                Why Choose Us
+                <spring:message code="home.whychooseus"/>
 
             </div>
 
@@ -236,49 +230,49 @@
 
         <div class="accordion">
 
-            <h3><span>Quis dolor id nunc</span></h3>
+            <h3><span><spring:message code="home.whychooseus.satisfation"/></span></h3>
 
             <div class="accord_cont">
 
                 <p>
 
-                    Nunc sit amet velit metus. At leo tincidunt felis facilisis tincidunt. Proin posuere, ligula nec porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo, sagittis sit amet elementum eget, ultricies ac tortor. Ut est mi, consequat ut bibendum quis, vehicula vel nibh. In urna tortor, pulvinar ut.
+                    <spring:message code="home.whychooseus.satasfation.dt"/>
 
                 </p>
 
             </div>
 
-            <h3><span>Mauris suspendisse laoreet imperdiet</span></h3>
+            <h3><span><spring:message code="home.whychooseus.ratingsystem"/></span></h3>
 
             <div class="accord_cont">
 
                 <p>
 
-                    At leo tincidunt felis facilisis tincidunt. Nunc sit amet velit metus. Proin posuere, ligula nec porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo, sagittis sit amet elementum eget, ultricies ac tortor. Ut est mi, consequat ut bibendum quis, vehicula vel nibh. In urna tortor, pulvinar ut.
+                    <spring:message code="home.whychooseus.ratingsystem.dt"/>
 
                 </p>
 
             </div>
 
-            <h3><span>Quis porttitor semper mauris!</span></h3>
+            <h3><span><spring:message code="home.whychooseus.services"/></span></h3>
 
             <div class="accord_cont">
 
                 <p>
 
-                    At leo tincidunt felis facilisis tincidunt. Nunc sit amet velit metus. Proin posuere, ligula nec porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo, sagittis sit amet elementum eget, ultricies ac tortor. Ut est mi, consequat ut bibendum quis, vehicula vel nibh. In urna tortor.
+                    <spring:message code="home.whychooseus.services.dt"/>
 
                 </p>
 
             </div>
 
-            <h3><span>Eros odio ornare commodo</span></h3>
+            <h3><span><spring:message code="home.whychooseus.convenience"/></span></h3>
 
             <div class="accord_cont">
 
                 <p>
 
-                    Ut est mi, consequat ut bibendum quis, vehicula vel nibh. At leo tincidunt felis facilisis tincidunt. Nunc sit amet velit metus. Proin posuere, ligula nec porttitor eget luctus, risus lectus tristique ligula, quis pretium elit diam a nisi eget mauris vestibulum. Proin vehicula malesuada dolor, vel rutrum. quam sollicitu hasellus turpis justo, sagittis sit amet elementum eget, ultricies ac tortor.
+                    <spring:message code="home.whychooseus.convenience.dt"/>
 
                 </p>
 
@@ -298,7 +292,7 @@
 
             <h4 class="top0"><spring:message code="home.whyshuoldIneedtosignup"/> </h4>
 
-            Aliquam convallis, urna vel luctus consequat, urna leo adipiscing sapien, mattis molestie nulla augue sed elit. Pellentesque interdum mi non dolor facilisis porta. Cras venenatis dolor sed magna rhoncus non fermentum.
+            <spring:message code="home.whyshuoldIneedtosignup.dt"/>
 
         </div>
 
@@ -330,9 +324,9 @@
 
             </div>
 
-            <!--icon box top -->
+            <!--span 1 -->
 
-            <h4>Modern Settings</h4>
+            <h4><spring:message code="home.bestdiscount"/></h4>
 
             <p>
 
@@ -352,7 +346,7 @@
 
     </div>
 
-    <!--/span3-->
+    <!--/span2-->
 
     <div class="span3">
 
@@ -366,7 +360,7 @@
 
             <!--icon box top -->
 
-            <h4>Various Styles</h4>
+            <h4><spring:message code="home.bestrecommeend"/></h4>
 
             <p>
 
@@ -400,7 +394,7 @@
 
             <!--icon box top -->
 
-            <h4>Responsive Design</h4>
+            <h4><spring:message code="home.bestseller"/></h4>
 
             <p>
 
@@ -420,7 +414,7 @@
 
     </div>
 
-    <!--/span3-->
+    <!--/span4-->
 
     <div class="span3">
 
@@ -434,7 +428,7 @@
 
             <!--icon box top -->
 
-            <h4>Winning Theme</h4>
+            <h4><spring:message code="home.bestrating"/></h4>
 
             <p>
 
@@ -507,7 +501,7 @@
     </div>
     <div class="span12">
         <div class="grey-box-icon">
-            <h3><a href="/category"><spring:message code="home.seeallcategory"></spring:message> <i class="fontawesome-icon smaller middle icon-arrow-right"></i></a></h3>
+            <h3><a href="/category"><spring:message code="home.viewallcategories"></spring:message> <i class="fontawesome-icon smaller middle icon-arrow-right"></i></a></h3>
         </div>
     </div>
 </div>
@@ -520,7 +514,7 @@
 
             <div>
 
-                Latest Quote
+                <spring:message code="home.latestquotes" />
 
             </div>
 

@@ -18,25 +18,21 @@
 
             <div class="span4">
 
-                <h1 class="title"><i class="icon-heart"></i> About us</h1>
+                <h1 class="title"><i class="icon-heart"></i> <spring:message code="footer.aboutus" /></h1>
 
                 <hr>
 
                 <p>
 
-                    <spring:message code="aboutus.title"></spring:message>
+                    <spring:message code="footer.aboutus.dt" />
+                    <a href="/aboutus" style="font-weight: bold;"><spring:message code="footer.aboutus.more" /></a>
 
                 </p>
 
-                <p>
-
-                    Made with love by <a href="http://www.wowthemes.net">WowThemes.net</a> .
-
-                </p>
 
                 <p class="footerlogo">
 
-                    <a href="/aboutus">Huafu</a>
+                    <a href="/aboutus"></a>
 
                 </p>
 
@@ -44,7 +40,7 @@
 
             <div class="span4">
 
-                <h1 class="title">Testimonials</h1>
+                <h1 class="title"><spring:message code="footer.testimonials" /></h1>
 
                 <hr>
 
@@ -58,9 +54,8 @@
 
                         </div>
 
-                        "Before turning to those moral and mental aspects of the matter which present the greatest
-                        difficulties, let the inquirer begin by mastering more elementary problems.<span
-                            style="font-family:arial;">"</span><br/><b> Jesse T, Los Angeles </b>
+                        <spring:message code="footer.testimonials.dt1" /><span
+                            style="font-family:arial;">"</span><br/><b> Johney </b>
 
                     </div>
 
@@ -72,9 +67,7 @@
 
                         </div>
 
-                        "How often have I said to you that when you have eliminated the impossible, whatever remains,
-                        however improbable, must be the truth?<span style="font-family:arial;">"</span><br/><b>Ralph G.
-                        Flowers </b>
+                        <spring:message code="footer.testimonials.dt2" /><span style="font-family:arial;">"</span><br/><b>Jessica </b>
 
                     </div>
 
@@ -86,9 +79,8 @@
 
                         </div>
 
-                        "It is a capital mistake to theorize before one has data. Insensibly one begins to twist facts
-                        to suit theories, instead of theories to suit facts.<span
-                            style="font-family:arial;">"</span><br/><b>Kerry I. McClanahan </b>
+                        <spring:message code="footer.testimonials.dt3" /><span
+                            style="font-family:arial;">"</span><br/><b>Tom </b>
 
                     </div>
 
@@ -100,9 +92,7 @@
 
                         </div>
 
-                        "We must fall back upon the old axiom that when all other contingencies fail, whatever remains,
-                        however improbable, must be the truth.<span style="font-family:arial;">"</span><br/><b>Randy K.
-                        Deleon </b>
+                        <spring:message code="footer.testimonials.dt4" /><span style="font-family:arial;">"</span><br/><b>Tara</b>
 
                     </div>
 
@@ -112,7 +102,7 @@
 
             <div class="span4">
 
-                <h1 class="title">Questions?</h1>
+                <h1 class="title"><spring:message code="footer.contactus" /></h1>
 
                 <hr>
 
@@ -128,25 +118,25 @@
 
                 </div>
 
-                <form method="post" action="#" id="contactform">
+                <form method="post"  action="#" id="contactform">
 
                     <div class="form">
 
                         <div class="controls controls-row">
 
-                            <input id="nameTxt" class="span6" type="text" name="name" placeholder="Name">
+                            <input id="nameTxt" class="span6" type="text" name="name" placeholder="<spring:message code="footer.contactus.name" />">
 
-                            <input id="userEmailTxt" class="span6" type="text" name="email" placeholder="E-mail">
+                            <input id="userEmailTxt" class="span6" type="text" name="email" placeholder="<spring:message code="footer.contactus.email" />">
 
                         </div>
 
                         <div class="controls">
 
-                            <textarea id="contactUsContent" class="span12" name="comment" rows="4" placeholder="Message"></textarea>
+                            <textarea id="contactUsContent" class="span12" name="comment" rows="4" placeholder="<spring:message code="footer.contactus.message" />"></textarea>
 
                         </div>
 
-                        <input id="sendContactEmail" class="btn" value="Send">
+                        <input id="sendContactEmail" class="btn" value="<spring:message code="footer.contactus.send" />">
 
                     </div>
 
