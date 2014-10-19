@@ -50,6 +50,7 @@ public class Merchant extends BaseEntity {
     private Integer feedbackCount = 0;
     private Integer quoteCount = 0;
     private Integer applyQuoteCount = 0;
+    private MerchantType merchantType = MerchantType.Searchable;
 
     public Merchant() {
     }
@@ -272,6 +273,14 @@ public class Merchant extends BaseEntity {
 
     public void setApplyQuoteCount(Integer applyQuoteCount) {
         this.applyQuoteCount = applyQuoteCount;
+    }
+
+    public MerchantType getMerchantType() {
+        return merchantType;
+    }
+
+    public void setMerchantType(MerchantType merchantType) {
+        this.merchantType = merchantType;
     }
 
     @Override
