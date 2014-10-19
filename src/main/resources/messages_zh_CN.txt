@@ -172,7 +172,41 @@ createmerchant.terms=规则和条款
 createmerchant.terms.link=#
 createmerchant.terms.required=你必须同意规则和条款
 createmerchant.button=提交
+createmerchant.register.success=注册成功！
+createmerchant.register.success.info=恭喜，注册已经成功！你现在可以浏览或修改公司页面。
+createmerchant.goto.profile=浏览公司页面
+createmerchant.goto.home=返回主页
 createmerchant.alreadyRegister=商家已经注册！
+
+modifymerchant.register=更新商家信息
+modifymerchant.basicinfo=商家基本资料
+modifymerchant.email=Email(邮箱):
+modifymerchant.email.placeholder=Email
+modifymerchant.email.help=客人跟你联络的邮箱(非常重要)
+modifymerchant.tradename=Register Name
+modifymerchant.tradename.placeholder=公司注册名字
+modifymerchant.tradename.help=注册名字只能是英文
+modifymerchant.merchantname=Display Name
+modifymerchant.merchantname.placeholder=公司在华服网的显示名字
+modifymerchant.merchantname.help=该显示名字可以是中英文
+modifymerchant.category=公司服务类型
+modifymerchant.category.help=公司提供服务类型种类
+modifymerchant.description=公司描述
+modifymerchant.description.placeholder=公司详细描述，这是客人对你们了解的重要窗口
+modifymerchant.description.help=请详细描述贵公司的公司概况，经营范围，公司强项等等。如果是个人经营，可以描述自己工作经历，技能，证书等等.
+modifymerchant.address1=Address 1(街号)
+modifymerchant.address1.placeholder=1000
+modifymerchant.address2=Address 2(街名)
+modifymerchant.address2.placeholder=George Street
+modifymerchant.address3=Address 3(区）
+modifymerchant.address3.placeholder= Sydney, NSW
+modifymerchant.phone=公司电话
+modifymerchant.phone.placeholder=020-9000 0000
+modifymerchant.contact1=联络人号码
+modifymerchant.contact1.placeholder=手机号码
+modifymerchant.contact2=其他联络人号码
+modifymerchant.contact2.placeholder=手机号码
+modifymerchant.button=提交
 
 
 

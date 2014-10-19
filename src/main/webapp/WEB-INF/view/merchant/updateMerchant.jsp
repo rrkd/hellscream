@@ -1,13 +1,13 @@
 <%@include file="../globe.jsp"%><html>
 <head>
     <meta name="description" content="service job search">
-    <title>Register Merchant</title>
+    <title><spring:message code="modifymerchant.register" /></title>
     <link href="/assets/css/prettify_bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <div class="page-header">
 
-    <h1>Update Merchant</h1>
+    <h1><spring:message code="modifymerchant.register" /></h1>
 
     <div class="headerdivider">
 
@@ -18,15 +18,6 @@
 <div class="row-fluid top30">
 
     <div class="span10">
-        <div class="titleborder">
-
-            <div>
-
-                Basic Information
-
-            </div>
-
-        </div>
         <div class="alert alert-error" id="merchantRsgErrorBox" style="display: none;">
 
             <button type="button" class="close" data-dismiss="alert">x</button>
@@ -36,31 +27,31 @@
         </div>
         <form class="form-horizontal" id="merchantUpdateForm"  novalidate>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Trade Name</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.tradename" /></label>
                 <div class="controls">
                     <input name="tradeName" size="30" class="span12" type="text"
                            maxlength="50" minlength="3"
                            pattern="[a-zA-Z0-9\s]+"
-                           id="tradeName" placeholder="TradeName" value="${vo.tradeName}"  required >
-                    <p class="help-block">Your trade name</p>
+                           id="tradeName" placeholder="<spring:message code="modifymerchant.tradename.placeholder" />" value="${vo.tradeName}"  required >
+                    <p class="help-block"><spring:message code="modifymerchant.tradename.help" /></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Merchant Name</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.merchantname" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="MerchantName" value="${vo.merchantName}" required>
-                    <p class="help-block">Your Merchant Name</p>
+                    <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="<spring:message code="modifymerchant.merchantname.placeholder" />" value="${vo.merchantName}" required>
+                    <p class="help-block"><spring:message code="modifymerchant.merchantname.help" /></p>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="tradeName">Email</label>
                 <div class="controls">
-                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" value="${vo.email}" required>
-                    <p class="help-block">Contact Email</p>
+                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="<spring:message code="modifymerchant.email.placeholder" />" value="${vo.email}" required>
+                    <p class="help-block"><spring:message code="modifymerchant.email.help" /></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Category</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.category" /></label>
                 <div class="controls">
                     <select multiple="multiple" name="name" size="30" id="category_select"
                             class="populate placeholder select2-offscreen span12" style="margin-bottom: 10px; margin-left: 0;">
@@ -72,55 +63,55 @@
                             </optgroup>
                         </c:forEach>
                     </select>
-                    <p class="help-block">Your Service Category</p>
+                    <p class="help-block"><spring:message code="modifymerchant.category.help" /></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Description</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.description" /></label>
                 <div class="controls">
-                    <textarea id="description" name="message" class="span12" placeholder="Description" rows="8">${vo.description}</textarea>
-                    <p class="help-block">What is your service about</p>
+                    <textarea id="description" name="message" class="span12" placeholder="<spring:message code="modifymerchant.description.placeholder" />" rows="8">${vo.description}</textarea>
+                    <p class="help-block"><spring:message code="modifymerchant.description.help" /></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Address Line 1</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.address1" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address1" value="${vo.address1}" class="span12" placeholder="Address1" required>
+                    <input name="name" size="30" type="text" id="address1" value="${vo.address1}" class="span12" placeholder="<spring:message code="modifymerchant.address1.placeholder" />" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Address Line 2</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.address2" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address2" value="${vo.address2}" class="span12" placeholder="Address2" required>
+                    <input name="name" size="30" type="text" id="address2" value="${vo.address2}" class="span12" placeholder="<spring:message code="modifymerchant.address2.placeholder" />" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Address Line 3</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.address3" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address3" value="${vo.address3}" class="span12" placeholder="Address3" required>
+                    <input name="name" size="30" type="text" id="address3" value="${vo.address3}" class="span12" placeholder="<spring:message code="modifymerchant.address3.placeholder" />" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">phone</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.phone" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="phone" value="${vo.phone}" class="span12" placeholder="Phone">
-                    <p class="help-block">Phone</p>
+                    <input name="name" size="30" type="text" id="phone" value="${vo.phone}" class="span12" placeholder="<spring:message code="modifymerchant.phone.placeholder" />">
+                    <%--<p class="help-block">Phone</p>--%>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Contact One</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.contact1" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="contact1" value="${vo.contact1}" class="span12" placeholder="Contact One">
-                    <p class="help-block">Contact Person</p>
+                    <input name="name" size="30" type="text" id="contact1" value="${vo.contact1}" class="span12" placeholder="<spring:message code="modifymerchant.contact1.placeholder" />">
+                    <%--<p class="help-block">Contact Person</p>--%>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Contact two</label>
+                <label class="control-label" for="tradeName"><spring:message code="modifymerchant.contact2" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="contact2" value="${vo.contact2}" class="span12" placeholder="Contact Tow">
+                    <input name="name" size="30" type="text" id="contact2" value="${vo.contact2}" class="span12" placeholder="<spring:message code="modifymerchant.contact2.placeholder" />">
                     <p class="help-block"></p>
                 </div>
             </div>
@@ -150,7 +141,7 @@
             <input name="name" size="30" type="hidden" id="keyId" class="span12"
                    value="${vo.keyId}">
             <div class="form-actions">
-                <input value="Update" id="modify_merchant" class="btn btn-primary top10">
+                <input value="<spring:message code="modifymerchant.button" />" id="modify_merchant" class="btn btn-primary top10">
             </div>
         </form>
 

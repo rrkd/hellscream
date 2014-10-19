@@ -173,14 +173,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="successDlgLabel">Merchant Created</h4>
+                <h4 class="modal-title" id="successDlgLabel"><spring:message code="createmerchant.register.success" /></h4>
             </div>
             <div class="modal-body">
-                Your business has been posted. Now you can modify your profile.
+                <spring:message code="createmerchant.register.success.info" />
             </div>
             <div class="modal-footer">
-                <a href="/home" class="btn btn-default" data-dismiss="modal">Go To Home</a>
-                <a href="/merchant/profile" class="btn btn-primary">Go To Profile</a>
+                <a href="/home" class="btn btn-default" data-dismiss="modal"><spring:message code="createmerchant.goto.home" /></a>
+                <a href="/merchant/p" class="btn btn-primary"><spring:message code="createmerchant.goto.profile" /></a>
             </div>
         </div>
     </div>
