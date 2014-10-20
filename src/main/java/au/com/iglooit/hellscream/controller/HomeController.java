@@ -1,5 +1,6 @@
 package au.com.iglooit.hellscream.controller;
 
+import au.com.iglooit.hellscream.service.feedback.FeedbackService;
 import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
 import org.slf4j.Logger;
@@ -31,6 +32,8 @@ public class HomeController {
     private QuoteService quoteService;
     @Resource
     private MerchantService merchantService;
+    @Resource
+    private FeedbackService feedbackService;
     @Resource
     private AuthenticationManager authenticationManager;
 

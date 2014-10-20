@@ -4,6 +4,7 @@ import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
+import au.com.iglooit.hellscream.service.feedback.FeedbackService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -20,6 +21,8 @@ public class StatisticServiceImpl implements StatisticService {
     private MerchantDAO merchantDAO;
     @Resource
     private QuoteDAO quoteDAO;
+    @Resource
+    private FeedbackService feedbackService;
 
     @Override
     public Long quoteCount() {
@@ -33,7 +36,7 @@ public class StatisticServiceImpl implements StatisticService {
 
     @Override
     public Long feedbackCount() {
-        return 100L;
+        return feedbackService.countFeedback();
     }
 
     @Override

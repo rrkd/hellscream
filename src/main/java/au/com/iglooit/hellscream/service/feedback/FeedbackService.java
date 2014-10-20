@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface FeedbackService {
     List<MerchantFeedbackMsgVO> findFeedbackForMerchant(Key merchantKey, Integer size);
+    Long countFeedback();
 }

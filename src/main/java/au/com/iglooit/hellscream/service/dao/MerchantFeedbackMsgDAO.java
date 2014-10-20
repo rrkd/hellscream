@@ -15,4 +15,5 @@ public interface MerchantFeedbackMsgDAO extends IEntityService<MerchantFeedbackM
     void createMerchantFeedbackMsg(MerchantFeedbackMsg msg);
     MerchantFeedbackMsg getLatestMsg();
     List<MerchantFeedbackMsg> findFeedbackMsg(Key merchantKey, Integer size);
+    Long countMerchantFeedback();
 }

@@ -9,6 +9,7 @@ import com.google.appengine.api.datastore.Key;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,11 @@ public class FeedbackServiceImpl implements FeedbackService {
     public List<MerchantFeedbackMsgVO> findFeedbackForMerchant(Key merchantKey, Integer size) {
         List<MerchantFeedbackMsg> feedbackMsgList = merchantFeedbackMsgDAO.findFeedbackMsg(merchantKey, size);
         return convertToVO(feedbackMsgList);
+    }
+
+    @Override
+    public Long countFeedback() {
+        return merchantFeedbackMsgDAO.countMerchantFeedback();
     }
 
     private List<MerchantFeedbackMsgVO> convertToVO(List<MerchantFeedbackMsg> msgList) {

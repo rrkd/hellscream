@@ -45,4 +45,10 @@ public class MerchantFeedbackMsgDAOImpl extends BaseRepository<MerchantFeedbackM
         }
         return q.getResultList();
     }
+
+    @Override
+    public Long countMerchantFeedback() {
+        Query q = getEntityManager().createQuery("select count(c) from MerchantFeedbackMsg c ");
+        return (Long)q.getSingleResult();
+    }
 }
