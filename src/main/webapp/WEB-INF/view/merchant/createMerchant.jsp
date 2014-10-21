@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta name="description" content="service job search">
-    <title>Register Merchant</title>
+    <title><spring:message code="createmerchant.register" /></title>
     <link href="/assets/css/prettify_bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <div class="page-header">
 
-    <h1>Post Your Business</h1>
+    <h1><spring:message code="createmerchant.register" /></h1>
 
     <div class="headerdivider">
 
@@ -25,7 +25,7 @@
 
             <div>
 
-                Basic Information
+                <spring:message code="createmerchant.basicinfo" />
 
             </div>
 
@@ -41,30 +41,30 @@
             <div class="control-group">
                 <label class="control-label" for="email">Email</label>
                 <div class="controls">
-                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email" value="${user.email}" readonly>
-                    <p class="help-block">This email will be your contact email.</p>
+                    <input name="name" size="30" type="email" id="email" class="span12" placeholder="<spring:message code="createmerchant.email.placeholder" />" value="${user.email}" readonly>
+                    <p class="help-block"><spring:message code="createmerchant.email.help" /></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Trade Name</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.tradename" /></label>
                 <div class="controls">
                     <input name="tradeName" size="30" class="span12" type="text"
                            maxlength="50" minlength="3"
                            pattern="[a-zA-Z0-9\s]+"
-                           id="tradeName" placeholder="TradeName" required>
-                    <p class="help-block">Your trade name</p>
+                           id="tradeName" placeholder="<spring:message code="createmerchant.tradename.placeholder" />" required>
+                    <p class="help-block"><spring:message code="createmerchant.tradename.help" /></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Merchant Name</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.merchantname" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="MerchantName" maxlength="500" required>
-                    <p class="help-block">Your Merchant Name</p>
+                    <input name="name" size="30" type="text" id="merchantName" class="span12" placeholder="<spring:message code="createmerchant.merchantname.placeholder" />" maxlength="500" required>
+                    <p class="help-block"><spring:message code="createmerchant.merchantname.help" /></p>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="tradeName">Category</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.category" /></label>
                 <div class="controls">
                     <select multiple="multiple" name="name" size="30" id="category_select"
                             class="populate placeholder select2-offscreen span12" style="margin-bottom: 10px; margin-left: 0;">
@@ -76,74 +76,74 @@
                             </optgroup>
                         </c:forEach>
                     </select>
-                    <p class="help-block">Your Service Category</p>
+                    <p class="help-block"><spring:message code="createmerchant.category.help" /></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Description</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.description" /></label>
                 <div class="controls">
-                    <textarea id="description" name="message" class="span12" placeholder="Description" rows="8" maxlength="500"></textarea>
-                    <p class="help-block">Describe the services your business offers? include your experience, qualifications etc</p>
+                    <textarea id="description" name="message" class="span12" placeholder="<spring:message code="createmerchant.description.placeholder" />" rows="8" maxlength="500"></textarea>
+                    <p class="help-block"><spring:message code="createmerchant.description.help" /></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Address Line 1</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.address1" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address1" class="span12" placeholder="Address1" maxlength="500" required>
+                    <input name="name" size="30" type="text" id="address1" class="span12" placeholder="<spring:message code="createmerchant.address1.placeholder" />" maxlength="500" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Address Line 2</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.address2" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address2" class="span12" placeholder="Address2" maxlength="500" required>
+                    <input name="name" size="30" type="text" id="address2" class="span12" placeholder="<spring:message code="createmerchant.address2.placeholder" />" maxlength="500" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Address Line 3</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.address3" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="address3" class="span12" placeholder="Address3" maxlength="500" required>
+                    <input name="name" size="30" type="text" id="address3" class="span12" placeholder="<spring:message code="createmerchant.address3.placeholder" />" maxlength="500" required>
                     <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">phone</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.phone" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="phone" class="span12" placeholder="Phone" maxlength="500">
-                    <p class="help-block">Phone</p>
+                    <input name="name" size="30" type="text" id="phone" class="span12" placeholder="<spring:message code="createmerchant.phone.placeholder" />" maxlength="500">
+                    <%--<p class="help-block">Phone</p>--%>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Contact One</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.contact1" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="contact1" class="span12" placeholder="Contact One" maxlength="500">
-                    <p class="help-block">Contact Person</p>
+                    <input name="name" size="30" type="text" id="contact1" class="span12" placeholder="<spring:message code="createmerchant.contact1.placeholder" />" maxlength="500">
+                    <%--<p class="help-block">Contact Person</p>--%>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="tradeName">Contact two</label>
+                <label class="control-label" for="tradeName"><spring:message code="createmerchant.contact2" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="contact2" class="span12" placeholder="Contact Tow" maxlength="500">
+                    <input name="name" size="30" type="text" id="contact2" class="span12" placeholder="<spring:message code="createmerchant.contact2.placeholder" />" maxlength="500">
                     <p class="help-block"></p>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="terms-and-conditions">Legal</label>
+                <label class="control-label" for="terms-and-conditions"><spring:message code="createmerchant.legal" /></label>
                 <div class="controls">
                     <label class="checkbox">
                         <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions" required data-validation-required-message="You must agree to the terms and conditions">
-                        I agree to the <a href="#">terms and conditions</a>
+                        <spring:message code="createmerchant.agreement" /> <a href="<spring:message code="createmerchant.terms.link" />"><spring:message code="createmerchant.terms" /></a>
                     </label>
-                    <p class="help-block"></p>
+                    <p class="help-block"><spring:message code="createmerchant.terms.required" /></p>
                 </div>
             </div>
 
             <br/>
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary"> Post My Service <i class="icon-ok icon-white"></i></button><br />
-                (I've read all documents.)
+                <button type="submit" class="btn btn-primary"> <spring:message code="createmerchant.button" /> <i class="icon-ok icon-white"></i></button><br />
+                <spring:message code="createmerchant.agreement" /><spring:message code="createmerchant.terms" />
             </div>
         </form>
 
@@ -173,14 +173,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="successDlgLabel">Merchant Created</h4>
+                <h4 class="modal-title" id="successDlgLabel"><spring:message code="createmerchant.register.success" /></h4>
             </div>
             <div class="modal-body">
-                Your business has been posted. Now you can modify your profile.
+                <spring:message code="createmerchant.register.success.info" />
             </div>
             <div class="modal-footer">
-                <a href="/home" class="btn btn-default" data-dismiss="modal">Go To Home</a>
-                <a href="/merchant/profile" class="btn btn-primary">Go To Profile</a>
+                <a href="/home" class="btn btn-default" data-dismiss="modal"><spring:message code="createmerchant.goto.home" /></a>
+                <a href="/merchant/p" class="btn btn-primary"><spring:message code="createmerchant.goto.profile" /></a>
             </div>
         </div>
     </div>
