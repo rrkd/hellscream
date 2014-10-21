@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta name="description" content="Merchant Profile">
-    <title>Merchant Profile - ${iguser.tradename}</title>
+    <title><spring:message code="merchantprofile.title" /> - ${iguser.merchantName}</title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>Merchant Profile - ${merchant.tradeName}</h1>
+    <h1><spring:message code="merchantprofile.title" /> - ${merchant.merchantName}</h1>
 
     <div class="headerdivider">
 
@@ -19,15 +19,15 @@
 
     <div class="span10">
 
-        <div class="titleborder">
+        <%--<div class="titleborder">--%>
 
-            <div>
+            <%--<div>--%>
 
-                Basic Information
+                <%--Basic Information--%>
 
-            </div>
+            <%--</div>--%>
 
-        </div>
+        <%--</div>--%>
 
         <!-- Left Tabs
 
@@ -43,13 +43,13 @@
 
                 <li class="active">
 
-                    <a data-toggle="tab" href="#tab1">Merchant Info</a>
+                    <a data-toggle="tab" href="#tab1"><spring:message code="merchantprofile.basicinfo" /></a>
 
                 </li>
 
                 <li>
 
-                    <a data-toggle="tab" href="#tab2">Contact Info</a>
+                    <a data-toggle="tab" href="#tab2"><spring:message code="merchantprofile.contact" /></a>
 
                 </li>
 
@@ -62,43 +62,42 @@
                 <div id="tab1" class="tab-pane active fade in">
 
                     <div class="row-fluid">
-                        <div class="span4"><b>Trade Name</b></div>
+                        <div class="span4"><b><spring:message code="merchantprofile.registername" /></b></div>
                         <div class="span8">${merchant.tradeName}</div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span4"><b>Merchant Name</b></div>
+                        <div class="span4"><b><spring:message code="merchantprofile.merchantname" /></b></div>
                         <div class="span8">${merchant.merchantName}</div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span4"><b>Description</b></div>
+                        <div class="span4"><b><spring:message code="merchantprofile.desc" /></b></div>
                         <div class="span8">${merchant.description}</div>
                     </div>
-                    <a href="/merchant/modify">Edit</a>
+                    <a href="/merchant/modify"><spring:message code="merchantprofile.edit.button" /></a>
                 </div>
 
                 <div id="tab2" class="tab-pane fade ">
-
                     <div class="row-fluid">
-                        <div class="span4"><b>Mobile</b></div>
-                        <div class="span8">${merchant.mobile}</div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span4"><b>Phone</b></div>
+                        <div class="span4"><b><spring:message code="merchantprofile.phone" /></b></div>
                         <div class="span8">${merchant.phone}</div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span4"><b>Address</b></div>
-                        <div class="span8">${merchant.address1}</div>
+                        <div class="span4"><b><spring:message code="merchantprofile.mobile" /></b></div>
+                        <div class="span8">${merchant.contact1}</div>
                     </div>
                     <div class="row-fluid">
                         <div class="span4"></div>
-                        <div class="span8">${merchant.address2}</div>
+                        <div class="span8">${merchant.contact2}</div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4"><b><spring:message code="merchantprofile.address" /></b></div>
+                        <div class="span8">${merchant.address1} ${merchant.address2}</div>
                     </div>
                     <div class="row-fluid">
                         <div class="span4"></div>
                         <div class="span8">${merchant.address3}</div>
                     </div>
-                    <a href="/merchant/modify">Edit</a>
+                    <a href="/merchant/modify"><spring:message code="merchantprofile.edit.button" /></a>
                 </div>
 
             </div>
@@ -117,7 +116,7 @@
 
             <div>
 
-                Usage
+                <spring:message code="merchantprofile.usage" />
 
             </div>
 
@@ -131,18 +130,18 @@
 
             <li><span class="thebar progressgreen" style="width:100%;"></span>
 
-                <h3>Feedback 100%</h3>
+                <h3><spring:message code="merchantprofile.feedback" /></h3>
 
             </li>
 
             <li><span class="thebar progressblue" style="width:80%;"></span>
 
-                <h3>Quote 80%</h3>
+                <h3><spring:message code="merchantprofile.handshake" /></h3>
 
             </li>
             <li><span class="thebar progressorange" style="width:70%;"></span>
 
-                <h3>Applied Quote 70%</h3>
+                <h3><spring:message code="merchantprofile.quote" /></h3>
 
             </li>
         </ul>

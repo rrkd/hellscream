@@ -208,5 +208,20 @@ modifymerchant.contact2=其他联络人号码
 modifymerchant.contact2.placeholder=手机号码
 modifymerchant.button=提交
 
+merchantprofile.title=公司简介
+merchantprofile.basicinfo=公司基本信息
+merchantprofile.profile=公司介绍
+merchantprofile.contact=公司联系信息
+merchantprofile.registername=注册名字
+merchantprofile.merchantname=显示名字
+merchantprofile.desc=公司描述
+merchantprofile.edit.button=修改
+merchantprofile.phone=公司电话
+merchantprofile.mobile=手机
+merchantprofile.address=地址
+merchantprofile.usage=交易历史
+merchantprofile.feedback=顾客反馈
+merchantprofile.handshake=成功握手
+merchantprofile.quote=报价请求
 
 
