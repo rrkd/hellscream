@@ -11,14 +11,13 @@
 
 <div id="content" class="top30">
     <c:forEach items="${categoryGroupList}" var="categoryGroup">
-        <div class="boxportfolio3">
-            <h4><a href="category/${categoryGroup.keyString}">${categoryGroup.name}</a> </h4>
-            <div class="inneritem">
+
+            <h4><a href="categoryGroup/${categoryGroup.url}">${categoryGroup.name}</a> </h4>
+            <div class="inneritem span11">
                 <c:forEach items="${categoryGroup.categoryList}" var="category">
-                    <a href="/search/c?q=${category.url}">${category.name}</a> <br/>
+                    <a href="/search/c?q=${category.url}">${category.name} (100)</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 </c:forEach>
             </div>
-        </div>
     </c:forEach>
 
 </div>
@@ -39,7 +38,7 @@
 
             // set columnWidth to a percentage of container width
 
-            masonry:{ columnWidth:$container.width() / 3 }
+            masonry:{ columnWidth:$container.width() / 2 }
 
         });
 
@@ -51,7 +50,7 @@
 
                 // update columnWidth to a percentage of container width
 
-                masonry:{ columnWidth:$container.width() / 3 }
+                masonry:{ columnWidth:$container.width() / 2 }
 
             });
 

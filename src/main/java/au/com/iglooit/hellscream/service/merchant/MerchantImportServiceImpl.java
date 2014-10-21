@@ -1,8 +1,12 @@
 package au.com.iglooit.hellscream.service.merchant;
 
+import au.com.iglooit.hellscream.model.entity.Category;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.MerchantImportVO;
+import au.com.iglooit.hellscream.properties.WebProperties;
+import au.com.iglooit.hellscream.service.dao.CategoryDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +27,13 @@ public class MerchantImportServiceImpl implements MerchantImportService {
     private static final Logger LOG = LoggerFactory.getLogger(MerchantImportServiceImpl.class);
     @Resource
     private MerchantDAO merchantDAO;
+    @Resource
+    private CategoryDAO categoryDAO;
 
     @Override
     public Merchant saveOrUpdateMerchant(MerchantImportVO vo) {
+        WebProperties webProperties = WebProperties.getInstance();
+        Boolean updateData = Boolean.valueOf(webProperties.get("init.merchant.data.update"));
         String tradeName = vo.getTradeName();
         // check currently merchant
         Merchant targetMerchant = merchantDAO.findByTradeName(tradeName);
@@ -34,10 +42,18 @@ public class MerchantImportServiceImpl implements MerchantImportService {
             fillUpMerchant(targetMerchant, vo);
             merchantDAO.createMerchant(targetMerchant);
             LOG.info("create new merchant: " + tradeName);
+            // modify the category
+            Category category = categoryDAO.findByTradeName(vo.getCategory());
+            if (category != null) {
+                category.setMerchantCount(category.getMerchantCount() + 1);
+                LOG.info("update category merchantCount: " + vo.getCategory());
+            }
         } else {
-            fillUpMerchant(targetMerchant, vo);
-            merchantDAO.modifyMerchant(targetMerchant);
-            LOG.info("update merchant: " + tradeName);
+            if (updateData) {
+                fillUpMerchant(targetMerchant, vo);
+                merchantDAO.modifyMerchant(targetMerchant);
+                LOG.info("update merchant: " + tradeName);
+            }
         }
         return targetMerchant;
     }
@@ -57,6 +73,7 @@ public class MerchantImportServiceImpl implements MerchantImportService {
         String category = vo.getCategory();
 
         targetMerchant.setTradeName(tradeName);
+        targetMerchant.setCanonicalSlugId(CanonicalSlugIdConvert.convertToURL(tradeName));
         targetMerchant.setMerchantName(merchantName);
         targetMerchant.setDescription(description);
         targetMerchant.setAddress1(address1);

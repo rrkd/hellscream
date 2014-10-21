@@ -3,6 +3,7 @@ package au.com.iglooit.hellscream.service.dao;
 import au.com.iglooit.hellscream.model.entity.BaseEntity;
 import com.google.appengine.api.datastore.Key;
 
+import javax.persistence.EntityManager;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,4 +20,5 @@ public interface IEntityService<T extends BaseEntity> {
     void removeEntity(T entity);
     List<T> findAll();
     void update(T entity);
+    EntityManager getEntityManager();
 }

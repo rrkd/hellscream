@@ -55,7 +55,7 @@ public class MerchantConfigureService {
     private void initMerchant() throws IOException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream is = classloader.getResourceAsStream("data/merchant.csv");
-        CSVReader reader = new CSVReader(new InputStreamReader(is));
+        CSVReader reader = new CSVReader(new InputStreamReader(is, "UTF-8"));
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
             String tradeName = nextLine[TRADE_NAME];

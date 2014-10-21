@@ -4,6 +4,7 @@ import au.com.iglooit.hellscream.model.entity.CategoryGroup;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import com.google.appengine.api.datastore.Key;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  * Time: 8:26 PM
  */
 @Repository
+@Transactional
 public class CategoryGroupDAOImpl extends BaseRepository<CategoryGroup>
         implements CategoryGroupDAO {
     public CategoryGroupDAOImpl() {
@@ -32,6 +34,7 @@ public class CategoryGroupDAOImpl extends BaseRepository<CategoryGroup>
                 .setParameter("name", name);
         List<CategoryGroup> result = q.getResultList();
         if (result != null && result.size() > 0) {
+            result.get(0).getCategoryList().size();
             return result.get(0);
         }
         return null;
@@ -51,6 +54,18 @@ public class CategoryGroupDAOImpl extends BaseRepository<CategoryGroup>
         CategoryGroup category = findByKey(key);
         category.getCategoryList().size();
         return category;
+    }
+
+    @Override
+    public CategoryGroup loadByUrl(String url) {
+        Query q = getEntityManager().createQuery("select c from CategoryGroup c where c.url=:url ")
+                .setParameter("url", url);
+        List<CategoryGroup> result = q.getResultList();
+        if (result != null && result.size() > 0) {
+            result.get(0).getCategoryList().size();
+            return result.get(0);
+        }
+        return null;
     }
 
 }

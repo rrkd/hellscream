@@ -1,5 +1,6 @@
 package au.com.iglooit.hellscream.controller;
 
+import au.com.iglooit.hellscream.service.category.CategoryService;
 import au.com.iglooit.hellscream.service.feedback.FeedbackService;
 import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
@@ -35,6 +36,8 @@ public class HomeController {
     @Resource
     private FeedbackService feedbackService;
     @Resource
+    private CategoryService categoryService;
+    @Resource
     private AuthenticationManager authenticationManager;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -42,6 +45,7 @@ public class HomeController {
         ModelAndView modelAndView = new ModelAndView("home");
         modelAndView.addObject("latestQuote", quoteService.latestQuoteList());
         modelAndView.addObject("latestMerchants", merchantService.findLatestMerchant());
+        modelAndView.addObject("homeCategoryList", categoryService.homePageCategory());
         LOG.info("Welcome home! The client locale is {}.", locale);
         return modelAndView;
     }

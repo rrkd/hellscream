@@ -16,4 +16,5 @@ public interface CategoryGroupDAO extends IEntityService<CategoryGroup> {
     CategoryGroup findByName(String name);
     List<CategoryGroup> loadAll();
     CategoryGroup loadByKey(Key key);
+    CategoryGroup loadByUrl(String url);
 }

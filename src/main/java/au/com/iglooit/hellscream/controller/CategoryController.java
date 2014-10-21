@@ -39,4 +39,12 @@ public class CategoryController {
         modelAndView.addObject("categoryGroup", categoryGroup);
         return modelAndView;
     }
+
+    @RequestMapping(value = "/categoryGroup/{url}", method = RequestMethod.GET)
+    public ModelAndView categoryGroupPage(@PathVariable String url) {
+        ModelAndView modelAndView = new ModelAndView("category/category");
+        CategoryGroup categoryGroup = categoryGroupDAO.loadByUrl(url);
+        modelAndView.addObject("categoryGroup", categoryGroup);
+        return modelAndView;
+    }
 }

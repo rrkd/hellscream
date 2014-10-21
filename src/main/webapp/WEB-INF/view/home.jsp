@@ -469,39 +469,27 @@
 </div>
 
 <div class="row-fluid graysection">
-    <div class="span3">
-        <div class="grey-box-icon">
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
+    <div class="span4">
+        <div class="grey-box-icon" align="left">
+            <c:forEach items="${homeCategoryList}" var="category" begin="0" end="3">
+            <h5><a href="/category/${category.name}">${category.tradeName}</a></h5>
+            </c:forEach>
         </div>
 
     </div>
-    <div class="span3">
-        <div class="grey-box-icon">
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
+    <div class="span4">
+        <div class="grey-box-icon" align="left">
+            <c:forEach items="${homeCategoryList}" var="category" begin="4" end="7">
+                <h5><a href="/category/${category.name}">${category.tradeName}</a></h5>
+            </c:forEach>
         </div>
 
     </div>
-    <div class="span3">
-        <div class="grey-box-icon">
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
-        </div>
-
-    </div>
-    <div class="span3">
-        <div class="grey-box-icon">
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
-            <h5><a href="#">Merchant</a></h5>
+    <div class="span4">
+        <div class="grey-box-icon" align="left">
+            <c:forEach items="${homeCategoryList}" var="category" begin="8" end="11">
+                <h5><a href="/category/${category.name}">${category.tradeName}</a></h5>
+            </c:forEach>
         </div>
 
     </div>

@@ -14,9 +14,13 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Category extends BaseEntity {
+    // must be english
     private String name;
+    // can be chinese
+    private String tradeName;
     private String description;
     private String url;
+    private Long merchantCount = 0L;
     @OneToMany(fetch = FetchType.LAZY)
     private CategoryGroup group;
 
@@ -50,6 +54,22 @@ public class Category extends BaseEntity {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getTradeName() {
+        return tradeName;
+    }
+
+    public void setTradeName(String tradeName) {
+        this.tradeName = tradeName;
+    }
+
+    public Long getMerchantCount() {
+        return merchantCount == null ? 0L : merchantCount;
+    }
+
+    public void setMerchantCount(Long merchantCount) {
+        this.merchantCount = merchantCount;
     }
 
     @Override

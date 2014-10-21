@@ -13,6 +13,8 @@ import java.util.List;
 public interface CategoryDAO extends IEntityService<Category>{
     void createCategory(Category category);
     Category findByName(String name);
+    Category findByTradeName(String tradeName);
     List<Category> findByCategory(String category);
     Category findByCategoryUrl(String categoryUrl);
+    List<Category> findTopCategory(Integer size);
 }

@@ -1,11 +1,13 @@
 package au.com.iglooit.hellscream.service.merchant;
 
 import au.com.iglooit.hellscream.exception.MerchantManageException;
+import au.com.iglooit.hellscream.model.entity.Category;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.MerchantVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.security.AppRole;
+import au.com.iglooit.hellscream.service.dao.CategoryDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
 import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
@@ -30,6 +32,8 @@ public class MerchantServiceImpl implements MerchantService {
     private MerchantDAO merchantDAO;
     @Resource
     private UserDAO userDAO;
+    @Resource
+    private CategoryDAO categoryDAO;
 
     @Override
     public MerchantVO findMerchantByKey(Key key) {
@@ -54,6 +58,12 @@ public class MerchantServiceImpl implements MerchantService {
         user.setAuthorities(EnumSet.of(AppRole.MERCHANT, AppRole.USER));
         user.setMerchantKey(merchant.getKey());
         userDAO.update(user);
+        // update category count
+        for(String categoryTradeName : merchant.getCategoryList()) {
+            Category category = categoryDAO.findByTradeName(categoryTradeName);
+            category.setMerchantCount(category.getMerchantCount() + 1);
+            categoryDAO.update(category);
+        }
     }
 
     @Override

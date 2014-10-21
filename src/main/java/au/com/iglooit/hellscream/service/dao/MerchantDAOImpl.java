@@ -63,7 +63,13 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
 
     @Override
     public Merchant findByTradeName(String tradeName) {
-        return findAll().get(0);
+        Query q = getEntityManager().createQuery("select c from Merchant c where c.tradeName=:tradeName ")
+                .setParameter("tradeName", tradeName);
+        List<Merchant> result = q.getResultList();
+        if(result.size() > 0) {
+            return result.get(0);
+        }
+        return null;
     }
 
     @Override

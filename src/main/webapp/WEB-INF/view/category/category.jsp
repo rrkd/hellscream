@@ -1,4 +1,10 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="../globe.jsp" %>
+<html>
+<head>
+    <meta name="description" content="${categoryGroup.name}">
+    <title><spring:message code="aboutus.title"></spring:message></title>
+</head>
+<body>
 <div class="page-header">
 
     <h1>${categoryGroup.name}</h1>
@@ -65,3 +71,5 @@
     });
 
 </script>
+</body>
+</html>
