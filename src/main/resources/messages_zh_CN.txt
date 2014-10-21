@@ -224,4 +224,31 @@ merchantprofile.feedback=顾客反馈
 merchantprofile.handshake=成功握手
 merchantprofile.quote=报价请求
 
+merchantquotelist.title=已报价历史
+merchantquotelist.latestquote=最近报价
+merchantquotelist.allquote=所有报价
+merchantquotelist.quotepostday=发出服务请求日
+merchantquotelist.rawday=开工日期
+merchantquotelist.price=估计
+merchantquotelist.desc=服务描述
+merchantquotelist.quotetitle=服务请求人
+merchantquotelist.action=状况
+
+merchantquotemes.title=服务请求信息
+merchantquotemes.quotetitle=服务请求人
+merchantquotemes.posttime=发出服务请求日
+merchantquotemes.action=状况
+merchantquotemes.closebutton=关闭
+merchantquotemes.message=服务请求信息
+merchantquotemes.userdetail=服务请求人信息
+merchantquotemes.comment=评论
+merchantquotemes.username=服务请求人名字
+merchantquotemes.email=邮箱
+merchantquotemes.mobile=手机
+
+
+
+
+
+
 
