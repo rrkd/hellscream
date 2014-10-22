@@ -258,6 +258,34 @@ merchantdetail.similarmerchant=类似商家
 merchantdetail.prev=上页
 merchantdetail.next=下页
 
+userprofile.userprofile=个人用户
+userprofile.basicinfo=基本信息
+userprofile.aboutme=个人信息
+userprofile.contactinfo=联络方式
+userprofile.nickname=昵称
+userprofile.email=邮箱
+userprofile.forename=名字
+userprofile.surname=姓
+userprofile.edit.button=修改
+userprofile.mobile=手机
+userprofile.address=地址
+userprofile.usage=交易记录
+userprofile.quote=服务请求
+userprofile.quotenumber=个
+userprofile.message=信息
+userprofile.messagenumber=条
+userprofile.feedback=已留评价
+userprofile.feedbacknumber=条
+userprofile.latesquote=最近服务请求
+userprofile.title=服务请求
+userprofile.posttime=发布时间
+userprofile.action=
+userprofile.detail=详细>>
+userprofile.allquote=所有服务请求
+
+
+
+
 
 
 

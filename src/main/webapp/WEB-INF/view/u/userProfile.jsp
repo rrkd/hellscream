@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta name="description" content="User Profile">
-    <title>User Profile - ${iguser.nickname}</title>
+    <title><spring:message code="userprofile.userprofile" /> - ${iguser.nickname}</title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>User Profile - ${iguser.nickname}</h1>
+    <h1><spring:message code="userprofile.userprofile" /> - ${iguser.nickname}</h1>
 
     <div class="headerdivider">
 
@@ -23,7 +23,7 @@
 
             <div>
 
-                Basic Information
+                <spring:message code="userprofile.basicinfo" />
 
             </div>
 
@@ -43,13 +43,13 @@
 
                 <li class="active">
 
-                    <a data-toggle="tab" href="#tab1">About Me</a>
+                    <a data-toggle="tab" href="#tab1"><spring:message code="userprofile.aboutme" /></a>
 
                 </li>
 
                 <li>
 
-                    <a data-toggle="tab" href="#tab2">Contact Info</a>
+                    <a data-toggle="tab" href="#tab2"><spring:message code="userprofile.contactinfo" /></a>
 
                 </li>
 
@@ -62,32 +62,32 @@
                 <div id="tab1" class="tab-pane active fade in">
 
                     <div class="row-fluid">
-                        <div class="span4"><b>Nickname</b></div>
+                        <div class="span4"><b><spring:message code="userprofile.nickname" /></b></div>
                         <div class="span8">${iguser.nickname}</div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span4"><b>Email</b></div>
+                        <div class="span4"><b><spring:message code="userprofile.email" /></b></div>
                         <div class="span8">${iguser.email}</div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span4"><b>Forename</b></div>
+                        <div class="span4"><b><spring:message code="userprofile.forename" /></b></div>
                         <div class="span8">${iguser.forename}</div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span4"><b>Surname</b></div>
+                        <div class="span4"><b><spring:message code="userprofile.surname" /></b></div>
                         <div class="span8">${iguser.surname}</div>
                     </div>
-                    <a href="/u/modify">Edit</a>
+                    <a href="/u/modify"><spring:message code="userprofile.edit.button" /></a>
                 </div>
 
                 <div id="tab2" class="tab-pane fade ">
 
                     <div class="row-fluid">
-                        <div class="span4"><b>Mobile</b></div>
+                        <div class="span4"><b><spring:message code="userprofile.mobile" /></b></div>
                         <div class="span8">${iguser.mobile}</div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span4"><b>Address</b></div>
+                        <div class="span4"><b><spring:message code="userprofile.address" /></b></div>
                         <div class="span8">${iguser.address1}</div>
                     </div>
                     <div class="row-fluid">
@@ -98,7 +98,7 @@
                         <div class="span4"></div>
                         <div class="span8">${iguser.address3}</div>
                     </div>
-                    <a href="/u/modify">Edit</a>
+                    <a href="/u/modify"><spring:message code="userprofile.edit.button" /></a>
                 </div>
 
             </div>
@@ -116,7 +116,7 @@
 
             <div>
 
-                Usage
+                <spring:message code="userprofile.usage" />
 
             </div>
 
@@ -130,7 +130,7 @@
 
                     <div class="service-box">
 
-                        <h3>Quote</h3>
+                        <h3><spring:message code="userprofile.quote" /></h3>
 
                         <div class="circleicon">
 
@@ -140,7 +140,7 @@
 
                         <p>
 
-                            100 Quote
+                            <spring:message code="userprofile.quotenumber" />
 
                         </p>
 
@@ -156,7 +156,7 @@
 
                     <div class="service-box black">
 
-                        <h3>Message</h3>
+                        <h3><spring:message code="userprofile.message" /></h3>
 
                         <div class="circleicon">
 
@@ -166,7 +166,7 @@
 
                         <p>
 
-                            100 Message
+                            <spring:message code="userprofile.messagenumber" />
 
                         </p>
 
@@ -182,7 +182,7 @@
 
                     <div class="service-box black">
 
-                        <h3>Feedback</h3>
+                        <h3><spring:message code="userprofile.feedback" /></h3>
 
                         <div class="circleicon">
 
@@ -192,7 +192,7 @@
 
                         <p>
 
-                            100 Feedback
+                            <spring:message code="userprofile.feedbacknumber" />
 
                         </p>
 
@@ -211,7 +211,7 @@
 
             <div>
 
-                Latest Quotes
+                <spring:message code="userprofile.latesquote" />
 
             </div>
 
@@ -222,9 +222,9 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Post Time</th>
-                    <th>Action</th>
+                    <th><spring:message code="userprofile.title" /></th>
+                    <th><spring:message code="userprofile.posttime" /></th>
+                    <th><spring:message code="userprofile.action" /></th>
                 </tr>
                 </thead>
                 <tbody id="dataTableBody">
@@ -233,14 +233,14 @@
                             <td>${loop.index}</td>
                             <td>${vo.title}</td>
                             <td>${vo.postDate}</td>
-                            <td><a href="">details >></a></td>
+                            <td><a href=""><spring:message code="userprofile.detail" /></a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </div>
         <p align="right">
-            <a href="/u/q"> All Quotes</a>
+            <a href="/u/q"><spring:message code="userprofile.allquote" /></a>
         </p>
     </div>
 
