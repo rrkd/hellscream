@@ -1,7 +1,7 @@
 <%@include file="../globe.jsp" %>
 <head>
     <meta name="description" content="merchant list">
-    <title>Merchant List</title>
+    <title>${vo.merchant.merchantName}</title>
     <link href="/assets/css/jquery.raty.css" rel="stylesheet">
 </head>
 <body>
@@ -21,7 +21,7 @@
 
         <p>
 
-            <b>Register Date</b> : ${igooit:formatDate(vo.merchant.postDate)}
+            <b><spring:message code="merchantdetail.registdate" /></b> : ${igooit:formatDate(vo.merchant.postDate)}
 
         </p>
 
@@ -44,15 +44,15 @@
 
         <br/>
         <div class="row-fluid">
-            <div class="span4" >Email</div>
+            <div class="span4" ><spring:message code="merchantdetail.email" /></div>
             <div class="span8">${vo.merchant.email}</div>
         </div>
         <div class="row-fluid">
-            <div class="span4" >Phone</div>
+            <div class="span4" ><spring:message code="merchantdetail.phone" /></div>
             <div class="span8">${vo.merchant.phone}</div>
         </div>
         <div class="row-fluid">
-            <div class="span4" >Address</div>
+            <div class="span4" ><spring:message code="merchantdetail.address" /></div>
             <div class="span8">${vo.merchant.address1}</div>
         </div>
         <div class="row-fluid">
@@ -64,14 +64,17 @@
             <div class="span8">${vo.merchant.address3}</div>
         </div>
         <div class="row-fluid">
-            <div class="span4" >Contact</div>
+            <div class="span4" ><spring:message code="merchantdetail.mobile" /></div>
             <div class="span8">${vo.merchant.contact1}</div>
+        </div>
+        <div class="row-fluid">
+            <div class="span4" ></div>
+            <div class="span8">${vo.merchant.contact2}</div>
         </div>
         <br/>
         <p class="clearfix">
 
-            <a href="contact.html" class="btn btn-primary"><i class="icon icon-envelope"></i>&nbsp; I want to contact
-                this Merchant</a>
+            <a href="contact.html" class="btn btn-primary"><i class="icon icon-envelope"></i>&nbsp; <spring:message code="merchantdetail.wanttocontact" /></a>
 
         </p>
 
@@ -115,9 +118,9 @@
 
         <ul id="myTab" class="nav nav-tabs">
 
-            <li class="active"><a href="#recentPost" data-toggle="tab">Recent Feedback</a></li>
+            <li class="active"><a href="#recentPost" data-toggle="tab"><spring:message code="merchantdetail.recentfeedback" /></a></li>
 
-            <li class=""><a href="#something" data-toggle="tab">Tags</a></li>
+            <li class=""><a href="#something" data-toggle="tab"><spring:message code="merchantprofile.title" />Tags</a></li>
 
         </ul>
 
@@ -140,7 +143,7 @@
                     </li>
                     </c:forEach>
                     <div class="form-actions">
-                        <button class="btn btn-primary" onclick="location.href = '/fd/m/${vo.merchant.keyString}';"> I want to say <i class="icon-comment icon-white"></i></button><br />
+                        <button class="btn btn-primary" onclick="location.href = '/fd/m/${vo.merchant.keyString}';"><spring:message code="merchantdetail.feedback" />  <i class="icon-comment icon-white"></i></button><br />
 
                     </div>
 
@@ -152,19 +155,19 @@
 
                 <div class="tagcloud">
 
-                    <a href="#">mobile</a>
+                    <a href="#"><spring:message code="merchantprofile.title" />mobile</a>
 
-                    <a href="#">google</a>
+                    <a href="#"><spring:message code="merchantprofile.title" />google</a>
 
-                    <a href="#">apple</a>
+                    <a href="#"><spring:message code="merchantprofile.title" />apple</a>
 
-                    <a href="#">phones</a>
+                    <a href="#"><spring:message code="merchantprofile.title" />phones</a>
 
-                    <a href="#">ipads</a>
+                    <a href="#"><spring:message code="merchantprofile.title" />ipads</a>
 
-                    <a href="#">tablets</a>
+                    <a href="#"><spring:message code="merchantprofile.title" />tablets</a>
 
-                    <a href="#">desktops</a>
+                    <a href="#"><spring:message code="merchantprofile.title" />desktops</a>
 
                 </div>
 
@@ -180,7 +183,7 @@
 
     <div>
 
-        Similar Merchant
+        <spring:message code="merchantdetail.similarmerchant" />
 
     </div>
 
@@ -194,9 +197,9 @@
 
             <div class="carousel_nav">
 
-                <a class="prev" id="car_prev" href="#"><span>prev</span></a>
+                <a class="prev" id="car_prev" href="#"><span><spring:message code="merchantdetail.prev" /></span></a>
 
-                <a class="next" id="car_next" href="#"><span>next</span></a>
+                <a class="next" id="car_next" href="#"><span><spring:message code="merchantdetail.next" />next</span></a>
 
             </div>
 
