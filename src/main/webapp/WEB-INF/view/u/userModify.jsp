@@ -100,7 +100,7 @@
             <div class="control-group">
                 <label class="control-label" for="mobile"><spring:message code="usermodify.mobile" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="mobile" class="span12" placeholder="mobile"
+                    <input name="name" size="30" type="text" id="mobile" class="span12" placeholder="Mobile"
                            value="${iguser.mobile}">
                     <p class="help-block"></p>
                 </div>
