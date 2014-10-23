@@ -10,6 +10,11 @@
         <description>Repopulate the cache every 5 minutes</description>
         <schedule>every 5 minutes</schedule>
     </cron>
+    <!--<cron>-->
+        <!--<url>/ws/suburb/init</url>-->
+        <!--<description>Init suburb data every 6 minutes</description>-->
+        <!--<schedule>every day 00:00</schedule>-->
+    <!--</cron>-->
     <cron>
         <url>/ws/version</url>
         <description>Repopulate the cache every 11 minutes</description>

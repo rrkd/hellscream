@@ -1,7 +1,10 @@
 package au.com.iglooit.hellscream.controller;
 
+import au.com.iglooit.hellscream.model.entity.Category;
 import au.com.iglooit.hellscream.model.entity.CategoryGroup;
+import au.com.iglooit.hellscream.service.dao.CategoryDAO;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
+import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +27,10 @@ public class CategoryController {
     private static final Logger LOG = LoggerFactory.getLogger(CategoryController.class);
     @Resource
     private CategoryGroupDAO categoryGroupDAO;
+    @Resource
+    private MerchantDAO merchantDAO;
+    @Resource
+    private CategoryDAO categoryDAO;
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public ModelAndView categoryPage() {
@@ -32,11 +39,13 @@ public class CategoryController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/category/{keyString}", method = RequestMethod.GET)
-    public ModelAndView categoryPage(@PathVariable String keyString) {
-        ModelAndView modelAndView = new ModelAndView("category/category");
-        CategoryGroup categoryGroup = categoryGroupDAO.loadByKey(KeyFactory.stringToKey(keyString));
-        modelAndView.addObject("categoryGroup", categoryGroup);
+    @RequestMapping(value = "/category/{url}", method = RequestMethod.GET)
+    public ModelAndView categoryPage(@PathVariable String url) {
+        ModelAndView modelAndView = new ModelAndView("category/merchant-list");
+        Category category = categoryDAO.findByCategoryUrl(url);
+        if(category == null) {
+            return new ModelAndView("redirect: /error/404");
+        }
         return modelAndView;
     }
 

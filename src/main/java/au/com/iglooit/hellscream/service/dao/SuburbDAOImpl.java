@@ -62,4 +62,11 @@ public class SuburbDAOImpl extends BaseRepository<Suburb> implements SuburbDAO {
         }
         return result;
     }
+
+    @Override
+    public Long count() {
+        Query q = getEntityManager()
+                .createQuery("select count(1) from Suburb q ");
+        return (Long)q.getSingleResult();
+    }
 }

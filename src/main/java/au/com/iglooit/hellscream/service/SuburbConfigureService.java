@@ -2,9 +2,11 @@ package au.com.iglooit.hellscream.service;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.iglooit.hellscream.exception.AppX;
-import au.com.iglooit.hellscream.model.entity.Suburb;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.SuburbDAO;
+import au.com.iglooit.hellscream.service.queue.GenerateQueue;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -16,6 +18,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 
+import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
+
 /**
  * Created with IntelliJ IDEA.
  * User: nicholas.zhu
@@ -25,10 +29,13 @@ import java.math.BigDecimal;
 @Component
 public class SuburbConfigureService {
     private static final Logger LOG = LoggerFactory.getLogger(SuburbConfigureService.class);
+    private static final Integer FROM = 3219;
+    private static final Integer SIZE = 1000;
     @Resource
     private SuburbDAO suburbDAO;
     @Resource
     private IndexServiceHelp indexServiceHelp;
+
 
     @PostConstruct
     public void init() throws Exception {
@@ -44,37 +51,27 @@ public class SuburbConfigureService {
     }
 
     private void initSuburb() throws IOException {
+        Queue queue = QueueFactory.getQueue(GenerateQueue.QUOTE_QUEUE_NAME);
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream is = classloader.getResourceAsStream("data/suburb.csv");
         CSVReader reader = new CSVReader(new InputStreamReader(is));
         String[] nextLine;
+        int index = 0;
         while ((nextLine = reader.readNext()) != null) {
-            String name = pickUpContent(nextLine[1].trim());
-            String postcode = pickUpContent(nextLine[2].trim());
-            String state = convertToState(nextLine[3].trim());
-            BigDecimal lat = convertToLocation(nextLine[4].trim());
-            BigDecimal lng = convertToLocation(nextLine[5].trim());
-            // update firstly
-            Suburb current = suburbDAO.findByName(name);
-            if (current != null) {
-//                current.setName(name);
-//                current.setPostCode(postcode);
-//                LOG.info("update suburb -- " + current.getName());
-//                suburbDAO.update(current);
-            } else {
-                Suburb suburb = new Suburb();
-                suburb.setLatitude(lat);
-                suburb.setLongitude(lng);
-                suburb.setName(name);
-                suburb.setPostCode(postcode);
-                suburb.setState(state);
-                LOG.info("create a new suburb -- " + suburb.getName());
-                suburbDAO.createSuburb(suburb);
-//                try {
-//                    indexServiceHelp.getSuburbIndex().put(suburb.toFullTextDocument());
-//                } catch (PutException e) {
-//                    throw new AppX("Can't create document for " + suburb.getKey(), e);
-//                }
+            index++;
+            if (index >= FROM && index < FROM + SIZE) {
+                String name = pickUpContent(nextLine[1].trim());
+                String postcode = pickUpContent(nextLine[2].trim());
+                String state = convertToState(nextLine[3].trim());
+                BigDecimal lat = convertToLocation(nextLine[4].trim());
+                BigDecimal lng = convertToLocation(nextLine[5].trim());
+
+                queue.add(withUrl(GenerateQueue.GENERATE_QUEUE_URL)
+                        .param("name", name)
+                        .param("postcode", postcode)
+                        .param("state", state)
+                        .param("lat", nextLine[4].trim())
+                        .param("lng", nextLine[5].trim()));
             }
 
         }

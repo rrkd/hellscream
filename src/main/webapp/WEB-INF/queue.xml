@@ -4,4 +4,8 @@
         <name>quote-q</name>
         <rate>1/s</rate>
     </queue>
+    <queue>
+        <name>generate-q</name>
+        <rate>1/s</rate>
+    </queue>
 </queue-entries>

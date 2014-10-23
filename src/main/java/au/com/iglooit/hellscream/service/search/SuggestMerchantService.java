@@ -14,5 +14,11 @@ import java.util.List;
  */
 public interface SuggestMerchantService {
     List<Merchant> similarMerchant(Key key, Integer count);
+
+    /**
+     * based on the quote, pick up the merchant list.
+     * @param quote
+     * @return
+     */
     List<String> quoteMerchantEmail(Quote quote);
 }

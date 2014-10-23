@@ -19,4 +19,6 @@ public interface SuburbDAO extends IEntityService<Suburb> {
     Suburb findByPostcode(String postcode);
 
     List<SuburbVO> findByKeyword(String keyWord);
+
+    Long count();
 }
