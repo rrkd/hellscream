@@ -184,15 +184,15 @@ modifymerchant.email=Email(邮箱):
 modifymerchant.email.placeholder=Email
 modifymerchant.email.help=客人跟你联络的邮箱(非常重要)
 modifymerchant.tradename=Register Name
-modifymerchant.tradename.placeholder=公司注册名字
+modifymerchant.tradename.placeholder=商家司注册名字
 modifymerchant.tradename.help=注册名字只能是英文
 modifymerchant.merchantname=Display Name
-modifymerchant.merchantname.placeholder=公司在华服网的显示名字
+modifymerchant.merchantname.placeholder=商家在华服网的显示名字
 modifymerchant.merchantname.help=该显示名字可以是中英文
-modifymerchant.category=公司服务类型
-modifymerchant.category.help=公司提供服务类型种类
-modifymerchant.description=公司描述
-modifymerchant.description.placeholder=公司详细描述，这是客人对你们了解的重要窗口
+modifymerchant.category=商家服务类型
+modifymerchant.category.help=商家提供服务类型种类
+modifymerchant.description=商家描述
+modifymerchant.description.placeholder=商家详细描述，这是客人对你们了解的重要窗口
 modifymerchant.description.help=请详细描述贵公司的公司概况，经营范围，公司强项等等。如果是个人经营，可以描述自己工作经历，技能，证书等等.
 modifymerchant.address1=Address 1(街号)
 modifymerchant.address1.placeholder=1000
@@ -200,13 +200,98 @@ modifymerchant.address2=Address 2(街名)
 modifymerchant.address2.placeholder=George Street
 modifymerchant.address3=Address 3(区）
 modifymerchant.address3.placeholder= Sydney, NSW
-modifymerchant.phone=公司电话
+modifymerchant.phone=商家电话
 modifymerchant.phone.placeholder=020-9000 0000
 modifymerchant.contact1=联络人号码
 modifymerchant.contact1.placeholder=手机号码
 modifymerchant.contact2=其他联络人号码
 modifymerchant.contact2.placeholder=手机号码
 modifymerchant.button=提交
+
+merchantprofile.title=商家简介
+merchantprofile.basicinfo=商家基本信息
+merchantprofile.profile=商家介绍
+merchantprofile.contact=商家联系信息
+merchantprofile.registername=注册名字
+merchantprofile.merchantname=显示名字
+merchantprofile.desc=商家描述
+merchantprofile.edit.button=修改
+merchantprofile.phone=商家电话
+merchantprofile.mobile=手机
+merchantprofile.address=地址
+merchantprofile.usage=交易历史
+merchantprofile.feedback=顾客评价
+merchantprofile.handshake=成功握手
+merchantprofile.quote=报价请求
+
+merchantquotelist.title=已报价历史
+merchantquotelist.latestquote=最近报价
+merchantquotelist.allquote=所有报价
+merchantquotelist.quotepostday=发出服务请求日
+merchantquotelist.rawday=开工日期
+merchantquotelist.price=估计
+merchantquotelist.desc=服务描述
+merchantquotelist.quotetitle=服务请求人
+merchantquotelist.action=状况
+
+merchantquotemes.title=服务请求信息
+merchantquotemes.quotetitle=服务请求人
+merchantquotemes.posttime=发出服务请求日
+merchantquotemes.action=我要
+merchantquotemes.closebutton=关闭
+merchantquotemes.message=服务请求信息
+merchantquotemes.userdetail=服务请求人信息
+merchantquotemes.comment=评论
+merchantquotemes.username=服务请求人名字
+merchantquotemes.email=邮箱
+merchantquotemes.mobile=手机
+
+merchantdetail.registdate=注册时间
+merchantdetail.email=邮箱
+merchantdetail.phone=电话
+merchantdetail.address=地址
+merchantdetail.mobile=手机
+merchantdetail.wanttocontact=我想联络
+merchantdetail.recentfeedback=最近评价
+merchantdetail.feedback=留评价
+merchantdetail.similarmerchant=类似商家
+merchantdetail.prev=上页
+merchantdetail.next=下页
+
+userprofile.userprofile=个人用户
+userprofile.basicinfo=基本信息
+userprofile.aboutme=个人信息
+userprofile.contactinfo=联络方式
+userprofile.nickname=昵称
+userprofile.email=邮箱
+userprofile.forename=名字
+userprofile.surname=姓
+userprofile.edit.button=修改
+userprofile.mobile=手机
+userprofile.address=地址
+userprofile.usage=交易记录
+userprofile.quote=服务请求
+userprofile.quotenumber=个
+userprofile.message=信息
+userprofile.messagenumber=条
+userprofile.feedback=已留评价
+userprofile.feedbacknumber=条
+userprofile.latesquote=最近服务请求
+userprofile.title=服务请求
+userprofile.posttime=发布时间
+userprofile.action=
+userprofile.detail=详细>>
+userprofile.allquote=所有服务请求
+
+
+
+
+
+
+
+
+
+
 
 
 
