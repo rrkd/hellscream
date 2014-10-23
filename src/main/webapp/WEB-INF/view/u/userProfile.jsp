@@ -233,7 +233,7 @@
                             <td>${loop.index}</td>
                             <td>${vo.title}</td>
                             <td>${vo.postDate}</td>
-                            <td><a href=""><spring:message code="userprofile.detail" /></a></td>
+                            <td><a href="/quote/d/${vo.key}"><spring:message code="userprofile.detail" /></a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
