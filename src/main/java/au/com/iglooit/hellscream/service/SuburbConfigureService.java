@@ -29,7 +29,7 @@ import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 @Component
 public class SuburbConfigureService {
     private static final Logger LOG = LoggerFactory.getLogger(SuburbConfigureService.class);
-    private static final Integer FROM = 3219;
+    private static final Integer FROM = 4219;
     private static final Integer SIZE = 1000;
     @Resource
     private SuburbDAO suburbDAO;
