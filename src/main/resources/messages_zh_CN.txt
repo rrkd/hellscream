@@ -280,10 +280,22 @@ userprofile.latesquote=最近服务请求
 userprofile.title=服务请求
 userprofile.posttime=发布时间
 userprofile.action=
-userprofile.detail=详细>>
+userprofile.detail=详细>>姓
 userprofile.allquote=所有服务请求
 
-
+usermodify.title=修改个人信息
+usermodify.warningmessage=请更正，重新提交
+usermodify.email=联络邮箱
+usermodify.nickname=昵称
+usermodify.forename=名字
+usermodify.surname=姓
+usermodify.address=地址
+usermodify.mobile=手机
+usermodify.update=提交
+usermodify.usermodify=个人信息修改
+usermodify.message=已经成功
+usermodify.backhome=返回主页
+usermodify.backprofile=浏览个人信息
 
 
 

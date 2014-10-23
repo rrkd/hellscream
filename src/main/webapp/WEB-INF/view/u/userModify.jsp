@@ -1,13 +1,13 @@
 <%@include file="../globe.jsp"%><html>
 <head>
     <meta name="description" content="User Modify">
-    <title>User Modify</title>
+    <title><spring:message code="usermodify.title" /></title>
     <link href="/assets/css/prettify_bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <div class="page-header">
 
-    <h1>User Modify</h1>
+    <h1><spring:message code="usermodify.title" /></h1>
 
     <div class="headerdivider">
 
@@ -24,7 +24,7 @@
 
             <div>
 
-                User Modify
+                <spring:message code="usermodify.title" />
 
             </div>
 
@@ -33,48 +33,48 @@
 
             <button type="button" class="close" data-dismiss="alert">x</button>
 
-            <strong>Oh snap!</strong> Change a few things up and try submitting again.
+            <strong>Oh snap!</strong> <spring:message code="usermodify.warningmessage" />
 
         </div>
         <form class="form-horizontal" id="merchantRegisterForm" novalidate>
             <div class="control-group">
-                <label class="control-label" for="email">Email</label>
+                <label class="control-label" for="email"><spring:message code="usermodify.email" /></label>
                 <div class="controls">
                     <input name="name" size="30" type="email" id="email" class="span12" placeholder="Email"
                            value="${iguser.email}" readonly>
-                    <p class="help-block">Contact Email</p>
+                    <p class="help-block"></p>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="nickname">Nickname</label>
+                <label class="control-label" for="nickname"><spring:message code="usermodify.nickname" /></label>
                 <div class="controls">
                     <input name="nickname" size="30" class="span12" type="text"
                            maxlength="50" minlength="3"
                            pattern="[a-zA-Z0-9\s]+"
                            id="nickname" placeholder="Nickname" value="${iguser.nickname}" required>
-                    <p class="help-block">Nickname</p>
+                    <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="forename">Forename</label>
+                <label class="control-label" for="forename"><spring:message code="usermodify.forename" /></label>
                 <div class="controls">
                     <input name="name" size="30" type="text" id="forename" class="span12" placeholder="Forename"
                            value="${iguser.forename}" required>
-                    <p class="help-block">Your Forename</p>
+                    <p class="help-block"></p>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="surname">Surname</label>
+                <label class="control-label" for="surname"><spring:message code="usermodify.surname" /></label>
                 <div class="controls">
                     <input name="name" size="30" type="text" id="surname" class="span12" placeholder="Surname"
                            value="${iguser.surname}" required>
-                    <p class="help-block">Your Surname</p>
+                    <p class="help-block"></p>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="address1">Address Line 1</label>
+                <label class="control-label" for="address1"><spring:message code="usermodify.address" /></label>
                 <div class="controls">
                     <input name="name" size="30" type="text" id="address1" class="span12" placeholder="Address1"
                            value="${iguser.address1}" required>
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="address2">Address Line 2</label>
+                <label class="control-label" for="address2"></label>
                 <div class="controls">
                     <input name="name" size="30" type="text" id="address2" class="span12" placeholder="Address2"
                            value="${iguser.address2}" required>
@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="address3">Address Line 3</label>
+                <label class="control-label" for="address3"></label>
                 <div class="controls">
                     <input name="name" size="30" type="text" id="address3" class="span12" placeholder="Address3"
                            value="${iguser.address3}" required>
@@ -98,17 +98,17 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="mobile">Mobile</label>
+                <label class="control-label" for="mobile"><spring:message code="usermodify.mobile" /></label>
                 <div class="controls">
-                    <input name="name" size="30" type="text" id="mobile" class="span12" placeholder="Phone"
+                    <input name="name" size="30" type="text" id="mobile" class="span12" placeholder="mobile"
                            value="${iguser.mobile}">
-                    <p class="help-block">Mobile</p>
+                    <p class="help-block"></p>
                 </div>
             </div>
 
             <br/>
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary"> Update <i class="icon-ok icon-white"></i></button>
+                <button type="submit" class="btn btn-primary"><spring:message code="usermodify.update" />  <i class="icon-ok icon-white"></i></button>
             </div>
         </form>
 
@@ -120,14 +120,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="successDlgLabel">User Modify</h4>
+                <h4 class="modal-title" id="successDlgLabel"><spring:message code="usermodify.usermodify" /></h4>
             </div>
             <div class="modal-body">
-                Your profile has been update.
+                <spring:message code="usermodify.message" />
             </div>
             <div class="modal-footer">
-                <a href="/home" class="btn btn-default" data-dismiss="modal">Go To Home</a>
-                <a href="/u/profile" class="btn btn-primary">Go To Profile</a>
+                <a href="/home" class="btn btn-default" data-dismiss="modal"><spring:message code="usermodify.backhome" /></a>
+                <a href="/u/profile" class="btn btn-primary"><spring:message code="usermodify.backprofile" /></a>
             </div>
         </div>
     </div>
