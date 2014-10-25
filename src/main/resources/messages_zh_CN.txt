@@ -280,7 +280,7 @@ userprofile.latesquote=最近服务请求
 userprofile.title=服务请求
 userprofile.posttime=发布时间
 userprofile.action=
-userprofile.detail=详细>>姓
+userprofile.detail=详细>>
 userprofile.allquote=所有服务请求
 
 usermodify.title=修改个人信息
@@ -297,10 +297,26 @@ usermodify.message=已经成功
 usermodify.backhome=返回主页
 usermodify.backprofile=浏览个人信息
 
-
-
-
-
+quotedetail.title=服务请求
+quotedetail.quotedate=服务发布日期
+quotedetail.comments=评论
+quotedetail.category=服务类型
+quotedetail.location=服务地址
+quotedetail.description=服务请求具体描述
+quotedetail.listofapplication=已回复服务报价列表
+quotedetail.on=发布于
+quotedetail.contactmerchant=联络商家
+quotedetail.contacted=已握手
+quotedetail.merchant=商家
+quotedetail.days=需要多少天
+quotedetail.price=报价
+quotedetail.applicationdetail=报价明细
+quotedetail.quotedetail=服务请求内容
+quotedetail.apply=报价
+quotedetail.message=信息
+quotedetail.location=服务地址
+quotedetail.servicetype=服务请求紧急状况
+quotedetail.close=关闭
 
 
 
