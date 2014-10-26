@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta name="description" content="Quote List">
-    <title>Quote List - Merchant</title>
+    <title><spring:message code="myquote.title" /></title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>My Quote</h1>
+    <h1><spring:message code="myquote.title" /></h1>
 
     <div class="headerdivider">
 
@@ -27,16 +27,16 @@
 
                 <ul>
 
-                    <li><a href="" data-filter="*" class="filter-btn selected"><i class="icon icon-reorder"></i>&nbsp; All Items</a>
+                    <li><a href="" data-filter="*" class="filter-btn selected"><i class="icon icon-reorder"></i>&nbsp;<spring:message code="myquote.allitems" /></a>
                     </li>
 
-                    <li><a href="" data-filter=".Quoting" class="filter-btn"><i class="icon icon-th-large"></i>&nbsp; Quoting</a></li>
+                    <li><a href="" data-filter=".Quoting" class="filter-btn"><i class="icon icon-th-large"></i>&nbsp;<spring:message code="myquote.quoting" /></a></li>
 
-                    <li><a href="" data-filter=".Contacting" class="filter-btn"><i class="icon icon-comment"></i>&nbsp; Contacting</a></li>
+                    <li><a href="" data-filter=".Contacting" class="filter-btn"><i class="icon icon-comment"></i>&nbsp;<spring:message code="myquote.contacting" /></a></li>
 
-                    <li><a href="" data-filter=".Feedback" class="filter-btn"><i class="icon icon-thumbs-up"></i>&nbsp; Feedback</a></li>
+                    <li><a href="" data-filter=".Feedback" class="filter-btn"><i class="icon icon-thumbs-up"></i>&nbsp;<spring:message code="myquote.feedback" /></a></li>
 
-                    <li><a href="/u/qa"><i class="icon icon-archive"></i>&nbsp; History</a></li>
+                    <li><a href="/u/qa"><i class="icon icon-archive"></i>&nbsp;<spring:message code="myquote.history" /></a></li>
 
                 </ul>
 

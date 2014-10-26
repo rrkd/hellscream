@@ -26,13 +26,13 @@
 
                     <div class="sectiontitlepost">
 
-                        <h1><spring:message code="quotedetail.title" />${quote.title}</h1>
+                        <h1><spring:message code="quotedetail.title" /> - ${quote.title}</h1>
 
                     </div>
 
                     <div class="entry-meta">
 
-                        <a href="#"><spring:message code="quotedetail.quotedate" />　<span class="entry-date">${quote.postDate}</span></a>
+                        <a href="#"><spring:message code="quotedetail.quotedate" /></a><span class="entry-date">${quote.postDate}</span>
 
                         <span class="pull-right"><a href="#"><span>3</span><spring:message code="quotedetail.comments" /></a></span>
 
@@ -253,7 +253,7 @@
                                 <div class="span8" id="applyServiceType"></div>
                             </div>
                             <div class="row-fluid">
-                                <div class="span4" style="font-family:open_sansbold"><spring:message code="userprofile.basicinfo" />Comment</div>
+                                <div class="span4" style="font-family:open_sansbold"><spring:message code="quotedetail.comments" /></div>
                                 <div class="span8" id="applyComment"></div>
                             </div>
 

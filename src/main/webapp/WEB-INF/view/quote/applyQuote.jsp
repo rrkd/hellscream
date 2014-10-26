@@ -118,7 +118,7 @@
                             <input name="name" size="30" data-symbol="$" type="number" min="0.01" step="0.01" id="rawPrice"
                                    class="span12" placeholder="<spring:message code="applyquote.rawprice" />">
 
-                            <p class="help-block"><spring:message code="applyquote.price" /></p>
+                            <p class="help-block"><spring:message code="applyquote.pricetips" /></p>
                         </div>
                     </div>
                     <div class="control-group">

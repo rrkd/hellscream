@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta name="description" content="Quote history">
-    <title>Quote History - User</title>
+    <title><spring:message code="quotehistory.heading" /></title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>Quote History</h1>
+    <h1><spring:message code="quotehistory.heading" /></h1>
 
     <div class="headerdivider">
 
@@ -22,9 +22,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Title</th>
-                        <th>Post Time</th>
-                        <th>Action</th>
+                        <th><spring:message code="quotehistory.title" /></th>
+                        <th><spring:message code="quotehistory.posttime" /></th>
+                        <th><spring:message code="quotehistory.detail" /></th>
                     </tr>
                 </thead>
                 <tbody id="dataTableBody">
