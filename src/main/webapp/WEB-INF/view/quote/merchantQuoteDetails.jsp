@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="description" content="Quote List">
-    <title>Quote List - Merchant</title>
+    <title><spring:message code="merchantquotedetail.title" /></title>
 </head>
 <body>
 <div class="row-fluid">
@@ -25,7 +25,7 @@
 
                         <a href="#"><span class="entry-date">${quote.postDate}</span></a>
 
-                        <span class="pull-right"><a href="#"><span>3</span> Comments</a></span>
+                        <span class="pull-right"><a href="#"><span>3</span><spring:message code="merchantquotedetail.comments" /></a></span>
 
                     </div>
 
@@ -38,7 +38,7 @@
                     <div class="entry-content" style="min-height: 200px;">
 
                         <div class="row-fluid">
-                            <div class="span4">Category</div>
+                            <div class="span4"><spring:message code="merchantquotedetail.category" /></div>
                             <div class="span8">
                                 <c:forEach items="${quote.categoryList}" var="category" begin="0">
                                     <a class="btn btn-small" href="#">${category}</a>
@@ -46,11 +46,11 @@
                             </div>
                         </div>
                         <div class="row-fluid">
-                            <div class="span4">Location</div>
+                            <div class="span4"><spring:message code="merchantquotedetail.location" /></div>
                             <div class="span8"></div>
                         </div>
                         <div class="row-fluid">
-                            <div class="span4">Description</div>
+                            <div class="span4"><spring:message code="merchantquotedetail.description" /></div>
                             <div class="span8">${quote.description}</div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                     <p class="clearfix">
 
                         <a href="/quote/t/${quote.keyString}" class="btn btn-primary"><i class="icon icon-envelope"></i>&nbsp;
-                            I want to reply this quote</a>
+                            <spring:message code="merchantquotedetail.wanttoapply" /></a>
 
                     </p>
                 </div>
