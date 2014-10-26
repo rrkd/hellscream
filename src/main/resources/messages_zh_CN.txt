@@ -300,7 +300,7 @@ usermodify.backprofile=浏览个人信息
 quotedetail.title=服务请求
 quotedetail.quotedate=服务发布日期
 quotedetail.comments=评论
-quotedetail.category=服务类型
+quotedetail.category=服务专业
 quotedetail.location=服务地址
 quotedetail.description=服务请求具体描述
 quotedetail.listofapplication=已回复服务报价列表
@@ -317,6 +317,41 @@ quotedetail.message=信息
 quotedetail.location=服务地址
 quotedetail.servicetype=服务请求紧急状况
 quotedetail.close=关闭
+
+applyquote.title=报价和请求握手
+applyquote.applied=服务请求报价已经提交
+applyquote.appliedlist=已经提交报价列表
+applyquote.applyquote=报价和请求握手
+applyquote.quotedetail=报价明细
+applyquote.category=服务专业
+applyquote.location=服务地址
+applyquote.description=服务描述
+applyquote.basicinfo=基本报价信息
+applyquote.warningmessage=请更正，重新提交
+applyquote.tradename=注册名字
+applyquote.days=预计工期
+applyquote.rawdays=e.g ２天
+applyquote.daysneed=完工需要天数,如果少于一天，请填小时
+applyquote.price=报价
+applyquote.rawprice=估价
+applyquote.price=服务请求报价
+applyquote.starttime=何时开工
+applyquote.immediately=立刻
+applyquote.scheduled=协商安排
+applyquote.whencanstart=什么时候你可以安排开工
+applyquote.description=报价明细
+applyquote.description.placeholder=e.g 木地板材料：$18/m2 * 100平方米=$180 <br/> 安装费用：$20/m2 * 100 = $200 <br/>共：$380
+applyquote.description.tip=请具体描述你报价明细，这是让客户了解你，认同你报价，而决定提供联络电话,服务地址,以及和你握手.
+applyquote.wanttoapply=提交报价
+applyquote.wanttoapply.placeholder=你已同意terms and agreement,提交报价
+applyquote.quoteapplied=报价已提交
+applyquote.quoteapplied.message=报价已经提交，请耐心等待客户答复，希望你握手成功
+applyquote.gotohome=返回主页
+applyquote.gotoappliedpage=跳转到已申请服务
+
+
+
+
 
 
 

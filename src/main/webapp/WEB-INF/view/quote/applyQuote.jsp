@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="description" content="Apply Quote">
-    <title>Apply Quote</title>
+    <title><spring:message code="applyquote.title" /></title>
     <link href="/assets/css/prettify_bootstrap.css" rel="stylesheet">
 </head>
 <body>
@@ -10,7 +10,7 @@
     <c:when test="${bApplied}">
         <div class="page-header">
 
-            <h1>You have applied this quote.</h1>
+            <h1><spring:message code="applyquote.applied" /></h1>
 
             <div class="headerdivider">
 
@@ -20,7 +20,7 @@
         <div class="row-fluid top30">
             <div class="span10">
                 <div class="form-actions">
-                    <button class="btn btn-primary" onclick="location.href = '/merchant/msg';"> Browser My Applied List <i class="icon-reorder icon-white"></i>
+                    <button class="btn btn-primary" onclick="location.href = '/merchant/msg';"><spring:message code="applyquote.appliedlist" /><i class="icon-reorder icon-white"></i>
                     </button>
                     <br/>
                 </div>
@@ -30,7 +30,7 @@
     <c:otherwise>
         <div class="page-header">
 
-            <h1>Apply Quote</h1>
+            <h1><spring:message code="applyquote.applyquote" /></h1>
 
             <div class="headerdivider">
 
@@ -44,7 +44,7 @@
 
                     <div>
 
-                        Quote Details
+                        <spring:message code="applyquote.quotedetail" />
 
                     </div>
 
@@ -55,7 +55,7 @@
 
                     <dd style="display: none;">
                         <div class="row-fluid">
-                            <div class="span4">Category</div>
+                            <div class="span4"><spring:message code="applyquote.category" /></div>
                             <div class="span8">
                                 <c:forEach items="${quote.categoryList}" var="category" begin="0">
                                     <a class="btn btn-small" href="#">${category}</a>
@@ -63,11 +63,11 @@
                             </div>
                         </div>
                         <div class="row-fluid">
-                            <div class="span4">Location</div>
+                            <div class="span4"><spring:message code="applyquote.location" /></div>
                             <div class="span8"></div>
                         </div>
                         <div class="row-fluid">
-                            <div class="span4">Description</div>
+                            <div class="span4"><spring:message code="applyquote.description" /></div>
                             <div class="span8">${quote.description}</div>
                         </div>
                     </dd>
@@ -79,9 +79,7 @@
                 <div class="titleborder">
 
                     <div>
-
-                        Basic Information
-
+                        <spring:message code="applyquote.basicinfo" />
                     </div>
 
                 </div>
@@ -89,13 +87,13 @@
 
                     <button type="button" class="close" data-dismiss="alert">x</button>
 
-                    <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                    <strong>Oh snap!</strong> <spring:message code="applyquote.warningmessage" />
 
                 </div>
 
                 <form class="form-horizontal" id="merchantRegisterForm" novalidate>
                     <div class="control-group">
-                        <label class="control-label" for="tradeName">Trade Name</label>
+                        <label class="control-label" for="tradeName"><spring:message code="applyquote.tradename" /></label>
 
                         <div class="controls">
                             <input name="name" size="30" type="text" id="tradeName" class="span12" placeholder="TradeName"
@@ -105,46 +103,46 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="tradeName">Days</label>
+                        <label class="control-label" for="tradeName"><spring:message code="applyquote.days" /></label>
 
                         <div class="controls">
-                            <input name="name" size="30" type="number" id="rawDay" class="span12" placeholder="rawDays">
+                            <input name="name" size="30" type="number" id="rawDay" class="span12" placeholder="<spring:message code="applyquote.rawdays" />">
 
-                            <p class="help-block">How many days you need</p>
+                            <p class="help-block"><spring:message code="applyquote.daysneed" /></p>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="tradeName">Price</label>
+                        <label class="control-label" for="tradeName"><spring:message code="applyquote.price" /></label>
 
                         <div class="controls">
                             <input name="name" size="30" data-symbol="$" type="number" min="0.01" step="0.01" id="rawPrice"
-                                   class="span12" placeholder="rawPrice">
+                                   class="span12" placeholder="<spring:message code="applyquote.rawprice" />">
 
-                            <p class="help-block">Price</p>
+                            <p class="help-block"><spring:message code="applyquote.price" /></p>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="tradeName">Start Time</label>
+                        <label class="control-label" for="tradeName"><spring:message code="applyquote.starttime" /></label>
 
                         <div class="controls">
                             <select name="name" size="30" id="type_select"
                                     class="populate placeholder select2-offscreen span12"
                                     style="margin-bottom: 10px; margin-left: 0;">
-                                <option value="Immediately">Immediately</option>
-                                <option value="Scheduled">Scheduled</option>
+                                <option value="Immediately"><spring:message code="applyquote.immediately" /></option>
+                                <option value="Scheduled"><spring:message code="applyquote.scheduled" /></option>
                             </select>
 
-                            <p class="help-block">When can you start</p>
+                            <p class="help-block"><spring:message code="applyquote.whencanstart" /></p>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="tradeName">Description</label>
+                        <label class="control-label" for="tradeName"><spring:message code="applyquote.description" /></label>
 
                         <div class="controls">
-                            <textarea id="description" name="message" class="span12" placeholder="Description"
+                            <textarea id="description" name="message" class="span12" placeholder="<spring:message code="applyquote.description.placeholder" />"
                                       rows="8"></textarea>
 
-                            <p class="help-block">Description</p>
+                            <p class="help-block"><spring:message code="applyquote.description.tip" /></p>
                         </div>
                     </div>
                     <input name="name" size="30" type="hidden" id="keyString" class="span12"
@@ -154,10 +152,10 @@
                     <br/>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary"> I want to apply <i class="icon-ok icon-white"></i>
+                        <button type="submit" class="btn btn-primary"><spring:message code="applyquote.wanttoapply" /> <i class="icon-ok icon-white"></i>
                         </button>
                         <br/>
-                        (I want to apply this.)
+                        <spring:message code="applyquote.wanttoapply.placeholder" />
                     </div>
 
                 </form>
@@ -171,14 +169,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="successDlgLabel">Quote Applied</h4>
+                <h4 class="modal-title" id="successDlgLabel"> <spring:message code="applyquote.quoteapplied" /></h4>
             </div>
             <div class="modal-body">
-                You have applied this quote
+                <spring:message code="applyquote.quoteapplied.message" />
             </div>
             <div class="modal-footer">
-                <a href="/home" class="btn btn-default" data-dismiss="modal">Go To Home</a>
-                <a href="/m/q" class="btn btn-primary">My Applied Quote</a>
+                <a href="/home" class="btn btn-default" data-dismiss="modal"> <spring:message code="applyquote.gotohome" /></a>
+                <a href="/m/q" class="btn btn-primary"> <spring:message code="applyquote.gotoappliedpage" /></a>
             </div>
         </div>
     </div>
