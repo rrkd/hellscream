@@ -59,7 +59,7 @@
                     <a href="/quote/d/${quote.keyString}" style="font-size: 15px;">${quote.title}</a>
                 </p>
                 <p>
-                    <span class="">${quote.quoteTransactionCount} replies</span> <br/>
+                    <span class="">${quote.quoteTransactionCount} <spring:message code="myquote.replies" /></span> <br/>
                     <c:choose>
                         <c:when test="${quote.status == 'Quoting'}">
                             <a class="btn btn-small btn-info">${quote.status}</a>
