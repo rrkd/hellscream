@@ -385,12 +385,50 @@ myquote.quoting=正在等待报价
 myquote.contacting=已握手报价请求
 myquote.feedback=交易评价
 myquote.history=请求报价历史
-myquote.replies=请求报价回复
+myquote.replies=已回复报价请求
 
 quotehistory.heading=已发布报价请求记录
 quotehistory.title=报价请求主题
 quotehistory.posttime=发布报价请求时间
 quotehistory.detail=报价请求内容
+
+userregister.heading=个人用户注册
+userregister.warningmessage=请更正，重新提交
+userregister.email=邮箱
+userregister.email.placeholder=输入你的邮箱地址
+userregister.email.help=商家跟你联络的邮箱(非常重要)
+userregister.password=密码
+userregister.password.placeholder=输入你的密码
+userregister.password.help=至少6个字母或者数字
+userregister.reentrypassword=重输密码
+userregister.reentrypassword.placeholder=再次输入你的密码
+userregister.reentrypassword.message=输入密码不一致
+userregister.nickname=昵称
+userregister.nickname.placeholder=输入你的昵称
+userregister.forename=名字
+userregister.forename.placeholder=输入你的名字
+userregister.surname=姓氏
+userregister.surname.placeholder=输入你的姓氏
+userregister.address1=地址1
+userregister.address1.placeholder=输入地址第一行
+userregister.address2=地址2(可选)
+userregister.address2.placeholder=输入地址第二行
+userregister.address3=地址3(可选）
+userregister.address3.placeholder=输入地址第三行
+userregister.mobile=手机
+userregister.mobile.placeholder=输入你的手机号码
+userregister.legal=法律要求
+userregister.legal.requirement=你必须同意我们的规则和条款
+userregister.iagreeto=我同意
+userregister.signup=注册
+userregister.ihaveread=我已经阅读规则和条款
+
+
+
+merchantregister.heading=商家注册
+
+
+
 
 
 
