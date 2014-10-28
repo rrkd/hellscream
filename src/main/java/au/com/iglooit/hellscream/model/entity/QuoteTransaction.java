@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -28,7 +29,7 @@ public class QuoteTransaction extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private QuoteTransactionStatus quoteTransactionStatus = QuoteTransactionStatus.Appending;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Quote quote;
 
     public QuoteTransaction() {

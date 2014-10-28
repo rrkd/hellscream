@@ -1,4 +1,4 @@
-package au.com.iglooit.hellscream.service;
+package au.com.iglooit.hellscream.service.configuration;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.iglooit.hellscream.model.vo.MerchantImportVO;

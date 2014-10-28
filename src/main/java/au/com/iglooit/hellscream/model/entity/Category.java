@@ -4,6 +4,7 @@ import com.google.appengine.api.search.Document;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,7 +22,7 @@ public class Category extends BaseEntity {
     private String description;
     private String url;
     private Long merchantCount = 0L;
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private CategoryGroup group;
 
     public String getName() {

@@ -1,15 +1,8 @@
-package au.com.iglooit.hellscream.service;
+package au.com.iglooit.hellscream.service.configuration;
 
 import au.com.bytecode.opencsv.CSVReader;
-import au.com.iglooit.hellscream.model.entity.Category;
-import au.com.iglooit.hellscream.model.entity.CategoryGroup;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.category.CategoryService;
-import au.com.iglooit.hellscream.service.dao.CategoryDAO;
-import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
-import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
-import au.com.iglooit.hellscream.utils.CategoryIdentifierConvert;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -19,7 +12,6 @@ import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.

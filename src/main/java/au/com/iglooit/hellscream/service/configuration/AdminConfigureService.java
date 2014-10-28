@@ -1,4 +1,4 @@
-package au.com.iglooit.hellscream.service;
+package au.com.iglooit.hellscream.service.configuration;
 
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.properties.WebProperties;

@@ -18,6 +18,7 @@
 
     <http use-expressions="true" entry-point-ref="gaeEntryPoint">
         <intercept-url pattern="/" access="permitAll" />
+        <intercept-url pattern="/pq/generate/" access="permitAll" />
         <intercept-url pattern="/home" access="permitAll" />
         <intercept-url pattern="/merchant" access="permitAll" />
         <intercept-url pattern="/quote" access="permitAll" />

@@ -1,8 +1,9 @@
-package au.com.iglooit.hellscream.service;
+package au.com.iglooit.hellscream.service.configuration;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.properties.WebProperties;
+import au.com.iglooit.hellscream.service.IndexServiceHelp;
 import au.com.iglooit.hellscream.service.dao.SuburbDAO;
 import au.com.iglooit.hellscream.service.queue.GenerateQueue;
 import com.google.appengine.api.taskqueue.Queue;
