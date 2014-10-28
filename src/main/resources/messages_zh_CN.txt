@@ -392,7 +392,7 @@ quotehistory.title=报价请求主题
 quotehistory.posttime=发布报价请求时间
 quotehistory.detail=报价请求内容
 
-userregister.heading=个人用户注册
+userregister.heading=用户注册
 userregister.warningmessage=请更正，重新提交
 userregister.email=邮箱
 userregister.email.placeholder=输入你的邮箱地址
@@ -423,9 +423,24 @@ userregister.iagreeto=我同意
 userregister.signup=注册
 userregister.ihaveread=我已经阅读规则和条款
 
+userregistersuccess.heading=已成功注册
+userregistersuccess.message=欢迎你！为了的得到报价服务,你可以更新你的
+userregistersuccess.register.profile=注册信息
+userregistersuccess.gotohome=返回主页
+
+merchantregister.heading=商家注册流程
+merchantregister.step1=步骤1--
+merchantregister.signin=登录
+merchantregister.step1.help=需要一个邮箱登录,因为客户需要用此邮箱跟你联络.有了登录用的邮箱后,才可以在华服网发布商家信息.
+merchantregister.step2=步骤2--
+merchantregister.register=发布商家信息
+merchantregister.step2.help=发布商家信息后,贵公司信息会显示在华服网，同时可以接受用户的报价请求,google也可以搜索到该信息.
 
 
-merchantregister.heading=商家注册
+
+
+
+
 
 
 
