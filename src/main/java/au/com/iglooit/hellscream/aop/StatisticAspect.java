@@ -1,6 +1,9 @@
 package au.com.iglooit.hellscream.aop;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
+import au.com.iglooit.hellscream.model.entity.Quote;
+import au.com.iglooit.hellscream.model.entity.QuoteFeedbackMsg;
+import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.service.dao.StatisticDAO;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -26,8 +29,26 @@ public class StatisticAspect {
     private StatisticDAO statisticDAO;
     @After("execution(* au.com.iglooit.hellscream.service.dao.MerchantDAO.createMerchant(..))&& args(merchant)")
     public void afterCreateMerchant(Merchant merchant) {
-//            Merchant merchant = (Merchant)proceedingJoinPoint.getArgs()[0];
             LOG.info("parameter is " + merchant.getTradeName());
             statisticDAO.addMerchant();
     }
+
+    @After("execution(* au.com.iglooit.hellscream.service.dao.QuoteDAO.createQuote(..))&& args(quote)")
+    public void afterCreateQuote(Quote quote) {
+        statisticDAO.addQuote();
+    }
+
+    @After("execution(* au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO.createQuoteTransaction(..)) " +
+            "&& args(quoteTransaction)")
+    public void afterCreateQuoteTransaction(QuoteTransaction quoteTransaction) {
+        statisticDAO.addQuoteTransaction();
+    }
+
+    @After("execution(* au.com.iglooit.hellscream.service.dao.QuoteFeedbackMsgDAO.createFeebackMsg(..)) " +
+            "&& args(quoteFeedbackMsg)")
+    public void afterCreateQuoteTransaction(QuoteFeedbackMsg quoteFeedbackMsg) {
+        statisticDAO.addQuoteFeedbackMsg();
+    }
+
+
 }

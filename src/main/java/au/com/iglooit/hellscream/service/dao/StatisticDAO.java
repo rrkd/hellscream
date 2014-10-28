@@ -13,4 +13,10 @@ public interface StatisticDAO extends IEntityService<Statistic> {
     Statistic findByName(String name);
     void addMerchant();
     Long countMerchant();
+    void addQuote();
+    Long countQuote();
+    void addQuoteTransaction();
+    Long countQuoteTransaction();
+    void addQuoteFeedbackMsg();
+    Long countQuoteFeedbackMsg();
 }

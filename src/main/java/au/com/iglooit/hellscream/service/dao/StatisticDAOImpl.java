@@ -1,6 +1,9 @@
 package au.com.iglooit.hellscream.service.dao;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
+import au.com.iglooit.hellscream.model.entity.Quote;
+import au.com.iglooit.hellscream.model.entity.QuoteFeedbackMsg;
+import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.model.entity.Statistic;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import au.com.iglooit.hellscream.utils.DateUtils;
@@ -50,6 +53,36 @@ public class StatisticDAOImpl extends BaseRepository<Statistic> implements Stati
     @Override
     public Long countMerchant() {
         return countClass(Merchant.class);
+    }
+
+    @Override
+    public void addQuote() {
+        addClass(Quote.class);
+    }
+
+    @Override
+    public Long countQuote() {
+        return countClass(Quote.class);
+    }
+
+    @Override
+    public void addQuoteTransaction() {
+        addClass(QuoteTransaction.class);
+    }
+
+    @Override
+    public Long countQuoteTransaction() {
+        return countClass(QuoteTransaction.class);
+    }
+
+    @Override
+    public void addQuoteFeedbackMsg() {
+        addClass(QuoteFeedbackMsg.class);
+    }
+
+    @Override
+    public Long countQuoteFeedbackMsg() {
+        return countClass(QuoteFeedbackMsg.class);
     }
 
     private void addClass(Class clazz) {
