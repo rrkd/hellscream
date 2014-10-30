@@ -176,6 +176,7 @@ createmerchant.register.success=注册成功！
 createmerchant.register.success.info=恭喜，注册已经成功！你现在可以浏览或修改商家页面。
 createmerchant.goto.profile=浏览商家页面
 createmerchant.goto.home=返回主页
+createmerchant.relogin=请重新登录
 createmerchant.alreadyRegister=商家已经注册！
 
 modifymerchant.register=更新商家信息

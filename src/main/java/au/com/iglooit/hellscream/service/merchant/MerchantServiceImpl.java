@@ -43,7 +43,8 @@ public class MerchantServiceImpl implements MerchantService {
 
     @Override
     public MerchantVO findMerchantByMerchantURL(String canonicalSlugId) {
-        return generateMerchantVO(merchantDAO.findByURL(canonicalSlugId));  //To change body of implemented methods use File | Settings | File Templates.
+        return generateMerchantVO(merchantDAO.findByURL(
+                canonicalSlugId));  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -59,10 +60,12 @@ public class MerchantServiceImpl implements MerchantService {
         user.setMerchantKey(merchant.getKey());
         userDAO.update(user);
         // update category count
-        for(String categoryTradeName : merchant.getCategoryList()) {
+        for (String categoryTradeName : merchant.getCategoryList()) {
             Category category = categoryDAO.findByTradeName(categoryTradeName);
-            category.setMerchantCount(category.getMerchantCount() + 1);
-            categoryDAO.update(category);
+            if (category != null) {
+                category.setMerchantCount(category.getMerchantCount() + 1);
+                categoryDAO.update(category);
+            }
         }
     }
 
@@ -73,7 +76,7 @@ public class MerchantServiceImpl implements MerchantService {
 
     @Override
     public SearchResultVO<MerchantVO> findMerchantByPrefix(String prefix, Integer page) {
-        if(StringUtils.isNotBlank(prefix)) {
+        if (StringUtils.isNotBlank(prefix)) {
             return merchantDAO.findMerchants(prefix, page);
         }
         return merchantDAO.findMerchants(page);

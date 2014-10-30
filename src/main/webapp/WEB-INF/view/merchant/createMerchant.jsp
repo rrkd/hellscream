@@ -69,9 +69,9 @@
                     <select multiple="multiple" name="name" size="30" id="category_select"
                             class="populate placeholder select2-offscreen span12" style="margin-bottom: 10px; margin-left: 0;">
                         <c:forEach items="${categoryGroupList}" var="categoryGroup">
-                            <optgroup label="${categoryGroup.name}">
+                            <optgroup label="${categoryGroup.tradeName}">
                                 <c:forEach items="${categoryGroup.categoryList}" var="category">
-                                    <option value="${category.name}">${category.name}</option>
+                                    <option value="${category.name}">${category.tradeName}</option>
                                 </c:forEach>
                             </optgroup>
                         </c:forEach>
@@ -179,8 +179,7 @@
                 <spring:message code="createmerchant.register.success.info" />
             </div>
             <div class="modal-footer">
-                <a href="/home" class="btn btn-default" data-dismiss="modal"><spring:message code="createmerchant.goto.home" /></a>
-                <a href="/merchant/p" class="btn btn-primary"><spring:message code="createmerchant.goto.profile" /></a>
+                <a href="/logout" class="btn btn-primary"><spring:message code="createmerchant.relogin" /></a>
             </div>
         </div>
     </div>
