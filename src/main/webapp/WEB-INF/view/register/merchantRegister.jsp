@@ -1,9 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@include file="../globe.jsp"%>
 <div class="page-header">
 
-    <h1>Merchant Register</h1>
+    <h1><spring:message code="merchantregister.heading" /></h1>
 
     <div class="headerdivider">
 
@@ -18,18 +16,14 @@
 
             <div>
 
-                Step 1 - Sign In As a User
+                <spring:message code="merchantregister.step1" /><a href="/login"><spring:message code="merchantregister.signin" /></a>
 
             </div>
 
         </div>
 
         <p>
-            You have Sign In as a valid User.
-        </p>
-
-        <p>
-            Go to the <a href="/login">Login Page</a>
+            <spring:message code="merchantregister.step1.help" />
         </p>
 
     </div>
@@ -40,19 +34,19 @@
 
             <div>
 
-                Step 2 - List Your Business
+                <spring:message code="merchantregister.step2" /><a href="/merchant/create"><spring:message code="merchantregister.register" /></a>
 
             </div>
 
         </div>
 
         <p>
-            Go to the <a href="/merchant/create">List Your Business</a> page to fill up your business information.
+            <spring:message code="merchantregister.step2.help" />
         </p>
         <p>
             <a href="/merchant/create" class="btn btn-primary btn-large">
 
-                <i class="icon icon-download-alt"></i> List Your Business </a>
+                <i class="icon icon-download-alt"></i><spring:message code="merchantregister.register" /></a>
 
         </p>
 
