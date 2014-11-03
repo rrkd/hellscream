@@ -11,6 +11,8 @@
     <sessions-enabled>true</sessions-enabled>
 
     <static-files>
+        <include path="/favicon.ico" />
+        <include path="/robots.txt" />
         <include path="/assets/*"/>
     </static-files>
 

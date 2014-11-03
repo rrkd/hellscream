@@ -51,6 +51,8 @@ public class Merchant extends BaseEntity {
     private Integer quoteCount = 0;
     private Integer applyQuoteCount = 0;
     private MerchantType merchantType = MerchantType.Searchable;
+    private MerchantBillType billType = MerchantBillType.NORMAL;
+    private String payPalEmail;
 
     public Merchant() {
     }
@@ -281,6 +283,22 @@ public class Merchant extends BaseEntity {
 
     public void setMerchantType(MerchantType merchantType) {
         this.merchantType = merchantType;
+    }
+
+    public MerchantBillType getBillType() {
+        return billType;
+    }
+
+    public void setBillType(MerchantBillType billType) {
+        this.billType = billType;
+    }
+
+    public String getPayPalEmail() {
+        return payPalEmail;
+    }
+
+    public void setPayPalEmail(String payPalEmail) {
+        this.payPalEmail = payPalEmail;
     }
 
     @Override

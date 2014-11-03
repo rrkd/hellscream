@@ -1,4 +1,5 @@
 home.cn=中文
+home.ok=确定
 home.welcome=你好
 home.title=华服网 华人发布服务,报价请求中心
 home.quoterequest.title=发布服务请求
@@ -224,6 +225,7 @@ merchantprofile.usage=交易历史
 merchantprofile.feedback=顾客评价
 merchantprofile.handshake=成功握手
 merchantprofile.quote=报价请求
+merchantprofile.bill=付费套餐
 
 merchantquotelist.title=已报价历史
 merchantquotelist.latestquote=最近报价

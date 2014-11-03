@@ -1,8 +1,8 @@
 <%@include file="../globe.jsp" %>
 <html>
 <head>
-    <meta name="description" content="Merchant Profile">
-    <title><spring:message code="merchantprofile.title" /> - ${iguser.merchantName}</title>
+    <meta name="description" content="Merchant Profile ${merchant.merchantName}">
+    <title><spring:message code="merchantprofile.title" /> - ${merchant.merchantName}</title>
 </head>
 <body>
 <div class="page-header">
@@ -17,7 +17,7 @@
 
 <div class="row-fluid top30">
 
-    <div class="span10">
+    <div class="span12">
 
         <%--<div class="titleborder">--%>
 
@@ -110,7 +110,7 @@
 
     </div>
 
-    <div class="span10">
+    <div class="span12">
 
         <div class="titleborder">
 
@@ -154,7 +154,230 @@
 
     </div>
 
+    <div class="span12">
+
+        <div class="titleborder">
+
+            <div>
+
+                <spring:message code="merchantprofile.bill" />
+
+            </div>
+
+        </div>
+
+        <!-- Bill Type
+
+              ================================================== -->
+
+        <div class="row-fluid">
+
+            <div class="vuzz-pricing-table span4">
+
+                <div class="vuzz-pricing">
+
+                    <div class="vuzz-pricing-header">
+
+                        <h5>Normal</h5>
+
+                        <div class="vuzz-pricing-cost">
+
+                            Free
+
+                        </div>
+
+                        <div class="vuzz-pricing-per">
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="vuzz-pricing-content">
+
+                        <ul>
+
+                            <li>5 products</li>
+
+                            <li>1 image per product</li>
+
+                            <li>basic stats</li>
+
+                            <li>non commercial</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="vuzz-pricing-button">
+
+                        <form enctype='application/json' action="https://dulcet-glazing-737.appspot.com/app/pay" method="POST">
+                            <input name='userId' value='ahFzcHJpbmctZm9yZXN0LTUzOHIVCxIITWVyY2hhbnQYgICAgICc_QsM' type="hidden">
+                            <input name='payEmail' value='zumaexhaust-buyer1@gmail.com' type="hidden">
+                            <input name='planId' value='' type="hidden">
+                            <input name='money' value='1.0' type="hidden">
+                            <input name='description' value='Huafu Normal Monthly Fee' type="hidden">
+                            <input name='callback' value='http://spring-forest-538.appspot.com/merchant/payFeeCB' type="hidden">
+                            <input name='applicationId' value='spring-forest-538.appspot.com' type="hidden">
+                            <input name='applicationToken' value='testtoken' type="hidden">
+
+                            <a href="#" onclick="$(this).closest('form').submit()" class="vuzz-button buttonprice" target="_self" rel="nofollow"><span class="vuzz-button-inner">Order now</span></a>
+                        </form>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="vuzz-pricing-table span4">
+
+                <div class="vuzz-pricing">
+
+                    <div class="vuzz-pricing-header popular">
+
+                        <h5>Gold</h5>
+
+                        <div class="vuzz-pricing-cost">
+
+                            $29.99
+
+                        </div>
+
+                        <div class="vuzz-pricing-per">
+
+                            per year
+
+                        </div>
+
+                    </div>
+
+                    <div class="vuzz-pricing-content">
+
+                        <ul>
+
+                            <li>5 products</li>
+
+                            <li>1 image per product</li>
+
+                            <li>basic stats</li>
+
+                            <li>non commercial</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="vuzz-pricing-button popular">
+
+                        <form enctype='application/json' action="https://dulcet-glazing-737.appspot.com/app/pay" method="POST">
+                            <input name='userId' value='ahFzcHJpbmctZm9yZXN0LTUzOHIVCxIITWVyY2hhbnQYgICAgICc_QsM' type="hidden">
+                            <input name='payEmail' value='zumaexhaust-buyer1@gmail.com' type="hidden">
+                            <input name='planId' value='' type="hidden">
+                            <input name='money' value='29.99' type="hidden">
+                            <input name='description' value='Huafu Normal Monthly Fee' type="hidden">
+                            <input name='callback' value='http://spring-forest-538.appspot.com/merchant/payFeeCB' type="hidden">
+                            <input name='applicationId' value='spring-forest-538.appspot.com' type="hidden">
+                            <input name='applicationToken' value='testtoken' type="hidden">
+
+                            <a href="#" onclick="$(this).closest('form').submit()" class="vuzz-button buttonprice" target="_self" rel="nofollow"><span class="vuzz-button-inner">Order now</span></a>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="vuzz-pricing-table span4">
+
+                <div class="vuzz-pricing">
+
+                    <div class="vuzz-pricing-header">
+
+                        <h5>Premium</h5>
+
+                        <div class="vuzz-pricing-cost">
+
+                            $59.99
+
+                        </div>
+
+                        <div class="vuzz-pricing-per">
+
+                            per year
+
+                        </div>
+
+                    </div>
+
+                    <div class="vuzz-pricing-content">
+
+                        <ul>
+
+                            <li>5 products</li>
+
+                            <li>1 image per product</li>
+
+                            <li>basic stats</li>
+
+                            <li>non commercial</li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="vuzz-pricing-button">
+
+                        <form enctype='application/json' action="https://dulcet-glazing-737.appspot.com/app/pay" method="POST">
+                            <input name='userId' value='ahFzcHJpbmctZm9yZXN0LTUzOHIVCxIITWVyY2hhbnQYgICAgICc_QsM' type="hidden">
+                            <input name='payEmail' value='zumaexhaust-buyer1@gmail.com' type="hidden">
+                            <input name='planId' value='' type="hidden">
+                            <input name='money' value='59.99' type="hidden">
+                            <input name='description' value='Huafu Normal Monthly Fee' type="hidden">
+                            <input name='callback' value='http://spring-forest-538.appspot.com/merchant/payFeeCB' type="hidden">
+                            <input name='applicationId' value='spring-forest-538.appspot.com' type="hidden">
+                            <input name='applicationToken' value='testtoken' type="hidden">
+
+                            <a href="#" onclick="$(this).closest('form').submit()" class="vuzz-button buttonprice" target="_self" rel="nofollow"><span class="vuzz-button-inner">Order now</span></a>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix">
+
+        </div>
+
+        <!-- END Skills -->
+
+    </div>
+
 </div>
+<!-- paypal dialog -->
+<div class="modal fade" id="successDlg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="successDlgLabel"><spring:message code="createmerchant.register.success" /></h4>
+            </div>
+            <div class="modal-body">
+                <spring:message code="createmerchant.register.success.info" />
+            </div>
+            <div class="modal-footer">
+                <a href="/logout" class="btn btn-primary"><spring:message code="home.ok" /></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- paypal dialog end -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/merchant/merchantProfile.js"></script>
 </body>
 </html>

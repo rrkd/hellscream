@@ -86,6 +86,13 @@ public class MerchantProfileController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/merchant/payFeeCB", method = RequestMethod.GET)
+    public ModelAndView payFeeCallback() {
+        ModelAndView modelAndView = new ModelAndView("merchant/merchant-fee-paid");
+        modelAndView.addObject("vo", getLoginMerchant());
+        return modelAndView;
+    }
+
     private Merchant getLoginMerchant() {
         GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
         IGUser user = (IGUser) auth.getPrincipal();
