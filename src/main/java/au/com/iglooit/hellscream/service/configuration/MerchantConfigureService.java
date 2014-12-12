@@ -11,9 +11,12 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -52,9 +55,17 @@ public class MerchantConfigureService {
     /**
      * tradeName,merchantName,description,address1,address2,address3,email,phone,mobile,contact1,contact2,categoryList;
      */
-    private void initMerchant() throws IOException {
+    private void initMerchant() throws IOException, URISyntaxException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream("data/merchant.csv");
+
+      //  InputStream is = classloader.getResourceAsStream("data/merchant.csv");
+
+        URL merchantURL = classloader.getResource("data/merchant/");
+        String[] merchantFiles=new File(merchantURL.toURI()).list();
+
+        int j = 0;
+        while (j < merchantFiles.length) {
+        InputStream is = classloader.getResourceAsStream("data/merchant/" + merchantFiles[j]);
         CSVReader reader = new CSVReader(new InputStreamReader(is, "UTF-8"));
         String[] nextLine;
         while ((nextLine = reader.readNext()) != null) {
@@ -63,6 +74,8 @@ public class MerchantConfigureService {
                 continue;
             }
             merchantImportService.saveOrUpdateMerchant(fillUpMerchantImportVO(nextLine));
+        }
+            j++;
         }
     }
 
