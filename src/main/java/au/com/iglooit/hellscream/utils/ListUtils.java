@@ -23,7 +23,7 @@ public final class ListUtils {
         } else if ((from+size) >= len) {
             return list.subList(from, len - 1);
         } else {
-            return list.subList(from, size);
+            return list.subList(from, from+size);
         }
     }
 }
