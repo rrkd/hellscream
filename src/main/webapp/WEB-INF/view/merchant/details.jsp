@@ -38,7 +38,7 @@
 
         <p>
 
-            ${vo.merchant.description}
+            ${vo.merchant.description.value}
 
         </p>
 

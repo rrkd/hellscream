@@ -9,7 +9,7 @@ import org.apache.commons.lang.StringUtils;
  * Time: 11:32 AM
  */
 public final class DescriptionUtils {
-    private static final Integer MAX_LEN = 100;
+    private static final Integer MAX_LEN = 800;
 
     private DescriptionUtils() {
 

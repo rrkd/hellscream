@@ -4,6 +4,7 @@ import au.com.iglooit.hellscream.model.GeoIndexTypeConstant;
 import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
 import au.com.iglooit.hellscream.utils.DescriptionUtils;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Text;
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.Field;
 import com.google.appengine.api.search.GeoPoint;
@@ -26,7 +27,7 @@ public class Merchant extends BaseEntity {
     // must be unique
     private String tradeName;
     private String merchantName;
-    private String description;
+    private Text description;
     private String address1;
     private String address2;
     private String address3;
@@ -73,11 +74,11 @@ public class Merchant extends BaseEntity {
         this.merchantName = merchantName;
     }
 
-    public String getDescription() {
+    public Text getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Text description) {
         this.description = description;
     }
 
@@ -194,7 +195,7 @@ public class Merchant extends BaseEntity {
     }
 
     public String getShortDesc() {
-        return DescriptionUtils.build(description);
+        return DescriptionUtils.build(description.getValue());
     }
 
     public String getPostcode() {
@@ -308,7 +309,7 @@ public class Merchant extends BaseEntity {
                 .addField(Field.newBuilder().setName("tradeName").setText(getTradeName()))
                 .addField(Field.newBuilder().setName("email").setText(getEmail()))
                 .addField(Field.newBuilder().setName("merchantName").setText(getMerchantName()))
-                .addField(Field.newBuilder().setName("description").setText(getDescription()))
+                .addField(Field.newBuilder().setName("description").setText(getDescription().getValue()))
                 .addField(Field.newBuilder().setName("phone").setText(getPhone()));
         if (latitude != null && longitude != null) {
             builder.addField(Field.newBuilder().setName("point").setGeoPoint(

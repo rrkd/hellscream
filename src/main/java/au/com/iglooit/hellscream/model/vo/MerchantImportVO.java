@@ -1,5 +1,7 @@
 package au.com.iglooit.hellscream.model.vo;
 
+import com.google.appengine.api.datastore.Text;
+
 import java.io.Serializable;
 
 /**
@@ -11,7 +13,7 @@ import java.io.Serializable;
 public class MerchantImportVO implements Serializable {
     private String tradeName;
     private String merchantName;
-    private String description;
+    private Text description;
     private String address1;
     private String address2;
     private String address3;
@@ -42,11 +44,11 @@ public class MerchantImportVO implements Serializable {
         this.merchantName = merchantName;
     }
 
-    public String getDescription() {
+    public Text getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Text description) {
         this.description = description;
     }
 

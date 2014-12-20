@@ -4,6 +4,7 @@ import au.com.bytecode.opencsv.CSVReader;
 import au.com.iglooit.hellscream.model.vo.MerchantImportVO;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.merchant.MerchantImportService;
+import com.google.appengine.api.datastore.Text;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,7 +83,7 @@ public class MerchantConfigureService {
     private MerchantImportVO fillUpMerchantImportVO(String[] nextLine) {
         String tradeName = nextLine[TRADE_NAME];
         String merchantName = nextLine[MERCHANT_NAME];
-        String description = nextLine[DESCRIPTION];
+        Text description = new Text( nextLine[DESCRIPTION]);
         String address1 = nextLine[ADDRESS1];
         String address2 = nextLine[ADDRESS2];
         String address3 = nextLine[ADDRESS3];

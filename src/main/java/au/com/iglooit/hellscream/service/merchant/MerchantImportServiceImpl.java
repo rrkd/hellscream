@@ -7,6 +7,7 @@ import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.CategoryDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
+import com.google.appengine.api.datastore.Text;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +62,7 @@ public class MerchantImportServiceImpl implements MerchantImportService {
     private void fillUpMerchant(Merchant targetMerchant, MerchantImportVO vo) {
         String tradeName = vo.getTradeName();
         String merchantName = vo.getMerchantName();
-        String description = vo.getDescription();
+        Text description = vo.getDescription();
         String address1 = vo.getAddress1();
         String address2 = vo.getAddress2();
         String address3 = vo.getAddress3();
