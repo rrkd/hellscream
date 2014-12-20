@@ -6,9 +6,7 @@ import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.utils.ListUtils;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.search.Index;
-import com.google.appengine.api.search.Results;
-import com.google.appengine.api.search.ScoredDocument;
+import com.google.appengine.api.search.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -81,7 +79,16 @@ public class MerchantFTSearchServiceImpl implements MerchantFTSearchService {
             }
             query = query + "(category=\"" + category + "\")";
         }
-        Results<ScoredDocument> results = merchantIndex.search(query);
+
+        QueryOptions request = QueryOptions.newBuilder()
+                .setLimit(1000)
+                .build();
+
+        Query scQuery = Query.newBuilder()
+                .setOptions(request)
+                .build(query);
+
+        Results<ScoredDocument> results = merchantIndex.search(scQuery);
         // Iterate over the documents in the results
         List<Merchant> merchantList = new ArrayList<Merchant>();
         for (ScoredDocument document : results) {
