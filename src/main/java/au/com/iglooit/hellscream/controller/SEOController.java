@@ -1,6 +1,6 @@
 package au.com.iglooit.hellscream.controller;
 
-import au.com.iglooit.hellscream.service.configuration.SiteMapConfigureService;
+import au.com.iglooit.hellscream.service.configuration.SitemapConfigureService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ import java.io.IOException;
 public class SEOController {
     private static final Logger LOG = LoggerFactory.getLogger(SEOController.class);
     @Resource
-    private SiteMapConfigureService siteMapConfigureService;
+    private SitemapConfigureService siteMapConfigureService;
 
     @RequestMapping(value = "/sitemap.xml", method = RequestMethod.GET)
     public void homePage(HttpServletResponse response) throws IOException {

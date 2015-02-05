@@ -15,8 +15,8 @@ import java.io.InputStream;
  * Time: 11:41 AM
  */
 @Component
-public class SiteMapConfigureService {
-    private static final Logger LOG = LoggerFactory.getLogger(SiteMapConfigureService.class);
+public class SitemapConfigureService {
+    private static final Logger LOG = LoggerFactory.getLogger(SitemapConfigureService.class);
     private String siteMapStr;
 
     @PostConstruct
