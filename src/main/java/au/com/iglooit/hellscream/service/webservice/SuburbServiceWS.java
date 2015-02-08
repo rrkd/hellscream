@@ -4,6 +4,7 @@ import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Suburb;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.service.dao.SuburbDAO;
+import au.com.iglooit.hellscream.service.statistic.StatisticService;
 import au.com.iglooit.hellscream.service.suburb.SuburbService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,15 +30,17 @@ public class SuburbServiceWS {
     private SuburbDAO suburbDAO;
     @Resource
     private SuburbService suburbService;
+    @Resource
+    private StatisticService statisticService;
 
-    @RequestMapping(value = "/ws/suburb/init/{count}", method = RequestMethod.GET)
+    @RequestMapping(value = "/ws/suburb/init", method = RequestMethod.GET)
     public
     @ResponseBody
-    JsonResponse initSuburbData(@PathVariable Integer count) {
-        if(count < TOTAL_SUBURB) {
-            suburbService.initSuburb(count.intValue(), 100);
-        }
-        return new JsonResponse(JsonResponse.OK, "current Count is: " + count);
+    JsonResponse initSuburbData() {
+
+        suburbService.initSuburb(statisticService.suburbCount().intValue(), 1000);
+
+        return new JsonResponse(JsonResponse.OK, "current Count is: " + statisticService.suburbCount().intValue());
     }
     @RequestMapping(value = "/ws/suburb/count", method = RequestMethod.GET)
     public

@@ -25,6 +25,7 @@ public class GenerateQueue {
     private static final Logger LOG = LoggerFactory.getLogger(GenerateQueue.class);
     public static final String GENERATE_QUEUE_URL = "/pq/generate/";
     public static final String QUOTE_QUEUE_NAME = "generate-q";
+    public static final String SUBURB_QUEUE_NAME = "suburb-q";
     @Resource
     private SuburbDAO suburbDAO;
 

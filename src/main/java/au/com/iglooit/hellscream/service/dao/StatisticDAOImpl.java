@@ -1,10 +1,6 @@
 package au.com.iglooit.hellscream.service.dao;
 
-import au.com.iglooit.hellscream.model.entity.Merchant;
-import au.com.iglooit.hellscream.model.entity.Quote;
-import au.com.iglooit.hellscream.model.entity.QuoteFeedbackMsg;
-import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
-import au.com.iglooit.hellscream.model.entity.Statistic;
+import au.com.iglooit.hellscream.model.entity.*;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import org.springframework.stereotype.Repository;
@@ -83,6 +79,16 @@ public class StatisticDAOImpl extends BaseRepository<Statistic> implements Stati
     @Override
     public Long countQuoteFeedbackMsg() {
         return countClass(QuoteFeedbackMsg.class);
+    }
+
+    @Override
+    public void addSuburb() {
+        addClass(Suburb.class);
+    }
+
+    @Override
+    public Long countSuburb() {
+        return countClass(Suburb.class);
     }
 
     private void addClass(Class clazz) {

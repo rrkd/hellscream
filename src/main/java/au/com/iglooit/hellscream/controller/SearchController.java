@@ -34,6 +34,7 @@ public class SearchController {
     public ModelAndView searchPage(@RequestParam("q") String queryString, @RequestParam("local") String localString) {
         ModelAndView modelAndView = new ModelAndView("searchResult");
         modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
+        modelAndView.addObject("queryKey", queryString);
         modelAndView.addObject("merchantList",
                 merchantFTSearchService.searchByKeyWordAndLocal(
                         queryString.replaceAll(" ", "-"), localString, "", 0, -1));

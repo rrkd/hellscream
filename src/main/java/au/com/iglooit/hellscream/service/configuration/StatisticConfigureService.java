@@ -1,10 +1,6 @@
 package au.com.iglooit.hellscream.service.configuration;
 
-import au.com.iglooit.hellscream.model.entity.Merchant;
-import au.com.iglooit.hellscream.model.entity.Quote;
-import au.com.iglooit.hellscream.model.entity.QuoteFeedbackMsg;
-import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
-import au.com.iglooit.hellscream.model.entity.Statistic;
+import au.com.iglooit.hellscream.model.entity.*;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.StatisticDAO;
 import au.com.iglooit.hellscream.service.message.QuoteMerchantMsg;
@@ -30,7 +26,8 @@ public class StatisticConfigureService {
             Quote.class.getName(),
             QuoteMerchantMsg.class.getName(),
             QuoteTransaction.class.getName(),
-            QuoteFeedbackMsg.class.getName()
+            QuoteFeedbackMsg.class.getName(),
+            Suburb.class.getName()
     };
     @Resource
     private StatisticDAO statisticDAO;

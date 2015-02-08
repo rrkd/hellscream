@@ -1,0 +1,45 @@
+<decorators defaultdir="/WEB-INF/decorators">
+    <decorator name="merchant" page="section_tp.jsp">
+
+        <pattern>/p/*</pattern>
+    </decorator>
+    <!-- user -->
+    <decorator name="login" page="index_tp.jsp">
+        <pattern>/logout</pattern>
+        <pattern>/loggedout</pattern>
+        <pattern>/login</pattern>
+        <pattern>/register*</pattern>
+    </decorator>
+    <!-- admin console -->
+    <decorator name="merchant" page="index_tp.jsp">
+        <pattern>/admin*</pattern>
+    </decorator>
+    <!-- default -->
+    <decorator name="index" page="index_tp.jsp">
+        <pattern>/index</pattern>
+        <pattern>/home</pattern>
+        <pattern>/error*</pattern>
+        <pattern>/message*</pattern>
+        <pattern>/aboutus</pattern>
+        <pattern>/contactus</pattern>
+        <pattern>/faq</pattern>
+        <pattern>/howitworks</pattern>
+    </decorator>
+    <!-- quote -->
+    <decorator name="quote" page="section_tp_2.jsp">
+        <pattern>/quote*</pattern>
+        <pattern>/merchant*</pattern>
+        <pattern>/m*</pattern>
+        <pattern>/fd*</pattern>
+        <pattern>/search*</pattern>
+        <pattern>/category*</pattern>
+    </decorator>
+    <!-- quote -->
+    <decorator name="user" page="section_tp_2.jsp">
+        <pattern>/u/*</pattern>
+    </decorator>
+    <!--driver -->
+    <decorator name="driver" page="driver_tp.jsp">
+        <pattern>/driver*</pattern>
+    </decorator>
+</decorators>

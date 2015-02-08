@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns="http://www.isdc.ro/wro"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.isdc.ro/wro wro.xsd">
+
+    <!-- CSS resources -->
+    <group name="basic-header.min">
+        <css>/css/bootstrap.css</css>
+
+        <css>/css/style.css</css>
+
+        <css>/css/camera.css</css>
+
+        <css>/css/icons.css</css>
+
+        <css>/css/skin-orange.css</css>
+
+        <css>/css/bootstrap-responsive.css</css>
+
+        <js>/js/jquery.js</js>
+
+        <js>/js/jquery-dateFormat.min.js</js>
+
+        <js>/js/iglooit.js</js>
+
+    </group>
+
+    <group name="basic-footer.min">
+        <js>/js/bootstrap.js</js>
+        <js>/js/plugins.js</js>
+        <js>/js/search.js</js>
+        <js>/js/custom.js</js>
+    </group>
+
+    <group name="feedback.min">
+        <css>/demo/css/style-switcher.css</css>
+
+        <css>/demo/css/colorpicker.css</css>
+
+        <js>/demo/js/jquery.cookie.js</js>
+
+        <js>/demo/js/styleswitch.js</js>
+
+        <js>/demo/js/colorpicker.js</js>
+
+        <js>/demo/js/switcher.js</js>
+    </group>
+
+    <group name="section-2-header.min">
+        <css>/css/bootstrap.css</css>
+
+        <css>/css/style.css</css>
+
+        <css>/css/icons.css</css>
+
+        <css>/css/bootstrap-responsive.css</css>
+
+        <css>/css/select2.css</css>
+
+        <css>/css/skin-orange.css</css>
+
+        <js>/js/jquery.js</js>
+
+        <js>/js/jquery-dateFormat.min.js</js>
+
+        <js>/js/iglooit.js</js>
+    </group>
+
+    <group name="section-2-footer.min">
+        <js>/js/bootstrap.js</js>
+
+        <js>/js/plugins.js</js>
+
+        <js>/js/custom.js</js>
+
+        <js>/js/search.js</js>
+
+        <js>/js/select2.min.js</js>
+    </group>
+
+</groups>

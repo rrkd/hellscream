@@ -47,4 +47,9 @@ public class StatisticServiceImpl implements StatisticService {
     public Long quoteCount(Merchant merchant) {
         return 100L;
     }
+
+    @Override
+    public Long suburbCount() {
+        return statisticDAO.countSuburb();
+    }
 }

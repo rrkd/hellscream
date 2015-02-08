@@ -6,6 +6,7 @@ import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.IndexServiceHelp;
 import au.com.iglooit.hellscream.service.dao.SuburbDAO;
 import au.com.iglooit.hellscream.service.queue.GenerateQueue;
+import au.com.iglooit.hellscream.service.statistic.StatisticService;
 import com.google.appengine.api.taskqueue.Queue;
 import com.google.appengine.api.taskqueue.QueueFactory;
 import org.slf4j.Logger;
@@ -30,12 +31,11 @@ import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 @Component
 public class SuburbConfigureService {
     private static final Logger LOG = LoggerFactory.getLogger(SuburbConfigureService.class);
-    private static final Integer FROM = 4219;
     private static final Integer SIZE = 1000;
     @Resource
     private SuburbDAO suburbDAO;
     @Resource
-    private IndexServiceHelp indexServiceHelp;
+    private StatisticService statisticService;
 
 
     @PostConstruct
@@ -52,7 +52,8 @@ public class SuburbConfigureService {
     }
 
     private void initSuburb() throws IOException {
-        Queue queue = QueueFactory.getQueue(GenerateQueue.QUOTE_QUEUE_NAME);
+        Long startPoint = statisticService.suburbCount();
+        Queue queue = QueueFactory.getQueue(GenerateQueue.SUBURB_QUEUE_NAME);
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream is = classloader.getResourceAsStream("data/suburb.csv");
         CSVReader reader = new CSVReader(new InputStreamReader(is));
@@ -60,7 +61,7 @@ public class SuburbConfigureService {
         int index = 0;
         while ((nextLine = reader.readNext()) != null) {
             index++;
-            if (index >= FROM && index < FROM + SIZE) {
+            if (index >= startPoint && index < startPoint + SIZE) {
                 String name = pickUpContent(nextLine[1].trim());
                 String postcode = pickUpContent(nextLine[2].trim());
                 String state = convertToState(nextLine[3].trim());

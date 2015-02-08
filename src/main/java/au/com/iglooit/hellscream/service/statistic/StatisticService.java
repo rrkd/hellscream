@@ -16,4 +16,5 @@ public interface StatisticService {
     Long msgCount();
     Long quoteCount(IGUser user);
     Long quoteCount(Merchant merchant);
+    Long suburbCount();
 }

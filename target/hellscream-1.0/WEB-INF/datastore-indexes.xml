@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datastore-indexes autoGenerate="true">
+    <!-- Used 4 times in query history -->
+    <datastore-index kind="Merchant" ancestor="false" source="auto">
+        <property name="valid" direction="asc"/>
+        <property name="postDate" direction="desc"/>
+    </datastore-index>
+
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="QuoteTransaction" ancestor="false" source="auto">
+        <property name="merchant_key" direction="asc"/>
+        <property name="createdOn" direction="desc"/>
+    </datastore-index>
+</datastore-indexes>

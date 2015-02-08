@@ -29,13 +29,13 @@
     <div class="form-actions" align="center">
         <div class="row-fluid">
             <div class="span12">
-                <input id="filterWord" class="span12" type="text" name="name" placeholder="Keyword">
+                <input id="filterWord" class="span12" type="text" name="name" placeholder="Keyword" value="${queryKey}">
             </div>
             <div class="span12">
                 <div class="span4">
                     <input type='hidden' name="suburb" size="30" id="filterSuburb"
                            class="span12 populate placeholder select2-offscreen"
-                           style="margin-bottom: 10px; margin-left: 0;">
+                           style="margin-bottom: 10px; margin-left: 0;" >
                     </input>
                 </div>
                 <div class="span4">

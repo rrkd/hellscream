@@ -1,0 +1,11 @@
+<!-- Indices written at Fri, 6 Feb 2015 16:02:22 EST -->
+
+<datastore-indexes>
+
+    <!-- Used 3 times in query history -->
+    <datastore-index kind="Merchant" ancestor="false" source="auto">
+        <property name="valid" direction="asc"/>
+        <property name="postDate" direction="desc"/>
+    </datastore-index>
+
+</datastore-indexes>

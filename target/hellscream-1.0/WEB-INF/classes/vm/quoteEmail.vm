@@ -1,0 +1,373 @@
+#set( $quote = $quoteEmailVO.quote )
+<div bgcolor="#fefefe">
+<table style="border-collapse:collapse;border-spacing:0;background-color:#fefefe;width:100%;min-width:620px;table-layout:fixed">
+    <tbody>
+    <tr>
+        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+            <center>
+                <div style="font-size:54px;line-height:54px">&nbsp;</div>
+                <table style="border-collapse:collapse;border-spacing:0;Margin-left:auto;Margin-right:auto;width:560px">
+                    <tbody>
+                    <tr>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;color:#aaaaaa;font-size:24px;font-family:Georgia,serif"
+                            align="left">
+                            <table style="border-collapse:collapse;border-spacing:0">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:27px;padding-left:0;padding-right:0;vertical-align:top;color:#202020;font-size:32px;font-weight:bold;line-height:42px;font-family:Georgia,serif"
+                                        align="left"><img
+                                            style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0;display:block;max-width:167px"
+                                            src="https://ci4.googleusercontent.com/proxy/OfxMD0j531WUCR5ETKe5ZZPEMfg4UzqnOggKnyOPYpRMPehJav6Gw1AKeEqxKySIHOd_ElnFPS4A57LFpjbpquLNpovuz4fFL5IvMY3KUqMyJw=s0-d-e1-ft#http://i1.cmail2.com/ei/t/C6/7C1/3E6/231606/csfinal/logo.png"
+                                            alt="" width="167" height="52"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </center>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table style="border-collapse:collapse;border-spacing:0;background-color:#fefefe;width:100%;min-width:620px;table-layout:fixed">
+    <tbody>
+    <tr>
+        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+            <center>
+                <table style="border-collapse:collapse;border-spacing:0;Margin-left:auto;Margin-right:auto;width:600px">
+                    <tbody>
+                    <tr>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;text-align:left;color:#353638">
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <h1 style="Margin-top:0;font-weight:400;font-family:Georgia,serif;font-size:32px;line-height:42px;Margin-bottom:24px">
+                                            You have a new Message</h1>
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:17px;line-height:27px">
+                                            There is a new quote you might be interest in</p>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            Title:</p>
+                                    </td>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            $quote.title</p>
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            Category:</p>
+                                    </td>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            #foreach( $category in $quote.categoryList )
+                                                <span>$category</span>
+                                            #end
+
+                                        </p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            Suburb:</p>
+                                    </td>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            $quoteEmailVO.suburb
+                                        </p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            Description:</p>
+                                    </td>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:14px;line-height:20px">
+                                            $quote.description</p>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <div style="min-height:20px">&nbsp;</div>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <div style="Margin-bottom:27px" align="center">
+                                            <a style="color:#888888;text-decoration:none!important;border-left-color:#888888;border-left-style:solid;border-left-width:1px;border-top-color:#888888;border-top-style:solid;border-top-width:1px;border-bottom-color:#888888;border-bottom-style:solid;border-bottom-width:1px;border-right-color:#888888;border-right-style:solid;border-right-width:1px;border-radius:5px;display:inline-block;font-size:15px;line-height:24px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;text-align:center;font-family:Georgia,serif"
+                                               href="$quoteEmailVO.quoteApplyURL" target="_blank">Replay
+                                                This Quote</a>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:27px;font-size:17px;line-height:27px">
+                                            I want to see <a href="$quoteEmailVO.quoteURL">Quote details</a></p>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </center>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table style="border-collapse:collapse;border-spacing:0;background-color:#fefefe;width:100%;min-width:620px;table-layout:fixed">
+    <tbody>
+    <tr>
+        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+            <center>
+                <table style="border-collapse:collapse;border-spacing:0;Margin-left:auto;Margin-right:auto;width:600px">
+                    <tbody>
+                    <tr>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;text-align:left;color:#353638;width:200px">
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <h2 style="Margin-top:0;font-weight:700;font-family:Georgia,serif;font-size:16px;line-height:24px;Margin-bottom:12px">
+                                            Quote</h2>
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:21px;font-size:13px;line-height:21px">
+                                            You can also find this in your quote box.</p>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <center style="font-size:4px;line-height:4px;Margin-bottom:21px">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span>
+                                        </center>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div style="font-size:9px;line-height:9px">&nbsp;</div>
+                        </td>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;text-align:left;color:#353638;width:200px">
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <h2 style="Margin-top:0;font-weight:700;font-family:Georgia,serif;font-size:16px;line-height:24px;Margin-bottom:12px">
+                                            Contact</h2>
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:21px;font-size:13px;line-height:21px">
+                                            You will get the user contact details after you get permission from User.</p>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <center style="font-size:4px;line-height:4px;Margin-bottom:21px">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span>
+                                        </center>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div style="font-size:9px;line-height:9px">&nbsp;</div>
+                        </td>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;text-align:left;color:#353638;width:200px">
+                            <div>
+                                <div style="font-size:20px;line-height:20px">&nbsp;</div>
+                            </div>
+                            <table style="border-collapse:collapse;border-spacing:0;width:100%">
+                                <tbody>
+                                <tr>
+                                    <td style="padding-top:0;padding-bottom:0;padding-left:20px;padding-right:20px;vertical-align:top">
+
+                                        <h2 style="Margin-top:0;font-weight:700;font-family:Georgia,serif;font-size:16px;line-height:24px;Margin-bottom:12px">
+                                            History</h2>
+
+                                        <p style="Margin-top:0;font-weight:400;letter-spacing:-0.01em;font-family:Georgia,serif;Margin-bottom:21px;font-size:13px;line-height:21px">
+                                            The latest three month contact records will be kept for you. If you need more, contact with Admin.</p>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div style="font-size:9px;line-height:9px">&nbsp;</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </center>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table style="border-collapse:collapse;border-spacing:0;background-color:#fefefe;width:100%;min-width:620px;table-layout:fixed">
+    <tbody>
+    <tr>
+        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+            <center>
+                <table style="border-collapse:collapse;border-spacing:0;Margin-left:auto;Margin-right:auto;width:560px">
+                    <tbody>
+                    <tr>
+                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top"
+                            align="center">
+                            <div style="font-size:11px;line-height:17px;color:#bbbbbb;Margin-bottom:17px;font-family:Georgia,serif">
+                                &nbsp;</div>
+                            <center style="font-size:4px;line-height:4px;Margin-bottom:10px">
+                                <table style="border-collapse:collapse;border-spacing:0;Margin-bottom:27px;Margin-left:auto;Margin-right:auto">
+                                    <tbody>
+                                    <tr>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span></td>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;font-size:1px;line-height:1px;width:8px">
+                                            &nbsp;</td>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span></td>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top;font-size:1px;line-height:1px;width:8px">
+                                            &nbsp;</td>
+                                        <td style="padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;vertical-align:top">
+                                            <span style="background-color:#cccccc;border-radius:2px;display:inline-block;font-size:1px;min-height:4px;line-height:1px;overflow:hidden;width:4px"><img
+                                                    style="border-left-width:0;border-top-width:0;border-bottom-width:0;border-right-width:0"
+                                                    src="https://ci4.googleusercontent.com/proxy/w9xET2uMQEtFsUo_GS6nqcfNMUiJ00s0tA6Aa6fSAOCeB7eL5kdldA4U9RqlBT5jx6MWXVAKwlMbg1dkT6b0RGEGSP7cick0Rt_Q5jk6J-GtkH2UOAjAmuE=s0-d-e1-ft#http://i2.cmail2.com/static/eb/master/04-broadsheet/images/bull.gif"
+                                                    alt="" width="4" height="4"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </center>
+
+                            <div style="color:#bbbbbb;font-size:11px;line-height:17px;Margin-bottom:17px;font-family:Georgia,serif">
+                                <span><a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                         href="http://spring-forest-538.appspot.com/" target="_blank">Huafu</a></span>
+                    <span><span><br>
+</span><span>&nbsp;&nbsp; &nbsp;&nbsp;</span></span>
+                                <span><a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                         href="http://client.updatemyprofile.com/t-l-2AD73FFF-l-j" target="_blank">Preferences</a></span>
+                                <span>&nbsp;&nbsp; &nbsp;&nbsp;</span>
+                                <a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                   href="http://preview.cmail2.com/t/t-u-jjjrhiy-l-t/" target="_blank">Unsubscribe</a>
+                            </div>
+
+                            <div style="color:#bbbbbb;font-size:11px;line-height:17px;Margin-bottom:17px;font-family:Georgia,serif">
+                                <span><a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                         href="http://preview.cmail2.com/t/t-fb-jjjrhiy-l-i/" rel="cs_facebox"
+                                         target="_blank">Facebook</a></span>
+                                <span>&nbsp;&nbsp; &nbsp;&nbsp;</span>
+                                <span><a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                         href="http://preview.cmail2.com/t/t-tw-jjjrhiy-l-d/" target="_blank">Google+</a></span>
+                                <span>&nbsp;&nbsp; &nbsp;&nbsp;</span>
+                                <span><a style="color:#bbbbbb;text-decoration:none;font-weight:700"
+                                         href="http://client.forwardtomyfriend.com/t-l-2AD73FFF-jjjrhiy-l-p"
+                                         target="_blank">WeChat</a></span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="font-size:54px;line-height:54px">&nbsp;</div>
+            </center>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<img style="border-left-width:0!important;border-top-width:0!important;border-bottom-width:0!important;border-right-width:0!important;min-height:1px!important;width:1px!important;margin-top:0!important;margin-bottom:0!important;margin-left:0!important;margin-right:0!important;padding-top:0!important;padding-bottom:0!important;padding-left:0!important;padding-right:0!important"
+     src="https://ci5.googleusercontent.com/proxy/Luiv5E_AhViJM4zIxJ4vIzf8XxjZ6aPmZV5g6iBcqicqJdl5Dd6aRv_JJz3MhUpD-ZBM6K2gPgfonElRu8o=s0-d-e1-ft#https://cmail2.com/t/t-o-jjjrhiy-l/o.gif"
+     width="1" height="1" border="0" alt="">
+
+<div class="yj6qo"></div>
+<div class="adL">
+</div>
+</div>

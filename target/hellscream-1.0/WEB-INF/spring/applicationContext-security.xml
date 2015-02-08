@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<b:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http pattern="/assets/**" security="none" />
+    <http pattern="/favicon.ico" security="none" />
+    <http pattern="/loggedout" security="none" />
+    <http pattern="/404" security="none" />
+    <http pattern="/ws/**" security="none" />
+    <http pattern="/_ah/**" security="none" />
+    <http pattern="loggedout" security="none" />
+    <http pattern="logout" security="none" />
+    <http pattern="login" security="none" />
+
+    <http use-expressions="true" entry-point-ref="gaeEntryPoint">
+        <intercept-url pattern="/" access="permitAll" />
+        <intercept-url pattern="/pq/generate/" access="permitAll" />
+        <intercept-url pattern="/home" access="permitAll" />
+        <intercept-url pattern="/merchant" access="permitAll" />
+        <intercept-url pattern="/quote" access="permitAll" />
+        <intercept-url pattern="/search" access="permitAll" />
+        <intercept-url pattern="/merchant/**" access="permitAll" />
+        <intercept-url pattern="/category/**" access="permitAll" />
+        <intercept-url pattern="/quote/c/**" access="permitAll" />
+        <intercept-url pattern="/register/**" access="permitAll" />
+        <intercept-url pattern="/loginrd" access="permitAll"/>
+        <intercept-url pattern="/login_fb" access="permitAll"/>
+        <intercept-url pattern="/quote/details/**" access="permitAll" />
+        <intercept-url pattern="/quote/t/**" access="hasRole('MERCHANT')"/>
+        <intercept-url pattern="/ad/**" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/m/**" access="hasAnyRole('USER','MERCHANT')" />
+        <intercept-url pattern="/u/**" access="hasAnyRole('USER','MERCHANT')" />
+        <custom-filter position="PRE_AUTH_FILTER" ref="gaeFilter" />
+    </http>
+
+    <b:bean id="gaeEntryPoint" class="au.com.iglooit.hellscream.security.GoogleAccountsAuthenticationEntryPoint" />
+
+    <b:bean id="gaeFilter" class="au.com.iglooit.hellscream.security.GaeAuthenticationFilter">
+        <b:property name="authenticationManager" ref="authenticationManager"/>
+        <b:property name="failureHandler">
+            <b:bean class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+                <b:property name="exceptionMappings">
+                    <b:map>
+                        <b:entry key="org.springframework.security.authentication.DisabledException" value="/disabled.htm" />
+                    </b:map>
+                </b:property>
+            </b:bean>
+        </b:property>
+    </b:bean>
+
+    <b:bean id="facebookLoginHandler" class="au.com.iglooit.hellscream.security.FacebookLoginHandler">
+        <b:property name="authenticationManager" ref="authenticationManager"/>
+        <b:property name="failureHandler">
+            <b:bean class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+                <b:property name="exceptionMappings">
+                    <b:map>
+                        <b:entry key="org.springframework.security.authentication.DisabledException" value="/disabled.htm" />
+                    </b:map>
+                </b:property>
+            </b:bean>
+        </b:property>
+    </b:bean>
+
+    <b:bean id="localLoginHandler" class="au.com.iglooit.hellscream.security.LocalLoginHandler">
+        <b:property name="authenticationManager" ref="authenticationManager"/>
+        <b:property name="failureHandler">
+            <b:bean class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler">
+                <b:property name="exceptionMappings">
+                    <b:map>
+                        <b:entry key="org.springframework.security.authentication.DisabledException" value="/disabled.htm" />
+                    </b:map>
+                </b:property>
+            </b:bean>
+        </b:property>
+    </b:bean>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="gaeAuthenticationProvider"/>
+    </authentication-manager>
+
+    <b:bean id="gaeAuthenticationProvider" class="au.com.iglooit.hellscream.security.GoogleAccountsAuthenticationProvider">
+    </b:bean>
+
+    <b:bean id="userRegistry" class="au.com.iglooit.hellscream.security.GaeDatastoreUserRegistry" />
+
+</b:beans>

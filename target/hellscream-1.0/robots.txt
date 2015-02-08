@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /public/
+Disallow: /WEB-INF/assets/
+Disallow: /WEB-INF/spring/
