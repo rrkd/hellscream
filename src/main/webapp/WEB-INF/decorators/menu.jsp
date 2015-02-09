@@ -86,7 +86,7 @@
                                     <li><a href="/quote/c">Post Quotes</a></li>
                                 </sec:authorize>
                                 <sec:authorize access="isAuthenticated()">
-                                    <c:if test="${not isMerchant}">
+                                    <c:if test="${isMerchant}">
                                         <li><a href="/m/create">List Your Business</a></li>
                                     </c:if>
                                 </sec:authorize>

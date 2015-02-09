@@ -43,11 +43,12 @@ public class SearchController {
 
     @RequestMapping(value = "/search/c", method = RequestMethod.GET)
     public ModelAndView searchCategoryPage(@RequestParam("q") String queryString) {
-        ModelAndView modelAndView = new ModelAndView("search");
+        ModelAndView modelAndView = new ModelAndView("searchResult");
         Category category = categoryDAO.findByCategoryUrl(queryString);
         if (category != null) {
             modelAndView.addObject("merchantList",
                     merchantDAO.findByCategoryName(category.getName()));
+            modelAndView.addObject("category", category);
         } else {
             modelAndView.addObject("merchantList", null);
         }
