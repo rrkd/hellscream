@@ -94,6 +94,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <noCookies>true</noCookies>
                     <enableJarClasses>false</enableJarClasses>
                     <port>${gae.port}</port>
                     <jvmFlags>

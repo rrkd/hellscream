@@ -4,10 +4,14 @@ import au.com.iglooit.hellscream.model.entity.Category;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.vo.MerchantImportVO;
 import au.com.iglooit.hellscream.properties.WebProperties;
+import au.com.iglooit.hellscream.service.configuration.MerchantConfigureService;
 import au.com.iglooit.hellscream.service.dao.CategoryDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.service.queue.GenerateQueue;
 import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
 import com.google.appengine.api.datastore.Text;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +20,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,6 +36,8 @@ public class MerchantImportServiceImpl implements MerchantImportService {
     private MerchantDAO merchantDAO;
     @Resource
     private CategoryDAO categoryDAO;
+    @Resource
+    private MerchantConfigureService merchantConfigureService;
 
     @Override
     public Merchant saveOrUpdateMerchant(MerchantImportVO vo) {
@@ -57,6 +65,26 @@ public class MerchantImportServiceImpl implements MerchantImportService {
             }
         }
         return targetMerchant;
+    }
+
+    @Override
+    public void initMerchant(Integer from, Integer size) {
+        Queue queue = QueueFactory.getQueue(GenerateQueue.MERCHANT_QUEUE_NAME);
+
+        Integer initSize = merchantConfigureService.getMerchantImportVOList().size();
+        if(initSize > 0 && initSize > from) {
+            Integer index = 0;
+            while(initSize > from + index && index < size) {
+                queue.add(withUrl(GenerateQueue.GENERATE_MERCHANT_QUEUE_URL)
+                    .param("index", String.valueOf(from + index)));
+                index ++;
+            }
+        }
+    }
+
+    @Override
+    public Merchant initMerchant(MerchantImportVO vo) {
+        return saveOrUpdateMerchant(vo);
     }
 
     private void fillUpMerchant(Merchant targetMerchant, MerchantImportVO vo) {

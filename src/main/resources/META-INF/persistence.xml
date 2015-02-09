@@ -16,6 +16,7 @@
         <class>au.com.iglooit.hellscream.model.entity.Suburb</class>
         <class>au.com.iglooit.hellscream.model.entity.QuoteContactMsg</class>
         <class>au.com.iglooit.hellscream.model.entity.Statistic</class>
+        <class>au.com.iglooit.hellscream.model.entity.InitMerchant</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>

@@ -4,7 +4,10 @@ import au.com.bytecode.opencsv.CSVReader;
 import au.com.iglooit.hellscream.model.vo.MerchantImportVO;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.merchant.MerchantImportService;
+import au.com.iglooit.hellscream.service.queue.GenerateQueue;
 import com.google.appengine.api.datastore.Text;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +21,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+
+import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
 /**
  * Created with IntelliJ IDEA.
@@ -40,6 +45,8 @@ public class MerchantConfigureService {
     private static final Integer CONTACT1 = 9;
     private static final Integer CONTACT2 = 10;
     private static final Integer CATEGORY = 11;
+
+    private final List<MerchantImportVO> merchantImportVOList = new ArrayList<>();
     @Resource
     private MerchantImportService merchantImportService;
 
@@ -57,6 +64,8 @@ public class MerchantConfigureService {
      * tradeName,merchantName,description,address1,address2,address3,email,phone,mobile,contact1,contact2,categoryList;
      */
     private void initMerchant() throws IOException, URISyntaxException {
+        Queue queue = QueueFactory.getQueue(GenerateQueue.MERCHANT_QUEUE_NAME);
+
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 
       //  InputStream is = classloader.getResourceAsStream("data/merchant.csv");
@@ -74,7 +83,8 @@ public class MerchantConfigureService {
             if (StringUtils.isBlank(tradeName)) {
                 continue;
             }
-            merchantImportService.saveOrUpdateMerchant(fillUpMerchantImportVO(nextLine));
+            merchantImportVOList.add(fillUpMerchantImportVO(nextLine));
+//            merchantImportService.saveOrUpdateMerchant(fillUpMerchantImportVO(nextLine));
         }
             j++;
         }
@@ -107,5 +117,9 @@ public class MerchantConfigureService {
         vo.setContact2(contact2);
         vo.setCategory(category);
         return vo;
+    }
+
+    public List<MerchantImportVO> getMerchantImportVOList() {
+        return merchantImportVOList;
     }
 }

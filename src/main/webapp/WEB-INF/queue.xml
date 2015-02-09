@@ -13,7 +13,14 @@
   </queue>
   <queue>
     <name>suburb-q</name>
-    <rate>10/m</rate>
+    <rate>5/m</rate>
     <max-concurrent-requests>1</max-concurrent-requests>
   </queue>
+
+  <queue>
+    <name>merchant-q</name>
+    <rate>5/m</rate>
+    <max-concurrent-requests>1</max-concurrent-requests>
+  </queue>
+
 </queue-entries>

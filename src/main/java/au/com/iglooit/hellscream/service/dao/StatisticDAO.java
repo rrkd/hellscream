@@ -21,4 +21,6 @@ public interface StatisticDAO extends IEntityService<Statistic> {
     Long countQuoteFeedbackMsg();
     void addSuburb();
     Long countSuburb();
+    void addInitMerchant();
+    Long countInitMerchant();
 }

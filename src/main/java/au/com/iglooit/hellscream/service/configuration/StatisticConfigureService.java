@@ -27,7 +27,8 @@ public class StatisticConfigureService {
             QuoteMerchantMsg.class.getName(),
             QuoteTransaction.class.getName(),
             QuoteFeedbackMsg.class.getName(),
-            Suburb.class.getName()
+            Suburb.class.getName(),
+            InitMerchant.class.getName()
     };
     @Resource
     private StatisticDAO statisticDAO;

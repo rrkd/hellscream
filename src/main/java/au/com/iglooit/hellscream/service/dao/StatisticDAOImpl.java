@@ -91,6 +91,16 @@ public class StatisticDAOImpl extends BaseRepository<Statistic> implements Stati
         return countClass(Suburb.class);
     }
 
+    @Override
+    public void addInitMerchant() {
+        addClass(InitMerchant.class);
+    }
+
+    @Override
+    public Long countInitMerchant() {
+        return countClass(InitMerchant.class);
+    }
+
     private void addClass(Class clazz) {
         Query q = getEntityManager()
                 .createQuery("select q from Statistic q " +

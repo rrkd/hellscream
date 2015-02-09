@@ -11,4 +11,6 @@ import au.com.iglooit.hellscream.model.vo.MerchantImportVO;
  */
 public interface MerchantImportService {
     Merchant saveOrUpdateMerchant(MerchantImportVO vo);
+    void initMerchant(Integer from, Integer size);
+    Merchant initMerchant(MerchantImportVO vo);
 }

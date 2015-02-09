@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.aop;
 
 import au.com.iglooit.hellscream.model.entity.*;
+import au.com.iglooit.hellscream.model.vo.MerchantImportVO;
 import au.com.iglooit.hellscream.service.dao.StatisticDAO;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -51,6 +52,12 @@ public class StatisticAspect {
         "&& args(suburb)")
     public void afterCreateQuoteTransaction(Suburb suburb) {
         statisticDAO.addSuburb();
+    }
+
+    @After("execution(* au.com.iglooit.hellscream.service.merchant.MerchantImportService.initMerchant(..)) " +
+        "&& args(vo)")
+    public void afterInitMerchantTransaction(MerchantImportVO vo) {
+        statisticDAO.addInitMerchant();
     }
 
 

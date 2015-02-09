@@ -16,6 +16,11 @@
         <schedule>every day 00:00</schedule>
     </cron>
     <cron>
+        <url>/ws/merchant/init</url>
+        <description>Init suburb data every 1 day</description>
+        <schedule>every day 04:00</schedule>
+    </cron>
+    <cron>
         <url>/ws/version</url>
         <description>Repopulate the cache every 11 minutes</description>
         <schedule>every 11 minutes</schedule>

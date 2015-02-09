@@ -52,4 +52,9 @@ public class StatisticServiceImpl implements StatisticService {
     public Long suburbCount() {
         return statisticDAO.countSuburb();
     }
+
+    @Override
+    public Long initMerchantCount() {
+        return statisticDAO.countInitMerchant();
+    }
 }

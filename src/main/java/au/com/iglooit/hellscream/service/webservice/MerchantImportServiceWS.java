@@ -3,6 +3,7 @@ package au.com.iglooit.hellscream.service.webservice;
 import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.MerchantImportVO;
 import au.com.iglooit.hellscream.service.merchant.MerchantImportService;
+import au.com.iglooit.hellscream.service.statistic.StatisticService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -22,8 +23,11 @@ import javax.annotation.Resource;
 @Controller
 public class MerchantImportServiceWS {
     private static final Logger LOG = LoggerFactory.getLogger(MerchantImportServiceWS.class);
+    private static final Integer SIZE = 100;
     @Resource
     private MerchantImportService merchantImportService;
+    @Resource
+    private StatisticService statisticService;
 
     @RequestMapping(value = "/ws/merchantImport",
             method = RequestMethod.POST,
@@ -33,5 +37,15 @@ public class MerchantImportServiceWS {
     JsonResponse addMerchant(@RequestBody MerchantImportVO vo) {
         merchantImportService.saveOrUpdateMerchant(vo);
         return new JsonResponse(JsonResponse.OK, "Import a merchant: " + vo.getTradeName());
+    }
+
+    @RequestMapping(value = "/ws/merchant/init",
+        method = RequestMethod.GET)
+    public
+    @ResponseBody
+    JsonResponse addMerchant() {
+        Integer from = statisticService.initMerchantCount().intValue();
+        merchantImportService.initMerchant(from, SIZE);
+        return new JsonResponse(JsonResponse.OK, "Import merchant from : " + from + "; size is " + SIZE);
     }
 }
