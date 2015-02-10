@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -36,19 +37,24 @@ public class SearchController {
         modelAndView.addObject("categoryGroupList", categoryGroupDAO.loadAll());
         modelAndView.addObject("queryKey", queryString);
         modelAndView.addObject("merchantList",
-                merchantFTSearchService.searchByKeyWordAndLocal(
-                        queryString.replaceAll(" ", "-"), localString, "", 0, -1));
+            merchantFTSearchService.searchByKeyWordAndLocal(
+                queryString.replaceAll(" ", "-"), localString, "", 0, -1));
         return modelAndView;
     }
 
     @RequestMapping(value = "/search/c", method = RequestMethod.GET)
     public ModelAndView searchCategoryPage(@RequestParam("q") String queryString) {
         ModelAndView modelAndView = new ModelAndView("searchResult");
-        Category category = categoryDAO.findByCategoryUrl(queryString);
+        final Category category = categoryDAO.findByCategoryUrl(queryString);
         if (category != null) {
             modelAndView.addObject("merchantList",
-                    merchantDAO.findByCategoryName(category.getName()));
-            modelAndView.addObject("category", category);
+                merchantDAO.findByCategoryName(new ArrayList<String>() {
+                    {
+                        add(category.getName());
+                        add(category.getTradeName());
+                    }
+                }));
+            modelAndView.addObject("filterCategory", category);
         } else {
             modelAndView.addObject("merchantList", null);
         }

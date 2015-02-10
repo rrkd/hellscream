@@ -8,6 +8,7 @@ import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
+import au.com.iglooit.hellscream.service.dao.SuburbDAO;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
@@ -41,6 +42,8 @@ public class QuoteController {
     private QuoteService quoteService;
     @Resource
     private CategoryGroupDAO categoryGroupDAO;
+    @Resource
+    private SuburbDAO suburbDAO;
 
     @RequestMapping(value = "/quote/c", method = RequestMethod.GET)
     public ModelAndView postQuotePage() {
@@ -104,6 +107,16 @@ public class QuoteController {
 
         modelAndView.addObject("quote", quote);
         modelAndView.addObject("quoteList", quoteService.latestQuoteList());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/quote/merchant/{canonicalSlugId}", method = RequestMethod.GET)
+    public ModelAndView createQuoteByMerchant(@PathVariable String canonicalSlugId) {
+        Merchant merchant = merchantDAO.findByURL(canonicalSlugId);
+        ModelAndView modelAndView = new ModelAndView("quote/merchantQuoteCreate");
+
+        modelAndView.addObject("merchant", merchant);
+
         return modelAndView;
     }
 }

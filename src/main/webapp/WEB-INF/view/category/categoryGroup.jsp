@@ -12,10 +12,10 @@
 <div id="content" class="top30">
     <c:forEach items="${categoryGroupList}" var="categoryGroup">
 
-            <h4><a href="categoryGroup/${categoryGroup.url}">${categoryGroup.name}</a> </h4>
+            <h4><a href="categoryGroup/${categoryGroup.url}">${categoryGroup.tradeName}</a> </h4>
             <div class="inneritem span11">
                 <c:forEach items="${categoryGroup.categoryList}" var="category">
-                    <a href="/search/c?q=${category.url}">${category.name} (100)</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/search/c?q=${category.url}">${category.tradeName} (${category.merchantCount})</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 </c:forEach>
             </div>
     </c:forEach>

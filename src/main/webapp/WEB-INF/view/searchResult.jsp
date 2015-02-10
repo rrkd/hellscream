@@ -41,7 +41,15 @@
                 <div class="span4">
                     <select name="name" size="30" id="filterCategory"
                             class="populate placeholder select2-offscreen span12" style="margin-bottom: 10px; margin-left: 0;">
-                        <option value="">All Category</option>
+                      <c:choose>
+                        <c:when test="${not empty filterCategory.name}">
+                          <option value="${filterCategory.name}" selected="selected">${filterCategory.name}</option>
+                        </c:when>
+                        <c:otherwise>
+                          <option value="">All Category</option>
+                        </c:otherwise>
+                      </c:choose>
+
                         <c:forEach items="${categoryGroupList}" var="categoryGroup">
                             <optgroup label="${categoryGroup.name}">
                                 <c:forEach items="${categoryGroup.categoryList}" var="category">
@@ -81,7 +89,7 @@
 
                 <p>
 
-                    <a href="merchant/details/${heroMerchant.url}" class="btn btn-primary btn-large">Read more
+                    <a href="/merchant/details/${heroMerchant.url}" class="btn btn-primary btn-large">Read more
                         >></a>
 
                 </p>

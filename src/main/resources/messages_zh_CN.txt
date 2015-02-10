@@ -380,6 +380,7 @@ postquote.quotecreated=成功发布
 postquote.createdmessage=你的报价请求已经成功发布！
 postquote.gohome=返回主页
 postquote.myquote=浏览报价请求页
+postquote.merchant=商家
 
 myquote.title=请求报价列表
 myquote.myquote=我的报价请求

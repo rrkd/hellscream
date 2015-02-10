@@ -74,7 +74,7 @@
         <br/>
         <p class="clearfix">
 
-            <a href="contact.html" class="btn btn-primary"><i class="icon icon-envelope"></i>&nbsp; <spring:message code="merchantdetail.wanttocontact" /></a>
+            <a href="/quote/merchant/${vo.merchant.canonicalSlugId}" class="btn btn-primary"><i class="icon icon-envelope"></i>&nbsp; <spring:message code="merchantdetail.wanttocontact" /></a>
 
         </p>
 
