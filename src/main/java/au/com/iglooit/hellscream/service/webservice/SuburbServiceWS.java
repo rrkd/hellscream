@@ -46,7 +46,7 @@ public class SuburbServiceWS {
     public
     @ResponseBody
     JsonResponse countSuburbData() {
-        return new JsonResponse(JsonResponse.OK, "current Count is: " + suburbDAO.count());
+        return new JsonResponse(JsonResponse.OK, "current Count is: " + statisticService.suburbCount().intValue());
     }
 
     @RequestMapping(value = "/ws/suburb", method = RequestMethod.POST,

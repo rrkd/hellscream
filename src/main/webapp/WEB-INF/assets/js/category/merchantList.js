@@ -5,7 +5,7 @@ var size = 5;
 var currentIndex = 1;
 jQuery(document).ready(function ($) {
     keyword = getUrlParameter('q') === undefined ? "" : getUrlParameter('q');
-    suburb = getUrlParameter('local') === undefined ? "" : getUrlParameter('local');
+    suburb = getUrlParameter('suburb') === undefined ? "" : getUrlParameter('suburb');
     category = getUrlParameter('category') === undefined ? "" : getUrlParameter('category');
     initRank();
     initSearchResult();
@@ -51,7 +51,7 @@ jQuery(document).ready(function ($) {
         if ($('#filterCategory').select2('data') != null) {
             filterCategory = $('#filterCategory').select2('data').id;
         }
-        window.location.href = "search?q=" + filterWord + "&local=" + filterSuburb + "&category=" + filterCategory;
+        window.location.href = "search?q=" + filterWord + "&suburb=" + filterSuburb + "&category=" + filterCategory;
     });
 
 });
@@ -70,7 +70,7 @@ function initSearchResult() {
 function loadDate(from, size) {
     $.ajax({
         type:"GET",
-        url:"/ws/search?q=" + keyword + "&local=" + suburb + "&from=" + from + "&size=" + size + "&category=" + category,
+        url:"/ws/search?q=" + keyword + "&suburb=" + suburb + "&from=" + from + "&size=" + size + "&category=" + category,
         success:function (data) {
             appendToResultBox(data);
         }

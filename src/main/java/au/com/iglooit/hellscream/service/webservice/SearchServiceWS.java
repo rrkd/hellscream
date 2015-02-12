@@ -26,7 +26,7 @@ public class SearchServiceWS {
     @RequestMapping(value = "/ws/search", method = RequestMethod.GET)
     public
     @ResponseBody
-    List<Merchant> contactUsEmail(@RequestParam("local") String local, @RequestParam("q") String key,
+    List<Merchant> searchMerchant(@RequestParam("suburb") String local, @RequestParam("q") String key,
                                 @RequestParam("from") Integer from, @RequestParam("size") Integer size,
                                 @RequestParam("category") String category) {
         if (size == null) {

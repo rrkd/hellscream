@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.model.entity;
 
 import au.com.iglooit.hellscream.model.GeoIndexTypeConstant;
+import au.com.iglooit.hellscream.utils.CanonicalSlugIdConvert;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.Field;
@@ -23,6 +24,7 @@ public class Suburb extends BaseEntity {
     private String state;
     private BigDecimal latitude;
     private BigDecimal longitude;
+    private String canonicalSlugId;
 
     public Suburb() {
 
@@ -34,6 +36,7 @@ public class Suburb extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+        canonicalSlugId = CanonicalSlugIdConvert.convertToURL(name + "-" + postCode);
     }
 
     public String getPostCode() {
@@ -42,6 +45,7 @@ public class Suburb extends BaseEntity {
 
     public void setPostCode(String postCode) {
         this.postCode = postCode;
+        canonicalSlugId = CanonicalSlugIdConvert.convertToURL(name + "-" + postCode);
     }
 
     public String getState() {
@@ -66,6 +70,15 @@ public class Suburb extends BaseEntity {
 
     public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
+    }
+
+    public String getCanonicalSlugId() {
+        canonicalSlugId = CanonicalSlugIdConvert.convertToURL(name + "-" + postCode);
+        return canonicalSlugId;
+    }
+
+    public void setCanonicalSlugId(String canonicalSlugId) {
+        this.canonicalSlugId = canonicalSlugId;
     }
 
     @Override

@@ -49,24 +49,29 @@ public class SuburbDAOImpl extends BaseRepository<Suburb> implements SuburbDAO {
     }
 
     @Override
+    public Suburb findByCanonicalSlugId(String canonicalSlugId) {
+        Query q = getEntityManager()
+            .createQuery("select q from Suburb q " +
+                "where q.canonicalSlugId=:canonicalSlugId ")
+            .setMaxResults(1)
+            .setParameter("canonicalSlugId", canonicalSlugId);
+        return q.getResultList().size() > 0 ? ((List<Suburb>) q.getResultList()).get(0) : null;
+    }
+
+    @Override
     public List<SuburbVO> findByKeyword(String key) {
         List<SuburbVO> result = new ArrayList<>();
         Query q = getEntityManager()
                 .createQuery("select q from Suburb q " +
                         "where q.name>=:name1 and q.name<:name2")
+                .setMaxResults(5)
                 .setParameter("name1", key.toUpperCase())
                 .setParameter("name2", key.toUpperCase() + "ZZZZZZZZZZZ");
-        for(Suburb suburb : (List<Suburb>)q.getResultList()) {
+        List<Suburb> suburbList = (List<Suburb>)q.getResultList();
+        for(Suburb suburb : suburbList) {
             SuburbVO vo = new SuburbVO(suburb);
             result.add(vo);
         }
         return result;
-    }
-
-    @Override
-    public Long count() {
-        Query q = getEntityManager()
-                .createQuery("select count(1) from Suburb q ");
-        return (Long)q.getSingleResult();
     }
 }

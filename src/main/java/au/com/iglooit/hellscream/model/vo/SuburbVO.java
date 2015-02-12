@@ -20,7 +20,7 @@ public class SuburbVO implements Serializable {
     }
 
     public SuburbVO(Suburb suburb) {
-        this.id = suburb.getKeyString();
+        this.id = suburb.getCanonicalSlugId();
         this.text = suburb.getName() + " - " + suburb.getPostCode() + " (" + suburb.getState() + ")";
         this.postCode = suburb.getPostCode();
     }

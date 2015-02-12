@@ -5,10 +5,11 @@ var size = 5;
 var currentIndex = 1;
 jQuery(document).ready(function ($) {
     keyword = getUrlParameter('q') === undefined ? "" : getUrlParameter('q');
-    suburb = getUrlParameter('local') === undefined ? "" : getUrlParameter('local');
+    suburb = getUrlParameter('suburb') === undefined ? "" : getUrlParameter('suburb');
     category = getUrlParameter('category') === undefined ? "" : getUrlParameter('category');
     initRank();
     initSearchResult();
+    initSuburb();
     $('#loadMore').click(function () {
         currentIndex = currentIndex + size;
         loadDate(currentIndex, size);
@@ -46,20 +47,22 @@ jQuery(document).ready(function ($) {
         var filterSuburb = "";
         var filterCategory = "";
         if ($('#filterSuburb').select2('data') != null) {
-            filterSuburb = $('#filterSuburb').select2('data').postCode;
+            filterSuburb = $('#filterSuburb').select2('data').id;
         }
         if ($('#filterCategory').select2('data') != null) {
             filterCategory = $('#filterCategory').select2('data').id;
         }
-        window.location.href = "search?q=" + filterWord + "&local=" + filterSuburb + "&category=" + filterCategory;
+        window.location.href = "/search?q=" + filterWord + "&suburb=" + filterSuburb + "&category=" + filterCategory;
     });
 
 });
 
 function initRank() {
-    $('.merchant-rank').raty({readOnly: true});
-    $('.merchant-rank').each(function () {
-        $(this).raty('score', $(this).attr("data-rank"));
+    $('.merchant-rank').raty({
+        score: function () {
+            return $(this).attr('data-rank');
+        },
+        readOnly: true
     });
 }
 
@@ -70,7 +73,7 @@ function initSearchResult() {
 function loadDate(from, size) {
     $.ajax({
         type:"GET",
-        url:"/ws/search?q=" + keyword + "&local=" + suburb + "&from=" + from + "&size=" + size + "&category=" + category,
+        url:"/ws/search?q=" + keyword + "&suburb=" + suburb + "&from=" + from + "&size=" + size + "&category=" + category,
         success:function (data) {
             appendToResultBox(data);
         }
@@ -102,4 +105,21 @@ function appendToResultBox(data) {
             '</div>');
     }
     initRank();
+}
+
+function initSuburb(){
+    if(suburb) {
+        $.ajax({
+            type:"GET",
+            url:"/ws/geo/suburb/" + suburb,
+            contentType:'application/json',
+            success:function (data) {
+                if (data && data.suburbVOList) {
+                    if(data.suburbVOList.length > 0){
+                        $('#filterSuburb').select2('data',data.suburbVOList[0])
+                    }
+                }
+            }
+        });
+    }
 }

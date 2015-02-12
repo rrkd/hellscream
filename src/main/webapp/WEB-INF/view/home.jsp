@@ -466,7 +466,7 @@
     <div class="span4">
         <div class="grey-box-icon" align="left">
             <c:forEach items="${homeCategoryList}" var="category" begin="0" end="3">
-            <h5><a href="search?q=&local=&category=${category.tradeName}">${category.tradeName}</a></h5>
+            <h5><a href="search?q=&suburb=&category=${category.tradeName}">${category.tradeName}</a></h5>
             </c:forEach>
         </div>
 
@@ -474,7 +474,7 @@
     <div class="span4">
         <div class="grey-box-icon" align="left">
             <c:forEach items="${homeCategoryList}" var="category" begin="4" end="7">
-                <h5><a href="search?q=&local=&category=${category.tradeName}">${category.tradeName}</a></h5>
+                <h5><a href="search?q=&suburb=&category=${category.tradeName}">${category.tradeName}</a></h5>
             </c:forEach>
         </div>
 
@@ -482,7 +482,7 @@
     <div class="span4">
         <div class="grey-box-icon" align="left">
             <c:forEach items="${homeCategoryList}" var="category" begin="8" end="11">
-                <h5><a href="search?q=&local=&category=${category.tradeName}">${category.tradeName}</a></h5>
+                <h5><a href="search?q=&suburb=&category=${category.tradeName}">${category.tradeName}</a></h5>
             </c:forEach>
         </div>
 
