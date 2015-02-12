@@ -17,6 +17,7 @@
 </div>
 <div class="row-fluid">
     <div class="span12">
+        <a href="/u/q"><i class="icon icon-th-large"></i>&nbsp;<spring:message code="myquote.title" /> << </a>
         <div class="listContainer">
             <table class="table table-striped table-hover">
                 <thead>

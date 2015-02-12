@@ -79,6 +79,7 @@
                 <p>
                     <div class="merchant-rank" data-rank="${heroMerchant.rank}"></div>
                 </p>
+                <h6>${heroMerchant.formatAddress}</h6>
                 <p>
 
                     <img src="${heroMerchant.imageFileName}" class="pull-left paddingright" alt=""

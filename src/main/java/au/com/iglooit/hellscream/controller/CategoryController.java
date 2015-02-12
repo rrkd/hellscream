@@ -46,6 +46,8 @@ public class CategoryController {
         if(category == null) {
             return new ModelAndView("redirect: /error/404");
         }
+        modelAndView.addObject("category", category);
+        modelAndView.addObject("merchantList", merchantDAO.findByCategoryName(category.getName()));
         return modelAndView;
     }
 

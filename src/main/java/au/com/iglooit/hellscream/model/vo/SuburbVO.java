@@ -14,6 +14,7 @@ public class SuburbVO implements Serializable {
     private String id;
     private String postCode;
     private String text;
+    private String keyString;
 
     public SuburbVO() {
 
@@ -23,6 +24,7 @@ public class SuburbVO implements Serializable {
         this.id = suburb.getCanonicalSlugId();
         this.text = suburb.getName() + " - " + suburb.getPostCode() + " (" + suburb.getState() + ")";
         this.postCode = suburb.getPostCode();
+        this.keyString = suburb.getKeyString();
     }
 
     public String getId() {
@@ -47,5 +49,13 @@ public class SuburbVO implements Serializable {
 
     public void setPostCode(String postCode) {
         this.postCode = postCode;
+    }
+
+    public String getKeyString() {
+        return keyString;
+    }
+
+    public void setKeyString(String keyString) {
+        this.keyString = keyString;
     }
 }

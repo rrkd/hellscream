@@ -77,6 +77,7 @@
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Service
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu js-activated" style="display: none;">
+                              <li><a href="/category">All Category</a></li>
                                 <sec:authorize access="isAuthenticated()">
                                     <c:if test="${isUser && not isMerchant}">
                                         <li><a href="/quote/c">Post Quotes</a></li>

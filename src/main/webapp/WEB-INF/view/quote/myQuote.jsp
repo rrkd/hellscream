@@ -27,16 +27,13 @@
 
                 <ul>
 
-                    <li><a href="" data-filter="*" class="filter-btn selected"><i class="icon icon-reorder"></i>&nbsp;<spring:message code="myquote.allitems" /></a>
-                    </li>
-
-                    <li><a href="" data-filter=".Quoting" class="filter-btn"><i class="icon icon-th-large"></i>&nbsp;<spring:message code="myquote.quoting" /></a></li>
+                    <li><a href="" data-filter=".Quoting" class="filter-btn selected"><i class="icon icon-th-large"></i>&nbsp;<spring:message code="myquote.quoting" /></a></li>
 
                     <li><a href="" data-filter=".Contacting" class="filter-btn"><i class="icon icon-comment"></i>&nbsp;<spring:message code="myquote.contacting" /></a></li>
 
                     <li><a href="" data-filter=".Feedback" class="filter-btn"><i class="icon icon-thumbs-up"></i>&nbsp;<spring:message code="myquote.feedback" /></a></li>
 
-                    <li><a href="/u/qa"><i class="icon icon-archive"></i>&nbsp;<spring:message code="myquote.history" /></a></li>
+                    <li><a href="/u/qa"><i class="icon icon-reorder"></i>&nbsp;<spring:message code="myquote.history" /></a></li>
 
                 </ul>
 

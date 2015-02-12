@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="page-header">
 
-    <h1>Category</h1>
+    <h1><spring:message code="home.viewallcategories"></spring:message></h1>
 
     <div class="headerdivider">
 
@@ -15,7 +15,7 @@
             <h4><a href="categoryGroup/${categoryGroup.url}">${categoryGroup.tradeName}</a> </h4>
             <div class="inneritem span11">
                 <c:forEach items="${categoryGroup.categoryList}" var="category">
-                    <a href="/search/c?q=${category.url}">${category.tradeName} (${category.merchantCount})</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/category/${category.url}">${category.tradeName} (${category.merchantCount})</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 </c:forEach>
             </div>
     </c:forEach>

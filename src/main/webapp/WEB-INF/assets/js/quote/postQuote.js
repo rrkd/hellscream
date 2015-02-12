@@ -74,7 +74,7 @@ jQuery(document).ready(function ($) {
 function generateQuote() {
     var suburb = null;
     if ($('#suburb').select2('data') != null) {
-        suburb = $('#suburb').select2('data').id;
+        suburb = $('#suburb').select2('data').keyString;
     }
     var quote = {
         clientUserEmail:$('#email').val(),

@@ -67,6 +67,9 @@ public class QuoteController {
         ModelAndView modelAndView = new ModelAndView("quote/quoteDetails");
         Quote quote = quoteDAO.loadQuote(KeyFactory.stringToKey(keyString));
         modelAndView.addObject("quote", quote);
+        if(quote.getSuburbKey() != null) {
+            modelAndView.addObject("suburb", suburbDAO.findByKey(quote.getSuburbKey()));
+        }
         modelAndView.addObject("quoteList", quoteService.latestQuoteList());
         return modelAndView;
     }

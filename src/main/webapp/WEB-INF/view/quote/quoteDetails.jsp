@@ -26,15 +26,13 @@
 
                     <div class="sectiontitlepost">
 
-                        <h1><spring:message code="quotedetail.title" /> - ${quote.title}</h1>
+                        <h1>${quote.title}</h1>
 
                     </div>
 
                     <div class="entry-meta">
 
-                        <a href="#"><spring:message code="quotedetail.quotedate" /></a><span class="entry-date">${quote.postDate}</span>
-
-                        <span class="pull-right"><a href="#"><span>3</span><spring:message code="quotedetail.comments" /></a></span>
+                        <a href="/u/q"><i class="icon icon-th-large"></i>&nbsp;<spring:message code="myquote.title" /> << </a>
 
                     </div>
 
@@ -56,7 +54,7 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span4"><spring:message code="quotedetail.location" /></div>
-                            <div class="span8"></div>
+                            <div class="span8">${suburb.name} - ${suburb.postCode} (${suburb.state})</div>
                         </div>
                         <div class="row-fluid">
                             <div class="span4"><spring:message code="quotedetail.description" /></div>
@@ -66,9 +64,7 @@
 
                     <footer class="entry-meta">
 
-                        Posted in <a href="#" title="View all posts in Stories">Stories</a> and tagged <a href="#"
-                                                                                                          rel="tag">grace</a>
-                        by <a href="#">serenity</a>.
+                      <a href="#"><spring:message code="quotedetail.quotedate" /></a> <fmt:formatDate type="both" value="${quote.postDate}" />.
                     </footer>
 
                 </div>
