@@ -1,9 +1,11 @@
 package au.com.iglooit.hellscream.service.webservice;
 
 import au.com.iglooit.hellscream.model.entity.QuoteFeedbackMsg;
+import au.com.iglooit.hellscream.model.vo.JsonResponse;
 import au.com.iglooit.hellscream.model.vo.QuoteVO;
 import au.com.iglooit.hellscream.service.dao.QuoteFeedbackMsgDAO;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
+import au.com.iglooit.hellscream.service.suggest.SuggestMerchantService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,8 @@ public class SuggestServiceWS {
     private QuoteFeedbackMsgDAO quoteFeedbackMsgDAO;
     @Resource
     private QuoteService quoteService;
+    @Resource
+    private SuggestMerchantService suggestMerchantService;
 
     @RequestMapping(value = "/ws/ss/latestFeedbackMsg",
             method = RequestMethod.GET,
@@ -46,5 +50,15 @@ public class SuggestServiceWS {
         List<QuoteVO> result = quoteService.latestQuoteList();
         LOG.info("[NICK] size of latestQuote is " + result.size());
         return result;
+    }
+
+    @RequestMapping(value = "/ws/suggest/merchant/update",
+        method = RequestMethod.GET)
+    public
+    @ResponseBody
+    JsonResponse updateSuggestMerchants() {
+        LOG.info("[NICK] Update Suggest Merchant Data");
+        suggestMerchantService.updateHomeSuggestMerchant();
+        return new JsonResponse(JsonResponse.OK, "Update Suggest Merchant Data.");
     }
 }

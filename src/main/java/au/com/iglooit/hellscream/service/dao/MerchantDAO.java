@@ -38,4 +38,9 @@ public interface MerchantDAO extends IEntityService<Merchant> {
     List<Merchant> findLatestMerchant(Integer size);
 
     Long countMerchant();
+
+    Merchant findBestOfToday();
+    Merchant findHighOfRank();
+    Merchant findHottestOfWeek();
+    Merchant findRecommendOfToday();
 }

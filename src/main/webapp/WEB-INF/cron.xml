@@ -26,6 +26,11 @@
         <schedule>every 11 minutes</schedule>
     </cron>
     <cron>
+        <url>/ws/suggest/merchant/update</url>
+        <description>Update the suggest data</description>
+        <schedule>every 60 minutes</schedule>
+    </cron>
+    <cron>
         <url>/_ah/sessioncleanup?clear</url>
         <description>Clean up sessions</description>
         <schedule>every 60 minutes</schedule>

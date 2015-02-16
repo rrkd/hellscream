@@ -9,6 +9,7 @@ import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.repository.BaseRepository;
 import au.com.iglooit.hellscream.service.IndexServiceHelp;
 import au.com.iglooit.hellscream.service.search.GeoSearchService;
+import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.Index;
@@ -56,17 +57,17 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     @Override
     public List<Merchant> findMerchants(int pos, int size) {
         Query q = getEntityManager().createQuery("select c from Merchant c ")
-                .setFirstResult(pos)
-                .setMaxResults(size);
+            .setFirstResult(pos)
+            .setMaxResults(size);
         return q.getResultList();
     }
 
     @Override
     public Merchant findByTradeName(String tradeName) {
         Query q = getEntityManager().createQuery("select c from Merchant c where c.tradeName=:tradeName ")
-                .setParameter("tradeName", tradeName);
+            .setParameter("tradeName", tradeName);
         List<Merchant> result = q.getResultList();
-        if(result.size() > 0) {
+        if (result.size() > 0) {
             return result.get(0);
         }
         return null;
@@ -114,6 +115,7 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
             merchant.setPostcode(result.getPostcode());
             merchant.setSuburb(result.getSuburb());
         }
+        merchant.setLastUpdateTime(DateUtils.getNow());
         update(merchant);
         // get full index
         Index merchantIndex = indexServiceHelp.getMerchantIndex();
@@ -145,7 +147,7 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     public List<Merchant> findByCategoryName(String categoryName) {
         LOG.info("query merchant by " + categoryName);
         Query q = getEntityManager().createQuery("select c from Merchant c where c.categoryList=:categoryName ")
-                .setParameter("categoryName", categoryName);
+            .setParameter("categoryName", categoryName);
         return q.getResultList();
     }
 
@@ -172,11 +174,11 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     @Override
     public Boolean checkExistMerchant(String tradeName, String email) {
         Query q1 = getEntityManager().createQuery("select c from Merchant c " +
-                "where c.tradeName=:tradeName")
-                .setParameter("tradeName", tradeName);
+            "where c.tradeName=:tradeName")
+            .setParameter("tradeName", tradeName);
         Query q2 = getEntityManager().createQuery("select c from Merchant c " +
-                "where c.email=:email ")
-                .setParameter("email", email);
+            "where c.email=:email ")
+            .setParameter("email", email);
         return q1.getResultList().size() > 0 || q2.getResultList().size() > 0 ? Boolean.TRUE : Boolean.FALSE;
     }
 
@@ -184,8 +186,8 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     public SearchResultVO<MerchantVO> findMerchants(Integer pageNumber) {
         Integer startPage = pageNumber == null ? 1 : pageNumber;
         Query q = getEntityManager().createQuery("select c from Merchant c order by c.postDate desc")
-                .setMaxResults(PAGE_COUNT)
-                .setFirstResult((startPage - 1) * PAGE_COUNT);
+            .setMaxResults(PAGE_COUNT)
+            .setFirstResult((startPage - 1) * PAGE_COUNT);
         Query countQuery = getEntityManager().createQuery("select c from Merchant c order by c.postDate desc");
 
         SearchResultVO<MerchantVO> resultVO = new SearchResultVO<MerchantVO>();
@@ -208,8 +210,8 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     @Override
     public Merchant findByURL(String canonicalSlugId) {
         Query q = getEntityManager().createQuery("select c from Merchant c " +
-                "where c.canonicalSlugId=:canonicalSlugId")
-                .setParameter("canonicalSlugId", canonicalSlugId);
+            "where c.canonicalSlugId=:canonicalSlugId")
+            .setParameter("canonicalSlugId", canonicalSlugId);
         List<Merchant> resultList = q.getResultList();
         return resultList.size() > 0 ? resultList.get(0) : null;
     }
@@ -219,15 +221,15 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
         assert StringUtils.isNotBlank(prefix);
         Integer startPage = pageNumber == null ? 1 : pageNumber;
         Query q = getEntityManager().createQuery("select c from Merchant c " +
-                "where c.tradeName>=:key1 and c.tradeName<:key2 ")
-                .setParameter("key1", prefix)
-                .setParameter("key2", prefix + "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
-                .setMaxResults(PAGE_COUNT)
-                .setFirstResult((startPage - 1) * PAGE_COUNT);
+            "where c.tradeName>=:key1 and c.tradeName<:key2 ")
+            .setParameter("key1", prefix)
+            .setParameter("key2", prefix + "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
+            .setMaxResults(PAGE_COUNT)
+            .setFirstResult((startPage - 1) * PAGE_COUNT);
         Query countQuery = getEntityManager().createQuery("select count(c) from Merchant c " +
-                "where c.tradeName>=:key1 and c.tradeName<:key2 ")
-                .setParameter("key1", prefix)
-                .setParameter("key2", prefix + "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+            "where c.tradeName>=:key1 and c.tradeName<:key2 ")
+            .setParameter("key1", prefix)
+            .setParameter("key2", prefix + "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
 
         SearchResultVO<MerchantVO> resultVO = new SearchResultVO<MerchantVO>();
 
@@ -241,7 +243,7 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
             resultVO.getVoList().add(vo);
         }
         resultVO.setPageNum(startPage);
-        resultVO.setTotal(((Long)countQuery.getSingleResult()).intValue() / PAGE_COUNT + 1);
+        resultVO.setTotal(((Long) countQuery.getSingleResult()).intValue() / PAGE_COUNT + 1);
         return resultVO;
     }
 
@@ -249,9 +251,9 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     public List<Merchant> findLatestMerchant(Integer size) {
         assert size > 0;
         Query q = getEntityManager().createQuery("select c from Merchant c " +
-                "where c.valid = true " +
-                "order by c.postDate desc")
-                .setMaxResults(size);
+            "where c.valid = true " +
+            "order by c.postDate desc")
+            .setMaxResults(size);
 
         return q.getResultList();
     }
@@ -259,6 +261,54 @@ public class MerchantDAOImpl extends BaseRepository<Merchant> implements Merchan
     @Override
     public Long countMerchant() {
         Query q = getEntityManager().createQuery("select count(c) from Merchant c ");
-        return (Long)q.getSingleResult();
+        return (Long) q.getSingleResult();
+    }
+
+    @Override
+    public Merchant findBestOfToday() {
+        Query q = getEntityManager().createQuery("select c from Merchant c " +
+            "where c.lastUpdateTime >= :startOfToday and c.lastUpdateTime < :endOfToday " +
+            "order by c.lastUpdateTime, c.rank desc")
+            .setParameter("startOfToday", DateUtils.getStartOfToday())
+            .setParameter("endOfToday", DateUtils.getEndOfToday())
+            .setMaxResults(1);
+
+        return q.getResultList().size() > 0 ? (Merchant)q.getResultList().get(0) : null;
+    }
+
+    @Override
+    public Merchant findHighOfRank() {
+        Query q = getEntityManager().createQuery("select c from Merchant c " +
+            "where c.lastUpdateTime >= :startOfToday and c.lastUpdateTime < :endOfToday " +
+            "order by c.lastUpdateTime, c.rank desc")
+            .setParameter("startOfToday", DateUtils.getStartOfToday())
+            .setParameter("endOfToday", DateUtils.getEndOfToday())
+            .setMaxResults(1);
+
+        return q.getResultList().size() > 0 ? (Merchant)q.getResultList().get(0) : null;
+    }
+
+    @Override
+    public Merchant findHottestOfWeek() {
+        Query q = getEntityManager().createQuery("select c from Merchant c " +
+            "where c.lastUpdateTime >= :startOfToday and c.lastUpdateTime < :endOfToday " +
+            "order by c.lastUpdateTime, c.rank desc")
+            .setParameter("startOfToday", DateUtils.getStartOfThisWeek())
+            .setParameter("endOfToday", DateUtils.getEndOfThisWeek())
+            .setMaxResults(1);
+
+        return q.getResultList().size() > 0 ? (Merchant)q.getResultList().get(0) : null;
+    }
+
+    @Override
+    public Merchant findRecommendOfToday() {
+        Query q = getEntityManager().createQuery("select c from Merchant c " +
+            "where c.createdOn >= :startOfToday and c.createdOn < :endOfToday " +
+            "order by c.createdOn desc")
+            .setParameter("startOfToday", DateUtils.getStartOfToday())
+            .setParameter("endOfToday", DateUtils.getEndOfToday())
+            .setMaxResults(1);
+
+        return q.getResultList().size() > 0 ? (Merchant)q.getResultList().get(0) : null;
     }
 }

@@ -1,7 +1,8 @@
-package au.com.iglooit.hellscream.service.search;
+package au.com.iglooit.hellscream.service.suggest;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
+import au.com.iglooit.hellscream.model.vo.HomeSuggestMerchantVO;
 import com.google.appengine.api.datastore.Key;
 
 import java.util.List;
@@ -21,4 +22,8 @@ public interface SuggestMerchantService {
      * @return
      */
     List<String> quoteMerchantEmail(Quote quote);
+
+    HomeSuggestMerchantVO homeSuggest();
+
+    void updateHomeSuggestMerchant();
 }

@@ -1,6 +1,7 @@
 package au.com.iglooit.hellscream.repository;
 
 import au.com.iglooit.hellscream.model.entity.BaseEntity;
+import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.Key;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,10 +41,12 @@ public abstract class BaseRepository<T extends BaseEntity> {
     }
 
     public void add(final T entity) {
+        entity.setCreatedOn(DateUtils.getNow());
         entityManager.persist(entity);
     }
 
     public void update(final T entity) {
+
         entityManager.merge(entity);
     }
 

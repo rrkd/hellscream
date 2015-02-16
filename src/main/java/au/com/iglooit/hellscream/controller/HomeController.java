@@ -4,6 +4,7 @@ import au.com.iglooit.hellscream.service.category.CategoryService;
 import au.com.iglooit.hellscream.service.feedback.FeedbackService;
 import au.com.iglooit.hellscream.service.merchant.MerchantService;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
+import au.com.iglooit.hellscream.service.suggest.SuggestMerchantService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationDetailsSource;
@@ -39,6 +40,8 @@ public class HomeController {
     private CategoryService categoryService;
     @Resource
     private AuthenticationManager authenticationManager;
+    @Resource
+    private SuggestMerchantService suggestMerchantService;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView homePage(Locale locale) {
@@ -46,6 +49,7 @@ public class HomeController {
         modelAndView.addObject("latestQuote", quoteService.latestQuoteList());
         modelAndView.addObject("latestMerchants", merchantService.findLatestMerchant());
         modelAndView.addObject("homeCategoryList", categoryService.homePageCategory());
+        modelAndView.addObject("suggestHomeMerchants",suggestMerchantService.homeSuggest());
         LOG.info("Welcome home! The client locale is {}.", locale);
         return modelAndView;
     }

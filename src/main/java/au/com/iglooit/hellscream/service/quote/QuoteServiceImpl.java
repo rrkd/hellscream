@@ -14,7 +14,7 @@ import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.mail.QuoteEmailVO;
 import au.com.iglooit.hellscream.service.queue.QuoteQueue;
-import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
+import au.com.iglooit.hellscream.service.suggest.SuggestMerchantService;
 import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.taskqueue.Queue;
 import com.google.appengine.api.taskqueue.QueueFactory;

@@ -330,13 +330,19 @@
 
             <p>
 
-                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
+              ${suggestHomeMerchants.bestOfToday.tradeName}
 
             </p>
 
             <p>
 
-                <a href="#" style="font-weight: bold;">Read more →</a>
+              ${suggestHomeMerchants.bestOfToday.shortDesc}
+
+            </p>
+
+            <p>
+
+                <a href="/merchant/details/${suggestHomeMerchants.bestOfToday.canonicalSlugId}" style="font-weight: bold;">Details</a>
 
             </p>
 
@@ -364,13 +370,19 @@
 
             <p>
 
-                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
+              ${suggestHomeMerchants.recommendOfToday.tradeName}
 
             </p>
 
             <p>
 
-                <a href="#" style="font-weight: bold;">Read more →</a>
+              ${suggestHomeMerchants.recommendOfToday.shortDesc}
+
+            </p>
+
+            <p>
+
+                <a href="/merchant/details/${suggestHomeMerchants.recommendOfToday.canonicalSlugId}" style="font-weight: bold;">Details</a>
 
             </p>
 
@@ -395,16 +407,20 @@
             <!--icon box top -->
 
             <h4><spring:message code="home.bestseller"/></h4>
-
             <p>
 
-                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
+              ${suggestHomeMerchants.hottestOfWeek.tradeName}
+
+            </p>
+            <p>
+
+              ${suggestHomeMerchants.hottestOfWeek.shortDesc}
 
             </p>
 
             <p>
 
-                <a href="#" style="font-weight: bold;">Read more →</a>
+                <a href="/merchant/details/${suggestHomeMerchants.hottestOfWeek.canonicalSlugId}" style="font-weight: bold;">Details</a>
 
             </p>
 
@@ -432,13 +448,19 @@
 
             <p>
 
-                Lorem ipsum dolor sit adipiscing elit. Praesent tempus eleifend risus ut congue eset nec lacus.
+              ${suggestHomeMerchants.highOfRank.tradeName}
 
             </p>
 
             <p>
 
-                <a href="#" style="font-weight: bold;">Read more →</a>
+              ${suggestHomeMerchants.highOfRank.shortDesc}
+
+            </p>
+
+            <p>
+
+                <a href="/merchant/details/${suggestHomeMerchants.highOfRank.canonicalSlugId}" style="font-weight: bold;">Details</a>
 
             </p>
 
@@ -529,13 +551,13 @@
 
             </div>
 
-            <h4><a href="bloghome.html">${quote.title}</a></h4>
+            <h4><a href="/quote/d/${quote.key}">${quote.title}</a></h4>
 
             <p>
 
                 ${quote.description}
                     <br/>
-                    <a href="bloghome.html" class="read-more">read more <i class="icon-angle-right"></i></a>
+                    <a href="/quote/d/${quote.key}" class="read-more">read more <i class="icon-angle-right"></i></a>
 
             </p>
 

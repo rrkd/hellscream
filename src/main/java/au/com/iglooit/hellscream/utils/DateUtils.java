@@ -56,4 +56,57 @@ public final class DateUtils {
         cal.setTime(date);
         return new SimpleDateFormat("dd").format(cal.getTime());
     }
+
+    public static Date getStartOfTime(Calendar calendar){
+        return clearTime(calendar.getTime());
+    }
+
+    public static Date getStartOfThisWeek(){
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
+        int week = cal.get(Calendar.WEEK_OF_YEAR);
+        int year = cal.get(Calendar.YEAR);
+        cal.clear();
+        cal.set(Calendar.WEEK_OF_YEAR, week);
+        cal.set(Calendar.YEAR, year);
+        return cal.getTime();
+    }
+
+    public static Date getEndOfThisWeek(){
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
+        cal.add(Calendar.DAY_OF_YEAR, 7);
+        int week = cal.get(Calendar.WEEK_OF_YEAR);
+        int year = cal.get(Calendar.YEAR);
+        cal.clear();
+        cal.set(Calendar.WEEK_OF_YEAR, week);
+        cal.set(Calendar.YEAR, year);
+        return cal.getTime();
+    }
+
+    /** Returns the given date with the time set to the start of the day. */
+    public static Date getStartOfToday() {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
+        return clearTime(cal.getTime());
+    }
+
+    /** Returns the given date with the time set to the start of the day. */
+    public static Date getEndOfToday() {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
+        cal.add(Calendar.DAY_OF_YEAR, 1);
+        return clearTime(cal.getTime());
+    }
+
+    /** Returns the given date with the time values cleared. */
+    public static Date clearTime(Date date) {
+        if (date == null) {
+            return null;
+        }
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        return c.getTime();
+    }
+
 }

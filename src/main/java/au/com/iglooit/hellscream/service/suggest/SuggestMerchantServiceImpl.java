@@ -1,14 +1,16 @@
-package au.com.iglooit.hellscream.service.search;
+package au.com.iglooit.hellscream.service.suggest;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.model.entity.Suburb;
+import au.com.iglooit.hellscream.model.vo.HomeSuggestMerchantVO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.SuburbDAO;
 import com.google.appengine.api.datastore.Key;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,11 +31,24 @@ public class SuggestMerchantServiceImpl implements SuggestMerchantService {
     @Resource
     private SuburbDAO suburbDAO;
 
+    private HomeSuggestMerchantVO homeSuggestMerchantVO = null;
+
+    @PostConstruct
+    public void init() throws Exception {
+        // init home suggest merchant
+        List<Merchant> merchantList = merchantDAO.findLatestMerchant(4);
+        homeSuggestMerchantVO = new HomeSuggestMerchantVO();
+        homeSuggestMerchantVO.setRecommendOfToday(merchantList.get(0));
+        homeSuggestMerchantVO.setHottestOfWeek(merchantList.get(1));
+        homeSuggestMerchantVO.setHighOfRank(merchantList.get(2));
+        homeSuggestMerchantVO.setBestOfToday(merchantList.get(3));
+    }
+
     @Override
     public List<Merchant> similarMerchant(Key key, Integer count) {
         Integer size;
-        size= merchantDAO.findAllMerchants().size()>count?count:merchantDAO.findAllMerchants().size();
-        return merchantDAO.findAllMerchants().subList(0,size);
+        size = merchantDAO.findAllMerchants().size() > count ? count : merchantDAO.findAllMerchants().size();
+        return merchantDAO.findAllMerchants().subList(0, size);
     }
 
     @Override
@@ -47,7 +62,7 @@ public class SuggestMerchantServiceImpl implements SuggestMerchantService {
             // filter by suburb
             for (Merchant merchant : merchantList) {
                 if (!StringUtils.isBlank(merchant.getEmail())
-                        && merchant.getSuburb().equalsIgnoreCase(suburb.getName())) {
+                    && merchant.getSuburb().equalsIgnoreCase(suburb.getName())) {
                     result.add(merchant.getEmail());
                     // update statistic
                     merchant.setQuoteCount(merchant.getQuoteCount() + 1);
@@ -66,6 +81,34 @@ public class SuggestMerchantServiceImpl implements SuggestMerchantService {
             }
         }
         return new ArrayList<>(result);
+    }
+
+    @Override
+    public HomeSuggestMerchantVO homeSuggest() {
+        if (homeSuggestMerchantVO == null) {
+            updateHomeSuggestMerchant();
+        }
+        return homeSuggestMerchantVO;
+    }
+
+    public void updateHomeSuggestMerchant() {
+        Merchant bestOfToday = merchantDAO.findBestOfToday();
+        Merchant highOfRank = merchantDAO.findHighOfRank();
+        Merchant hottestOfWeek = merchantDAO.findHottestOfWeek();
+        Merchant recommendOfToday = merchantDAO.findRecommendOfToday();
+        if (bestOfToday != null) {
+            homeSuggestMerchantVO.setBestOfToday(bestOfToday);
+        }
+        if (highOfRank != null) {
+            homeSuggestMerchantVO.setHighOfRank(highOfRank);
+        }
+        if (hottestOfWeek != null) {
+            homeSuggestMerchantVO.setHottestOfWeek(hottestOfWeek);
+        }
+        if (recommendOfToday != null) {
+            homeSuggestMerchantVO.setRecommendOfToday(recommendOfToday);
+        }
+
     }
 
     private Set<String> buildMerchantEmailList(List<Merchant> merchantList) {

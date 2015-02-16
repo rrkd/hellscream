@@ -164,7 +164,7 @@
 
                 <p class="smaller">
 
-                    <span class="copyright">©</span> Copyright 2014 Huafu.
+                    <span class="copyright">©</span> Copyright 2014 Huafu IT Ltd.
 
                 </p>
 

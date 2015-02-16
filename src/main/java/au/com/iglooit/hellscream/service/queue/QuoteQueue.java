@@ -6,7 +6,7 @@ import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.mail.QuoteEmailVO;
-import au.com.iglooit.hellscream.service.search.SuggestMerchantService;
+import au.com.iglooit.hellscream.service.suggest.SuggestMerchantService;
 import com.google.appengine.api.datastore.KeyFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
