@@ -100,7 +100,7 @@ function appendToResultBox(data) {
             '</p>' +
             '</div>' +
             '<p class="continueread readmorebox">' +
-            '<a href="merchant/details/' + data[i].url + '">Details</a>' +
+            '<a href="/merchant/details/' + data[i].url + '">Details</a>' +
             '</p>' +
             '</div>');
     }

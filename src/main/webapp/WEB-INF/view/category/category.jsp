@@ -15,7 +15,9 @@
 
 </div>
 
-<div id="content" class="top30">
+<div class="row-fluid top30">
+
+  <div class="span10">
 
     <div class="boxportfolio2">
         <div class="inneritem">
@@ -24,6 +26,7 @@
             </c:forEach>
         </div>
     </div>
+  </div>
 
 </div>
 
