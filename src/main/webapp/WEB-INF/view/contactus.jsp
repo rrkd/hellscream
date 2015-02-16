@@ -24,7 +24,7 @@
 
     <div class="span6">
 
-        <form action="#" name="MYFORM" id="MYFORM">
+        <form action="#" name="MYFORM" id="contactUsForm">
 
             <input name="name" size="30" type="text" id="name" class="span12" placeholder="<spring:message code="contactus.name"></spring:message>">
 
@@ -71,5 +71,6 @@
     </div>
 
 </div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/contact-us.js"></script>
 </body>
 </html>
