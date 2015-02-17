@@ -35,21 +35,21 @@
 
                 <div class="infophone">
 
-                    <i class="icon-phone"></i> Tel: +61 433 274 987
+                    <i class="icon-phone"></i><spring:message code="menu.tel" />
 
                 </div>
 
                 <div class="infoaddress">
 
-                    1 Berkley Street, Fort Washington, 2009
+                    <spring:message code="menu.address" />
 
                 </div>
                 <div>
                     <sec:authorize access="isAuthenticated()">
-                        Welcome back <sec:authentication property="principal.nickname"/>.<a href="/logout">Logout</a>
+                        <spring:message code="menu.welcomeback" /><sec:authentication property="principal.nickname"/>.<a href="/logout"><spring:message code="menu.Logout" /></a>
                     </sec:authorize>
                     <sec:authorize access="isAnonymous()">
-                        Welcome Guest.<a href="/login">Login</a>
+                        <spring:message code="menu.welcomeguest" /><a href="/login"><spring:message code="menu.login" /></a>
                     </sec:authorize>
 
                 </div>
@@ -66,33 +66,33 @@
 
                     <ul id="nav" class="nav">
 
-                        <li><a href="/home">Home</a></li>
+                        <li><a href="/home"><spring:message code="menu.home" /></a></li>
 
                         <li class="divider-vertical"></li>
 
-                        <li><a href="/howitworks">How it works</a></li>
+                        <li><a href="/howitworks"><spring:message code="menu.howitwork" /></a></li>
 
                         <li class="divider-vertical"></li>
 
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Service
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="menu.service" />
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu js-activated" style="display: none;">
-                              <li><a href="/category">All Category</a></li>
+                              <li><a href="/category"><spring:message code="menu.allcategory" /></a></li>
                                 <sec:authorize access="isAuthenticated()">
                                     <c:if test="${isUser && not isMerchant}">
-                                        <li><a href="/quote/c">Post Quotes</a></li>
+                                        <li><a href="/quote/c"><spring:message code="menu.postquotes" /></a></li>
                                     </c:if>
                                 </sec:authorize>
                                 <sec:authorize access="isAnonymous()">
-                                    <li><a href="/quote/c">Post Quotes</a></li>
+                                    <li><a href="/quote/c"><spring:message code="menu.postquotes" /></a></li>
                                 </sec:authorize>
                                 <sec:authorize access="isAuthenticated()">
                                     <c:if test="${isMerchant}">
-                                        <li><a href="/m/create">List Your Business</a></li>
+                                        <li><a href="/m/create"><spring:message code="menu.listyourbusiness" /></a></li>
                                     </c:if>
                                 </sec:authorize>
                                 <sec:authorize access="isAnonymous()">
-                                    <li><a href="/m/create">List Your Business</a></li>
+                                    <li><a href="/m/create"><spring:message code="menu.listyourbusiness" /></a></li>
                                 </sec:authorize>
                             </ul>
                         <li class="divider-vertical"></li>
@@ -100,25 +100,25 @@
                         <sec:authorize access="isAuthenticated()">
 
                             <c:if test="${isUser}">
-                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="menu.myaccount" />
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                    <li><a href="/u/profile">User Profile</a></li>
-                                    <li><a href="/u/q">Posted Quote</a></li>
+                                    <li><a href="/u/profile"><spring:message code="menu.userprofile" /></a></li>
+                                    <li><a href="/u/q"><spring:message code="menu.postedquotes" /></a></li>
                                     <!--.dropdown-->
 
                                 </ul>
                                 <li class="divider-vertical"></li>
                             </c:if>
                             <c:if test="${isMerchant}">
-                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Business
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="menu.mybusiness" />
                                     <b class="caret"></b></a>
                                     <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                        <li><a href="/merchant/p">Merchant Profile</a></li>
-                                        <li><a href="/m/q">Applied Quote</a></li>
-                                        <li><a href="/merchant/msg">Message Box</a></li>
+                                        <li><a href="/merchant/p"><spring:message code="menu.merchantprofile" /></a></li>
+                                        <li><a href="/m/q"><spring:message code="menu.appliedquote" /></a></li>
+                                        <li><a href="/merchant/msg"><spring:message code="menu.messagebox" /></a></li>
                                         <!--.dropdown-->
 
                                     </ul>
@@ -139,16 +139,16 @@
 
                         </sec:authorize>
 
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="menu.aboutus" />
                             <b class="caret"></b></a>
 
                             <ul class="dropdown-menu js-activated" style="display: none;">
 
-                                <li><a href="/aboutus">About Us</a></li>
+                                <li><a href="/aboutus"><spring:message code="menu.aboutus" /></a></li>
 
-                                <li><a href="/contactus">Contact Us</a></li>
+                                <li><a href="/contactus"><spring:message code="menu.contactus" /></a></li>
 
-                                <li><a href="/faq">FAQ</a></li>
+                                <li><a href="/faq"><spring:message code="menu.faq" /></a></li>
 
                                 <!--.dropdown-->
 
