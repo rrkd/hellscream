@@ -124,15 +124,15 @@
 
                         <div class="controls controls-row">
 
-                            <input id="nameTxt" class="span6" type="text" name="name" placeholder="<spring:message code="footer.contactus.name" />">
+                            <input id="footerNameTxt" class="span6" type="text" name="name" placeholder="<spring:message code="footer.contactus.name" />">
 
-                            <input id="userEmailTxt" class="span6" type="text" name="email" placeholder="<spring:message code="footer.contactus.email" />">
+                            <input id="footerUserEmailTxt" class="span6" type="text" name="email" placeholder="<spring:message code="footer.contactus.email" />">
 
                         </div>
 
                         <div class="controls">
 
-                            <textarea id="contactUsContent" class="span12" name="comment" rows="4" placeholder="<spring:message code="footer.contactus.message" />"></textarea>
+                            <textarea id="footerContactUsContent" class="span12" name="comment" rows="4" placeholder="<spring:message code="footer.contactus.message" />"></textarea>
 
                         </div>
 
@@ -164,7 +164,7 @@
 
                 <p class="smaller">
 
-                    <span class="copyright">©</span> Copyright 2014 Huafu IT Ltd.
+                    <span class="copyright">&copy;</span>Copyright 2014 Huafu IT Ltd.
 
                 </p>
 

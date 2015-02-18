@@ -30,6 +30,7 @@
         <js>/js/plugins.js</js>
         <js>/js/search.js</js>
         <js>/js/custom.js</js>
+        <js>/js/footer.js</js>
     </group>
 
     <group name="feedback.min">

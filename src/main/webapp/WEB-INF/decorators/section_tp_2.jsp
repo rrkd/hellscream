@@ -89,7 +89,7 @@
 
 <script src="/assets/wro/section-2-footer.min.js"></script>
 
-<%@include file="feedback.jsp"%>
+<%--<%@include file="feedback.jsp"%>--%>
 
 <!-- END DEMO PANEL-->
 
