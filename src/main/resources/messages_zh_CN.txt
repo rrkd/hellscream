@@ -440,14 +440,28 @@ merchantregister.step2=步骤2--
 merchantregister.register=发布商家信息
 merchantregister.step2.help=发布商家信息后,贵公司信息会显示在华服网，同时可以接受用户的报价请求,google也可以搜索到该信息.
 
-
-
-
-
-
-
-
-
+menu.tel= Tel: 0430 862 286
+menu.address= Milperra
+menu.welcomeback=欢迎回来
+menu.welcomeguest=欢迎
+menu.logout= 注销
+menu.login=登录
+menu.home=首页
+menu.howitwork=使用流程
+menu.service=服务
+menu.allcategory=服务种类汇总
+menu.postquote=发布服务请求
+menu.listyourbusiness=发布公司信息
+menu.myaccount=我的帐户
+menu.userprofile=个人信息
+menu.postedquotes=已发布服务请求
+menu.mybusiness=商家帐户
+menu.merchantprofile=商家基本信息
+menu.appliedquote=已报价的服务请求
+menu.messagebox=历史信息
+menu.aboutus=关于我们
+menu.contactus=如何联络我们
+menu.faq=常见问题
 
 
 
