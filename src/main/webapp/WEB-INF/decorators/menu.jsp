@@ -46,7 +46,7 @@
                 </div>
                 <div>
                     <sec:authorize access="isAuthenticated()">
-                        <spring:message code="menu.welcomeback" /><sec:authentication property="principal.nickname"/>.<a href="/logout"><spring:message code="menu.Logout" /></a>
+                        <spring:message code="menu.welcomeback" /><sec:authentication property="principal.nickname"/>.<a href="/logout"><spring:message code="menu.logout" /></a>
                     </sec:authorize>
                     <sec:authorize access="isAnonymous()">
                         <spring:message code="menu.welcomeguest" /><a href="/login"><spring:message code="menu.login" /></a>
@@ -80,11 +80,11 @@
                               <li><a href="/category"><spring:message code="menu.allcategory" /></a></li>
                                 <sec:authorize access="isAuthenticated()">
                                     <c:if test="${isUser && not isMerchant}">
-                                        <li><a href="/quote/c"><spring:message code="menu.postquotes" /></a></li>
+                                        <li><a href="/quote/c"><spring:message code="menu.postquote" /></a></li>
                                     </c:if>
                                 </sec:authorize>
                                 <sec:authorize access="isAnonymous()">
-                                    <li><a href="/quote/c"><spring:message code="menu.postquotes" /></a></li>
+                                    <li><a href="/quote/c"><spring:message code="menu.postquote" /></a></li>
                                 </sec:authorize>
                                 <sec:authorize access="isAuthenticated()">
                                     <c:if test="${isMerchant}">
