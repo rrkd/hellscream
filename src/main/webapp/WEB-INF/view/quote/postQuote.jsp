@@ -129,7 +129,7 @@
                 <spring:message code="postquote.createdmessage" />
             </div>
             <div class="modal-footer">
-                <a href="/home" class="btn btn-default" data-dismiss="modal"><spring:message code="postquote.gohome" /></a>
+                <a href="/home" class="btn btn-default"><spring:message code="postquote.gohome" /></a>
                 <a href="/u/q" class="btn btn-primary"><spring:message code="postquote.myquote" /></a>
             </div>
         </div>

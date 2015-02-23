@@ -5,6 +5,8 @@
     <persistence-unit name="hellscream">
         <provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
         <class>au.com.iglooit.hellscream.model.entity.BaseEntity</class>
+        <class>au.com.iglooit.hellscream.model.entity.NoneGeoEntity</class>
+        <class>au.com.iglooit.hellscream.model.entity.NoneGeoIndexEntity</class>
         <class>au.com.iglooit.hellscream.model.entity.Merchant</class>
         <class>au.com.iglooit.hellscream.model.entity.IGUser</class>
         <class>au.com.iglooit.hellscream.model.entity.Category</class>
@@ -17,6 +19,7 @@
         <class>au.com.iglooit.hellscream.model.entity.QuoteContactMsg</class>
         <class>au.com.iglooit.hellscream.model.entity.Statistic</class>
         <class>au.com.iglooit.hellscream.model.entity.InitMerchant</class>
+        <class>au.com.iglooit.hellscream.model.entity.UserStatistic</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>

@@ -6,6 +6,7 @@ import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
 import au.com.iglooit.hellscream.service.dao.UserDAO;
+import au.com.iglooit.hellscream.service.dao.UserStatisticDAO;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
 import au.com.iglooit.hellscream.service.quote.QuoteTransactionService;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -38,6 +39,8 @@ public class UserProfileController {
     private QuoteTransactionDAO quoteTransactionDAO;
     @Resource
     private QuoteTransactionService quoteTransactionService;
+    @Resource
+    private UserStatisticDAO userStatisticDAO;
 
     @RequestMapping(value = "/u/profile", method = RequestMethod.GET)
     public ModelAndView profilePage() {
@@ -45,6 +48,7 @@ public class UserProfileController {
         ModelAndView modelAndView = new ModelAndView("u/userProfile");
         modelAndView.addObject("iguser", user);
         modelAndView.addObject("quoteList", quoteService.loadLatestUserQuoteList(user.getEmail()));
+        modelAndView.addObject("userStatistic", userStatisticDAO.findByEmail(user.getEmail()));
         return modelAndView;
 
     }

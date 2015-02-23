@@ -140,7 +140,7 @@
 
                         <p>
 
-                            <spring:message code="userprofile.quotenumber" />
+                          ${userStatistic.countQuote} <spring:message code="userprofile.quotenumber" />
 
                         </p>
 
@@ -166,7 +166,7 @@
 
                         <p>
 
-                            <spring:message code="userprofile.messagenumber" />
+                            ${userStatistic.countMsg} <spring:message code="userprofile.messagenumber" />
 
                         </p>
 
@@ -192,7 +192,7 @@
 
                         <p>
 
-                            <spring:message code="userprofile.feedbacknumber" />
+                          ${userStatistic.countFeedback} <spring:message code="userprofile.feedbacknumber" />
 
                         </p>
 
