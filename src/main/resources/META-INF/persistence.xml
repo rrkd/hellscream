@@ -20,6 +20,7 @@
         <class>au.com.iglooit.hellscream.model.entity.Statistic</class>
         <class>au.com.iglooit.hellscream.model.entity.InitMerchant</class>
         <class>au.com.iglooit.hellscream.model.entity.UserStatistic</class>
+        <class>au.com.iglooit.hellscream.model.entity.QuotePostMsg</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>

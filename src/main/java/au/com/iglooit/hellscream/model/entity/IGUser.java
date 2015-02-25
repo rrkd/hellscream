@@ -160,11 +160,11 @@ public class IGUser extends BaseEntity {
     }
 
     public Boolean getIsUser() {
-        return authorities.contains(AppRole.USER);
+        return authorities.contains(AppRole.USER) && !authorities.contains(AppRole.ADMIN) && !authorities.contains(AppRole.MERCHANT);
     }
 
     public Boolean getIsMerchant() {
-        return authorities.contains(AppRole.MERCHANT);
+        return authorities.contains(AppRole.MERCHANT) && !authorities.contains(AppRole.ADMIN);
     }
 
     public Boolean getIsAdmin() {

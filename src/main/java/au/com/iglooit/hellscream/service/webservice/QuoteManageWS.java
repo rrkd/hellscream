@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -42,6 +43,8 @@ public class QuoteManageWS {
     private QuoteService quoteService;
     @Resource
     private UserDAO userDAO;
+    @Resource
+    private QuotePostMsgDAO quotePostMsgDAO;
 
     @RequestMapping(value = "/ws/quote",
             method = RequestMethod.POST,
@@ -173,5 +176,22 @@ public class QuoteManageWS {
         quoteService.createMerchantQuote(quote, merchant);
         LOG.info("create quote " + quote.getTitle());
         return new JsonResponse("OK", "");
+    }
+
+    @RequestMapping(value = "/ws/quote/unapply/{merchantKeyString}/{pageNumber}",
+        method = RequestMethod.GET)
+    public
+    @ResponseBody
+    SearchResultVO<QuotePostMsgVO> unapplyQuoteToMerchant(@PathVariable String merchantKeyString,
+                                                @PathVariable Integer pageNumber) {
+        // get merchant
+        Merchant merchant = merchantDAO.findByKey(KeyFactory.stringToKey(merchantKeyString));
+        if (pageNumber == null) {
+            pageNumber = 1;
+        } else if (pageNumber < 0) {
+            pageNumber = 1;
+        }
+
+        return quotePostMsgDAO.findByMerchant(merchant.getKey(), pageNumber);
     }
 }

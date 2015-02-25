@@ -1,5 +1,6 @@
 package au.com.iglooit.hellscream.controller;
 
+import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
@@ -8,6 +9,7 @@ import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
+import au.com.iglooit.hellscream.service.dao.QuotePostMsgDAO;
 import au.com.iglooit.hellscream.service.dao.SuburbDAO;
 import au.com.iglooit.hellscream.service.quote.QuoteService;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -44,6 +46,8 @@ public class QuoteController {
     private CategoryGroupDAO categoryGroupDAO;
     @Resource
     private SuburbDAO suburbDAO;
+    @Resource
+    private QuotePostMsgDAO quotePostMsgDAO;
 
     @RequestMapping(value = "/quote/c", method = RequestMethod.GET)
     public ModelAndView postQuotePage() {
@@ -122,4 +126,33 @@ public class QuoteController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "/quote/merchant/unapply", method = RequestMethod.GET)
+    public ModelAndView unapplyPostQuote() {
+
+        Merchant merchant = getLoginMerchant();
+        ModelAndView modelAndView = new ModelAndView("quote/merchant-unapply");
+
+        modelAndView.addObject("merchant", merchant);
+        modelAndView.addObject("msgList", quotePostMsgDAO.findByMerchant(merchant.getKey()));
+
+        return modelAndView;
+    }
+
+    private Merchant getLoginMerchant() {
+        GaeUserAuthentication auth = (GaeUserAuthentication) SecurityContextHolder.getContext().getAuthentication();
+        IGUser user = (IGUser) auth.getPrincipal();
+        if (user == null) {
+            LOG.error("You haven't login, please login firstly.");
+            throw new AppX("User need to login ");
+        }
+
+        Merchant merchant = merchantDAO.findByKey(user.getMerchantKey());
+        if (merchant == null) {
+            LOG.error("You are not a user of Merchant.");
+            throw new AppX("You are not a user of Merchant.");
+        }
+        return merchant;
+    }
+
 }

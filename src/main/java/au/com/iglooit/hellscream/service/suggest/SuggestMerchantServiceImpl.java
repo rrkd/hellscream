@@ -2,10 +2,13 @@ package au.com.iglooit.hellscream.service.suggest;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
+import au.com.iglooit.hellscream.model.entity.QuotePostMsg;
 import au.com.iglooit.hellscream.model.entity.Suburb;
 import au.com.iglooit.hellscream.model.vo.HomeSuggestMerchantVO;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
+import au.com.iglooit.hellscream.service.dao.QuotePostMsgDAO;
 import au.com.iglooit.hellscream.service.dao.SuburbDAO;
+import au.com.iglooit.hellscream.utils.DateUtils;
 import com.google.appengine.api.datastore.Key;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
@@ -30,6 +33,8 @@ public class SuggestMerchantServiceImpl implements SuggestMerchantService {
     private MerchantDAO merchantDAO;
     @Resource
     private SuburbDAO suburbDAO;
+    @Resource
+    private QuotePostMsgDAO quotePostMsgDAO;
 
     private HomeSuggestMerchantVO homeSuggestMerchantVO = null;
 
@@ -64,6 +69,13 @@ public class SuggestMerchantServiceImpl implements SuggestMerchantService {
                 if (!StringUtils.isBlank(merchant.getEmail())
                     && merchant.getSuburb().equalsIgnoreCase(suburb.getName())) {
                     result.add(merchant.getEmail());
+                    // generate quote post msg
+                    QuotePostMsg postMsg = new QuotePostMsg();
+                    postMsg.setMerchantKey(merchant.getKey());
+                    postMsg.setQuoteKey(quote.getKey());
+                    postMsg.setCreatedOn(DateUtils.getNow());
+                    postMsg.setStatus(QuotePostMsg.Status.Unread);
+                    quotePostMsgDAO.createQuotePostMsg(postMsg);
                     // update statistic
                     merchant.setQuoteCount(merchant.getQuoteCount() + 1);
                     merchantDAO.update(merchant);
@@ -78,6 +90,12 @@ public class SuggestMerchantServiceImpl implements SuggestMerchantService {
         for (Merchant merchant : merchantList) {
             if (!StringUtils.isBlank(merchant.getEmail())) {
                 result.add(merchant.getEmail());
+                QuotePostMsg postMsg = new QuotePostMsg();
+                postMsg.setMerchantKey(merchant.getKey());
+                postMsg.setQuoteKey(quote.getKey());
+                postMsg.setCreatedOn(DateUtils.getNow());
+                postMsg.setStatus(QuotePostMsg.Status.Unread);
+                quotePostMsgDAO.createQuotePostMsg(postMsg);
             }
         }
         return new ArrayList<>(result);
