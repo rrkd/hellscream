@@ -17,41 +17,8 @@
 
 <div class="row-fluid services">
 
-    <div class="span4">
 
-        <h2><i class="icon-magic"></i>Responsive</h2>
-
-        <p>
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="#" class="more">Learn more »</a>
-
-        </p>
-
-    </div>
-
-    <div class="span4">
-
-        <h2><i class="icon-fullscreen"></i>Smart Design</h2>
-
-        <p>
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="#" class="more">Learn more »</a>
-
-        </p>
-
-    </div>
-
-    <div class="span4">
-
-        <h2><i class="icon-tint"></i>Easy Customization</h2>
-
-        <p>
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="#" class="more">Learn more »</a>
-
-        </p>
-
-    </div>
+        <img src="/assets/img/howitwork.png">
 
 </div>
 
