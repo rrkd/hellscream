@@ -31,6 +31,7 @@
         <intercept-url pattern="/login_fb" access="permitAll"/>
         <intercept-url pattern="/quote/details/**" access="permitAll" />
         <intercept-url pattern="/quote/t/**" access="hasRole('MERCHANT')"/>
+        <intercept-url pattern="/quote/merchant/**" access="hasRole('MERCHANT')"/>
         <intercept-url pattern="/ad/**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/m/**" access="hasAnyRole('USER','MERCHANT')" />
         <intercept-url pattern="/u/**" access="hasAnyRole('USER','MERCHANT')" />

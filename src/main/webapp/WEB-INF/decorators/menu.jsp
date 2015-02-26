@@ -115,7 +115,7 @@
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="menu.mybusiness" />
                                     <b class="caret"></b></a>
                                     <ul class="dropdown-menu js-activated" style="display: none;">
-
+                                      <li><a href="/quote/merchant/unapply"><spring:message code="menu.merchantUnapply" /></a></li>
                                         <li><a href="/merchant/p"><spring:message code="menu.merchantprofile" /></a></li>
                                         <li><a href="/m/q"><spring:message code="menu.appliedquote" /></a></li>
                                         <li><a href="/merchant/msg"><spring:message code="menu.messagebox" /></a></li>

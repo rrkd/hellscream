@@ -54,11 +54,12 @@ public class QuoteQueue {
         quoteDAO.update(quote);
         // send email
         QuoteEmailVO vo = new QuoteEmailVO();
-        vo.setQuoteApplyURL(host + QuoteController.QUOTE_MERCHANT_QUERY_URL + quote.getKeyString());
+        vo.setQuoteURL(host + QuoteController.QUOTE_MERCHANT_QUERY_URL + quote.getKeyString());
         vo.setQuoteApplyURL(host + QuoteController.QUOTE_TRANSACTION_URL + quote.getKeyString());
         vo.setToAddressList(emailList);
         vo.setQuote(quote);
         eMailService.sendQuoteEmail(vo);
+
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 }

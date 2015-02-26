@@ -2,6 +2,7 @@ package au.com.iglooit.hellscream.service.quote;
 
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
+import au.com.iglooit.hellscream.model.vo.QuotePostMsgVO;
 import au.com.iglooit.hellscream.model.vo.QuoteTransactionVO;
 import au.com.iglooit.hellscream.model.vo.QuoteVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
@@ -28,4 +29,6 @@ public interface QuoteService {
     SearchResultVO<QuoteVO> loadUserQuoteList(String email, Integer page);
 
     SearchResultVO<QuoteVO> loadLatestUserQuoteList(String email);
+
+    SearchResultVO<QuotePostMsgVO> loadUnapplyMerchantPostQuote(Merchant merchant, Integer page);
 }

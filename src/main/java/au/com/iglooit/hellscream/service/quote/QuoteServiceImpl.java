@@ -4,12 +4,14 @@ import au.com.iglooit.hellscream.controller.QuoteController;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
+import au.com.iglooit.hellscream.model.vo.QuotePostMsgVO;
 import au.com.iglooit.hellscream.model.vo.QuoteTransactionVO;
 import au.com.iglooit.hellscream.model.vo.QuoteVO;
 import au.com.iglooit.hellscream.model.vo.SearchResultVO;
 import au.com.iglooit.hellscream.properties.WebProperties;
 import au.com.iglooit.hellscream.service.dao.MerchantDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteDAO;
+import au.com.iglooit.hellscream.service.dao.QuotePostMsgDAO;
 import au.com.iglooit.hellscream.service.dao.QuoteTransactionDAO;
 import au.com.iglooit.hellscream.service.mail.EMailService;
 import au.com.iglooit.hellscream.service.mail.QuoteEmailVO;
@@ -49,6 +51,8 @@ public class QuoteServiceImpl implements QuoteService {
     private QuoteTransactionDAO quoteTransactionDAO;
     @Resource
     private MerchantDAO merchantDAO;
+    @Resource
+    private QuotePostMsgDAO quotePostMsgDAO;
 
     @Override
     public List<Quote> loadUserQuoteList(String email) {
@@ -79,7 +83,7 @@ public class QuoteServiceImpl implements QuoteService {
         quoteDAO.update(quote);
         // send email
         QuoteEmailVO vo = new QuoteEmailVO();
-        vo.setQuoteApplyURL(host + QuoteController.QUOTE_MERCHANT_QUERY_URL + quote.getKeyString());
+        vo.setQuoteURL(host + QuoteController.QUOTE_MERCHANT_QUERY_URL + quote.getKeyString());
         vo.setQuoteApplyURL(host + QuoteController.QUOTE_TRANSACTION_URL + quote.getKeyString());
         vo.setToAddressList(emailList);
         vo.setQuote(quote);
@@ -103,7 +107,7 @@ public class QuoteServiceImpl implements QuoteService {
     @Override
     public SearchResultVO<QuoteTransactionVO> findQuoteTransactionByMerchant(Merchant merchant, Integer page) {
         SearchResultVO<QuoteTransaction> transactionList =
-                quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, 1);
+                quoteTransactionDAO.findQuoteTransactionByMerchant(merchant, page);
         SearchResultVO<QuoteTransactionVO> searchResultVO = new SearchResultVO<>();
         searchResultVO.setPageNum(transactionList.getPageNum());
         searchResultVO.setTotal(transactionList.getTotal());
@@ -121,5 +125,10 @@ public class QuoteServiceImpl implements QuoteService {
     @Override
     public SearchResultVO<QuoteVO> loadLatestUserQuoteList(String email) {
         return quoteDAO.findQuoteByEmail(email, 1);
+    }
+
+    @Override
+    public SearchResultVO<QuotePostMsgVO> loadUnapplyMerchantPostQuote(Merchant merchant, Integer page) {
+        return null;
     }
 }

@@ -462,6 +462,7 @@ menu.messagebox=历史信息
 menu.aboutus=关于我们
 menu.contactus=如何联络我们
 menu.faq=常见问题
+menu.merchantUnapply=未读请求
 
 
 
