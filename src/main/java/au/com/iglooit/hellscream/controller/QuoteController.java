@@ -146,15 +146,7 @@ public class QuoteController {
         QuotePostMsg msg = quotePostMsgDAO.findByKey(KeyFactory.stringToKey(keyString));
         msg.setStatus(QuotePostMsg.Status.Read);
         quotePostMsgDAO.update(msg);
-
-        ModelAndView modelAndView = new ModelAndView("quote/quoteDetails");
-        Quote quote = quoteDAO.loadQuote(msg.getQuoteKey());
-        modelAndView.addObject("quote", quote);
-        if(quote.getSuburbKey() != null) {
-            modelAndView.addObject("suburb", suburbDAO.findByKey(quote.getSuburbKey()));
-        }
-        modelAndView.addObject("quoteList", quoteService.latestQuoteList());
-        return modelAndView;
+        return new ModelAndView("redirect:" + QUOTE_TRANSACTION_URL + KeyFactory.keyToString(msg.getQuoteKey()));
 
     }
 

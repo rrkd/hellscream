@@ -56,7 +56,7 @@ function generateQuoteTransaction() {
     var quoteTransaction = {
         rawPrice:parseFloat($('#rawPrice').val()),
         rawDay:parseInt($('#rawDay').val()),
-        serviceType:$('#type_select').select2('data').text,
+        serviceType:$('#type_select').select2('data').id,
         merchantKeyString:$('#merchantKeyString').val(),
         comment:$('#description').val()
     };

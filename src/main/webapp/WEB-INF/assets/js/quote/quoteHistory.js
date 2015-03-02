@@ -36,7 +36,7 @@ function refreshListContainer(searchResult) {
                 '<tr>' +
                 '<td>' + index + '</td>' +
                 '<td>' + vo.title + '</td>' +
-                '<td>' + vo.postDate + '</td>' +
+                '<td>' + formatDate(vo.postDate) + '</td>' +
                 '<td><a href="/quote/d/' + vo.key + '">details</a></td>' +
                 '</tr>');
         }
