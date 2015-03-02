@@ -36,7 +36,7 @@ function refreshListContainer(searchResult) {
                 '<tr>' +
                 '<td>' + index + '</td>' +
                 '<td>' + vo.quote.title + '</td>' +
-                '<td><a href="/quote/d/' + vo.quote.key + '">details</a></td>' +
+                '<td><a href="/quote/unapply/read/' + vo.keyString + '">details</a></td>' +
                 '</tr>');
         }
         quoteItemListener();
@@ -125,6 +125,6 @@ function quoteItemListener() {
 }
 
 function quoteDetailsPage(quoteKeyString) {
-    window.location.href = "/quote/d/" + quoteKeyString;
+    window.location.href = "/quote/unapply/read/" + quoteKeyString;
 }
 

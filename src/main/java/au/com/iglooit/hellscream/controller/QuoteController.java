@@ -4,6 +4,7 @@ import au.com.iglooit.hellscream.exception.AppX;
 import au.com.iglooit.hellscream.model.entity.IGUser;
 import au.com.iglooit.hellscream.model.entity.Merchant;
 import au.com.iglooit.hellscream.model.entity.Quote;
+import au.com.iglooit.hellscream.model.entity.QuotePostMsg;
 import au.com.iglooit.hellscream.model.entity.QuoteTransaction;
 import au.com.iglooit.hellscream.security.GaeUserAuthentication;
 import au.com.iglooit.hellscream.service.dao.CategoryGroupDAO;
@@ -137,6 +138,24 @@ public class QuoteController {
         modelAndView.addObject("msgList", quotePostMsgDAO.findByMerchant(merchant.getKey()));
 
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/quote/unapply/read/{keyString}",
+        method = RequestMethod.GET)
+    public ModelAndView unapplyQuoteToMerchant(@PathVariable String keyString) {
+        QuotePostMsg msg = quotePostMsgDAO.findByKey(KeyFactory.stringToKey(keyString));
+        msg.setStatus(QuotePostMsg.Status.Read);
+        quotePostMsgDAO.update(msg);
+
+        ModelAndView modelAndView = new ModelAndView("quote/quoteDetails");
+        Quote quote = quoteDAO.loadQuote(msg.getQuoteKey());
+        modelAndView.addObject("quote", quote);
+        if(quote.getSuburbKey() != null) {
+            modelAndView.addObject("suburb", suburbDAO.findByKey(quote.getSuburbKey()));
+        }
+        modelAndView.addObject("quoteList", quoteService.latestQuoteList());
+        return modelAndView;
+
     }
 
     private Merchant getLoginMerchant() {

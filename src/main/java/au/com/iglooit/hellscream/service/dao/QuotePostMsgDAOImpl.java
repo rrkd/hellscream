@@ -46,6 +46,7 @@ public class QuotePostMsgDAOImpl extends BaseRepository<QuotePostMsg> implements
             QuotePostMsgVO vo = new QuotePostMsgVO();
 //            vo.setMerchant(merchantDAO.findByKey(msg.getMerchantKey()));
             vo.setQuote(new QuoteVO(quoteDAO.findByKey(msg.getQuoteKey())));
+            vo.setKeyString(msg.getKeyString());
             result.add(vo);
         }
         return result;
@@ -73,6 +74,7 @@ public class QuotePostMsgDAOImpl extends BaseRepository<QuotePostMsg> implements
             QuotePostMsgVO vo = new QuotePostMsgVO();
 //            vo.setMerchant(merchantDAO.findByKey(msg.getMerchantKey()));
             vo.setQuote(new QuoteVO(quoteDAO.findByKey(msg.getQuoteKey())));
+            vo.setKeyString(msg.getKeyString());
             voList.add(vo);
         }
 
