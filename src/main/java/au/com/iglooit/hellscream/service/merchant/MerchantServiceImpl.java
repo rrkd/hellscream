@@ -93,6 +93,7 @@ public class MerchantServiceImpl implements MerchantService {
         }
         MerchantVO vo = new MerchantVO();
         vo.setMerchant(merchant);
+        vo.setRank(merchant.getRank());
         return vo;
     }
 }

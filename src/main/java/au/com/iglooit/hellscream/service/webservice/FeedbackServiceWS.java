@@ -45,9 +45,10 @@ public class FeedbackServiceWS {
         merchantFeedbackMsgDAO.createMerchantFeedbackMsg(msg);
         // update merchant
         Merchant merchant = merchantDAO.findByKey(KeyFactory.stringToKey(keyString));
-        merchant.setFeedbackCount(merchant.getFeedbackCount() + 1);
+
         merchant.setRank((merchant.getFeedbackCount() * merchant.getRank()
-                + msg.getRank()) / merchant.getFeedbackCount());
+                + msg.getRank()) / (merchant.getFeedbackCount() + 1));
+        merchant.setFeedbackCount(merchant.getFeedbackCount() + 1);
         merchantDAO.update(merchant);
         return new JsonResponse(JsonResponse.OK, "");
     }

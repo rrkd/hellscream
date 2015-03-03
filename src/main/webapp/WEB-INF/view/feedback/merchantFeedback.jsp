@@ -47,7 +47,15 @@
             <div class="control-group">
                 <label class="control-label" for="email">Email</label>
                 <div class="controls">
-                    <input name="email" size="30" type="email" id="email" class="span12" placeholder="Email" required>
+                    <c:choose>
+                      <c:when test="${not empty user}">
+                        <input name="email" size="30" type="email" id="email" class="span12" placeholder="Email" required value="${user.email}" readonly>
+                      </c:when>
+                      <c:otherwise>
+                        <input name="email" size="30" type="email" id="email" class="span12" placeholder="Email" required>
+                      </c:otherwise>
+                    </c:choose>
+
                     <p class="help-block">Contact Email</p>
                 </div>
             </div>
