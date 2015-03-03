@@ -40,7 +40,7 @@
                 <c:forEach items="${latestQuote.voList}" var="transaction">
                     <div class="boxblog">
 
-                        <h5><a href="#">${transaction.quoteTitle}</a></h5>
+                        <h5><a href="#" class="quoteItem" data-index="${transaction.quoteTransactionKeyString}">${transaction.quoteTitle}</a></h5>
 
                         <p class="small datepost">
 
@@ -108,8 +108,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><spring:message code="merchantprofile.address" />Close</span></button>
-                <h4 class="modal-title" id="myModalLabel"><spring:message code="merchantprofile.address" />Quote Details</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><spring:message code="quotedetail.close" /></span></button>
+                <h4 class="modal-title" id="myModalLabel"><spring:message code="quotedetail.quotedetail" /></h4>
             </div>
             <div class="modal-body">
                 <div class="tabbable tabs-left">
@@ -122,19 +122,19 @@
 
                         <li class="active">
 
-                            <a data-toggle="tab" href="#quoteDetailsTab"><spring:message code="merchantprofile.address" />Quote Details</a>
+                            <a data-toggle="tab" href="#quoteDetailsTab"><spring:message code="quotedetail.quotedetail" /></a>
 
                         </li>
 
                         <li>
 
-                            <a data-toggle="tab" href="#quoteApplyTab"><spring:message code="merchantprofile.address" />Apply</a>
+                            <a data-toggle="tab" href="#quoteApplyTab"><spring:message code="quotedetail.apply" /></a>
 
                         </li>
 
                         <li>
 
-                            <a data-toggle="tab" href="#quoteMessage"><spring:message code="merchantprofile.address" />Message</a>
+                            <a data-toggle="tab" href="#quoteMessage"><spring:message code="quotedetail.message" /></a>
 
                         </li>
 
@@ -146,36 +146,36 @@
 
                         <div id="quoteDetailsTab" class="tab-pane active fade in">
                             <div class="row-fluid">
-                                <div class="span4" style="font-family:open_sansbold"><spring:message code="merchantprofile.address" />Category</div>
+                                <div class="span4" style="font-family:open_sansbold"><spring:message code="quotedetail.category" /></div>
                                 <div class="span8 " id="quoteCategory">
 
                                 </div>
                             </div>
                             <div class="row-fluid">
-                                <div class="span4" style="font-family:open_sansbold"><spring:message code="merchantprofile.address" />Location</div>
+                                <div class="span4" style="font-family:open_sansbold"><spring:message code="quotedetail.location" /></div>
                                 <div class="span8" id="quoteSuburb"></div>
                             </div>
                             <div class="row-fluid">
-                                <div class="span4" style="font-family:open_sansbold"><spring:message code="merchantprofile.address" />Description</div>
+                                <div class="span4" style="font-family:open_sansbold"><spring:message code="quotedetail.description" /></div>
                                 <div class="span8" id="quoteComment"></div>
                             </div>
                         </div>
 
                         <div id="quoteApplyTab" class="tab-pane fade ">
                             <div class="row-fluid">
-                                <div class="span4" style="font-family:open_sansbold"><spring:message code="merchantprofile.address" />Days</div>
+                                <div class="span4" style="font-family:open_sansbold"><spring:message code="quotedetail.days" /></div>
                                 <div class="span8 " id="applyRawDays"></div>
                             </div>
                             <div class="row-fluid">
-                                <div class="span4" style="font-family:open_sansbold"><spring:message code="merchantprofile.address" />Price</div>
+                                <div class="span4" style="font-family:open_sansbold"><spring:message code="quotedetail.price" /></div>
                                 <div class="span8" id="applyRawPrice"></div>
                             </div>
                             <div class="row-fluid">
-                                <div class="span4" style="font-family:open_sansbold"><spring:message code="merchantprofile.address" />Service Type</div>
+                                <div class="span4" style="font-family:open_sansbold"><spring:message code="quotedetail.servicetype" /></div>
                                 <div class="span8" id="applyServiceType"></div>
                             </div>
                             <div class="row-fluid">
-                                <div class="span4" style="font-family:open_sansbold"><spring:message code="merchantprofile.address" />Comment</div>
+                                <div class="span4" style="font-family:open_sansbold"><spring:message code="quotedetail.comments" /></div>
                                 <div class="span8" id="applyComment"></div>
                             </div>
 
@@ -193,7 +193,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal"><spring:message code="merchantprofile.address" />Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"><spring:message code="quotedetail.close" /></button>
             </div>
         </div>
     </div>

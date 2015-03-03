@@ -27,6 +27,7 @@ public class QuoteTransactionVO implements Serializable {
     private Date quotePostDate;
     private QuoteTransactionStatus status;
     private List<String> quoteCategoryList;
+    private String quoteTransactionKeyString;
 
     public QuoteTransactionVO() {
 
@@ -44,6 +45,7 @@ public class QuoteTransactionVO implements Serializable {
         this.quotePostDate = qt.getQuote().getPostDate();
         this.quoteCategoryList = qt.getQuote().getCategoryList();
         this.status = qt.getQuoteTransactionStatus();
+        this.quoteTransactionKeyString = qt.getKeyString();
     }
 
     public String getComment() {
@@ -140,5 +142,13 @@ public class QuoteTransactionVO implements Serializable {
 
     public void setStatus(QuoteTransactionStatus status) {
         this.status = status;
+    }
+
+    public String getQuoteTransactionKeyString() {
+        return quoteTransactionKeyString;
+    }
+
+    public void setQuoteTransactionKeyString(String quoteTransactionKeyString) {
+        this.quoteTransactionKeyString = quoteTransactionKeyString;
     }
 }

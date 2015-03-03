@@ -1,7 +1,7 @@
 var transactionVOList;
 jQuery(document).ready(function ($) {
 
-//    initQuoteList();
+    initQuoteList();
     $('#quoteTransactionDetail').appendTo('body');
 
 })
@@ -119,6 +119,21 @@ function registerPaginationListener() {
 }
 
 function quoteItemListener() {
+    $('#latestQuote').on('click', '.quoteItem', function (event) {
+        // fill up the content
+        var quoteKeyString = $(this).attr('data-index');
+        $.ajax({
+            type:"GET",
+            url:"/ws/quoteTransaction/" + quoteKeyString,
+            data:"",
+            success:function (data) {
+                var dialog = $('#quoteTransactionDetail');
+                fillUpQuoteDetails(dialog, data);
+                dialog.modal('toggle');
+            }
+        });
+        event.stopPropagation();
+    });
     $('.listContainer').on('click', '.quoteItem', function (event) {
         // fill up the content
         var vo = transactionVOList[$(this).attr('data-index')];
