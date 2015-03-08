@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta name="description" content="About Us">
-    <title>About Us</title>
+    <title><spring:message code="howitworks.title" /></title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>Services</h1>
+    <h1><spring:message code="howitworks.image" /></h1>
 
     <div class="headerdivider">
 
@@ -26,7 +26,7 @@
 
     <p class="lead bottom0">
 
-        <i class="icon-phone"></i> Got a project in mind? We are at your service! Call us now: <a>+ 89 676 546 43</a>
+        <i class="icon-phone"></i><spring:message code="howitworks.contact" /> <a><spring:message code="howitworks.contact.number" /></a>
 
     </p>
 
@@ -36,11 +36,11 @@
 
     <div class="span4">
 
-        <h2><i class="icon-bolt"></i> Infinite scalability</h2>
+        <h2><i class="icon-bolt"></i><spring:message code="howitworks.quote" /></h2>
 
         <p>
 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="#" class="more">Learn more »</a>
+            <spring:message code="howitworks.quote.detail" /><br/><a href="/quote/c" class="more"><spring:message code="howitworks.quote.button" /></a>
 
         </p>
 
@@ -48,11 +48,11 @@
 
     <div class="span4">
 
-        <h2><i class="icon-google-plus"></i>Web Design</h2>
+        <h2><i class="icon-google-plus"></i><spring:message code="howitworks.merchant" /></h2>
 
         <p>
 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="#" class="more">Learn more »</a>
+            <spring:message code="howitworks.merchant.detail" /><br/><a href="/category" class="more"><spring:message code="howitworks.merchant.button" /></a>
 
         </p>
 
@@ -60,11 +60,11 @@
 
     <div class="span4">
 
-        <h2><i class="icon-dashboard"></i>Social integration</h2>
+        <h2><i class="icon-dashboard"></i><spring:message code="howitworks.feedback" /></h2>
 
         <p>
 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet ante tellus. Morbi a nisl nunc, et imperdiet ligula. <br/><a href="#" class="more">Learn more »</a>
+            <spring:message code="howitworks.feedback.detail" /> <br/><a href="/faq" class="more"><spring:message code="howitworks.feedback.button" /></a>
 
         </p>
 
@@ -82,17 +82,17 @@
 
                 <div class="info-content">
 
-                    <h4>Responsive, Smart Design, Easy Customization</h4>
+                    <h4><spring:message code="howitworks.register" /></h4>
 
                     <p>
 
-                        Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris. Fusce suscipit.
+                        <spring:message code="howitworks.register.detail" />
 
                     </p>
 
                 </div>
 
-                <a style="float: right;" class="btn btn-primary btn-large" href="#"><i class="icon-download-alt"></i> Download this Theme</a>
+                <a style="float: right;" class="btn btn-primary btn-large" href="/m/create"><i class="icon-download-alt"></i><spring:message code="howitworks.register.button" /> </a>
 
                 <div class="clearfix">
 

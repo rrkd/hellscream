@@ -464,6 +464,23 @@ menu.contactus=如何联络我们
 menu.faq=常见问题
 menu.merchantUnapply=未读请求
 
+howitworks.title=使用流程
+howitworks.image=使用流程图
+howitworks.contact=请联络我们
+howitworks.contact.number=0430 862 286
+howitworks.quote=免费发布服务请求
+howitworks.quote.detail=让商家主动联络你和给你报价，你可以从中挑选性价比比较好的商家,然后提供自己联络方式给商家。通过此方式，可以避免高于市场价成交，从而保护自己的正当权益！
+howitworks.quote.button=免费发布服务请求
+howitworks.merchant=了解报价商家信息
+howitworks.merchant.detail=发布服务请求后,你会收到商家的报价信息，全面了解商家后，决定是否握手把自己联络信息发布给商家．你还可以直接从商家列表中找商家，了解商家，或者直接跟商家联络！
+howitworks.merchant.button=商家列表
+howitworks.feedback=反馈服务结果
+howitworks.feedback.detail=通过反馈服务系统,客户可以根据商家给与,好，中，差的评论．通过此方式，建立商家服务信用机制．让客人用得更放心，让商家服务得更加上心．
+howitworks.feedback.button=更多
+howitworks.register=注册记公司信息
+howitworks.register.detail=1.大量客户通过华服网找商家<br/>2.华服网拥有最全面的商家群体<br/>3.华服网提升贵公司的信誉和知名度<br/>4.华服网增强贵公司和用户的互动性.
+howitworks.register.button=注册
+
 
 
 
