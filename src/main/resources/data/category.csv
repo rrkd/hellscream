@@ -1,21 +1,21 @@
-Floor carpet,地板地毯,Decoration materials,装修建材
-Curtains,窗帘,Decoration materials,装修建材
-Glass Doors and Windows,门窗玻璃,Decoration materials,装修建材
-Iron Railings,铁门栏杆,Decoration materials,装修建材
-Paint,油漆,Decoration materials,装修建材
-Stone Tiles,石材瓷砖,Decoration materials,装修建材
-Renovated Building,装修建房,Reconstruction,改建
-Interior Design,室内设计,Reconstruction,改建
-Gyprock Interval House,Gyprock间隔房,Reconstruction,改建
-Furniture Store,家具店,Indoor,室内
-Cabinet Installation,橱柜安装,Indoor,室内
-Insecticidal,杀虫,Indoor,室内
-Loaded Lock Unlock,装锁开锁,Indoor,室内
-Cleaning Company,清洁公司,Indoor,室内
-Bedding,床上用品,Indoor,室内
-Bathroom Ware,浴室洁具,Bath & Kitchen,浴厨
-Kitchen Utensils,厨房用具,Bath & Kitchen,浴厨
-Water Gas,水务煤气,Bath & Kitchen,浴厨
-Household Appliances,家用电器,Electric,电器
-Electrician Maintenance,电工维修,Electric,电器
-Satellite TV,卫星电视,Electric,电器
+Floor carpet,地板地毯,Decoration materials,装修建材,地板 地毯 木地板
+Curtains,窗帘,Decoration materials,装修建材,窗帘 bind
+Glass Doors and Windows,门窗玻璃,Decoration materials,装修建材,门窗玻璃 glass
+Iron Railings,铁门栏杆,Decoration materials,装修建材,铁门栏杆 fence
+Paint,油漆,Decoration materials,装修建材,油漆 painting
+Stone Tiles,石材瓷砖,Decoration materials,装修建材,石材瓷砖 stone tiles
+Renovated Building,Reconstruction,改建,装修建房,装修建房 building renovation
+Interior Design,室内设计,Reconstruction,改建,室内设计 Interior Design
+Gyprock Interval House,Gyprock间隔房,Reconstruction,改建,Gyprock 间隔房 house
+Furniture Store,家具店,Indoor,室内,家具店 furniture bed
+Cabinet Installation,橱柜安装,Indoor,室内,橱柜安装 cabinet bench top
+Insecticidal,杀虫,Indoor,室内,杀虫 pet control
+Loaded Lock Unlock,装锁开锁,Indoor,室内,装锁开锁 lock
+Cleaning Company,清洁公司,Indoor,室内,清洁公司 cleaner cleaning
+Bedding,床上用品,Indoor,室内,床上用品 bed sheet queen size
+Bathroom Ware,浴室洁具,Bath & Kitchen,浴厨,浴室洁具 bathroom
+Kitchen Utensils,厨房用具,Bath & Kitchen,浴厨,厨房用具 kitchen
+Water Gas,水务煤气,Bath & Kitchen,浴厨,水务煤气 gas water
+Household Appliances,家用电器,Electric,电器,家用电器 washing machine
+Electrician Maintenance,电工维修,Electric,电器,电工维修 Electrician Maintenanc
+Satellite TV,卫星电视,Electric,电器,Satellite TV 卫星电视

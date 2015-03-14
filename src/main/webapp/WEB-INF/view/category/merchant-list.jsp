@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta name="description" content="${category.tradeName}">
-  <title><spring:message code="aboutus.title"></spring:message></title>
+  <meta name="keywords" content="${category.keywords}"/>
+  <title>${category.tradeName}</title>
 </head>
 <body>
 <div class="page-header">
@@ -22,10 +23,10 @@
       <div class="inneritem">
         <c:forEach items="${merchantList}" var="merchant">
           <div class="hero-unit">
-            <h5><a href="#">${merchant.tradeName}</a></h5>
+            <h5><a href="/merchant/details/${merchant.canonicalSlugId}">${merchant.tradeName}</a></h5>
             <div class="merchant-rank" data-rank="${merchant.rank}"></div>
             <p class="small datepost">
-              Posted on <fmt:formatDate type="both" value="${merchant.postDate}" />
+                <%--<spring:message code="merchantlist.posteddate"></spring:message> <fmt:formatDate type="both" value="${merchant.postDate}" />--%>
               <span class="floatright"title="3 responses"><a href="#"><img src="/assets/img/comments.png" alt=""></a></span>
             </p>
             <div class="innerblogboxtwo">
@@ -34,7 +35,7 @@
               </p>
             </div>
             <p class="continueread readmorebox">
-              <a href="/merchant/details/${merchant.canonicalSlugId}">Details</a>
+              <a href="/merchant/details/${merchant.canonicalSlugId}"><spring:message code="merchantlist.detail"></spring:message></a>
             </p>
           </div>
 

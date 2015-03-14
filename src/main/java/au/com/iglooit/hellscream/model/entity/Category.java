@@ -21,6 +21,7 @@ public class Category extends BaseEntity {
     private String tradeName;
     private String description;
     private String url;
+    private String keywords;
     private Long merchantCount = 0L;
     @ManyToOne(fetch = FetchType.LAZY)
     private CategoryGroup group;
@@ -71,6 +72,14 @@ public class Category extends BaseEntity {
 
     public void setMerchantCount(Long merchantCount) {
         this.merchantCount = merchantCount;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
+    public String getKeywords() {
+        return keywords;
     }
 
     @Override

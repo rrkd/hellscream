@@ -41,6 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
         String categoryTradeName = line[1];
         String categoryGroupName = line[2];
         String categoryGroupTradeName = line[3];
+        String categoryKeywords = line[4];
         if (!StringUtils.isBlank(categoryName) && !StringUtils.isBlank(categoryGroupName)) {
             // find CategoryGroup
             CategoryGroup group = categoryGroupDAO.findByName(categoryGroupName);
@@ -61,6 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
                 category.setName(categoryName);
                 category.setTradeName(categoryTradeName);
                 category.setDescription(categoryName);
+                category.setKeywords(categoryKeywords);
                 category.setGroup(group);
                 category.setUrl(CanonicalSlugIdConvert.convertToURL(categoryName));
                 category.setMerchantCount(0L);
@@ -70,7 +72,9 @@ public class CategoryServiceImpl implements CategoryService {
                 categoryGroupDAO.update(group);
             } else {
                 category.setName(categoryName);
+                category.setTradeName(categoryTradeName);
                 category.setDescription(categoryName);
+                category.setKeywords(categoryKeywords);
                 category.setGroup(group);
                 category.setUrl(CanonicalSlugIdConvert.convertToURL(categoryName));
                 categoryDAO.update(category);

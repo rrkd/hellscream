@@ -481,6 +481,9 @@ howitworks.register=注册记公司信息
 howitworks.register.detail=1.大量客户通过华服网找商家<br/>2.华服网拥有最全面的商家群体<br/>3.华服网提升贵公司的信誉和知名度<br/>4.华服网增强贵公司和用户的互动性.
 howitworks.register.button=注册
 
+merchantlist.detail=更多
+merchantlist.posteddate=加入华服网时间：
+
 
 
 
