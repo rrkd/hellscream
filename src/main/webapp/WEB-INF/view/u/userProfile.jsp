@@ -154,7 +154,7 @@
 
                 <a href="#">
 
-                    <div class="service-box black">
+                    <div class="service-box">
 
                         <h3><spring:message code="userprofile.message" /></h3>
 
@@ -180,7 +180,7 @@
 
                 <a href="#">
 
-                    <div class="service-box black">
+                    <div class="service-box">
 
                         <h3><spring:message code="userprofile.feedback" /></h3>
 
@@ -230,7 +230,7 @@
                 <tbody id="dataTableBody">
                     <c:forEach items="${quoteList.voList}" var="vo" varStatus="loop">
                         <tr>
-                            <td>${loop.index}</td>
+                            <td>${loop.index + 1}</td>
                             <td>${vo.title}</td>
                             <td>${vo.postDate}</td>
                             <td><a href="/quote/d/${vo.key}"><spring:message code="userprofile.detail" /></a></td>

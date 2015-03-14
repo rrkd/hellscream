@@ -33,7 +33,11 @@ public class UserStatisticDAOImpl extends BaseRepository<UserStatistic> implemen
         if (result != null && result.size() > 0) {
             return result.get(0);
         }
-        return null;
+        return new UserStatistic(){{
+            setCountQuote(0L);
+            setCountMsg(0L);
+            setCountFeedback(0L);
+        }};
     }
 
     @Override

@@ -34,7 +34,7 @@ function refreshListContainer(searchResult) {
             var vo = searchResult.voList[index];
             dataTableBody.append('' +
                 '<tr>' +
-                '<td>' + index + '</td>' +
+                '<td>' + (index + 1) + '</td>' +
                 '<td>' + vo.title + '</td>' +
                 '<td>' + formatDate(vo.postDate) + '</td>' +
                 '<td><a href="/quote/d/' + vo.key + '">details</a></td>' +
@@ -54,21 +54,12 @@ function refreshPagination(searchResult) {
         if (pageNumber == 1) {
             paginationBox.append('<li><a class="paginationTag" href="#" data-page="1"><<</a></li>');
         } else {
-            paginationBox.append('<li><a class="paginationTag" href="#" data-page="' + pageNumber - 1 + '"><<</a></li>');
+            paginationBox.append('<li><a class="paginationTag" href="#" data-page="' + (pageNumber - 1) + '"><<</a></li>');
         }
         // middle buttons
-        if (total <= 3) {
-            for (var i = 0; i < total - 1; i++) {
-                var index = i + 1;
-                if (i + 1 == pageNumber) {
-                    paginationBox.append('<li><a class="active paginationTag" href="#" data-page="' + index + '"><<</a></li>');
-                } else {
-                    paginationBox.append('<li><a class="paginationTag" href="#" data-page="' + index + '"><<</a></li>');
-                }
-            }
-        } else {
-            if (pageNumber <= 3) {
-                for (var i = 0; i < 2; i++) {
+        if(total > 2) {
+            if (total <= 3) {
+                for (var i = 0; i < total - 1; i++) {
                     var index = i + 1;
                     if (i + 1 == pageNumber) {
                         paginationBox.append('<li><a class="active paginationTag" href="#" data-page="' + index + '"><<</a></li>');
@@ -77,12 +68,23 @@ function refreshPagination(searchResult) {
                     }
                 }
             } else {
-                for (var i = pageNumber - 2; i < pageNumber; i++) {
-                    var index = i + 1;
-                    if (i + 1 == pageNumber) {
-                        paginationBox.append('<li><a class="active paginationTag" href="#" data-page="' + index + '"><<</a></li>');
-                    } else {
-                        paginationBox.append('<li><a class="paginationTag" href="#" data-page="' + index + '"><<</a></li>');
+                if (pageNumber <= 3) {
+                    for (var i = 0; i < 2; i++) {
+                        var index = i + 1;
+                        if (i + 1 == pageNumber) {
+                            paginationBox.append('<li><a class="active paginationTag" href="#" data-page="' + index + '"><<</a></li>');
+                        } else {
+                            paginationBox.append('<li><a class="paginationTag" href="#" data-page="' + index + '"><<</a></li>');
+                        }
+                    }
+                } else {
+                    for (var i = pageNumber - 2; i < pageNumber; i++) {
+                        var index = i + 1;
+                        if (i + 1 == pageNumber) {
+                            paginationBox.append('<li><a class="active paginationTag" href="#" data-page="' + index + '"><<</a></li>');
+                        } else {
+                            paginationBox.append('<li><a class="paginationTag" href="#" data-page="' + index + '"><<</a></li>');
+                        }
                     }
                 }
             }
@@ -98,7 +100,9 @@ function refreshPagination(searchResult) {
             }
         }
         // the last button
-        if (pageNumber + 1 < total) {
+        if (pageNumber == total) {
+
+        }else if (pageNumber + 1 < total) {
             paginationBox.append('<li><a class="paginationTag" href="#" data-page="' + (pageNumber + 1) + '">>></a></li>');
         } else {
             paginationBox.append('<li><a class="paginationTag" href="#" data-page="' + total + '">>></a></li>');
