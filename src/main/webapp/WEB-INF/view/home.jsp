@@ -15,7 +15,7 @@
                 <h1><spring:message code="home.findmerchant.title" /></h1>
                 <div class="form" style="margin-top:0px;">
 				<span><spring:message code="home.findmerchant.category" /><br/>
-                    <input id="searchMerchantKeyTxt" class="span10" type="text" name="name" placeholder="<spring:message code="home.findmerchant.category.samples" />"><br/>
+                    <input id="searchMerchantCategoryTxt" class="span10" type="text" name="name" placeholder="<spring:message code="home.findmerchant.category.samples" />"><br/>
                     <spring:message code="home.findmerchant.where" /><br/>
                     <input id="searchLocalTxt" class="span10" type="text" name="name" placeholder="<spring:message code="home.findmerchant.where.samples" />"><br/>
                     <input id="searchMerchantBtn" class="btn span10" value="<spring:message code="home.findmerchant.button" />">
@@ -33,7 +33,8 @@
                 <h1><spring:message code="home.postquote" /></h1>
 
 						<span>
-						<spring:message code="home.postquote.advantage" />
+						<spring:message code="home.postquote.advantage" /><br/>
+              <input id="postQuoteBtn" class="btn span10" value="<spring:message code="home.quoterequest.button" />">
                         </span>
 
             </div>
