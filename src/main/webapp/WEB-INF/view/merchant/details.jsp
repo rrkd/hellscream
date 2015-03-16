@@ -31,8 +31,8 @@
 
         </p>
         <p>
-            <c:forEach items="${vo.merchant.categoryList}" var="category" begin="0">
-                <a class="btn btn-small" href="#">${category}</a>
+            <c:forEach items="${category}" var="category" begin="0">
+                <a class="btn btn-small" href="/category/${category.url}">${category.tradeName}</a>
             </c:forEach>
         </p>
 
