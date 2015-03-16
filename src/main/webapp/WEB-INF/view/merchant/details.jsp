@@ -43,14 +43,30 @@
         </p>
 
         <br/>
-        <div class="row-fluid">
-            <div class="span4" ><spring:message code="merchantdetail.email" /></div>
-            <div class="span8">${vo.merchant.email}</div>
-        </div>
-        <div class="row-fluid">
-            <div class="span4" ><spring:message code="merchantdetail.phone" /></div>
-            <div class="span8">${vo.merchant.phone}</div>
-        </div>
+        <c:if test="${not empty vo.merchant.email}">
+            <div class="row-fluid">
+                <div class="span4" ><spring:message code="merchantdetail.email" /></div>
+                <div class="span8">${vo.merchant.email}</div>
+            </div>
+        </c:if>
+        <c:if test="${not empty vo.merchant.phone}">
+            <div class="row-fluid">
+                <div class="span4" ><spring:message code="merchantdetail.phone" /></div>
+                <div class="span8">${vo.merchant.phone}</div>
+            </div>
+        </c:if>
+        <c:if test="${not empty vo.merchant.contact1}">
+            <div class="row-fluid">
+                <div class="span4" ><spring:message code="merchantdetail.mobile" /></div>
+                <div class="span8">${vo.merchant.contact1}</div>
+            </div>
+        </c:if>
+        <c:if test="${not empty vo.merchant.contact2}">
+            <div class="row-fluid">
+                <div class="span4" ></div>
+                <div class="span8">${vo.merchant.contact2}</div>
+            </div>
+        </c:if>
         <div class="row-fluid">
             <div class="span4" ><spring:message code="merchantdetail.address" /></div>
             <div class="span8">${vo.merchant.address1}</div>
@@ -62,14 +78,6 @@
         <div class="row-fluid">
             <div class="span4" ></div>
             <div class="span8">${vo.merchant.address3}</div>
-        </div>
-        <div class="row-fluid">
-            <div class="span4" ><spring:message code="merchantdetail.mobile" /></div>
-            <div class="span8">${vo.merchant.contact1}</div>
-        </div>
-        <div class="row-fluid">
-            <div class="span4" ></div>
-            <div class="span8">${vo.merchant.contact2}</div>
         </div>
         <br/>
         <p class="clearfix">
@@ -120,7 +128,7 @@
 
             <li class="active"><a href="#recentPost" data-toggle="tab"><spring:message code="merchantdetail.recentfeedback" /></a></li>
 
-            <li class=""><a href="#something" data-toggle="tab"><spring:message code="merchantprofile.title" />Tags</a></li>
+            <li class=""><a href="#something" data-toggle="tab"><spring:message code="merchantprofile.title" /></a></li>
 
         </ul>
 
