@@ -88,7 +88,7 @@ function appendToResultBox(data) {
     }
     for (var i = 0; i < data.length; i++) {
         $('#resultContainer').append('<div class="hero-unit">' +
-            '<h5><a href="#">' + data[i].tradeName + '</a></h5>' +
+            '<h5><a href="/merchant/details/'+data[i].canonicalSlugId+'">' + data[i].tradeName + '</a></h5>' +
             '<div class="merchant-rank" data-rank="' + data[i].rank + '"></div>' +
             '<p class="small datepost">' +
             'Posted on ' + formatDate(data[i].postDate) +

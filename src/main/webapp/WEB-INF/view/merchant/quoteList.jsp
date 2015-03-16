@@ -132,11 +132,11 @@
 
                         </li>
 
-                        <li>
+                        <%--<li>--%>
 
-                            <a data-toggle="tab" href="#quoteMessage"><spring:message code="quotedetail.message" /></a>
+                            <%--<a data-toggle="tab" href="#quoteMessage"><spring:message code="quotedetail.message" /></a>--%>
 
-                        </li>
+                        <%--</li>--%>
 
                     </ul>
 

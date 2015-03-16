@@ -1,6 +1,9 @@
 jQuery(document).ready(function ($) {
     $('#searchMerchantBtn').click(function(){
-        window.location.href="/search?suburb=" + $('#searchLocalTxt').val().split(" ").join("-") + "&q=" + $('#searchMerchantKeyTxt').val().split(" ").join("-");
+        window.location.href="/search?suburb=" + $('#searchLocalTxt').val().split(" ").join("-") + "&q=&category=" + $('#searchMerchantCategoryTxt').val().split(" ").join("-");
+    });
+    $('#postQuoteBtn').click(function(){
+        window.location.href="/quote/c";
     });
     $.ajax({
         type:"GET",
