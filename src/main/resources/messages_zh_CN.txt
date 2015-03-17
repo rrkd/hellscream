@@ -484,6 +484,40 @@ howitworks.register.button=注册
 merchantlist.detail=更多
 merchantlist.posteddate=加入华服网时间：
 
+leftsection.latestmerchant=最新注册商家
+leftsection.latestcomment=最新评论
+
+login.title=登陆
+login.userlogin=用户登录
+login.username=用户名
+login.password=密码
+login.login=已注册用户登录
+login.signinas=第三方账号登陆(无需注册）
+login.googlesignin=Google账户自动登陆
+login.facebooksignin=Facebook账户自动登陆
+login.signupasuser=个人用户注册
+login.signupbenefits=注册优势：
+login.benefit1=发布服务请求
+login.benefit2=跟商家信息沟通更顺畅
+login.benefit3=评论商家服务
+login.benefit4=优惠服务
+login.signupasmerchant=商家用户注册
+login.merchantbenefits=注册优势：
+login.merchantbenefit1=发布商家信息
+login.merchantbenefit2=给客户服务请求报价
+login.merchantbenefit3=提高商家信用
+login.merchantbenefit4=跟客户沟通更加顺畅
+
+searchresult.title=商家搜索
+searchresult.result=商家搜索结果列表
+searchresult.filter=搜索
+searchresult.allcategory=商家分类
+searchresult.readmore=更多...
+searchresult.loadmore=显示更多商家
+
+
+
+
 
 
 

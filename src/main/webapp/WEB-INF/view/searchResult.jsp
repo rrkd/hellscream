@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta name="description" content="merchant list">
-    <title>Search Merchant</title>
+    <title><spring:message code="searchresult.title" /></title>
     <link href="/assets/css/jquery.raty.css" rel="stylesheet">
 </head>
 <body>
 <div class="page-header">
 
-    <h1>Search Result</h1>
+    <h1><spring:message code="searchresult.result" /></h1>
 
     <div class="headerdivider">
 
@@ -21,7 +21,7 @@
 
         <div>
 
-            Filter
+            <%--<spring:message code="leftsection.latestmerchant" />Filter--%>
 
         </div>
 
@@ -46,7 +46,7 @@
                           <option value="${filterCategory.name}" selected="selected">${filterCategory.name}</option>
                         </c:when>
                         <c:otherwise>
-                          <option value="">All Category</option>
+                          <option value=""><spring:message code="searchresult.allcategory" /></option>
                         </c:otherwise>
                       </c:choose>
 
@@ -61,7 +61,7 @@
 
                 </div>
                 <div class="span4">
-                    <button id="filterBtn" class="btn btn-primary span8"> Filter</button>
+                    <button id="filterBtn" class="btn btn-primary span8"><spring:message code="searchresult.filter" /></button>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
 
                 <p>
 
-                    <a href="/merchant/details/${heroMerchant.url}" class="btn btn-primary btn-large">Read more
+                    <a href="/merchant/details/${heroMerchant.url}" class="btn btn-primary btn-large"><spring:message code="searchresult.readmore" />
                         >></a>
 
                 </p>
@@ -108,7 +108,7 @@
     </div>
 
     <div class="form-actions load-more" align="center">
-        <button id="loadMore" class="btn btn-primary"> Load More <i class="icon-ok icon-arrow-right"></i>
+        <button id="loadMore" class="btn btn-primary"><spring:message code="searchresult.loadmore" /><i class="icon-ok icon-arrow-right"></i>
         </button>
     </div>
 

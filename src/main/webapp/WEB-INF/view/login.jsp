@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta name="description" content="Login">
-    <title>Login</title>
+    <title><spring:message code="login.title" /></title>
 </head>
 <body>
 <div class="page-header">
 
-    <h1>User Login</h1>
+    <h1><spring:message code="login.userlogin" /></h1>
 
     <div class="headerdivider">
 
@@ -20,7 +20,7 @@
 
                 <div>
 
-                    Login
+                    <spring:message code="login.login" />
 
                 </div>
 
@@ -35,9 +35,9 @@
                 </div>
                 <form action="#">
 
-                    <input name="name" size="30" type="text" id="username" class="span6" placeholder="Username"><br/>
+                    <input name="name" size="30" type="text" id="username" class="span6" placeholder="<spring:message code="login.username" />"><br/>
 
-                    <input name="name" size="30" type="password" id="password" class="span6" placeholder="Password">
+                    <input name="name" size="30" type="password" id="password" class="span6" placeholder="<spring:message code="login.password" />">
                     <br/>
 
 
@@ -51,7 +51,7 @@
 
                 <div>
 
-                    Sign In As
+                    <spring:message code="login.signinas" />
 
                 </div>
 
@@ -60,7 +60,7 @@
                 <p>
                     <a class="btn btn-large btn-success" href="${googleUrl}">
                         <i class="icon-google-plus-sign"></i>
-                        Log in Use Google</a>
+                        <spring:message code="login.googlesignin" /></a>
 
                 </p>
                 <p>
@@ -68,7 +68,7 @@
                 </p>
                     <a class="btn btn-large btn-success" href="${facebookUrl}">
                         <i class="icon-facebook-sign"></i>
-                        Log in Use Facebook</a>
+                        <spring:message code="login.facebooksignin" /></a>
                 <br/>
             </div>
         </div>
@@ -80,29 +80,29 @@
 
                 <div>
 
-                    Sign Up As User
+                    <spring:message code="login.signupasuser" />
 
                 </div>
 
             </div>
             <div class="boxblue">
 
-                <p>Sign up as user means you can:</p>
+                <p><spring:message code="login.signupbenefits" /></p>
                 <ul class="icons-ul">
 
-                    <li><i class="icon-li icon-ok"></i>Post your quote</li>
+                    <li><i class="icon-li icon-ok"></i><spring:message code="login.benefit1" /></li>
 
-                    <li><i class="icon-li icon-ok"></i>Search Service</li>
+                    <li><i class="icon-li icon-ok"></i><spring:message code="login.benefit2" /></li>
 
-                    <li><i class="icon-li icon-ok"></i>Choose Merchant</li>
+                    <li><i class="icon-li icon-ok"></i><spring:message code="login.benefit3" /></li>
 
-                    <li><i class="icon-li icon-ok"></i>Send Message to Merchant</li>
+                    <li><i class="icon-li icon-ok"></i><spring:message code="login.benefit4" /></li>
 
                 </ul>
                 <p>
                     <a class="btn btn-large btn-primary" href="/register/user">
                     <i class="icon-user"></i>
-                    Sign Up As User</a>
+                        <spring:message code="login.signupasuser" /></a>
                 </p>
             </div>
         </div>
@@ -111,29 +111,29 @@
 
                 <div>
 
-                    Sign Up As Merchant
+                    <spring:message code="login.signupasmerchant" />
 
                 </div>
 
             </div>
             <div class="boxgreen" >
 
-                <p>Sign up as Merchant means you can:</p>
+                <p><spring:message code="login.merchantbenefits" /></p>
                 <ul class="icons-ul">
 
-                    <li><i class="icon-li icon-ok"></i>List Your Business</li>
+                    <li><i class="icon-li icon-ok"></i><spring:message code="login.merchantbenefit1" /></li>
 
-                    <li><i class="icon-li icon-ok"></i>Receive Quote</li>
+                    <li><i class="icon-li icon-ok"></i><spring:message code="login.merchantbenefit2" /></li>
 
-                    <li><i class="icon-li icon-ok"></i>Contact With Customer</li>
+                    <li><i class="icon-li icon-ok"></i><spring:message code="login.merchantbenefit3" /></li>
 
-                    <li><i class="icon-li icon-ok"></i>Update Your News</li>
+                    <li><i class="icon-li icon-ok"></i><spring:message code="login.merchantbenefit4" /></li>
 
                 </ul>
                 <p>
                     <a class="btn btn-large btn-primary" href="/register/merchant">
                     <i class="icon-suitcase"></i>
-                    Sign Up As Merchant</a>
+                        <spring:message code="login.signupasmerchant" /></a>
                 </p>
             </div>
         </div>

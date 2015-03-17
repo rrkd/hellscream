@@ -3,7 +3,7 @@
 
     <div class="sidebarBox widget-container widget_text">
 
-        <h4 class="widget-title">Latest Merchant</h4>
+        <h4 class="widget-title"><spring:message code="leftsection.latestmerchant" /></h4>
 
         <div id="latestMerchantContain">
 
@@ -13,7 +13,7 @@
 
     <div class="sidebarBox widget-container widget_text">
 
-        <h4 class="widget-title">Last Comment</h4>
+        <h4 class="widget-title"><spring:message code="leftsection.latestcomment" /></h4>
 
         <div class="boxportfolio">
 
