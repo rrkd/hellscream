@@ -43,7 +43,7 @@
                             class="populate placeholder select2-offscreen span12" style="margin-bottom: 10px; margin-left: 0;">
                       <c:choose>
                         <c:when test="${not empty filterCategory.name}">
-                          <option value="${filterCategory.name}" selected="selected">${filterCategory.name}</option>
+                          <option value="${filterCategory.name}" selected="selected">${filterCategory.tradeName}</option>
                         </c:when>
                         <c:otherwise>
                           <option value=""><spring:message code="searchresult.allcategory" /></option>
@@ -51,9 +51,9 @@
                       </c:choose>
 
                         <c:forEach items="${categoryGroupList}" var="categoryGroup">
-                            <optgroup label="${categoryGroup.name}">
+                            <optgroup label="${categoryGroup.tradeName}">
                                 <c:forEach items="${categoryGroup.categoryList}" var="category">
-                                    <option value="${category.name}">${category.name}</option>
+                                    <option value="${category.name}">${category.tradeName}</option>
                                 </c:forEach>
                             </optgroup>
                         </c:forEach>
