@@ -75,7 +75,8 @@
         <c:forEach items="${merchantList}" var="heroMerchant" begin="0" end="0">
             <div class="hero-unit" style="min-height: 400px;">
 
-                <h1>${heroMerchant.tradeName}</h1>
+                <h1><a href="/merchant/details/${heroMerchant.url}" onmouseover="this.style.textDecoration='underline'"
+                       onmouseout="this.style.textDecoration='none'">${heroMerchant.merchantName}</a></h1>
                 <p>
                     <div class="merchant-rank" data-rank="${heroMerchant.rank}"></div>
                 </p>
